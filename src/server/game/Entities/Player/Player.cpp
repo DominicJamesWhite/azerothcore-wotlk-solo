@@ -14001,7 +14001,7 @@ void Player::LearnTalent(uint32 talentId, uint32 talentRank, bool command /*= fa
         }
 
         // xinef: we do not have enough talent points to add talent of this tier
-        if (spentPoints < (talentInfo->Row * MAX_TALENT_RANK))
+        if (spentPoints < (talentInfo->Row))
             return;
     }
 
