@@ -13986,32 +13986,23 @@ void Player::LearnTalent(uint32 talentId, uint32 talentRank, bool command /*= fa
 
     if (!command)
     {
-        // xinef: check if at least one point is spent in the preceding row
+        // xinef: check amount of points spent in current talent tree
+        // xinef: be smart and quick
+        uint32 spentPoints = 0;
         if (talentInfo->Row > 0)
         {
-            bool precedingRowHasTalent = false;
             const PlayerTalentMap& talentMap = GetTalentMap();
             for (PlayerTalentMap::const_iterator itr = talentMap.begin(); itr != talentMap.end(); ++itr)
-            {
                 if (TalentSpellPos const* talentPos = GetTalentSpellPos(itr->first))
-                {
                     if (TalentEntry const* itrTalentInfo = sTalentStore.LookupEntry(talentPos->talent_id))
-                    {
-                        if (itrTalentInfo->TalentTab == talentInfo->TalentTab && itrTalentInfo->Row == talentInfo->Row - 1)
-                        {
-                            if (itr->second->State != PLAYERSPELL_REMOVED && itr->second->IsInSpec(GetActiveSpec()))
-                            {
-                                precedingRowHasTalent = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!precedingRowHasTalent)
-                return;
+                        if (itrTalentInfo->TalentTab == talentInfo->TalentTab)
+                            if (itr->second->State != PLAYERSPELL_REMOVED && itr->second->IsInSpec(GetActiveSpec())) // pussywizard
+                                spentPoints += talentPos->rank + 1;
         }
+
+        // xinef: we do not have enough talent points to add talent of this tier
+        if (spentPoints < (talentInfo->Row))
+            return;
     }
 
     // xinef: hacking attempt, tries to learn unknown rank
