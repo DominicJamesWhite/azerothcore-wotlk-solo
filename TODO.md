@@ -82,16 +82,16 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 ### Druid
 
 **Class Changes:**
-- [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. 
+- [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1)
 
 **Spec Passives:**
 - [ ] **Balance:** Summons healing trees.
 - [ ] **Feral:** Dodging restores rage and energy; swapping between forms increases Armour (Bear) or Dodge (Cat).
 
 **Talent Changes:**
-- [ ] **Nature’s Reach:** Threat no longer affected. Instead increases dodge.
+- [x] **Nature’s Reach:** Threat no longer affected. Instead increases spell crit. (4.2)
 - [ ] **Nature’s Focus:** Redesigned. After using a Restoration spell your attack speed is increased by X%.
-- [ ] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%.
+- [x] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%. (4.2)
 - [ ] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
 - [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Tree of Life Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
 - [ ] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect for Xs.
