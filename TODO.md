@@ -94,7 +94,7 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [x] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%. (4.2)
 - [ ] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
 - [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
-- [x] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect.
+- [x] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect (4.3)
 - [ ] **Tranquil Spirit (Renamed to Healing Rains):** Redesigned. Your melee attacks have an X% chance to reset the cooldown on Hurricane and make it instant cast.
 - [ ] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%.
 - [ ] **Swiftmend:** Additionally, consuming an effect leaves an area on the ground that damages enemies for X damage over Y seconds.
