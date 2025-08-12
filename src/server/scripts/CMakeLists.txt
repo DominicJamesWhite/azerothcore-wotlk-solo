@@ -146,6 +146,7 @@ endfunction()
 # Fills the STATIC_SCRIPT_MODULES and DYNAMIC_SCRIPT_MODULE_PROJECTS variables
 # which contain the names which scripts are linked statically/dynamically and
 # adds the sources of the static modules to the PRIVATE_SOURCES_SCRIPTS variable.
+list(APPEND SCRIPT_MODULE_LIST "Custom")
 foreach(SCRIPT_MODULE ${SCRIPT_MODULE_LIST})
   GetPathToScriptModule(${SCRIPT_MODULE} SCRIPT_MODULE_PATH)
   ScriptModuleNameToVariable(${SCRIPT_MODULE} SCRIPT_MODULE_VARIABLE)

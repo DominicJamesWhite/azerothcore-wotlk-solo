@@ -82,7 +82,7 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 ### Druid
 
 **Class Changes:**
-- [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1)
+- [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1) Also can use Balance spells and has a 1s attack speed (4.2)
 
 **Spec Passives:**
 - [ ] **Balance:** Summons healing trees.
@@ -93,20 +93,20 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [ ] **Nature’s Focus:** Redesigned. After using a Restoration spell your attack speed is increased by X%.
 - [x] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%. (4.2)
 - [ ] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
-- [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Tree of Life Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
-- [ ] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect for Xs.
+- [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
+- [x] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect.
 - [ ] **Tranquil Spirit (Renamed to Healing Rains):** Redesigned. Your melee attacks have an X% chance to reset the cooldown on Hurricane and make it instant cast.
 - [ ] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%.
 - [ ] **Swiftmend:** Additionally, consuming an effect leaves an area on the ground that damages enemies for X damage over Y seconds.
-- [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Tree of Life or Travel Form or when not shapeshifted.
+- [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
 - [ ] **Empowered Touch:** Redesigned. After using Healing Touch or Nourish, your weapon is imbued with spores, damaging the next enemy you strike in melee for X damage over Y seconds.
 - [ ] **Nature’s Bounty:** Increases your critical strike chance by X%.
 - [ ] **Improved Tranquility:** No longer has any effect on threat. Instead additionally restores mana as well as health.
 - [ ] **Natural Perfection:** Amend to hits against you, instead of crits.
 - [ ] **Living Seed:** Additionally, the seed also does damage to nearby enemies equal to the amount healed.
 - [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to increase the critical strike chance of your next healing spell by 100%.
-- [ ] **Tree of Life:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Tree of Life. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%.
-- [ ] **Improved Tree of Life:** Your melee attack speed and spellpower in Tree of Life form is increased by X%.
+- [ ] **Arakkoa:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Arakkoa. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%.
+- [ ] **Improved Arakkoa:** Your melee attack speed and spellpower in Arakkoa form is increased by X%.
 - [ ] **Improved Barkskin:** As your skin turns to thick bark, roots grow rapidly beneath you, reaching out and damaging nearby enemies for X damage for Ys.
 - [ ] **Gift of the Earthmother:** Also increases melee haste.
 - [ ] **Wild Growth:** Heals up to 5 party members for X or damages up to 5 enemies for Y within 15 yards of the target for Zs. The amount is applied quickly at first then slows down as the Wild Growth reaches its full duration.
