@@ -95,17 +95,17 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [ ] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
 - [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
 - [x] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect (4.3)
-- [ ] **Tranquil Spirit (Renamed to Healing Rains):** Redesigned. Your melee attacks have an X% chance to reset the cooldown on Hurricane and make it instant cast.
+- [ ] **Tranquil Spirit (Renamed to Healing Rains):** Redesigned. Your melee attacks have an X% chance to reduce the cost of Hurricane by 50% and make it instant cast.
 - [ ] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%.
 - [ ] **Swiftmend:** Additionally, consuming an effect leaves an area on the ground that damages enemies for X damage over Y seconds.
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
-- [ ] **Empowered Touch:** Redesigned. After using Healing Touch or Nourish, your weapon is imbued with spores, damaging the next enemy you strike in melee for X damage over Y seconds.
+- [ ] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds. If you don’t attack an enemy in this time you do X% extra healing for Xs. 
 - [ ] **Nature’s Bounty:** Increases your critical strike chance by X%.
 - [ ] **Improved Tranquility:** No longer has any effect on threat. Instead additionally restores mana as well as health.
 - [ ] **Natural Perfection:** Amend to hits against you, instead of crits.
 - [ ] **Living Seed:** Additionally, the seed also does damage to nearby enemies equal to the amount healed.
-- [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to increase the critical strike chance of your next healing spell by 100%.
-- [ ] **Arakkoa:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Arakkoa. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%.
+- [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to reduce the cost of your next healing spell and guarantee a critical heal. 
+- [X] **Arakkoa:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Arakkoa. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%. (4.1)
 - [ ] **Improved Arakkoa:** Your melee attack speed and spellpower in Arakkoa form is increased by X%.
 - [ ] **Improved Barkskin:** As your skin turns to thick bark, roots grow rapidly beneath you, reaching out and damaging nearby enemies for X damage for Ys.
 - [ ] **Gift of the Earthmother:** Also increases melee haste.
