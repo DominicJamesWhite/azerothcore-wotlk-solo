@@ -4,4 +4,5 @@
 set(CUSTOM_SCRIPTS_SOURCES
     custom_script_loader.cpp
     spell_custom_bloomstrike.cpp
+    spell_custom_empowered_touch.cpp
 )
