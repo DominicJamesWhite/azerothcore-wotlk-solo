@@ -99,7 +99,7 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [ ] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%.
 - [ ] **Swiftmend:** Additionally, consuming an effect leaves an area on the ground that damages enemies for X damage over Y seconds.
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
-- [ ] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds. If you don’t attack an enemy in this time you do X% extra healing for Xs. 
+- [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
 - [ ] **Nature’s Bounty:** Increases your critical strike chance by X%.
 - [ ] **Improved Tranquility:** No longer has any effect on threat. Instead additionally restores mana as well as health.
 - [ ] **Natural Perfection:** Amend to hits against you, instead of crits.
