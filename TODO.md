@@ -99,7 +99,6 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [x] **Improved Tranquility (Renamed to Lunar Storm):** Redesigned. Casting Hurricane on a target affected by your Moonfire unleashes explosive natural energies, damaging targets within 8 yards for $200015s1 each second. (4.7)
 - [x] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%. (4.5)
 - [ ] **Swiftmend:** Additionally, consuming an effect from yourself leaves an area on the ground that damages enemies for X damage over Y seconds.
-
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
 - [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
 - [ ] **Nature’s Bounty:** Increases your critical strike chance by X%.
