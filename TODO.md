@@ -82,7 +82,7 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 ### Druid
 
 **Class Changes:**
-- [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1) Also can use Balance spells and has a 1s attack speed (4.2)
+- [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1) Also can use Balance spells. (4.2)
 
 **Spec Passives:**
 - [ ] **Balance:** Summons healing trees.
@@ -98,7 +98,7 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [x] **Tranquil Spirit (Renamed to Spirit of the Storm):** Redesigned. As you cast healing spells you build up charges of living energy, increasing the damage and reducing the cast time of Starfire by 10%. Stacks 10 times. (4.6)
 - [x] **Improved Tranquility (Renamed to Lunar Storm):** Redesigned. Casting Hurricane on a target affected by your Moonfire unleashes explosive natural energies, damaging targets within 8 yards for $200015s1 each second. (4.7)
 - [x] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%. (4.5)
-- [ ] **Swiftmend:** Additionally, consuming an effect from yourself leaves an area on the ground that damages enemies for X damage over Y seconds.
+- [ ] **Swiftmend:** Using Swiftmend on yourself creates an explosion of natural energy, damaging enemies for X damage.
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
 - [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
 - [ ] **Nature’s Bounty:** Increases your critical strike chance by X%.
@@ -161,7 +161,7 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [ ] **Improved Concentration Aura:** Now simply increases spell crit in concentration aura.
 - [ ] **Pure of Heart:** Increases spell critical % after healing yourself, lasts 7 seconds.
 - [ ] **Sacred Cleansing:** Healing with Holy Light increases the damage of your next Holy cast by X%. Can only occur once every 20 seconds.
-- [ ] **Beacon of Light:** Redesigned. Place a beacon of light on the ground, healing yourself and damaging enemies inside it and boosting your mana regeneration.
+- [ ] **Beacon of Light:** Redesigned. A friendly target becomes a beacon of light, dealing Holy damage each time they are struck and being healed each time another player is healed. 
 
 **Class Signature Skill:**
 - [ ] **Confession:** Ignore damage for 5 seconds - each hit you take boosts your damage by X% for 10 seconds after confession is over.
