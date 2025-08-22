@@ -1,0 +1,45 @@
+# fly.toml app configuration file for azerothcore-wotlk-solo
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'azerothcore-wotlk-solo'
+primary_region = 'fra'
+org = 'azerothcore'
+
+[build]
+  dockerfile = 'apps/docker/Dockerfile'
+  target = 'fly-runtime'
+
+[deploy]
+
+[processes]
+  authserver = 'authserver'
+  worldserver = 'worldserver'
+
+[[mounts]]
+  source = 'ac_client_data'
+  destination = '/azerothcore/env/dist/data'
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 3724
+  processes = ['authserver']
+
+
+  [[services.ports]]
+    port = 3724
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 8085
+  processes = ['worldserver']
+
+
+  [[services.ports]]
+    port = 8085
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 1024
