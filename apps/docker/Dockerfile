@@ -259,3 +259,22 @@ COPY --chown=$DOCKER_USER:$DOCKER_USER --from=build \
 
 COPY --chown=$DOCKER_USER:$DOCKER_USER --from=build \
   /azerothcore/env/dist/bin/vmap4_extractor /azerothcore/env/dist/bin/vmap4_extractor
+
+
+#######################
+# Fly.io Runtime      #
+#######################
+
+FROM runtime AS fly-runtime
+LABEL description="AzerothCore runtime for Fly.io"
+
+ENV ACORE_COMPONENT=fly-runtime
+# Don't run database migrations. We can leave that up to the db-import container
+ENV AC_UPDATES_ENABLE_DATABASES=0
+# This disables user prompts. The console is still active, however
+ENV AC_DISABLE_INTERACTIVE=1
+ENV AC_CLOSE_IDLE_CONNECTIONS=0
+
+COPY --chown=$DOCKER_USER:$DOCKER_USER --from=build /azerothcore/env/dist/bin/authserver /azerothcore/env/dist/bin/authserver
+COPY --chown=$DOCKER_USER:$DOCKER_USER --from=build /azerothcore/env/dist/bin/worldserver /azerothcore/env/dist/bin/worldserver
+COPY --chown=$DOCKER_USER:$DOCKER_USER --from=build /azerothcore/env/dist/bin/dbimport /azerothcore/env/dist/bin/dbimport
