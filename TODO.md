@@ -98,11 +98,10 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [x] **Tranquil Spirit (Renamed to Spirit of the Storm):** Redesigned. As you cast healing spells you build up charges of living energy, increasing the damage and reducing the cast time of Starfire by 10%. Stacks 10 times. (4.6)
 - [x] **Improved Tranquility (Renamed to Lunar Storm):** Redesigned. Casting Hurricane on a target affected by your Moonfire unleashes explosive natural energies, damaging targets within 8 yards for $200015s1 each second. (4.7)
 - [x] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%. (4.5)
-- [ ] **Swiftmend:** Using Swiftmend on yourself creates an explosion of natural energy, damaging enemies for X damage.
+- [x] **Swiftmend:** Using Swiftmend on yourself creates an explosion of natural energy, damaging enemies for X damage. (4.8)
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
 - [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
-- [ ] **Nature’s Bounty:** Increases your critical strike chance by X%.
-- [ ] **Vengeance of Eonar:** Redesigned. When 
+- [x] **Nature’s Bounty:** Also increases your Bloomstrike critical strike chance by X%. (4.9)
 - [ ] **Natural Perfection:** Amend to hits against you, instead of crits.
 - [ ] **Living Seed:** Additionally, the seed also does damage to nearby enemies equal to the amount healed.
 - [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to reduce the cost of your next healing spell and guarantee a critical heal. 
@@ -110,7 +109,6 @@ Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
 - [ ] **Improved Arakkoa:** Your melee attack speed and spellpower in Arakkoa form is increased by X%.
 - [ ] **Improved Barkskin:** As your skin turns to thick bark, roots grow rapidly beneath you, reaching out and damaging nearby enemies for X damage for Ys.
 - [ ] **Gift of the Earthmother:** Also increases melee haste.
-- [ ] **Wild Growth:** Heals up to 5 party members for X or damages up to 5 enemies for Y within 15 yards of the target for Zs. The amount is applied quickly at first then slows down as the Wild Growth reaches its full duration.
 
 **Class Signature Skill:**
 - [ ] **Shifting Balance:** Moving to a different form buffs the form temporarily - bears get X% more armour, cats get X% more damage and dodge, moonkin / tree / no form gets X% spell damage and healing.
