@@ -98,4 +98,4 @@ local.properties
 */acore_auth.sql
 */acore_characters.sql
 */acore_world.sql
-/Datadir/*
+/env/dist/data/*
