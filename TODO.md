@@ -10,7 +10,7 @@ An attempt to make WOW better to play alone or in very small groups.
 
 - [ ] All classes get a Diablo-like potion that can be used to refill X% of health and mana every X seconds. Other potions all provide temporary combat bonuses as well as their healing and mana restoration.
 - [x] mod-autobalance is used to allow solo play in dungeons and raids, and scale their difficulty with more players. 
-- [x] Casting pushback from enemy damage is removed entirely.
+- [x] Casting pushback from enemy damage is removed entirely. (4.11)
 - [ ] Talents are boosted to provide more impact in levelling and solo play.
 - [ ] More NPCs in major cities and towns, and between them doing courier or transport work.
 - [ ] Each tree now has changed talents relating to holy trinity specs’ inherent weaknesses while retaining class character.
@@ -76,13 +76,13 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
 - [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
 - [x] **Nature’s Bounty:** Also increases your Bloomstrike critical strike chance by X%. (4.9)
-- [ ] **Natural Perfection:** Amend to hits against you, instead of crits.
+- [ ] **Natural Perfection:** Lifebloom does damage to nearby enemies for the amount healed after completing its duration or being dispelled. 
 - [ ] **Living Seed:** Additionally, the seed also does damage to nearby enemies equal to the amount healed.
 - [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to reduce the cost of your next healing spell and guarantee a critical heal. 
 - [X] **Arakkoa:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Arakkoa. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%. (4.1)
 - [ ] **Improved Arakkoa:** Your melee attack speed and spellpower in Arakkoa form is increased by X%.
 - [ ] **Improved Barkskin:** As your skin turns to thick bark, roots grow rapidly beneath you, reaching out and damaging nearby enemies for X damage for Ys.
-- [ ] **Gift of the Earthmother:** Also increases melee haste.
+- [x] **Gift of the Earthmother:** When you are healed by your Lifebloom after it has completed its duration or been dispelled, you do damage to all enemies within 10 yards for 100% of the healing done. Additionally Increases your total spell haste by `$s1% and reduces the base cooldown of your Lifebloom spell by ${$m2/-15}%.` (4.12)
 
 **Class Signature Skill:**
 - [ ] **Shifting Balance:** Moving to a different form buffs the form temporarily - bears get X% more armour, cats get X% more damage and dodge, moonkin / tree / no form gets X% spell damage and healing.
