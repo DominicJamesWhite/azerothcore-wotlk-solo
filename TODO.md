@@ -10,37 +10,11 @@ An attempt to make WOW better to play alone or in very small groups.
 
 - [ ] All classes get a Diablo-like potion that can be used to refill X% of health and mana every X seconds. Other potions all provide temporary combat bonuses as well as their healing and mana restoration.
 - [x] mod-autobalance is used to allow solo play in dungeons and raids, and scale their difficulty with more players. 
-- [ ] Casting pushback from enemy damage is reduced by 90%.
+- [x] Casting pushback from enemy damage is removed entirely.
 - [ ] Talents are boosted to provide more impact in levelling and solo play.
 - [ ] More NPCs in major cities and towns, and between them doing courier or transport work.
 - [ ] Each tree now has changed talents relating to holy trinity specs’ inherent weaknesses while retaining class character.
 - [ ] Retuned and redesigned dungeon and raid encounters with lots of new difficulty settings to allow solo progression.
-
----
-
-## Spell Changing Process Note
-
-Modifying or adding spells in AzerothCore 3.3.5 generally involves these steps:
-
-1. **Spell Database Editing:**  
-   - Most spell attributes, effects, and parameters are controlled in the database tables, primarily `spell_template` and related tables.  
-   - Changes here affect how the spell behaves in-game (damage, healing, cooldowns, proc chances, durations, etc.).
-
-2. **Spell Scripts / Custom Spell Handlers:**  
-   - For complex spell behaviors or custom mechanics, spells are often scripted using the core’s scripting system (`SpellScript`, `AuraScript`, or even custom C++ handlers).  
-   - This allows overriding default behavior, adding custom effects, or altering spell logic dynamically.
-
-3. **Talent and Class Integration:**  
-   - Talents often modify spell effects or add new procs. These are either handled in the talent database or via scripts attached to the talent/spell.  
-   - Ensure talents properly hook into spell effects and scale correctly with player stats.
-
-4. **Client-Side Considerations:**  
-   - Some visual or client-side changes (like model swaps or spell icons) may require client modifications or custom addons.
-
-5. **Testing & Balancing:**  
-   - After changes, extensive in-game testing is necessary to ensure spells behave as intended, especially for unusual or heavily redesigned abilities.
-
----
 
 ## Class Changes
 
