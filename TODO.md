@@ -64,7 +64,7 @@ An attempt to make WOW better to play alone or in very small groups.
 
 **Talent Changes:**
 - [x] **Nature’s Reach:** Threat no longer affected. Instead increases spell crit. (4.2)
-- [ ] **Nature’s Focus:** Redesigned. After using a Restoration spell your attack speed is increased by X%.
+- [x] **Nature’s Focus:** Casting Wrath refreshes rejuvenation on yourself to its full duration. (4.12)
 - [x] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%. (4.2)
 - [ ] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
 - [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
@@ -76,7 +76,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
 - [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
 - [x] **Nature’s Bounty:** Also increases your Bloomstrike critical strike chance by X%. (4.9)
-- [ ] **Natural Perfection:** Lifebloom does damage to nearby enemies for the amount healed after completing its duration or being dispelled. 
+- [ ] **Natural Perfection:** XX
 - [ ] **Living Seed:** Additionally, the seed also does damage to nearby enemies equal to the amount healed.
 - [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to reduce the cost of your next healing spell and guarantee a critical heal. 
 - [X] **Arakkoa:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Arakkoa. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%. (4.1)
