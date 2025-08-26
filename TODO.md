@@ -17,6 +17,66 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] Retuned and redesigned dungeon and raid encounters with lots of new difficulty settings to allow solo progression.
 
 ## Class Changes
+- [x] Resto druid 
+    - []  Tuning
+- [] Balance druid 
+    - []  Tuning
+- [] Feral druid 
+    - []  Tuning
+- [] Resto Shaman 
+    - []  Tuning
+- [] Enh shaman 
+    - []  Tuning
+- [] Ele shaman 
+    - []  Tuning
+- [] Holy priest 
+    - []  Tuning
+- [] Disc priest
+    - []  Tuning
+- [] Shadow priest
+    - []  Tuning
+- [] Holy paladin 
+    - []  Tuning
+- [] Prot paladin
+    - []  Tuning
+- [] Retri paladin
+    - []  Tuning
+- [] Affli lock 
+    - []  Tuning
+- [] Demo lock
+    - []  Tuning
+- [] Destro lock
+    - []  Tuning
+- [] Fire mage 
+    - []  Tuning
+- [] Arcane mage
+    - []  Tuning
+- [] Frost mage
+    - []  Tuning
+- [] Sub rogue 
+    - []  Tuning
+- [] Ass rogue
+    - []  Tuning
+- [] Combat rogue
+    - []  Tuning
+- [] Unholy dk 
+    - []  Tuning
+- [] Blood dk
+    - []  Tuning
+- [] Frost dk
+    - []  Tuning
+- [] MM hunter
+    - []  Tuning
+- [] BM hunter
+    - []  Tuning
+- [] Surv hunter
+    - []  Tuning
+- [] Sub rogue 
+    - []  Tuning
+- [] Ass rogue
+    - []  Tuning
+- [] Combat rogue
+    - []  Tuning
 
 ### Death Knight
 
@@ -66,23 +126,22 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Nature’s Reach:** Threat no longer affected. Instead increases spell crit. (4.2)
 - [x] **Nature’s Focus:** Casting Wrath refreshes rejuvenation on yourself to its full duration. (4.12)
 - [x] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%. (4.2)
-- [ ] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
-- [ ] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases nature damage and healing by X%. When not shapeshifted your spell haste is increased by X%.
+- [x] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
+- [x] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases spirt by X%. 
 - [x] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect (4.3)
 - [x] **Tranquil Spirit (Renamed to Spirit of the Storm):** Redesigned. As you cast healing spells you build up charges of living energy, increasing the damage and reducing the cast time of Starfire by 10%. Stacks 10 times. (4.6)
 - [x] **Improved Tranquility (Renamed to Lunar Storm):** Redesigned. Casting Hurricane on a target affected by your Moonfire unleashes explosive natural energies, damaging targets within 8 yards for $200015s1 each second. (4.7)
 - [x] **Gift of Nature:** Redesigned. When you are healed by one of your own heal over time spells, your next Wrath has an X% chance to be instant cast and cost no mana. Additionally increases the damage and healing of your spells by X%. (4.5)
 - [x] **Swiftmend:** Using Swiftmend on yourself creates an explosion of natural energy, damaging enemies for X damage. (4.8)
-- [ ] **Living Spirit:** Additionally gain X% armour contribution from items in Arakkoa or Travel Form or when not shapeshifted.
+- [x] **Living Spirit:** Spellpower increased by 100% of spirit and int
 - [X] **Empowered Touch:** Redesigned. After using Healing Touch, Regrowth or Nourish, your weapon is imbued with living energy, damaging the next enemy you strike in melee for X nature damage over Y seconds or increasing the healing of your next spell by 5%. (4.4) 
 - [x] **Nature’s Bounty:** Also increases your Bloomstrike critical strike chance by X%. (4.9)
-- [ ] **Natural Perfection:** XX
-- [ ] **Living Seed:** Additionally, the seed also does damage to nearby enemies equal to the amount healed.
-- [ ] **Empowered Rejuvenation:** When you are healed by your own heal-over-time spells, there is an X% chance to reduce the cost of your next healing spell and guarantee a critical heal. 
+- [x] **Natural Perfection (Renamed to Grace of Elune):** Your critical strike chance with all spells is increased by $s2%. When you take damage you have a chance to gain the Grace of Elune effect reducing all damage taken by X%.  Stacks up to 5 times.  Lasts Z seconds. (4.13)
+- [x] **Living Seed:** More powerful to account for all the stuff I've taken away (4.13)
 - [X] **Arakkoa:** Reduces the mana cost and cast time of your healing over time spells by X% and grants the ability to shapeshift into the Arakkoa. While in this form you increase healing received by X% for all party and raid members within 100 yards and your nature damage is increased by Y%. (4.1)
-- [ ] **Improved Arakkoa:** Your melee attack speed and spellpower in Arakkoa form is increased by X%.
-- [ ] **Improved Barkskin:** As your skin turns to thick bark, roots grow rapidly beneath you, reaching out and damaging nearby enemies for X damage for Ys.
-- [x] **Gift of the Earthmother:** When you are healed by your Lifebloom after it has completed its duration or been dispelled, you do damage to all enemies within 10 yards for 100% of the healing done. Additionally Increases your total spell haste by `$s1% and reduces the base cooldown of your Lifebloom spell by ${$m2/-15}%.` (4.12)
+- [x] **Improved Arakkoa:** Spell power increased by spirit (4.12)
+- [x] **Improved Barkskin:**: Increases the damage reduction provided by Barkskin by X%, and reduces the cooldown by Y s.(4.14)
+- [x] **Gift of the Earthmother:** When you are healed by your Lifebloom after it has completed its duration or been dispelled, you do damage to all enemies within 10 yards for 100% of the healing done. Additionally Increases your total spell haste by X% and reduces the base cooldown of your Lifebloom spell by Y%. (4.12)
 
 **Class Signature Skill:**
 - [ ] **Shifting Balance:** Moving to a different form buffs the form temporarily - bears get X% more armour, cats get X% more damage and dodge, moonkin / tree / no form gets X% spell damage and healing.
@@ -99,15 +158,26 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ### Mage
 
+**Skill changes**
+- [ ] **Mage Armor:** 
+- [ ] **Amplify Magic (Renamed to Empower Armor)**: You focus your magical power on defence, empowering your magical armors for 6 seconds. Mage Armor reduces your chance to be hit by 70% and increases your mana regen. Molten Armor reduces damage taken by 40% and your increases your chance to critically hit with spells by 10%. Ice Armor increases armor by 60% and cast speed by 20%. 
+- [ ] **Dampen Magic (Renamed to Mana Siphon)**: You become a conduit for latent magical energy, allowing your mana to regenerate at 200% its normal rate for 4 seconds, but you can't cast damaging spells or attack. 
+
 **Spec Passives:**
-- [ ] **Arcane:** Mana shield also reduces damage taken.
 - [ ] **Fire:** Burning enemies heals you.
 - [ ] **Frost:** Hitting chilled or frozen enemies heals you.
 
 **Talent Changes:**
+- [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
+- [ ] **Arcane Fortitude:** and your Mage Armour increases your armour by X% of your spellpower. 
+- [ ] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%.
+- [ ] **Arcane Stability:** Melee attacks that hit you while Mana Shield is active reduces the cooldown on Evocation by X sec. 
+- [ ] **Magic Absorbtion:** Absorbing a spell with Mana Shield reduces magic damage taken by X% for Y seconds. 
+- [ ] **Magic Attunement (Renamed to Arcane Attunement):** You can cast arcane spells during Mana Siphon, and they refund 2x their cost in mana.
+- [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
+
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
 - [ ] **Burning Soul:** Threat no longer affected. Instead Dragon’s Breath doubles your armour.
-- [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
 
 **Class Signature Skill:**
 - [ ] **Chronomancy:** Swaps your corporeal form for one from before you started fighting, bringing you back to full health and mana and temporarily boosting damage.
