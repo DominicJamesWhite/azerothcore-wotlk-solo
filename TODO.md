@@ -18,65 +18,65 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ## Class Changes
 - [x] Resto druid 
-    - []  Tuning
-- [] Balance druid 
-    - []  Tuning
-- [] Feral druid 
-    - []  Tuning
-- [] Resto Shaman 
-    - []  Tuning
-- [] Enh shaman 
-    - []  Tuning
-- [] Ele shaman 
-    - []  Tuning
-- [] Holy priest 
-    - []  Tuning
-- [] Disc priest
-    - []  Tuning
-- [] Shadow priest
-    - []  Tuning
-- [] Holy paladin 
-    - []  Tuning
-- [] Prot paladin
-    - []  Tuning
-- [] Retri paladin
-    - []  Tuning
-- [] Affli lock 
-    - []  Tuning
-- [] Demo lock
-    - []  Tuning
-- [] Destro lock
-    - []  Tuning
-- [] Fire mage 
-    - []  Tuning
-- [] Arcane mage
-    - []  Tuning
-- [] Frost mage
-    - []  Tuning
-- [] Sub rogue 
-    - []  Tuning
-- [] Ass rogue
-    - []  Tuning
-- [] Combat rogue
-    - []  Tuning
-- [] Unholy dk 
-    - []  Tuning
-- [] Blood dk
-    - []  Tuning
-- [] Frost dk
-    - []  Tuning
-- [] MM hunter
-    - []  Tuning
-- [] BM hunter
-    - []  Tuning
-- [] Surv hunter
-    - []  Tuning
-- [] Sub rogue 
-    - []  Tuning
-- [] Ass rogue
-    - []  Tuning
-- [] Combat rogue
-    - []  Tuning
+    - [ ]  Tuning
+- [ ] Balance druid 
+    - [ ]  Tuning
+- [ ] Feral druid 
+    - [ ]  Tuning
+- [ ] Resto Shaman 
+    - [ ]  Tuning
+- [ ] Enh shaman 
+    - [ ]  Tuning
+- [ ] Ele shaman 
+    - [ ]  Tuning
+- [ ] Holy priest 
+    - [ ]  Tuning
+- [ ] Disc priest
+    - [ ]  Tuning
+- [ ] Shadow priest
+    - [ ]  Tuning
+- [ ] Holy paladin 
+    - [ ]  Tuning
+- [ ] Prot paladin
+    - [ ]  Tuning
+- [ ] Retri paladin
+    - [ ]  Tuning
+- [ ] Affli lock 
+    - [ ]  Tuning
+- [ ] Demo lock
+    - [ ]  Tuning
+- [ ] Destro lock
+    - [ ]  Tuning
+- [ ] Fire mage 
+    - [ ]  Tuning
+- [ ] Arcane mage
+    - [ ]  Tuning
+- [ ] Frost mage
+    - [ ]  Tuning
+- [ ] Sub rogue 
+    - [ ]  Tuning
+- [ ] Ass rogue
+    - [ ]  Tuning
+- [ ] Combat rogue
+    - [ ]  Tuning
+- [ ] Unholy dk 
+    - [ ]  Tuning
+- [ ] Blood dk
+    - [ ]  Tuning
+- [ ] Frost dk
+    - [ ]  Tuning
+- [ ] MM hunter
+    - [ ]  Tuning
+- [ ] BM hunter
+    - [ ]  Tuning
+- [ ] Surv hunter
+    - [ ]  Tuning
+- [ ] Sub rogue 
+    - [ ]  Tuning
+- [ ] Ass rogue
+    - [ ]  Tuning
+- [ ] Combat rogue
+    - [ ]  Tuning
 
 ### Death Knight
 
