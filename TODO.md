@@ -162,12 +162,8 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Mage Armor:** Reduces your chance to be hit by 1% of your combined Spellpower and Intellect. 
 - [ ] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits.
 - [ ] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. 
-- [ ] **Amplify Magic (Renamed to Empower Armor)**: You focus your magical power on defence, empowering your magical armors for 6 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Ice Armor increases armor by 40% and cast speed by 20%. 
-- [ ] **Dampen Magic (Renamed to Mana Siphon)**: You become a conduit for latent magical energy, allowing your mana to regenerate at 200% its normal rate for 4 seconds, but you can't cast damaging spells or attack. 
-
-**Spec Passives:**
-- [ ] **Fire:** Burning enemies heals you.
-- [ ] **Frost:** Hitting chilled or frozen enemies heals you.
+- [ ] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on empowering your magical armors for 6 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Ice Armor increases armor by 40% and treats all spells as if your target was frozen. 
+- [ ] **Dampen Magic (Renamed to Mana Siphon)**: You become a conduit for latent magical energy, allowing your mana to regenerate at 200% its normal rate for 4 seconds, but you can't cast damaging spells or attack.
 
 **Talent Changes:**
 - [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
@@ -178,13 +174,14 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Magic Attunement (Renamed to Arcane Attunement):** You can cast arcane spells during Mana Siphon, and they refund 2x their cost in mana.
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
 
-- [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, massively increasing retaliation damage and reducing damage taken by 25%.
+- [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, massively increasing retaliation damage and reducing damage taken by 25% for 10 seconds.
 - [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 25% of they damage they cause, and fire critical hits are twice as effective at removing Ember Scars.
 - [ ] **Molten Shields**: Redesigned. Fire Ward removes all of your Ember Scars. Frost Ward reduces Ember Scar damage by 50%. 
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
-- [ ] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset. 
+- [ ] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset.
+- [ ] **Frostbite:** Hitting frozen enemies with frost spells restores X% of your health.  
 
 **Class Signature Skill:**
 - [ ] **Chronomancy:** Swaps your corporeal form for one from before you started fighting, bringing you back to full health and mana and temporarily boosting damage.
