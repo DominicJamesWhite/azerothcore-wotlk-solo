@@ -180,9 +180,11 @@ An attempt to make WOW better to play alone or in very small groups.
 
 - [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, massively increasing retaliation damage and reducing damage taken by 25%.
 - [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 25% of they damage they cause, and fire critical hits are twice as effective at removing Ember Scars.
+- [ ] **Molten Shields**: Redesigned. Fire Ward removes all of your Ember Scars. Frost Ward reduces Ember Scar damage by 50%. 
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
+- [ ] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset. 
 
 **Class Signature Skill:**
 - [ ] **Chronomancy:** Swaps your corporeal form for one from before you started fighting, bringing you back to full health and mana and temporarily boosting damage.
