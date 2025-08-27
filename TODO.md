@@ -174,8 +174,8 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Magic Attunement (Renamed to Arcane Attunement):** You can cast arcane spells during Mana Siphon, and they refund 2x their cost in mana.
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
 
-- [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, massively increasing retaliation damage and reducing damage taken by 25% for 10 seconds.
-- [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 25% of they damage they cause, and fire critical hits are twice as effective at removing Ember Scars.
+- [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
+- [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars when using Molten Armor.
 - [ ] **Molten Shields**: Redesigned. Fire Ward removes all of your Ember Scars. Frost Ward reduces Ember Scar damage by 50%. 
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
