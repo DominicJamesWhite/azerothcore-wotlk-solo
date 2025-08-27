@@ -84,13 +84,13 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Subversion:** Threat no longer affected. Instead increases parry.
 - [ ] **Improved Rune Tap:** Additionally Rune Tap increases your Heart Strike and Death Strike damage by X% for Ys.
 - [ ] **Vendetta (Renamed to Bloody Lesions):** Redesigned. Blood Boil now leaves your enemies with bleeding lesions, dealing X damage over Ys, and refreshes the duration of diseases on affected enemies.
-- [ ] **Mark of Blood:** Redesigned. Place a Mark of Blood on the enemy. X% of the healing you do to yourself is done to the marked enemy. Parrying an attack from a marked enemy opens them up for a counter-attack, increasing your armour penetration by X% for Ys.
+- [ ] **Mark of Blood:** Redesigned. Place a Mark of Blood on the enemy. X% of the healing you do to yourself is done to the marked enemy. Parrying an attack from a marked enemy opens them up for a counter-attack, increasing your armor penetration by X% for Ys.
 - [ ] **Improved Blood Presence:** Swapping presences no longer costs runes. While in Blood Presence you do an additional X% damage, and you retain your healing bonus in other presences.
 - [ ] **Will of the Necropolis:** Additionally, doing damage with Heart Strike increases your parry chance by X%. Stacks Y times.
 - [ ] **Runic Power Mastery:** Spending Runic Power has a chance to restore X% of your health. Additionally increases your maximum runic power by Y.
 - [ ] **Chillblains:** Victims of your Frost Fever disease are Chilled, reducing movement speed by X% for 10 sec. When Frost Fever does damage to a Chilled target, there is a chance to drain X health from the target and transfer it to the Death Knight.
 - [ ] **Hungering Cold:** Purges the earth around the Death Knight of all heat. Enemies within 10 yards are trapped in ice, preventing them from performing any action for 10 sec and infecting them with Frost Fever. After they thaw, X health is drained from them and transferred to the Death Knight.
-- [ ] **Improved Frost Presence:** Swapping presences no longer costs runes. While in Frost Presence you take X% less damage, and you retain your armour bonus in other presences.
+- [ ] **Improved Frost Presence:** Swapping presences no longer costs runes. While in Frost Presence you take X% less damage, and you retain your armor bonus in other presences.
 - [ ] **Acclimation:** When you are hit by a spell, you have an X% chance to reduce the damage of spells from that school by Y% for Zs.
 - [ ] **Virulence:** Increases your chance to hit with spells by X% and increases the duration of your diseases by X seconds.
 - [ ] **Anticipation:** Increases your dodge chance and disease damage by X%.
@@ -111,7 +111,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Summon Gargoyle (Renamed to Summon Abomination):** It’s an Abomination instead of a gargoyle because I hate that fucking thing.
 
 **Class Signature Skill:**
-- [ ] **Ossification:** Increases armour and parry by X% for Y seconds, and spending a rune with Ossification active heals you for X% of your health.
+- [ ] **Ossification:** Increases armor and parry by X% for Y seconds, and spending a rune with Ossification active heals you for X% of your health.
 
 ### Druid
 
@@ -120,14 +120,14 @@ An attempt to make WOW better to play alone or in very small groups.
 
 **Spec Passives:**
 - [ ] **Balance:** Summons healing trees.
-- [ ] **Feral:** Dodging restores rage and energy; swapping between forms increases Armour (Bear) or Dodge (Cat).
+- [ ] **Feral:** Dodging restores rage and energy; swapping between forms increases armor (Bear) or Dodge (Cat).
 
 **Talent Changes:**
 - [x] **Nature’s Reach:** Threat no longer affected. Instead increases spell crit. (4.2)
 - [x] **Nature’s Focus:** Casting Wrath refreshes rejuvenation on yourself to its full duration. (4.12)
 - [x] **Subtlety:** Redesigned. Your chance to be hit by enemies is reduced by X%. (4.2)
 - [x] **Naturalist:** Also reduces the mana cost of all healing spells by X% (from Tranquil Spirit).
-- [x] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armour by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases spirt by X%. 
+- [x] **Master Shapeshifter:** Grants an effect which lasts while the Druid is within the respective shapeshift form. Bear Form increases physical damage and armor by X%. Cat Form increases critical strike chance and dodge by X%.Moonkin Form increases spell damage by X%. Arakkoa Form increases spirt by X%. 
 - [x] **Improved Rejuvenation (Renamed Bloomstrike):** For each of your own healing effects on yourself, your melee attacks are boosted by natural energy, causing X% additional nature damage per effect (4.3)
 - [x] **Tranquil Spirit (Renamed to Spirit of the Storm):** Redesigned. As you cast healing spells you build up charges of living energy, increasing the damage and reducing the cast time of Starfire by 10%. Stacks 10 times. (4.6)
 - [x] **Improved Tranquility (Renamed to Lunar Storm):** Redesigned. Casting Hurricane on a target affected by your Moonfire unleashes explosive natural energies, damaging targets within 8 yards for $200015s1 each second. (4.7)
@@ -144,23 +144,25 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Gift of the Earthmother:** When you are healed by your Lifebloom after it has completed its duration or been dispelled, you do damage to all enemies within 10 yards for 100% of the healing done. Additionally Increases your total spell haste by X% and reduces the base cooldown of your Lifebloom spell by Y%. (4.12)
 
 **Class Signature Skill:**
-- [ ] **Shifting Balance:** Moving to a different form buffs the form temporarily - bears get X% more armour, cats get X% more damage and dodge, moonkin / tree / no form gets X% spell damage and healing.
+- [ ] **Shifting Balance:** Moving to a different form buffs the form temporarily - bears get X% more armor, cats get X% more damage and dodge, moonkin / tree / no form gets X% spell damage and healing.
 
 ### Hunter
 
 **Spec Passives:**
-- [ ] **Beast Mastery:** Pet armour and health is boosted.
+- [ ] **Beast Mastery:** Pet armor and health is boosted.
 - [ ] **Marksmanship:** Your attacks reduce the damage taken by pets.
 - [ ] **Survival:** Traps reduce enemy damage.
 
 **Class Signature Skill:**
-- [ ] **Primal Bond:** Damage you do heals your pet and damage your pet does increases your armour.
+- [ ] **Primal Bond:** Damage you do heals your pet and damage your pet does increases your armor.
 
 ### Mage
 
 **Skill changes**
-- [ ] **Mage Armor:** 
-- [ ] **Amplify Magic (Renamed to Empower Armor)**: You focus your magical power on defence, empowering your magical armors for 6 seconds. Mage Armor reduces your chance to be hit by 70% and increases your mana regen. Molten Armor reduces damage taken by 40% and your increases your chance to critically hit with spells by 10%. Ice Armor increases armor by 60% and cast speed by 20%. 
+- [ ] **Mage Armor:** Reduces your chance to be hit by 1% of your combined Spellpower and Intellect. 
+- [ ] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits.
+- [ ] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. 
+- [ ] **Amplify Magic (Renamed to Empower Armor)**: You focus your magical power on defence, empowering your magical armors for 6 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Ice Armor increases armor by 40% and cast speed by 20%. 
 - [ ] **Dampen Magic (Renamed to Mana Siphon)**: You become a conduit for latent magical energy, allowing your mana to regenerate at 200% its normal rate for 4 seconds, but you can't cast damaging spells or attack. 
 
 **Spec Passives:**
@@ -169,15 +171,18 @@ An attempt to make WOW better to play alone or in very small groups.
 
 **Talent Changes:**
 - [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
-- [ ] **Arcane Fortitude:** and your Mage Armour increases your armour by X% of your spellpower. 
+- [ ] **Arcane Fortitude:** and your Mage Armor increases your mana regeneration by X% of your spellpower.
 - [ ] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%.
 - [ ] **Arcane Stability:** Melee attacks that hit you while Mana Shield is active reduces the cooldown on Evocation by X sec. 
 - [ ] **Magic Absorbtion:** Absorbing a spell with Mana Shield reduces magic damage taken by X% for Y seconds. 
 - [ ] **Magic Attunement (Renamed to Arcane Attunement):** You can cast arcane spells during Mana Siphon, and they refund 2x their cost in mana.
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
 
+- [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, massively increasing retaliation damage and reducing damage taken by 25%.
+- [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 25% of they damage they cause, and fire critical hits are twice as effective at removing Ember Scars.
+
+- [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
-- [ ] **Burning Soul:** Threat no longer affected. Instead Dragon’s Breath doubles your armour.
 
 **Class Signature Skill:**
 - [ ] **Chronomancy:** Swaps your corporeal form for one from before you started fighting, bringing you back to full health and mana and temporarily boosting damage.
@@ -196,7 +201,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Retribution:** Thorns but holy.
 
 **Talent Changes:**
-- [ ] **Fanaticism:** Threat no longer affected. Instead Righteous Fury increases your armour by X%.
+- [ ] **Fanaticism:** Threat no longer affected. Instead Righteous Fury increases your armor by X%.
 - [ ] **Unyielding Faith:** No longer has any effect on fear or disorient effects. Instead gives a chance when hit to make your next Holy Light instant cast.
 - [ ] **Spiritual Focus:** Increases your mp5 after casting Flash of Light.
 - [ ] **Healing Light (Renamed to Pure Light):** Now increases the damage and healing of the affected spells.
@@ -306,5 +311,5 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Warlock
 
 **Spec Passives:**
-- [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel Armour.
+- [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel armor.
 - [ ] **Demonology:** Boosted demons.
