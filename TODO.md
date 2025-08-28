@@ -163,7 +163,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits.
 - [ ] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. 
 - [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building an arcane bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
-- [ ] **Dampen Magic (Renamed to Mana Siphon)**: You become a conduit for latent magical energy, allowing your mana to regenerate at 200% its normal rate for 4 seconds, but you can't cast damaging spells or attack.
+- [ ] **Dampen Magic (Renamed to Invocation)**: For 6 seconds your spells' mana cost is reduced by 50%. For each spell cast during Invocation you gain 1% bonus damage and X spellpower for 6 seconds. 
 
 **Talent Changes:**
 - [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
@@ -175,8 +175,8 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
 
 - [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
-- [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars when using Molten Armor.
-- [ ] **Molten Shields**: Redesigned. Fire Ward removes all of your Ember Scars. Frost Ward reduces Ember Scar damage by 50%. 
+- [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars.
+- [ ] **Molten Shields**: Redesigned. Fire Ward heals you for the 50% of the damage it absorbs. 
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
@@ -311,4 +311,5 @@ An attempt to make WOW better to play alone or in very small groups.
 
 **Spec Passives:**
 - [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel armor.
-- [ ] **Demonology:** Boosted demons.
+- [ ] **Demonology:** Open demon portals for damage / tanking help, and sacrifice them for temporary health and combat boosts. 
+- [ ] **Demo**: Soul fuckery. Soulstones proc on damage that takes you below 25% health. You can gain soulstones by casting demo spells. 
