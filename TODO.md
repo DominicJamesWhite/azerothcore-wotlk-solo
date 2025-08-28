@@ -176,7 +176,11 @@ An attempt to make WOW better to play alone or in very small groups.
 
 - [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
 - [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars.
-- [ ] **Molten Shields**: Redesigned. Fire Ward heals you for the 50% of the damage it absorbs. 
+- [ ] **Molten Shields**: Redesigned. Fire Ward heals you for the 50% of the damage it absorbs.
+- [ ] **Burning Determination:** Redesigned
+- [ ] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars
+- [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead cause you to be healed by up to 10% of your maximum health and clears all stacks of Ember Scars. 
+- [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your period fire damage has an X% chance each time they deal damage to also deal Y fire damage to all nearby enemies. 
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
