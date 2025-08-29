@@ -179,7 +179,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Molten Shields**: Redesigned. Fire Ward heals you for the 50% of the damage it absorbs.
 - [ ] **Burning Determination:** Redesigned. For each enemy struck by your Blast Wave, Dragon's Breath, or Flamestrike your Molten Armor is empowered, reducing damage taken by 1% for 15 seconds. Max 5 stacks.
 - [ ] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. 
-- [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead cause you to be healed by up to 10% of your maximum health and clears all stacks of Ember Scars. 
+- [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead cause you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. 
 - [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your period fire damage has an X% chance each time they deal damage to also deal Y fire damage to all nearby enemies. 
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
