@@ -180,7 +180,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Burning Determination:** Redesigned. For each enemy struck by your Blast Wave, Dragon's Breath, or Flamestrike your Molten Armor is empowered, reducing damage taken by 1% for 15 seconds. Max 5 stacks.
 - [ ] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. 
 - [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead cause you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. 
-- [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your period fire damage has an X% chance each time they deal damage to also deal Y fire damage to all nearby enemies. 
+- [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your periodic fire damage has a chance equal to your critical strike chance to deal 100% extra damage to the target and all enemies within 10 yards.  
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
