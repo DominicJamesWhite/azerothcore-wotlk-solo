@@ -163,7 +163,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits.
 - [ ] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. 
 - [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building an arcane bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
-- [ ] **Dampen Magic (Renamed to Invocation)**: For 6 seconds your spells' mana cost is reduced by 50%. For each spell cast during Invocation you gain 1% bonus damage and X spellpower for 6 seconds. 
+- [ ] **Dampen Magic (Renamed to Invocation)**: For 12 seconds your spells' mana cost is reduced by 50% and your spellpower is increased by X. Each spell cast during Invocation grants you 1% bonus damage for 12 seconds. 
 
 **Talent Changes:**
 - [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
@@ -180,7 +180,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Burning Determination:** Redesigned. For each enemy struck by your Blast Wave, Dragon's Breath, or Flamestrike your Molten Armor is empowered, reducing damage taken by 1% for 15 seconds. Max 5 stacks.
 - [ ] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. 
 - [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead cause you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. 
-- [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your periodic fire damage has a chance equal to your critical strike chance to deal 100% extra damage to the target and all enemies within 10 yards.  
+- [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your periodic fire damage has a chance equal to your critical strike chance to deal 100% extra damage to the target and all enemies within 10 yards, spreading the Improved Scorch effect if present.
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
@@ -298,13 +298,13 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Tidal Focus:** Reduces the mana cost of your healing spells by X%, and reduces their casting time by Xs.
 - [ ] **Focused Mind:** Casting Healing Wave, Lesser Healing Wave or Chain Heal clears your mind, making your next Lightning Bolt or Chain Lightning deal X% more damage and cost Y% less mana.
 - [ ] **Healing Focus:** Your shock spells have an X% chance to make Healing Wave free and instant cast. Additionally, casting a heal on a shielded target increases the damage of your next 5 casts by X%.
-- [ ] **Improved Reincarnation (Renamed to Defence of Nature):** Your Water Shield, Earth Shield and Lightning Shield have a X% chance to deal Y% more damage and cleanse the earth around you, dealing X damage over Y seconds to all enemies within 15 yards.
+- [ ] **Improved Reincarnation (Renamed to Defence of Nature):** Your Water Shield, Earth Shield and Lightning Shield have a X% chance to cleanse the earth around you, dealing X damage over Y seconds to all enemies within 15 yards.
 - [ ] **Ancestral Awakening:** Additionally the Ancestral spirit increases the critical strike chance of your next damaging spell by 100%.
 - [ ] **Natures Guardian:** Redesigned. All your totems summon lesser elemental guardians to aid and protect you. Additionally the cooldowns on your Earth Elemental totem and Fire Elemental totem are reduced by X%, and their damage is increased by X%.
 - [ ] **Healing Way:** Your Healing Wave and Lesser Healing Wave spells chances to critically hit are increased by X%. Additionally, casting Healing Wave or Lesser Healing Wave on yourself increases your damage by X% and reduces the cooldown on Chain Lightning by Xs.
 - [ ] **Purification:** Additionally, when Earthliving Weapon heals you have an X% chance to reset the cooldown on your shock spells.
 - [ ] **Nature’s Blessing:** Increases damage and healing by an amount equal to 5% of your intellect.
-- [ ] **Improved Chain Heal (Renamed to Spiritsurge):** When Earthliving Weapon heals, your shock spells are empowered by the elements. Earth Shock summons elemental guardians, Flame Shock apples to all enemies within 15 yards of the target, and Frost Shock freezes enemies in place. Can only occur once every 6 seconds.
+- [ ] **Improved Chain Heal (Renamed to Spiritsurge):** When Earthliving Weapon heals, your shock spells are empowered by the elements. Earth Shock summons elemental guardians, Flame Shock apples to all enemies within 15 yards of the target, and Frost Shock freezes enemies in place. Can only occur once every 8 seconds.
 - [ ] **Tidal Waves:** Casting Chain Lightning, Lightning Bolt or Lava Burst increases the critical strike chance of Healing Wave, Lesser Healing Wave and Chain Heal by X%. In addition, your damage and healing spells gain an additional 20% of your spellpower.
 - [ ] **Riptide:** Heals a friendly target or damages an enemy target for 639 to 691 and another 665 over 15 sec. Your next Chain Heal or Chain Lightning cast on that primary target within 15 sec will consume the over time effect and increase the amount of the Chain Heal or Chain Lightning by 25%.
 
@@ -315,5 +315,17 @@ An attempt to make WOW better to play alone or in very small groups.
 
 **Spec Passives:**
 - [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel armor.
-- [ ] **Demonology:** Open demon portals for damage / tanking help, and sacrifice them for temporary health and combat boosts. 
-- [ ] **Demo**: Soul fuckery. Soulstones proc on damage that takes you below 25% health. You can gain soulstones by casting demo spells. 
+- [ ] **Demonology:** Open demon portals for damage / tanking / healing help
+
+**Talent changes**
+SWAP Emberstorm and Molten Skin positions
+- [ ] **Backlash:** Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health. 
+- [ ] **Intensity (Renamed to Burning Soul):** Critical hits from your fire spells have an X% chance to generate a Soul Shard. 
+- [ ] **Shadowburn:** Doesn't cost a Soul Shard anymore. Instead generates one, and another if the target dies. Longer cooldown.
+- [ ] **Aftermath:** Increases the periodic damage on your Immolate by X%, and Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard. 
+- [ ] **Molten Skin (Renamed to Infernal Bargain):** Channel souls to the nether to empower your next spell. For each Soul Shard thrown into the endless void, your next cast does X% more damage, costs X% less mana, and has its critical strike chance increased by X%. While committing to the pact you are protected by demonic forces, taking X% less damage. 
+- [ ] **Demonic Power (Renamed to ):** Rain of Fire has an X% chance to generate a Soul Shard from each enemy hit.  
+- [ ] **Destructive Reach:** Threat no longer reduced. Fire damage increased by X%. 
+- [ ] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 7%, and on use restore 10% of your maximum health. 
+- [ ] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 30% chance to return health equal to 200% of the damage caused. 
+- [ ] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken by 1% for each Soul Shard in your possession. 
