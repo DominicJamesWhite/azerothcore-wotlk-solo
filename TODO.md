@@ -185,7 +185,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
 - [ ] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset.
-- [ ] **Frostbite:** Hitting frozen enemies with frost spells restores X% of your health.  
+- [ ] **Frostbite:** and hitting frozen enemies with frost spells restores X% of your health.  
 
 **Class Signature Skill:**
 - [ ] **Chronomancy:** Swaps your corporeal form for one from before you started fighting, bringing you back to full health and mana and temporarily boosting damage.
@@ -301,11 +301,11 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Improved Reincarnation (Renamed to Defence of Nature):** Your Water Shield, Earth Shield and Lightning Shield have a X% chance to cleanse the earth around you, dealing X damage over Y seconds to all enemies within 15 yards.
 - [ ] **Ancestral Awakening:** Additionally the Ancestral spirit increases the critical strike chance of your next damaging spell by 100%.
 - [ ] **Natures Guardian:** Redesigned. All your totems summon lesser elemental guardians to aid and protect you. Additionally the cooldowns on your Earth Elemental totem and Fire Elemental totem are reduced by X%, and their damage is increased by X%.
-- [ ] **Healing Way:** Your Healing Wave and Lesser Healing Wave spells chances to critically hit are increased by X%. Additionally, casting Healing Wave or Lesser Healing Wave on yourself increases your damage by X% and reduces the cooldown on Chain Lightning by Xs.
+- [ ] **Healing Way:** Your Healing Wave and Lesser Healing Wave spells chances to critically hit are increased by X%. Additionally, casting Healing Wave or Lesser Healing Wave on yourself increases your damage by X% and reduces the cooldown on Chain Lightning by Xs for X seconds.
 - [ ] **Purification:** Additionally, when Earthliving Weapon heals you have an X% chance to reset the cooldown on your shock spells.
 - [ ] **Nature’s Blessing:** Increases damage and healing by an amount equal to 5% of your intellect.
 - [ ] **Improved Chain Heal (Renamed to Spiritsurge):** When Earthliving Weapon heals, your shock spells are empowered by the elements. Earth Shock summons elemental guardians, Flame Shock apples to all enemies within 15 yards of the target, and Frost Shock freezes enemies in place. Can only occur once every 8 seconds.
-- [ ] **Tidal Waves:** Casting Chain Lightning, Lightning Bolt or Lava Burst increases the critical strike chance of Healing Wave, Lesser Healing Wave and Chain Heal by X%. In addition, your damage and healing spells gain an additional 20% of your spellpower.
+- [ ] **Tidal Waves:** Casting Chain Lightning, Lightning Bolt or Lava Burst increases the critical strike chance of Healing Wave, Lesser Healing Wave and Chain Heal by X%. In addition, your damage and healing spells permanently gain an additional 20% of your spellpower.
 - [ ] **Riptide:** Heals a friendly target or damages an enemy target for 639 to 691 and another 665 over 15 sec. Your next Chain Heal or Chain Lightning cast on that primary target within 15 sec will consume the over time effect and increase the amount of the Chain Heal or Chain Lightning by 25%.
 
 **Class Signature Skill:**
@@ -313,19 +313,24 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ### Warlock
 
+**Spell changes**
+- [ ] Soulstone now just applies the soulstone effect, no item creation.
+- [ ] Max of 32 Soul Shards in possession
+
 **Spec Passives:**
 - [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel armor.
 - [ ] **Demonology:** Open demon portals for damage / tanking / healing help
 
-**Talent changes**
-SWAP Emberstorm and Molten Skin positions
+**Talent changes** 
+SWAP Emberstorm and Molten Skin positions 
+- [ ] **Ruin:** No longer afffects Imp. Instead critical hits on an Immolated target spread Immolate to nearby targets. 
 - [ ] **Backlash:** Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health. 
 - [ ] **Intensity (Renamed to Burning Soul):** Critical hits from your fire spells have an X% chance to generate a Soul Shard. 
 - [ ] **Shadowburn:** Doesn't cost a Soul Shard anymore. Instead generates one, and another if the target dies. Longer cooldown.
 - [ ] **Aftermath:** Increases the periodic damage on your Immolate by X%, and Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard. 
-- [ ] **Molten Skin (Renamed to Infernal Bargain):** Channel souls to the nether to empower your next spell. For each Soul Shard thrown into the endless void, your next cast does X% more damage, costs X% less mana, and has its critical strike chance increased by X%. While committing to the pact you are protected by demonic forces, taking X% less damage. 
-- [ ] **Demonic Power (Renamed to ):** Rain of Fire has an X% chance to generate a Soul Shard from each enemy hit.  
+- [ ] **Molten Skin (Renamed to Infernal Bargain):** Channel souls to the nether in exchange for power and protection. For each Soul Shard thrown into the endless void, you do X% more damage and the critical effect chance of your spells is increased by X% for 10 seconds. While committing to the pact you are protected by demonic forces, taking X% less damage. 
+- [ ] **Demonic Power (Renamed to Molten Rain):** Rain of Fire has an X% chance to generate a Soul Shard from each enemy hit.  
 - [ ] **Destructive Reach:** Threat no longer reduced. Fire damage increased by X%. 
-- [ ] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 7%, and on use restore 10% of your maximum health. 
+- [ ] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 15% for 10 seconds. Max 3 stacks. 
 - [ ] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 30% chance to return health equal to 200% of the damage caused. 
-- [ ] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken by 1% for each Soul Shard in your possession. 
+- [ ] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken and increasing the critical effect chance of your spells by 1% for each Soul Shard in your possession. 
