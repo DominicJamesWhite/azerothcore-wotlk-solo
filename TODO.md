@@ -161,7 +161,7 @@ An attempt to make WOW better to play alone or in very small groups.
 **Skill changes**
 - [x] **Mage Armor:** Reduces your chance to be hit by your intellect and spirit * 2 / level. 
 - [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits.
-- [ ] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. 
+- [x] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. (4.18)
 - [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building an arcane bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
 - [ ] **Dampen Magic (Renamed to Invocation)**: For 12 seconds your spells' mana cost is reduced by 50% and your spellpower is increased by X. Each spell cast during Invocation grants you 1% bonus damage for 12 seconds. 
 
