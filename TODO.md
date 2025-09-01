@@ -159,19 +159,20 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Mage
 
 **Skill changes**
-- [x] **Mage Armor:** Reduces your chance to be hit by your intellect and spirit * 2 / level. 
-- [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits.
+- [x] **Mage Armor:** Reduces your chance to be hit by your intellect and spirit * 2 / level. (4.15)
+- [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits. (4.16)
 - [x] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. (4.18)
 - [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building an arcane bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
-- [ ] **Dampen Magic (Renamed to Invocation)**: For 12 seconds your spells' mana cost is reduced by 50% and your spellpower is increased by X. Each spell cast during Invocation grants you 1% bonus damage for 12 seconds. 
+- [x] **Dampen Magic (Renamed to Invocation)**: For 12 seconds your spells' mana cost is reduced by 50% and your spellpower is increased by X. (4.18)
 
 **Talent Changes:**
-- [ ] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit.
-- [ ] **Arcane Fortitude:** and your Mage Armor increases your mana regeneration by X% of your spellpower.
-- [ ] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%.
-- [ ] **Arcane Stability:** Melee attacks that hit you while Mana Shield is active reduces the cooldown on Evocation by X sec. 
-- [ ] **Magic Absorbtion:** Absorbing a spell with Mana Shield reduces magic damage taken by X% for Y seconds. 
-- [ ] **Magic Attunement (Renamed to Arcane Attunement):** You can cast arcane spells during Mana Siphon, and they refund 2x their cost in mana.
+- [ ] **Improved Counterspell (Renamed to ):** 
+- [x] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit. (4.19)
+- [x] **Arcane Fortitude:** Increases armor by X% of Int and increases Mana Shield spellpower boost by X%. (4.19)
+- [x] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%. (4.19)
+- [x] **Arcane Stability:** Dealing damage with Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) 
+- [ ] **Magic Absorbtion:** Arcane Blast increases the damage absorbed by your Mana Shield by 10% of the damage done and refreshes the duration. 
+- [ ] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. 
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
 
 - [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
