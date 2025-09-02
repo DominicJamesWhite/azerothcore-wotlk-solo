@@ -170,8 +170,8 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Arcane Fortitude:** Increases armor by X% of Int and increases Mana Shield spellpower boost by X%. (4.19)
 - [x] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%. (4.19)
 - [x] **Arcane Stability:** Casting Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) 
-- [ ] **Magic Absorbtion (Renamed to Directed Currents):** Attacks taken while protected by Mana Shield have a chance equal to your critical strike chance to only do 50% damage. 
-- [ ] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. 
+- [x] **Magic Absorbtion:** Attacks taken while protected by Mana Shield also have a chance equal to your critical strike chance to only do 50% damage. (4.21) 
+- [x] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. (4.21)
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
 - [ ] **Improved Counterspell (Renamed to Silent Concentration):** Being silenced concentrates your energy, reducing the chance opponents will hit you with melee attacks by 50% until you can cast again. 
 
