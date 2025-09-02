@@ -162,25 +162,25 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Mage Armor:** Reduces your chance to be hit by your intellect and spirit * 2 / level. (4.15)
 - [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits. (4.16)
 - [x] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. (4.18)
-- [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building an arcane bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and increases your mana regen. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
+- [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building a mystical bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and regenerates mana each second. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
 - [x] **Dampen Magic (Renamed to Invocation)**: For 12 seconds your spells' mana cost is reduced by 50% and your spellpower is increased by X. (4.18)
 
 **Talent Changes:**
-- [ ] **Improved Counterspell (Renamed to ):** 
 - [x] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit. (4.19)
 - [x] **Arcane Fortitude:** Increases armor by X% of Int and increases Mana Shield spellpower boost by X%. (4.19)
 - [x] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%. (4.19)
-- [x] **Arcane Stability:** Dealing damage with Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) 
-- [ ] **Magic Absorbtion:** Arcane Blast increases the damage absorbed by your Mana Shield by 10% of the damage done and refreshes the duration. 
+- [x] **Arcane Stability:** Casting Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) 
+- [ ] **Magic Absorbtion (Renamed to Directed Currents):** Attacks taken while protected by Mana Shield have a chance equal to your critical strike chance to only do 50% damage. 
 - [ ] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. 
 - [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
+- [ ] **Improved Counterspell (Renamed to Silent Concentration):** Being silenced concentrates your energy, reducing the chance opponents will hit you with melee attacks by 50% until you can cast again. 
 
 - [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
 - [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars.
 - [ ] **Molten Shields**: Redesigned. Fire Ward heals you for the 50% of the damage it absorbs.
 - [ ] **Burning Determination:** Redesigned. For each enemy struck by your Blast Wave, Dragon's Breath, or Flamestrike your Molten Armor is empowered, reducing damage taken by 1% for 15 seconds. Max 5 stacks.
 - [ ] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. 
-- [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead cause you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. 
+- [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead causes you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. 
 - [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your periodic fire damage has a chance equal to your critical strike chance to deal 100% extra damage to the target and all enemies within 10 yards, spreading the Improved Scorch effect if present.
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
