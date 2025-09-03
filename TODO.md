@@ -169,11 +169,11 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Arcane Subtlety:** Threat and dispel chance no longer affected. Instead reduces your chance to be hit. (4.19)
 - [x] **Arcane Fortitude:** Increases armor by X% of Int and increases Mana Shield spellpower boost by X%. (4.19)
 - [x] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%. (4.19)
-- [x] **Arcane Stability:** Casting Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) 
+- [x] **Arcane Stability:** Casting Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) (Revised in 4.22) 
 - [x] **Magic Absorbtion:** Attacks taken while protected by Mana Shield also have a chance equal to your critical strike chance to only do 50% damage. (4.21) 
 - [x] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. (4.21)
-- [ ] **Prismatic Cloak:** Reduces all damage taken by 6% and your Fire Ward and Frost Ward spells now absorb damage from all sources.
-- [ ] **Improved Counterspell (Renamed to Silent Concentration):** Being silenced concentrates your energy, reducing the chance opponents will hit you with melee attacks by 50% until you can cast again. 
+- [x] **Prismatic Cloak:** Reduces all damage taken by 18% (from 6%) (4.21)
+- [x] **Improved ounterspell (Renamed to Practiced Silence):** Silence and Interrupt effects reduces by 90%. (4.22)
 
 - [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
 - [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars.
