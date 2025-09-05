@@ -49,7 +49,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Fire mage 
     - [ ]  Tuning
-- [ ] Arcane mage
+- [x] Arcane mage
     - [ ]  Tuning
 - [ ] Frost mage
     - [ ]  Tuning
@@ -173,15 +173,14 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Magic Absorbtion:** Attacks taken while protected by Mana Shield also have a chance equal to your critical strike chance to only do 50% damage. (4.21) 
 - [x] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. (4.21)
 - [x] **Prismatic Cloak:** Reduces all damage taken by 18% (from 6%) (4.21)
-- [x] **Improved ounterspell (Renamed to Practiced Silence):** Silence and Interrupt effects reduces by 90%. (4.22)
+- [x] **Improved Counterspell (Renamed to Practiced Silence):** Silence and Interrupt effects reduces by 90%. (4.22)
 
-- [ ] **Fiery Payback (Renamed Fuel the Flames)**: Redesigned. When you fall below 35% health your Molten Armor ignites, clearing all Ember Scars and reducing damage taken by 25% for 10 seconds.
-- [ ] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars.
-- [ ] **Molten Shields**: Redesigned. Fire Ward heals you for the 50% of the damage it absorbs.
-- [ ] **Burning Determination:** Redesigned. For each enemy struck by your Blast Wave, Dragon's Breath, or Flamestrike your Molten Armor is empowered, reducing damage taken by 1% for 15 seconds. Max 5 stacks.
-- [ ] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. 
-- [ ] **Playing With Fire (Renamed to Phoenix Spark):** Redesigned. Damage that would otherwise kill you instead causes you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. 
-- [ ] **Blazing Speed (Renamed to Wildfire):** Redesigned. Your periodic fire damage has a chance equal to your critical strike chance to deal 100% extra damage to the target and all enemies within 10 yards, spreading the Improved Scorch effect if present.
+- [x] **Fiery Payback**: Redesigned. Damage taken at <35% health reduced by 12/25% 
+- [x] **Burning Soul (Renamed Cleansing Flame):** Threat no longer affected. Instead fire spells heal you for 50% of they damage they cause when using Molten Armor, and fire critical hits are twice as effective at removing Ember Scars. (4.23)
+- [x] **Molten Shields**: Redesigned. Fire Ward restores mana when it absorbs fire damage. 
+- [x] **Burning Determination:** Silence immunity lasts the duration, not just for the next silence. (4.23)
+- [x] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. (4.22)
+- [x] **Playing With Fire (Renamed to Spark of Al'ar):** Redesigned. Damage that would otherwise kill you instead causes you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. (4.23)
 
 - [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
 - [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
