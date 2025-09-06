@@ -184,10 +184,10 @@ An attempt to make WOW better to play alone or in very small groups.
 
 - [x] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. (4.25)
 - [ ] **Frost Warding (Renamed to Glacier Armor):** Ice Block gradually restores 50% of your health when used. Attacks against you while using Ice Armor or Frost Armor reduce the remaining coodown of Ice Block by X seconds, and casting Frost Ward reduces the cooldown by Y seconds.
-- [ ] **Improved Blizzard (Renamed to Catabatic Winds):** Increases the damage of Cone of Cold by 50/100% and adds a chill effect to your Blizzard spell, lowering the target's movement speed by 25% for 1.50 sec.
+- [x] **Improved Blizzard (Renamed to Catabatic Winds):** Increases the damage of Cone of Cold by 50/100% and adds a chill effect to your Blizzard spell, lowering the target's movement speed by 25% for 1.50 sec.
 - [ ] **Improved Cone of Cold (Renamed to Convection):** Redesigned. You gain a stack of Convective Currents each time you cast Frostbolt. The following spells consume convective currents when cast, for new effects. Max 3 stacks. Deep Freeze: Does 20% more damage per stack. Ice Lance: Transfers heat from the opponent, healing you for 300% of the damage done per stack. Frostfire Bolt: Increases periodic damage by 200% per stack. 
 - [x] **Frost Channeling (Renamed to Ablative Armor):** Threat no longer affected. Ice Armor increases your stamina by your intellect and spirit. (4.25)
-- [ ] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset.
+- [x] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset.
 - [x] **Frostbite:** and hitting frozen enemies with frost spells restores X% of the damage done. (4.25)
 
 
