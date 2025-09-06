@@ -47,7 +47,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Destro lock
     - [ ]  Tuning
-- [ ] Fire mage 
+- [x] Fire mage 
     - [ ]  Tuning
 - [x] Arcane mage
     - [ ]  Tuning
@@ -182,13 +182,14 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Impact (Renamed to Firebreak):** Redesigned. Fire Blast does 20% more damage for each stack of Ember Scars, and removes a stack of Ember Scars when cast. (4.22)
 - [x] **Playing With Fire (Renamed to Spark of Al'ar):** Redesigned. Damage that would otherwise kill you instead causes you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. (4.23)
 
-- [ ] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. 
-- [ ] **Frost Channeling:** Threat no longer affected. Instead reduces damage taken when using Ice Barrier.
+- [x] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. (4.25)
+- [ ] **Frost Warding (Renamed to Glacier Armor):** Ice Block gradually restores 50% of your health when used. Attacks against you while using Ice Armor or Frost Armor reduce the remaining coodown of Ice Block by X seconds, and casting Frost Ward reduces the cooldown by Y seconds.
+- [ ] **Improved Blizzard (Renamed to Catabatic Winds):** Increases the damage of Cone of Cold by 50/100% and adds a chill effect to your Blizzard spell, lowering the target's movement speed by 25% for 1.50 sec.
+- [ ] **Improved Cone of Cold (Renamed to Convection):** Redesigned. You gain a stack of Convective Currents each time you cast Frostbolt. The following spells consume convective currents when cast, for new effects. Max 3 stacks. Deep Freeze: Does 20% more damage per stack. Ice Lance: Transfers heat from the opponent, healing you for 300% of the damage done per stack. Frostfire Bolt: Increases periodic damage by 200% per stack. 
+- [ ] **Frost Channeling (Renamed to Ablative Armor):** Threat no longer affected. Ice Armor increases your stamina by your intellect and spirit.  
 - [ ] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset.
-- [ ] **Frostbite:** and hitting frozen enemies with frost spells restores X% of your health.  
+- [ ] **Frostbite:** and hitting frozen enemies with frost spells restores X% of the damage done. 
 
-**Class Signature Skill:**
-- [ ] **Chronomancy:** Swaps your corporeal form for one from before you started fighting, bringing you back to full health and mana and temporarily boosting damage.
 
 ### Paladin
 
