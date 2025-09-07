@@ -170,7 +170,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Arcane Fortitude:** Increases armor by X% of Int and increases Mana Shield spellpower boost by X%. (4.19)
 - [x] **Arcane Shielding (Renamed to Prismatic Shielding):** Mana Shield reduces damage taken by x%. (4.19)
 - [x] **Arcane Stability:** Casting Arcane Missiles has an $s1% chance to reset the cooldown on Invocation. (4.20) (Revised in 4.22) 
-- [x] **Magic Absorbtion:** Attacks taken while protected by Mana Shield also have a chance equal to your critical strike chance to only do 50% damage. (4.21) 
+- [x] **Magic Absorbtion:** Attacks taken while protected by Mana Shield also have a chance equal to your critical strike chance to only do 50% damage. (4.21) (Fixed in 4.28)
 - [x] **Magic Attunement (Renamed to Arcane Attunement):** Spells cast during Invocation refund double their cost in mana. (4.21)
 - [x] **Prismatic Cloak:** Reduces all damage taken by 18% (from 6%) (4.21)
 - [x] **Improved Counterspell (Renamed to Practiced Silence):** Silence and Interrupt effects reduces by 90%. (4.22)
@@ -187,8 +187,9 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Improved Blizzard (Renamed to Catabatic Winds):** Increases the damage of Cone of Cold by 50/100% and adds a chill effect to your Blizzard spell, lowering the target's movement speed by 25% for 1.50 sec.
 - [ ] **Improved Cone of Cold (Renamed to Convection):** Redesigned. You gain a stack of Convective Currents each time you cast Frostbolt. The following spells consume convective currents when cast, for new effects. Max 3 stacks. Deep Freeze: Does 20% more damage per stack. Ice Lance: Transfers heat from the opponent, healing you for 300% of the damage done per stack. Frostfire Bolt: Increases periodic damage by 200% per stack. 
 - [x] **Frost Channeling (Renamed to Ablative Armor):** Threat no longer affected. Ice Armor increases your stamina by your intellect and spirit. (4.25)
-- [x] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset.
-- [x] **Frostbite:** and hitting frozen enemies with frost spells restores X% of the damage done. (4.25)
+- [x] **Permafrost (Renamed to Sublimation):** Frost and Ice Armor have a chance to reduce damage taken by 90%. Spellpower / level (4.27)
+- [x] **Shattered Barrier:** Redesigned. When Ice Barrier breaks your Aegis of Antonidas has its cooldown reset. (4.27)
+- [x] **Frostbite:** Effect also heals for 5% health. (4.25)
 
 
 ### Paladin
