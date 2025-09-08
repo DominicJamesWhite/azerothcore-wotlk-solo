@@ -183,7 +183,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Playing With Fire (Renamed to Spark of Al'ar):** Redesigned. Damage that would otherwise kill you instead causes you to be healed by up to 30% of your maximum health and clears all stacks of Ember Scars. (4.23)
 
 - [x] **Frozen Core:** Redesigned. Increases the bonus armor from Ice Armor by 400% of your spell power. (4.25)
-- [ ] **Frost Warding (Renamed to Glacier Armor):** Ice Block gradually restores 50% of your health when used. Attacks against you while using Ice Armor or Frost Armor reduce the remaining coodown of Ice Block by X seconds, and casting Frost Ward reduces the cooldown by Y seconds.
+- [x] **Frost Warding (Renamed to Glacier Armor):** Ice Block gradually restores 50% of your health when used.
 - [x] **Improved Blizzard (Renamed to Catabatic Winds):** Increases the damage of Cone of Cold by 50/100% and adds a chill effect to your Blizzard spell, lowering the target's movement speed by 25% for 1.50 sec.
 - [x] **Improved Cone of Cold (Renamed to Convection):** Redesigned. Each time you deal damage with Frostbolt or Blizzard, you gain a stack of Convective Currents, empowering your spells. Max 5 stacks. Cone of Cold: Freezes the aira around you, dealing $200037s2% more damage per stack. Ice Lance: Transfers heat from the target, healing you for 300% of the damage done per stack. Frostfire Bolt: Increases periodic damage by $200037s1% per stack. (4.29)
 - [x] **Frost Channeling (Renamed to Ablative Armor):** Threat no longer affected. Ice Armor increases your stamina by your intellect and spirit. (4.25)

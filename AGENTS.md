@@ -19,7 +19,7 @@ To understand how AzerothCore handles spell mechanics, examine the default spell
 
 **`src/server/scripts/Spells/`**
 
-Key files to study:
+Example files to study:
 - `spell_mage.cpp` - Comprehensive mage spell implementations
 - `spell_druid.cpp` - Druid spell mechanics
 - `spell_priest.cpp` - Priest healing and damage spells
@@ -168,7 +168,6 @@ INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (12345, 'my_n
 | Script Type | Damage Handling | Spell Handling | Validation |
 |-------------|----------------|----------------|------------|
 | **PlayerScript** | ❌ No `OnTakeDamage` | ✅ `OnPlayerSpellCast` | ❌ No `Validate()` |
-| **UnitScript** | ✅ `OnDamage` | ❌ No spell methods | ❌ No `Validate()` |
 | **AuraScript** | ✅ Proc handling | ✅ Aura effects | ✅ `Validate()` |
 | **SpellScript** | ✅ Damage modification | ✅ Spell effects | ✅ `Validate()` |
 
@@ -189,19 +188,5 @@ INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (12345, 'my_n
 - **Spell DBC Reference:** Use database tools to find spell IDs and effects
 - **WoW Dev Wiki:** Historical reference for spell mechanics
 - **Module Examples:** Study other AzerothCore modules for patterns
-
-### MySQL MCP Server
-
-A MySQL Model Context Protocol (MCP) server has been connected, providing direct access to the project's database. This can be incredibly useful for:
-- **Schema Inspection:** Quickly listing databases, tables, and describing table schemas without needing to open a separate database client.
-- **Data Exploration:** Executing read-only SQL queries to understand existing data, verify changes, or debug issues.
-
-**Available Tools:**
-- `list_databases`: List all accessible databases.
-- `list_tables`: List all tables in a specified database.
-- `describe_table`: Show the schema for a specific table.
-- `execute_query`: Execute read-only SQL queries (SELECT, SHOW, DESCRIBE, EXPLAIN).
-
----
 
 *This guide covers the essential information needed to understand and contribute to the Alonecraft project. For specific implementation questions, refer to the existing codebase examples and AzerothCore documentation.*
