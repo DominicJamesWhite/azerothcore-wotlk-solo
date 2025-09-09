@@ -160,7 +160,7 @@ An attempt to make WOW better to play alone or in very small groups.
 
 **Skill changes**
 - [x] **Mage Armor:** Reduces your chance to be hit by your intellect and spirit * 2 / level. (4.15)
-- [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits. (4.16)
+- [x] **Molten Armor:** 50% of damage taken is converted to Ember Scars that deal their damage periodically. Embers can be removed by spell critical hits. (4.16) (Full functionality in 4.30)
 - [x] **Ice Armor:** Increase armor by (2x each rank), modified by your spellpower. (4.18)
 - [x] **Amplify Magic (Renamed to Aegis of Antonidas)**: You focus your magical power on building a mystical bulwark, increasing healing taken by $s2 and boosting your armor's power for 10 seconds. Mage Armor reduces your chance to be hit by 50% and regenerates mana each second. Molten Armor reduces damage taken by 40% and increases your chance to critically hit with spells by 20%. Frost and Ice Armor increases armor by 40% and spell casting speed by 30%. (4.17)
 - [x] **Dampen Magic (Renamed to Invocation)**: For 12 seconds your spells' mana cost is reduced by 50% and your spellpower is increased by X. (4.18)
@@ -195,39 +195,27 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Paladin
 
 **Spell Changes:**
-- [ ] Holy Light and Flash of Light can now be cast on enemies.
-- [ ] Lay on Hands cooldown reduced to 5 mins.
-- [ ] Forbearance now only lasts 1 min.
-- [ ] Concentration Aura no longer affects pushback. Now increases spell crit by X%.
+- [x] Concentration Aura no longer affects pushback. Now increases spell haste by X%. (4.31)
 
 **Spec Passives:**
 - [ ] **Holy:** Casting heals stacks a damage buff to be consumed, consecration goes nuts.
-- [ ] **Prot:** Cast different blessings for different benefits.
-- [ ] **Retribution:** Thorns but holy.
 
 **Talent Changes:**
+- [ ] **Diving Wrath (NEW):** Holy Wrath is now usable on all targets and the cooldown is reduced by X%. (4.31)
 - [ ] **Fanaticism:** Threat no longer affected. Instead Righteous Fury increases your armor by X%.
 - [ ] **Unyielding Faith:** No longer has any effect on fear or disorient effects. Instead gives a chance when hit to make your next Holy Light instant cast.
-- [ ] **Spiritual Focus:** Increases your mp5 after casting Flash of Light.
+- [ ] **Spiritual Focus:** Healing yourself with Holy Light or Flash of Light makes your next Consecration, Holy Shock or Exorcism deal 33% more damage. Stacks 3 times. 
 - [ ] **Healing Light (Renamed to Pure Light):** Now increases the damage and healing of the affected spells.
-- [ ] **Improved Concentration Aura:** Now simply increases spell crit in concentration aura.
 - [ ] **Pure of Heart:** Increases spell critical % after healing yourself, lasts 7 seconds.
 - [ ] **Sacred Cleansing:** Healing with Holy Light increases the damage of your next Holy cast by X%. Can only occur once every 20 seconds.
 - [ ] **Beacon of Light:** Redesigned. A friendly target becomes a beacon of light, dealing Holy damage each time they are struck and being healed each time another player is healed. 
 
-**Class Signature Skill:**
-- [ ] **Confession:** Ignore damage for 5 seconds - each hit you take boosts your damage by X% for 10 seconds after confession is over.
 
 ### Priest
 
 **New Spells:**
 - [ ] **Holy Lance (Reskinned Ice Lance):** Fire a holy lance at the target, dealing damage. Does more damage to targets affected by Holy Fire and Penitent Mark. Instant cast.
 - [ ] **Penitent Mark:** Brand foes with the mark of the penitent, dealing X damage over Ys and slowing their movement speed by Z%.
-
-**Spec Passives:**
-- [ ] **Discipline:** Lots of shields, fast GCD (a kind of twitchy, argumentative gnostic).
-- [ ] **Holy:** Heals and Prayers boost damage, normal GCD (patient, slow monk who hits hard).
-- [ ] **Shadow:** Leech leech leech baby.
 
 **Talent Changes:**
 - [ ] **Pain Suppression:** Threat no longer affected. Instead increases damage done by X%.
@@ -270,8 +258,6 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Holy Lance, and increases the amount absorbed by your Power Word: Shield and the damage done by Holy Lance equal to X% of your spell power.
 - [ ] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
 
-**Class Signature Skill:**
-- [ ] **Inspiration:** Channels full health and mana over 6 seconds, damage taken while channeling is ignored.
 
 ### Rogue
 
