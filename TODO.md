@@ -195,20 +195,19 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Paladin
 
 **Spell Changes:**
-- [x] Concentration Aura no longer affects pushback. Now increases spell haste by X%. (4.31)
-
-**Spec Passives:**
-- [ ] **Holy:** Casting heals stacks a damage buff to be consumed, consecration goes nuts.
+- [x] Concentration Aura no longer affects pushback. Now increases spell haste by X%. (4.31).
 
 **Talent Changes:**
-- [ ] **Diving Wrath (NEW):** Holy Wrath is now usable on all targets and the cooldown is reduced by X%. (4.31)
+- [x] **Binding Oaths (NEW):** Casting FoL makes Exorcism instant cast. Casting Exorcism makes FoL instant cast and do AOE damage. 
+- [x] **Defender of the Faith (NEW):** Shield of Righteousness returns 2% of max mana, and deals 100% of spell power as damage.
+- [ ] **Sacred Rites (NEW):** Seal of Righteousness ??
 - [ ] **Fanaticism:** Threat no longer affected. Instead Righteous Fury increases your armor by X%.
 - [ ] **Unyielding Faith:** No longer has any effect on fear or disorient effects. Instead gives a chance when hit to make your next Holy Light instant cast.
-- [ ] **Spiritual Focus:** Healing yourself with Holy Light or Flash of Light makes your next Consecration, Holy Shock or Exorcism deal 33% more damage. Stacks 3 times. 
+- [x] **Spiritual Focus (Renamed to Anaphora):** Consecration and Exorcism do more damage based on spell power. (4.31)
 - [ ] **Healing Light (Renamed to Pure Light):** Now increases the damage and healing of the affected spells.
-- [ ] **Pure of Heart:** Increases spell critical % after healing yourself, lasts 7 seconds.
-- [ ] **Sacred Cleansing:** Healing with Holy Light increases the damage of your next Holy cast by X%. Can only occur once every 20 seconds.
-- [ ] **Beacon of Light:** Redesigned. A friendly target becomes a beacon of light, dealing Holy damage each time they are struck and being healed each time another player is healed. 
+- [ ] **Pure of Heart:** Increases damaging spell critical % after healing yourself, lasts X seconds.
+- [ ] **Sacred Cleansing:** Consecration gains 
+- [ ] **Beacon of Light:** Redesigned. When applied to yourself you deal X holy damage when attacked. 
 
 
 ### Priest

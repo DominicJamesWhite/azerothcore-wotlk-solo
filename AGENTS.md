@@ -25,13 +25,6 @@ Example files to study:
 - `spell_priest.cpp` - Priest healing and damage spells
 - `spell_generic.cpp` - Cross-class spell effects
 
-### Example Script Structure
-
-Study the structure in `src/server/scripts/Spells/spell_mage.cpp` - look at classes like:
-- `spell_mage_arcane_blast` - Basic SpellScript implementation
-- `spell_mage_molten_armor` - AuraScript with proc checking
-- `spell_mage_ice_barrier` - Spell validation and effect calculation
-
 ## Custom Script Development
 
 ### Working Directory: `modules/world_of_alonecraft/`
@@ -51,16 +44,8 @@ modules/world_of_alonecraft/
 
 1. **Create your script file** in `modules/world_of_alonecraft/src/`
 2. **Follow naming convention**: `YourFeatureName.cpp`
-3. **Follow header patterns** from existing files like `MoltenArmor.cpp` or `AegisOfAntonidas.cpp`
-4. **Register your scripts** following the pattern in `MoltenArmor.cpp` (see `AddSC_molten_armor_mechanic()`)
-
-### Example Custom Implementation
-
-See `modules/world_of_alonecraft/src/MoltenArmor.cpp` for a complete example of:
-- Damage interception using `UnitScript`
-- Aura management and stacking
-- Player event handling with `PlayerScript`
-- Custom DoT mechanics with `AuraScript`
+3. **Follow header patterns** 
+4. **Register your scripts** 
 
 ## Key API References
 
@@ -141,14 +126,7 @@ INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (12345, 'my_n
 - See `spell_mage_burnout::HandleProc` for proc effect execution
 - See `spell_mage_master_of_elements::HandleProc` for complex proc logic
 
-### 3. Intercepting Damage (Like Molten Armor)
-
-**Reference Implementation:** `modules/world_of_alonecraft/src/MoltenArmor.cpp`
-- See `spell_molten_armor_damage_handler::OnDamage` for damage interception
-- See `AddOrUpdateEmberScars` for complex damage storage and DoT mechanics
-- See `spell_ember_scars_AuraScript::OnPeriodicTick` for periodic damage application
-
-### 4. Player Event Handling
+### 3. Player Event Handling
 
 **Reference Implementation:** `modules/world_of_alonecraft/src/MoltenArmor.cpp`
 - See `spell_molten_armor_spell_cast_handler::OnPlayerSpellCast` for spell cast interception
