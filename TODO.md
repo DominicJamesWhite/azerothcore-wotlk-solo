@@ -202,11 +202,11 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Defender of the Faith (NEW):** Shield of Righteousness returns 2% of max mana, and deals 100% of spell power as damage.
 - [ ] **Sacred Rites (NEW):** Seal of Righteousness ??
 - [ ] **Fanaticism:** Threat no longer affected. Instead Righteous Fury increases your armor by X%.
-- [ ] **Unyielding Faith:** No longer has any effect on fear or disorient effects. Instead gives a chance when hit to make your next Holy Light instant cast.
+- [ ] **Unyielding Faith:** also stacks a buff that increases the damage of seal of righteousness when hit. 
 - [x] **Spiritual Focus (Renamed to Anaphora):** Consecration and Exorcism do more damage based on spell power. (4.31)
 - [ ] **Healing Light (Renamed to Pure Light):** Now increases the damage and healing of the affected spells.
 - [ ] **Pure of Heart:** Increases damaging spell critical % after healing yourself, lasts X seconds.
-- [ ] **Sacred Cleansing:** Consecration gains 
+- [ ] **Sacred Cleansing:** You gain 20% melee haste for 10 seconds after healing yourself. 
 - [ ] **Beacon of Light:** Redesigned. When applied to yourself you deal X holy damage when attacked. 
 
 
