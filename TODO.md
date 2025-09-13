@@ -209,6 +209,7 @@ An attempt to make WOW better to play alone or in very small groups.
 **Spell Changes:**
 - [x] **Desperate Prayer (replaced with Holy Bolt):** Fire a holy bolt at the target, dealing X damage over Y seconds. 6s cooldown. (4.33) 
 - [x] **Shadow Protection (replaced with Mark of Penitence):** Brand foes with the mark of the penitent, dealing damage over 12 seconds. (4.34)
+- [x] **Lightform (NEW):** Holy damage and healing increased. Shadow damage reduced by 95%. (4.35)
 
 **Talent Changes:**
 - [ ] **Pain Suppression:** Threat no longer affected. Instead increases Holy damage done by X%.
