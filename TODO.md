@@ -207,22 +207,23 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Priest
 
 **Spell Changes:**
-- [x] **Desperate Prayer (replaced with Holy Bolt):** Fire a holy bolt at the target, dealing X damage over Y seconds. 6s cooldown. (4.33) 
+- [x] **Desperate Prayer (replaced with Holy Bolt):** Fire a holy bolt at the target, dealing X Holy damage. 6s cooldown. (4.33) 
 - [x] **Shadow Protection (replaced with Mark of Penitence):** Brand foes with the mark of the penitent, dealing damage over 12 seconds. (4.34)
 - [x] **Lightform (NEW):** Holy damage and healing increased. Shadow damage reduced by 95%. (4.35)
 
 **Talent Changes:**
 - [ ] **Pain Suppression:** Threat no longer affected. Instead increases Holy damage done by X%.
 - [ ] **Shadowform:** Threat no longer affected. Instead reduces your chance to be hit by X%.
-- [ ] **Silent Resolve:** Threat and dispel resistance no longer affected. Instead increases holy damage after PW:S is cast.
 - [ ] **Shadow Affinity:** Threat and dispel effect no longer affected. Instead increases healing and restores X% mana.
 
-- [ ] **Guardian Spirit:** Healing received no longer affected - instead damage done is increased by X%.
-- [ ] **Divine Providence:** Increases the damage and healing of Holy Spells by X%.
-- [ ] **Test of Faith:** Increase damage and healing against targets with less than 50% health.
+
+- [ ] **Blessed Recovery:** Change to ‘hit’ rather than ‘critically hit’.
+- [ ] **Improved Healing (Renamed to Exegesis):** Reduce the mana cost of your Holy spells by X%.
+- [ ] **Spell Warding:** Also increases spell damage done.
+- [ ] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%.
+- [ ] **Healing Focus (Renamed to Monasticism):** You have a X% chance to add a charge of Inner Fire when you do damage.
 - [ ] **Lightwell:** Creates a holy lightwell, which damages enemies and heals friendly units nearby over Xs. Click the Lightwell to instantly shatter it, dealing the damage instantly.
-- [ ] **Circle of Healing (Renamed to Circle of Light):** Heals 5 friendly units or damages 5 enemy units within 15 yards of the target.
-- [ ] **Empowered Renew (Renamed to Lasting Faith):** Renew and Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly.
+- [ ] **Empowered Renew (Renamed to Lasting Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. 
 - [ ] **Serendipity:** When you heal with Flash Heal or do damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire is reduced by X%. Stacks 3 times.
 - [ ] **Empowered Healing (Renamed to Light’s Hope):** Your Holy Fire and Greater Heal gain an additional X% of spell power, and Flash Heal, Holy Bolt and Smite gain X/2% of spell power.
 - [ ] **Body and Soul (Renamed to Evangelist):** Redesigned. When healed by your Renew, you have an X% chance to do Y% more damage with Holy Bolt for Zs.
@@ -232,28 +233,23 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Healing Prayers (Renamed to Liturgy):** Casting Prayer of Mending increases your spellpower by X% for Y. Casting Prayer of Healing causes you and 10 party and raid members to get X% of their max mana per 5 seconds.
 - [ ] **Spirit of Redemption:** Redesigned. You are protected from death by a Guardian Spirit - attacks which would otherwise kill you cause you to be healed by up to 10% of your maximum health (amount healed based on spellpower). This healing effect cannot occur more often than once every 2 min.
 
-
-- [ ] **Blessed Recovery:** Change to ‘hit’ rather than ‘critically hit’.
-- [ ] **Improved Healing (Renamed to Exegesis):** Reduce the mana cost of your Holy spells by X%.
-- [ ] **Desperate Prayer:** See above
-- [ ] **Spell Warding:** Also increases spell damage done.
-- [ ] **Healing Focus (Renamed to Monasticism):** You have a X% chance to add a charge of Inner Fire when you do damage.
-- [ ] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%.
 - [ ] **Unbreakable Will:** Taking damage reduces the duration of Weakened Soul by Xs. This effect can only occur once per second.
-- [ ] **Martyrdom:** When your Power Word: Shield ends, your spell damage is increased by X%.
-- [ ] **Absolution:** Redesigned. Casting Mind Blast increases the damage of your next Holy spell by X%.
-- [ ] **Improved Mana Burn (Renamed to Gnosticism):** Your Holy spells have an X% chance to reset the cooldown on Mind Blast.
-- [ ] **Improved Power Word: Shield:** Reduces the cooldown of your Power Word: Shield ability by X seconds, reduces the mana cost of your Power Word: Shield by Y%, and increases the damage absorbed by Z%.
-- [ ] **Mental Agility:** Casting a shadow spell reduces the cast time of Smite by Xs for Ys. Additionally reduces the cost of your instant cast spells and Smite by Y%.
+- [ ] **Silent Resolve (Renamed to Killing Word):** Threat and dispel resistance no longer affected. Shadow Word: Death does X% more damage for each of your periodic damage effects on the target.
+- [ ] **Martyrdom:** When your Power Word: Shield ends, your damage taken is reduced by X%. 
+- [ ] **Improved Power Word: Shield:** Reduces the cooldown of your Power Word: Shield ability by X seconds, reduces the mana cost of your Power Word: Shield by Y%, and increases the damage absorbed by Z%. (Merge with Soul Warding)
+- [ ] **Absolution:** Redesigned. Casting a Shadow spell increases the damage of your next Holy spell by X%. 
+- [ ] **Improved Mana Burn (Renamed to Gnosticism):** You are healed for X% of holy damage. Shadow damage restores mana equal to Y% of damage. 
 - [ ] **Soul Warding:** Redesigned. While protected by Power Word: Shield, you take no damage from Shadow Word: Death.
-- [ ] **Mental Strength:** Additionally increases your Holy damage by X%.
-- [ ] **Enlightenment:** Smite increases the duration of Penitent Mark on the target by Y seconds. Additionally increases your Spirit by X% and Spell Haste by X%.
-- [ ] **Focused Power:** Casting Mind Sear on a target affected by Shadow Word: Pain spreads the effect to all affected enemies. Casting Holy Nova on a target with Penitent Mark deals X% more damage, and spreads the Mark to all affected enemies. Additionally increases damage and healing done by your spells by X%.
-- [ ] **Focused Will:** Casting Shadow Word: Death increases the critical effect chance of Smite by X% for Xs. Additionally increases your spell critical effect chance by X% at all times.
-- [ ] **Improved Flash Heal (Renamed to Syncretism):** For Xs after using a shadow damage spell, your next Holy spell does additional shadow damage equal to the damage done. For Xs after using a Holy spell, your next shadow spell has an X% increased critical effect chance. 
-- [ ] **Grace:** Redesigned. Your Flash Heal, Greater Heal, and Penance spells have an X% chance to bless the target with Grace, increasing all healing received from the Priest by X% for Ys, and to bless you with Clemency, increasing your spell haste by X% for Ys. Grace can only be active on one target at a time.
-- [ ] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Mark of Penitence, and increases the amount absorbed by your Power Word: Shield and the damage done by Mark of Penitence equal to X% of your spell power.
+- [ ] **Focused Power:** Damaging enemies with Mind Sear applies Shadow Word: Pain to affected enemies, and increases the damage of Holy Nova. Additionally increases damage and healing done by your spells by X%.
+- [ ] **Focused Will:** Smite refreshes the duration of Mark of Penitence. Mind Blast refreshes the duration of Shadow Word:Pain. Additionally increases your spell critical effect chance by X% at all times.w
+- [ ] **Improved Flash Heal (Renamed to Syncretism):** After using a shadow damage spell, your next Holy spell does additional shadow damage equal to the damage done. For Xs after using a Holy spell, your next shadow spell has an X% increased critical effect chance.
 - [ ] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
+- [ ] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage done by Mark of Penitence equal to X% of your spell power.
+
+
+
+
+
 
 
 ### Rogue
