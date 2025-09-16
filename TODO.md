@@ -212,7 +212,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Lightform (NEW):** Holy damage and healing increased. Shadow damage reduced by 95%. (4.35)
 
 **Talent Changes:**s
-- [ ] **Shadow Affinity:** Threat and dispel effect no longer affected. Instead increases healing and restores X% mana.
+- [ ] **Shadow Affinity:** Threat and sdispel effect no longer affected. Instead increases healing and restores X% mana.
 
 - [x] **Healing Focus (Renamed to Monasticism):** The cost of your Holy damaging spells is reduced by X% (4.36)
 - [x] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%. (4.36)
@@ -220,12 +220,11 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Blessed Recovery:** Change to ‘hit’ rather than ‘critically hit’. (4.36)
 - [x] **Improved Healing (Renamed to Exegesis):** Reduce the mana cost of your Holy spells by X%. (4.36)
 - [x] **Healing Prayers (Renamed to Liturgy):** Casting Prayer of Healing causes you to regain 20% of your max mana over 10 seconds. Effects can only occur every 30s. 
-- [ ] **Spirit of Redemption:** Redesigned. Damage that would otherwise kill you is prevented by the Spirit of Redemption, which also boosts your healing and reduces the mana cost of your healing spells by 100%. You take no damage but can't move. Lasts 10 seconds. 
 - [x] **Spiritual Healing (Renamed to Sacraments):** Increase the damage and healing of your Holy spells by X%. (4.36)
 - [x] **Holy Concentration:** Your mana regeneration from spirit is increased by X% for Ys after you critically hit with a Holy spell. (4.37)
 - [x] **Lightwell:** Replaced with Lightform (4.38)
 - [x] **Blessed Resilience:** Changed to Hit and 3s effect
-- [ ] **Empowered Renew (Renamed to Lasting Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. (4.37)
+- [x] **Empowered Renew (Renamed to Lasting Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. (4.37)
 - [x] **Empowered Healing (Renamed to Light’s Hope):** Your Holy Fire and Greater Heal gain an additional X% of spell power, and Flash Heal, Holy Bolt and Smite gain X/2% of spell power.(4.37)
 - [x] **Serendipity:** When you heal with Flash Heal or do damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire is reduced by X%. Stacks 3 times. (4.37)
 
