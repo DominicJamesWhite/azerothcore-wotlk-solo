@@ -211,24 +211,23 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Shadow Protection (replaced with Mark of Penitence):** Brand foes with the mark of the penitent, dealing damage over 12 seconds. (4.34)
 - [x] **Lightform (NEW):** Holy damage and healing increased. Shadow damage reduced by 95%. (4.35)
 
-**Talent Changes:**=
+**Talent Changes:**s
 - [ ] **Shadow Affinity:** Threat and dispel effect no longer affected. Instead increases healing and restores X% mana.
 
-- [x] **Healing Focus (Renamed to Monasticism):** The cost of your Holy damaging spells is reduced by X%
-- [x] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%.
-- [x] **Spell Warding (Renamed to Theophanic Light):** Also increases holy damage done.
-- [x] **Blessed Recovery:** Change to ‘hit’ rather than ‘critically hit’.
-- [x] **Improved Healing (Renamed to Exegesis):** Reduce the mana cost of your Holy spells by X%.
-- [ ] **Healing Prayers (Renamed to Liturgy):** Casting Prayer of Mending increases your holy spell damage by X% for Y. Casting Prayer of Healing causes you to regain X% of your max mana over 5 seconds.
-- [ ] **Spirit of Redemption:** Redesigned. Damage that would otherwise kill you is prevented by the Spirit of Redemption, which also boosts your healing for X seconds and reduces the mana cost of your healing spells by 100%.  
-- [x] **Spiritual Healing (Renamed to Practiced Apologetics):** Increase the damage and healing of your Holy spells by X%.
-- [ ] **Holy Concentration:** Your mana regeneration from spirit is increased by X% for Ys after you critically hit with a Holy spell.
-- [ ] **Lightwell:** Creates a holy lightwell, which damages enemies and heals friendly units nearby over Xs. Click the Lightwell to instantly shatter it, dealing the damage instantly.
-- [ ] **Blessed Resilience:** Crit increase plus Fade reduces the damage you take by 80%. 
-- [ ] **Empowered Renew (Renamed to Lasting Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. 
-- [ ] **Body and Soul (Renamed to Evangelist):** Redesigned. Each time you are healed by your Renew, you have an X% chance to recover Y% mana. 
-- [ ] **Empowered Healing (Renamed to Light’s Hope):** Your Holy Fire and Greater Heal gain an additional X% of spell power, and Flash Heal, Holy Bolt and Smite gain X/2% of spell power.
-- [ ] **Serendipity:** When you heal with Flash Heal or do damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire is reduced by X%. Stacks 3 times.
+- [x] **Healing Focus (Renamed to Monasticism):** The cost of your Holy damaging spells is reduced by X% (4.36)
+- [x] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%. (4.36)
+- [x] **Spell Warding (Renamed to Theophanic Light):** Also increases holy damage done. (4.36)
+- [x] **Blessed Recovery:** Change to ‘hit’ rather than ‘critically hit’. (4.36)
+- [x] **Improved Healing (Renamed to Exegesis):** Reduce the mana cost of your Holy spells by X%. (4.36)
+- [x] **Healing Prayers (Renamed to Liturgy):** Casting Prayer of Healing causes you to regain 20% of your max mana over 10 seconds. Effects can only occur every 30s. 
+- [ ] **Spirit of Redemption:** Redesigned. Damage that would otherwise kill you is prevented by the Spirit of Redemption, which also boosts your healing and reduces the mana cost of your healing spells by 100%. You take no damage but can't move. Lasts 10 seconds. 
+- [x] **Spiritual Healing (Renamed to Sacraments):** Increase the damage and healing of your Holy spells by X%. (4.36)
+- [x] **Holy Concentration:** Your mana regeneration from spirit is increased by X% for Ys after you critically hit with a Holy spell. (4.37)
+- [x] **Lightwell:** Replaced with Lightform (4.38)
+- [x] **Blessed Resilience:** Changed to Hit and 3s effect
+- [ ] **Empowered Renew (Renamed to Lasting Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. (4.37)
+- [x] **Empowered Healing (Renamed to Light’s Hope):** Your Holy Fire and Greater Heal gain an additional X% of spell power, and Flash Heal, Holy Bolt and Smite gain X/2% of spell power.(4.37)
+- [x] **Serendipity:** When you heal with Flash Heal or do damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire is reduced by X%. Stacks 3 times. (4.37)
 
 
 - [ ] **Unbreakable Will:** Taking damage reduces the duration of Weakened Soul by Xs. This effect can only occur once per second.
@@ -238,7 +237,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Absolution:** Redesigned. Casting a Shadow spell increases the damage of your next Holy spell by X%. 
 - [ ] **Improved Mana Burn (Renamed to Gnosticism):** You are healed for X% of holy damage. Shadow damage restores mana equal to Y% of damage. 
 - [ ] **Soul Warding:** Redesigned. While protected by Power Word: Shield, you take no damage from Shadow Word: Death.
-- [ ] **Focused Power:** Casting Mind Sear on an enemy with Shadow Word: Pain applies Mark of Penitence to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies Shadow Word: Pain to all nearby enemies. 
+- [ ] **Focused Power:** Casting Mind Sear on an enemy with Shadow Word: Pain applies it to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies it to all nearby enemies. 
 - [ ] **Focused Will:** Smite refreshes the duration of Mark of Penitence. Mind Blast refreshes the duration of Shadow Word:Pain. Additionally increases your spell critical effect chance by X% at all times.
 - [ ] **Improved Flash Heal (Renamed to Syncretism):** After using a shadow damage spell, your next Holy spell does additional shadow damage equal to the damage done. For Xs after using a Holy spell, your next shadow spell has an X% increased critical effect chance. Additionally increases damage and healing done by your spells by X%.
 - [ ] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
