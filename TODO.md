@@ -29,7 +29,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Ele shaman 
     - [ ]  Tuning
-- [ ] Holy priest 
+- [x] Holy priest 
     - [ ]  Tuning
 - [ ] Disc priest
     - [ ]  Tuning
@@ -228,9 +228,8 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Empowered Healing (Renamed to Light’s Hope):** Your Holy Fire and Greater Heal gain an additional X% of spell power, and Flash Heal, Holy Bolt and Smite gain X/2% of spell power.(4.37)
 - [x] **Serendipity:** When you heal with Flash Heal or do damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire is reduced by X%. Stacks 3 times. (4.37)
 
-
 - [ ] **Unbreakable Will:** Taking damage reduces the duration of Weakened Soul by Xs. This effect can only occur once per second.
-- [ ] **Silent Resolve (Renamed to Killing Word):** Threat and dispel resistance no longer affected. Shadow Word: Death does X% more damage for each of your periodic damage effects on the target.
+- [x] **Silent Resolve (Renamed to Killing Word):** Threat and dispel resistance no longer affected. Shadow Word: Death does X% more damage for each of your periodic damage effects on the target. (4.39)
 - [ ] **Martyrdom:** When your Power Word: Shield ends, your damage taken is reduced by X%. 
 - [ ] **Improved Power Word: Shield:** Reduces the cooldown of your Power Word: Shield ability by X seconds, reduces the mana cost of your Power Word: Shield by Y%, and increases the damage absorbed by Z%. (Merge with Soul Warding)
 - [ ] **Absolution:** Redesigned. Casting a Shadow spell increases the damage of your next Holy spell by X%. 
@@ -238,7 +237,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Soul Warding:** Redesigned. While protected by Power Word: Shield, you take no damage from Shadow Word: Death.
 - [ ] **Focused Power:** Casting Mind Sear on an enemy with Shadow Word: Pain applies it to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies it to all nearby enemies. 
 - [ ] **Focused Will:** Smite refreshes the duration of Mark of Penitence. Mind Blast refreshes the duration of Shadow Word:Pain. Additionally increases your spell critical effect chance by X% at all times.
-- [ ] **Improved Flash Heal (Renamed to Syncretism):** After using a shadow damage spell, your next Holy spell does additional shadow damage equal to the damage done. For Xs after using a Holy spell, your next shadow spell has an X% increased critical effect chance. Additionally increases damage and healing done by your spells by X%.
+- [ ] **Improved Flash Heal (Renamed to Syncretism):** For X seconds after using a shadow damage spell, your next Holy spell does additional shadow damage. For Xs after using a Holy spell, your next shadow spell deals additional Holy damage. Additionally increases damage and healing done by your spells by X%.
 - [ ] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
 - [ ] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage done by Mark of Penitence equal to X% of your spell power.
 
