@@ -238,7 +238,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Focused Power:** Casting Mind Sear on an enemy with Shadow Word: Pain applies it to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies it to all nearby enemies. 
 - [ ] **Focused Will:** Smite refreshes the duration of Mark of Penitence. Mind Blast refreshes the duration of Shadow Word:Pain. Additionally increases your spell critical effect chance by X% at all times.
 - [ ] **Improved Flash Heal (Renamed to Syncretism):** For X seconds after using a shadow damage spell, your next Holy spell does additional shadow damage. For Xs after using a Holy spell, your next shadow spell deals additional Holy damage. Additionally increases damage and healing done by your spells by X%.
-- [ ] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
+- [x] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
 - [ ] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage done by Mark of Penitence equal to X% of your spell power.
 
 
