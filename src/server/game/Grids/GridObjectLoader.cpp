@@ -1,14 +1,14 @@
 /*
  * This file is part of the AzerothCore Project. See AUTHORS file for Copyright information
  *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Affero General Public License as published by the
- * Free Software Foundation; either version 3 of the License, or (at your
- * option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
  *
  * You should have received a copy of the GNU General Public License along
@@ -64,15 +64,28 @@ void GridObjectLoader::LoadGameObjects(CellGuidSet const& guid_set, Map* map)
     for (ObjectGuid::LowType const& guid : guid_set)
     {
         GameObjectData const* data = sObjectMgr->GetGameObjectData(guid);
-        GameObject* obj = data && sObjectMgr->IsGameObjectStaticTransport(data->id) ? new StaticTransport() : new GameObject();
 
-        if (!obj->LoadFromDB(guid, map))
+        if (data && sObjectMgr->IsGameObjectStaticTransport(data->id))
         {
-            delete obj;
-            continue;
-        }
+            StaticTransport* transport = new StaticTransport();
 
-        AddObjectHelper<GameObject>(map, obj);
+            // Special case for static transports - we are loaded via grids
+            // but we do not want to actually be stored in the grid
+            if (!transport->LoadGameObjectFromDB(guid, map, true))
+                delete transport;
+        }
+        else
+        {
+            GameObject* obj = new GameObject();
+
+            if (!obj->LoadFromDB(guid, map))
+            {
+                delete obj;
+                continue;
+            }
+
+            AddObjectHelper<GameObject>(map, obj);
+        }
     }
 }
 

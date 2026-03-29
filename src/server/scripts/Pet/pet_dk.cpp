@@ -1,14 +1,14 @@
 /*
  * This file is part of the AzerothCore Project. See AUTHORS file for Copyright information
  *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Affero General Public License as published by the
- * Free Software Foundation; either version 3 of the License, or (at your
- * option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
  *
  * You should have received a copy of the GNU General Public License along
@@ -67,6 +67,25 @@ struct npc_pet_dk_ebon_gargoyle : ScriptedAI
         {
             me->SetCanFly(false);
             me->SetDisableGravity(false);
+        }
+    }
+
+    void JustExitedCombat() override
+    {
+        EngagementOver();
+    }
+
+    void EnterEvadeMode(EvadeReason /*why*/) override
+    {
+        if (!_EnterEvadeMode())
+            return;
+
+        me->ClearUnitState(UNIT_STATE_EVADE);
+
+        if (Unit* owner = me->GetOwner())
+        {
+            me->GetMotionMaster()->Clear(false);
+            me->GetMotionMaster()->MoveFollow(owner, PET_FOLLOW_DIST, me->GetFollowAngle(), MOTION_SLOT_ACTIVE);
         }
     }
 
@@ -245,11 +264,44 @@ struct npc_pet_dk_ghoul : public CombatAI
 {
     npc_pet_dk_ghoul(Creature* c) : CombatAI(c) { }
 
+    void IsSummonedBy(WorldObject* summoner) override
+    {
+        if (!summoner || !summoner->IsPlayer())
+            return;
+
+        // Remember the owner's target so we can attack it after the rising stun expires.
+        if (Unit* victim = summoner->ToPlayer()->GetVictim())
+            _summonTargetGUID = victim->GetGUID();
+    }
+
+    void UpdateAI(uint32 diff) override
+    {
+        // While stunned (rising animation), don't run CombatAI - just wait.
+        if (me->HasUnitState(UNIT_STATE_STUNNED))
+            return;
+
+        // Once the stun expires, attack the saved target from summon time.
+        if (!_summonTargetGUID.IsEmpty())
+        {
+            if (Unit* target = ObjectAccessor::GetUnit(*me, _summonTargetGUID))
+            {
+                if (target->IsAlive() && me->IsValidAttackTarget(target))
+                    AttackStart(target);
+            }
+            _summonTargetGUID.Clear();
+        }
+
+        CombatAI::UpdateAI(diff);
+    }
+
     void JustDied(Unit* /*who*/) override
     {
         if (me->IsGuardian() || me->IsSummon())
             me->ToTempSummon()->UnSummon();
     }
+
+private:
+    ObjectGuid _summonTargetGUID;
 };
 
 struct npc_pet_dk_risen_ally : public PossessedAI
@@ -269,14 +321,40 @@ struct npc_pet_dk_risen_ally : public PossessedAI
     }
 };
 
-struct npc_pet_dk_army_of_the_dead : public CombatAI
+struct npc_pet_dk_army_of_the_dead : public AggressorAI
 {
-    npc_pet_dk_army_of_the_dead(Creature* creature) : CombatAI(creature) { }
+    npc_pet_dk_army_of_the_dead(Creature* creature) : AggressorAI(creature) { }
 
-    void InitializeAI() override
+    // Restrict MoveInLineOfSight aggro to targets already fighting our owner,
+    // so ghouls don't pull extra packs on their own.
+    bool CanAIAttack(Unit const* target) const override
     {
-        CombatAI::InitializeAI();
-        ((Minion*)me)->SetFollowAngle(rand_norm() * 2 * M_PI);
+        if (!target)
+            return false;
+        Unit* owner = me->GetOwner();
+        if (owner && !target->IsInCombatWith(owner))
+            return false;
+        return AggressorAI::CanAIAttack(target);
+    }
+
+    // Owner started attacking a target — engage immediately.
+    // We bypass OnOwnerCombatInteraction because CanStartAttack -> CanAIAttack
+    // may reject the target before combat refs are established.
+    void OwnerAttacked(Unit* target) override
+    {
+        if (!target || !me->IsAlive() || me->HasReactState(REACT_PASSIVE))
+            return;
+        if (me->IsValidAttackTarget(target))
+            AttackStart(target);
+    }
+
+    // Owner was attacked — help defend.
+    void OwnerAttackedBy(Unit* attacker) override
+    {
+        if (!attacker || !me->IsAlive() || me->HasReactState(REACT_PASSIVE))
+            return;
+        if (me->IsValidAttackTarget(attacker))
+            AttackStart(attacker);
     }
 };
 

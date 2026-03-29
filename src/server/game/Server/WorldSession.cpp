@@ -1,14 +1,14 @@
 /*
  * This file is part of the AzerothCore Project. See AUTHORS file for Copyright information
  *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Affero General Public License as published by the
- * Free Software Foundation; either version 3 of the License, or (at your
- * option) any later version.
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
  *
  * You should have received a copy of the GNU General Public License along
@@ -125,7 +125,7 @@ WorldSession::WorldSession(uint32 id, std::string&& name, uint32 accountFlags, s
     m_playerLogout(false),
     m_playerRecentlyLogout(false),
     m_playerSave(false),
-    m_sessionDbcLocale(sWorld->GetDefaultDbcLocale()),
+    m_sessionDbcLocale(sWorld->GetAvailableDbcLocale(locale)),
     m_sessionDbLocaleIndex(locale),
     m_latency(0),
     m_TutorialsChanged(false),
@@ -136,7 +136,8 @@ WorldSession::WorldSession(uint32 id, std::string&& name, uint32 accountFlags, s
     _addonMessageReceiveCount(0),
     _timeSyncClockDeltaQueue(6),
     _timeSyncClockDelta(0),
-    _pendingTimeSyncRequests()
+    _pendingTimeSyncRequests(),
+    _orderCounter(0)
 {
     memset(m_Tutorials, 0, sizeof(m_Tutorials));
 
@@ -205,6 +206,37 @@ void WorldSession::ValidateAccountFlags()
 bool WorldSession::IsGMAccount() const
 {
     return GetSecurity() >= SEC_GAMEMASTER;
+}
+
+bool WorldSession::IsTrialAccount() const
+{
+    return HasAccountFlag(ACCOUNT_FLAG_TRIAL);
+}
+
+bool WorldSession::IsInternetGameRoomAccount() const
+{
+    return HasAccountFlag(ACCOUNT_FLAG_IGR);
+}
+
+bool WorldSession::IsRecurringBillingAccount() const
+{
+    return HasAccountFlag(ACCOUNT_FLAG_RECURRING_BILLING);
+}
+
+uint8 WorldSession::GetBillingPlanFlags() const
+{
+    uint8 flags = SESSION_NONE;
+
+    if (IsRecurringBillingAccount())
+        flags |= SESSION_RECURRING_BILL;
+
+    if (IsTrialAccount())
+        flags |= SESSION_FREE_TRIAL;
+
+    if (IsInternetGameRoomAccount())
+        flags |= SESSION_IGR;
+
+    return flags;
 }
 
 std::string const& WorldSession::GetPlayerName() const
@@ -333,8 +365,6 @@ bool WorldSession::Update(uint32 diff, PacketFilter& updater)
 
     if (updater.ProcessUnsafe())
         UpdateTimeOutTime(diff);
-
-    HandleTeleportTimeout(updater.ProcessUnsafe());
 
     ///- Retrieve packets from the receive queue and call the appropriate handlers
     /// not process packets if socket already closed
@@ -576,36 +606,6 @@ bool WorldSession::IsSocketClosed() const
     return !m_Socket || !m_Socket->IsOpen();
 }
 
-void WorldSession::HandleTeleportTimeout(bool updateInSessions)
-{
-    // pussywizard: handle teleport ack timeout
-    if (m_Socket && m_Socket->IsOpen() && GetPlayer() && GetPlayer()->IsBeingTeleported())
-    {
-        time_t currTime = GameTime::GetGameTime().count();
-        if (updateInSessions) // session update from World::UpdateSessions
-        {
-            if (GetPlayer()->IsBeingTeleportedFar() && GetPlayer()->GetSemaphoreTeleportFar() + sWorld->getIntConfig(CONFIG_TELEPORT_TIMEOUT_FAR) < currTime)
-                while (GetPlayer() && GetPlayer()->IsBeingTeleportedFar())
-                    HandleMoveWorldportAck();
-        }
-        else // session update from Map::Update
-        {
-            if (GetPlayer()->IsBeingTeleportedNear() && GetPlayer()->GetSemaphoreTeleportNear() + sWorld->getIntConfig(CONFIG_TELEPORT_TIMEOUT_NEAR) < currTime)
-                while (GetPlayer() && GetPlayer()->IsInWorld() && GetPlayer()->IsBeingTeleportedNear())
-                {
-                    Player* plMover = GetPlayer()->m_mover->ToPlayer();
-                    if (!plMover)
-                        break;
-                    WorldPacket pkt(MSG_MOVE_TELEPORT_ACK, 20);
-                    pkt << plMover->GetPackGUID();
-                    pkt << uint32(0); // flags
-                    pkt << uint32(0); // time
-                    HandleMoveTeleportAck(pkt);
-                }
-        }
-    }
-}
-
 /// %Log the player out
 void WorldSession::LogoutPlayer(bool save)
 {
@@ -628,7 +628,7 @@ void WorldSession::LogoutPlayer(bool save)
         //FIXME: logout must be delayed in case lost connection with client in time of combat
         if (_player->GetDeathTimer())
         {
-            _player->getHostileRefMgr().deleteReferences(true);
+            _player->GetThreatMgr().RemoveMeFromThreatLists();
             _player->BuildPlayerRepop();
             _player->RepopAtGraveyard();
         }
@@ -702,6 +702,10 @@ void WorldSession::LogoutPlayer(bool save)
         // a) in group; b) not in raid group; c) logging out normally (not being kicked or disconnected) d) LeaveGroupOnLogout is enabled
         if (_player->GetGroup() && !_player->GetGroup()->isRaidGroup() && !_player->GetGroup()->isLFGGroup() && m_Socket && sWorld->getBoolConfig(CONFIG_LEAVE_GROUP_ON_LOGOUT))
             _player->RemoveFromGroup();
+        // Remove player from active loot rolls in LFG groups (player stays in group but should not block rolls)
+        else if (Group* group = _player->GetGroup())
+            if (group->isLFGGroup())
+                group->RemovePlayerFromRolls(_player->GetGUID());
 
         // pussywizard: checked second time after being removed from a group
         if (!_player->IsBeingTeleportedFar() && !_player->m_InstanceValid && !_player->IsGameMaster())
@@ -1508,4 +1512,10 @@ void WorldSession::InitializeSessionCallback(CharacterDatabaseQueryHolder const&
     SendAddonsInfo();
     SendClientCacheVersion(clientCacheVersion);
     SendTutorialsData();
+}
+
+void WorldSession::SetPacketLogging(bool state)
+{
+    if (m_Socket)
+        m_Socket->SetPacketLogging(state);
 }
