@@ -88,7 +88,7 @@ uint32        MinPlayerReward;
 
 bool          Announcement;
 
-bool          LevelScalingEndGameBoost;
+
 bool          PlayerChangeNotify;
 bool          rewardEnabled;
 
