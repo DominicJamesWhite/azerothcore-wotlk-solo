@@ -11,7 +11,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] All classes get a Diablo-like potion that can be used to refill X% of health and mana every X seconds. Other potions all provide temporary combat bonuses as well as their healing and mana restoration.
 - [x] mod-autobalance is used to allow solo play in dungeons and raids, and scale their difficulty with more players. 
 - [x] Casting pushback from enemy damage is removed entirely. (4.11)
-- [ ] Talents are boosted to provide more impact in levelling and solo play.
+- [x] Talents are boosted to provide more impact in levelling and solo play.
 - [ ] More NPCs in major cities and towns, and between them doing courier or transport work.
 - [ ] Each tree now has changed talents relating to holy trinity specs’ inherent weaknesses while retaining class character.
 - [ ] Retuned and redesigned dungeon and raid encounters with lots of new difficulty settings to allow solo progression.
@@ -212,7 +212,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Lightform (NEW):** Holy damage and healing increased. Shadow damage reduced by 95%. (4.35)
 
 **Talent Changes:**s
-- [ ] **Shadow Affinity:** Threat and sdispel effect no longer affected. Instead increases healing and restores X% mana.
+- [ ] **Shadow Affinity:** Threat and dispel effect no longer affected. Instead increases healing and restores X% mana.
 
 - [x] **Healing Focus (Renamed to Monasticism):** The cost of your Holy damaging spells is reduced by X% (4.36)
 - [x] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%. (4.36)
@@ -224,22 +224,22 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Holy Concentration:** Your mana regeneration from spirit is increased by X% for Ys after you critically hit with a Holy spell. (4.37)
 - [x] **Lightwell:** Replaced with Lightform (4.38)
 - [x] **Blessed Resilience:** Changed to Hit and 3s effect
-- [x] **Empowered Renew (Renamed to Lasting Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. (4.37)
+- [x] **Empowered Renew (Renamed to Impact of Faith):** Renew and Mark of Penitence both gain an additional bonus % of spellpower, and instantly do X% of their full effect instantly. (4.37)
 - [x] **Empowered Healing (Renamed to Light’s Hope):** Your Holy Fire and Greater Heal gain an additional X% of spell power, and Flash Heal, Holy Bolt and Smite gain X/2% of spell power.(4.37)
 - [x] **Serendipity:** When you heal with Flash Heal or do damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire is reduced by X%. Stacks 3 times. (4.37)
 
 - [ ] **Unbreakable Will:** Taking damage reduces the duration of Weakened Soul by Xs. This effect can only occur once per second.
 - [x] **Silent Resolve (Renamed to Killing Word):** Threat and dispel resistance no longer affected. Shadow Word: Death does X% more damage for each of your periodic damage effects on the target. (4.39)
-- [ ] **Martyrdom:** When your Power Word: Shield ends, your damage taken is reduced by X%. 
-- [ ] **Improved Power Word: Shield:** Reduces the cooldown of your Power Word: Shield ability by X seconds, reduces the mana cost of your Power Word: Shield by Y%, and increases the damage absorbed by Z%. (Merge with Soul Warding)
-- [ ] **Absolution:** Redesigned. Casting a Shadow spell increases the damage of your next Holy spell by X%. 
+- [ ] **Martyrdom:** When your Power Word: Shield ends, your damage taken is reduced by 40% for 5 seconds.  
+- [x] **Improved Power Word: Shield:** Reduces the cooldown of your Power Word: Shield ability by X seconds, reduces the mana cost of your Power Word: Shield by Y%, and increases the damage absorbed by Z%. (Merge with Soul Warding)
+- [x] **Absolution:** Redesigned. Casting a Shadow spell increases the damage of your next Holy spell by X%. (4.41)
 - [ ] **Improved Mana Burn (Renamed to Gnosticism):** You are healed for X% of holy damage. Shadow damage restores mana equal to Y% of damage. 
-- [ ] **Soul Warding:** Redesigned. While protected by Power Word: Shield, you take no damage from Shadow Word: Death.
+- [x] **Soul Warding:** Redesigned. While protected by Power Word: Shield, you take no damage from Shadow Word: Death.
 - [ ] **Focused Power:** Casting Mind Sear on an enemy with Shadow Word: Pain applies it to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies it to all nearby enemies. 
-- [ ] **Focused Will:** Smite refreshes the duration of Mark of Penitence. Mind Blast refreshes the duration of Shadow Word:Pain. Additionally increases your spell critical effect chance by X% at all times.
-- [ ] **Improved Flash Heal (Renamed to Syncretism):** For X seconds after using a shadow damage spell, your next Holy spell does additional shadow damage. For Xs after using a Holy spell, your next shadow spell deals additional Holy damage. Additionally increases damage and healing done by your spells by X%.
+- [x] **Focused Will:** Smite refreshes the duration of Mark of Penitence. Mind Blast refreshes the duration of Devouring Plague. Additionally increases your spell critical effect chance by X% at all times.
+- [ ] **Syncretism (NEW):** For X seconds after using a shadow damage spell, your next Holy spell does shadow damage equal to 50% of your spellpower. For Xs after using a Holy spell, your next shadow spell deals additional Holy damage equal to 50% of your spellpower. 
 - [x] **Divine Aegis:** Additionally, when your spells critically hit an enemy, you gain a shield equal to X% of the damage done. Both effects last Xs.
-- [ ] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage done by Mark of Penitence equal to X% of your spell power.
+- [x] **Borrowed Time:** Grants X% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage done by Mark of Penitence equal to X% of your spell power. (4.42)
 
 
 ### Rogue
