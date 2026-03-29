@@ -72,22 +72,12 @@ See practical implementations in:
 **Key Methods for Custom Scripts:**
 
 See usage examples in:
-- **Health/Power Management**: `modules/world_of_alonecraft/src/MoltenArmor.cpp` - `AddOrUpdateEmberScars` method
 - **Aura Management**: `src/server/scripts/Spells/spell_mage.cpp` - `spell_mage_focus_magic::HandleProc`
-- **Damage Dealing**: `modules/world_of_alonecraft/src/MoltenArmor.cpp` - `Unit::DealDamage` usage in `OnPeriodicTick`
 - **Spell Casting**: `src/server/scripts/Spells/spell_mage.cpp` - `spell_mage_burnout::HandleProc`
-- **State Checks**: `modules/world_of_alonecraft/src/MoltenArmor.cpp` - `HasAura` checks throughout
 
 ### Player.h - Player-Specific Operations
 
 **Location:** `src/server/game/Entities/Player/Player.h`
-
-**Key Methods:**
-
-See Player-specific implementations in:
-- **Player Casting**: `modules/world_of_alonecraft/src/MoltenArmor.cpp` - `OnPlayerSpellCast` method
-- **Player State Checks**: `modules/world_of_alonecraft/src/MoltenArmor.cpp` - `ToPlayer()` conversions and validation
-- **Spell Cooldowns**: `modules/world_of_alonecraft/src/MoltenArmor.cpp` - `AddSpellCooldown` usage
 
 ### SpellAuraEffects.h - Aura Effect Types
 
@@ -103,13 +93,22 @@ See Player-specific implementations in:
 
 ### 5. Database Changes
 
-When a new script requires changes to the database (e.g., adding a `spell_script_names` entry), provide the SQL query directly. Do not create `.sql` files. This allows for manual review and application of database changes.
+When a new script requires database changes (e.g., adding a `spell_script_names` entry), **create a SQL file** in:
 
-Example Query:
+```
+modules/world_of_alonecraft/data/sql/db-world/
+```
+
+**Naming convention:** `YYYY_MM_DD_XX.sql` (e.g. `2026_03_29_00.sql`). The `XX` is a zero-padded sequence number for multiple files on the same day.
+
+**Files must be idempotent** — always `DELETE` before `INSERT` so the file is safe to re-apply:
+
 ```sql
 DELETE FROM `spell_script_names` WHERE `spell_id` = 12345;
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (12345, 'my_new_script_name');
 ```
+
+These files are auto-applied at server startup and tracked by filename + hash in the `updates` table. Do **not** apply SQL manually without also committing the corresponding file.
 
 ## Common Problem Solutions
 
