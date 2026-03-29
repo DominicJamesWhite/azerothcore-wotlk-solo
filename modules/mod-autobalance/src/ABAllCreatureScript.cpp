@@ -93,7 +93,7 @@ void AutoBalance_AllCreatureScript::OnBeforeCreatureSelectLevel(const CreatureTe
     }
 }
 
-void AutoBalance_AllCreatureScript::Creature_SelectLevel(const CreatureTemplate* /* cinfo */, Creature* creature)
+void AutoBalance_AllCreatureScript::OnCreatureSelectLevel(const CreatureTemplate* /* cinfo */, Creature* creature)
 {
     // ensure we're in a dungeon with a creature
     if (
@@ -114,7 +114,7 @@ void AutoBalance_AllCreatureScript::Creature_SelectLevel(const CreatureTemplate*
     {
         LOG_DEBUG("module.AutoBalance", "AutoBalance:: ------------------------------------------------");
 
-        LOG_DEBUG("module.AutoBalance", "AutoBalance_AllCreatureScript::Creature_SelectLevel: Creature {} ({}) | Entry ID: ({}) | Spawn ID: ({})",
+        LOG_DEBUG("module.AutoBalance", "AutoBalance_AllCreatureScript::OnCreatureSelectLevel: Creature {} ({}) | Entry ID: ({}) | Spawn ID: ({})",
             creature->GetName(),
             creature->GetLevel(),
             creature->GetEntry(),
@@ -123,7 +123,7 @@ void AutoBalance_AllCreatureScript::Creature_SelectLevel(const CreatureTemplate*
 
         if (creatureABInfo->isBrandNew)
         {
-            LOG_DEBUG("module.AutoBalance", "AutoBalance_AllCreatureScript::Creature_SelectLevel: Creature {} ({}) | is no longer brand new.",
+            LOG_DEBUG("module.AutoBalance", "AutoBalance_AllCreatureScript::OnCreatureSelectLevel: Creature {} ({}) | is no longer brand new.",
                 creature->GetName(),
                 creature->GetLevel()
             );
@@ -142,7 +142,7 @@ void AutoBalance_AllCreatureScript::Creature_SelectLevel(const CreatureTemplate*
 
         if (creature->GetLevel() != creatureABInfo->selectedLevel && isCreatureRelevant(creature))
         {
-            LOG_DEBUG("module.AutoBalance", "AutoBalance_AllCreatureScript::Creature_SelectLevel: Creature {} ({}) | is set to level ({}).",
+            LOG_DEBUG("module.AutoBalance", "AutoBalance_AllCreatureScript::OnCreatureSelectLevel: Creature {} ({}) | is set to level ({}).",
                 creature->GetName(),
                 creature->GetLevel(),
                 creatureABInfo->selectedLevel
@@ -152,7 +152,7 @@ void AutoBalance_AllCreatureScript::Creature_SelectLevel(const CreatureTemplate*
     }
     else
     {
-        LOG_ERROR("module.AutoBalance", "AutoBalance_AllCreatureScript::Creature_SelectLevel: Creature {} ({}) | is new to the instance but wasn't flagged as brand new. Please open an issue.",
+        LOG_ERROR("module.AutoBalance", "AutoBalance_AllCreatureScript::OnCreatureSelectLevel: Creature {} ({}) | is new to the instance but wasn't flagged as brand new. Please open an issue.",
             creature->GetName(),
             creature->GetLevel()
         );
@@ -1197,16 +1197,16 @@ void AutoBalance_AllCreatureScript::ModifyCreatureAttributes(Creature* creature)
     Powers pType = creature->getPowerType();
 
     creature->SetArmor(newFinalArmor);
-    creature->SetModifierValue(UNIT_MOD_ARMOR, BASE_VALUE, (float)newFinalArmor);
+    creature->SetStatFlatModifier(UNIT_MOD_ARMOR, BASE_VALUE, (float)newFinalArmor);
     creature->SetCreateHealth(newFinalHealth);
     creature->SetMaxHealth(newFinalHealth);
     creature->ResetPlayerDamageReq();
     creature->SetCreateMana(newFinalMana);
     creature->SetMaxPower(Powers::POWER_MANA, newFinalMana);
-    creature->SetModifierValue(UNIT_MOD_ENERGY, BASE_VALUE, (float)100.0f);
-    creature->SetModifierValue(UNIT_MOD_RAGE, BASE_VALUE, (float)100.0f);
-    creature->SetModifierValue(UNIT_MOD_HEALTH, BASE_VALUE, (float)newFinalHealth);
-    creature->SetModifierValue(UNIT_MOD_MANA, BASE_VALUE, (float)newFinalMana);
+    creature->SetStatFlatModifier(UNIT_MOD_ENERGY, BASE_VALUE, (float)100.0f);
+    creature->SetStatFlatModifier(UNIT_MOD_RAGE, BASE_VALUE, (float)100.0f);
+    creature->SetStatFlatModifier(UNIT_MOD_HEALTH, BASE_VALUE, (float)newFinalHealth);
+    creature->SetStatFlatModifier(UNIT_MOD_MANA, BASE_VALUE, (float)newFinalMana);
     creatureABInfo->ScaledHealthMultiplier = scaledHealthMultiplier;
     creatureABInfo->ScaledManaMultiplier = scaledManaMultiplier;
     creatureABInfo->ScaledArmorMultiplier = scaledArmorMultiplier;

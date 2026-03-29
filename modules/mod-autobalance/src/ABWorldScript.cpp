@@ -461,16 +461,7 @@ void AutoBalance_WorldScript::SetInitialWorldSettings()
     LevelScalingDynamicLevelCeilingHeroicRaids    = sConfigMgr->GetOption<uint8>("AutoBalance.LevelScaling.DynamicLevel.Ceiling.HeroicRaids", 3);
     LevelScalingDynamicLevelFloorHeroicRaids      = sConfigMgr->GetOption<uint8>("AutoBalance.LevelScaling.DynamicLevel.Floor.HeroicRaids", 5);
 
-    if (sConfigMgr->GetOption<float>("AutoBalance.LevelEndGameBoost", false, false))
-        LOG_WARN("server.loading", "mod-autobalance: deprecated value `AutoBalance.LevelEndGameBoost` defined in `AutoBalance.conf`. This variable will be removed in a future release. Please see `AutoBalance.conf.dist` for more details.");
 
-    LevelScalingEndGameBoost = sConfigMgr->GetOption<bool>("AutoBalance.LevelScaling.EndGameBoost", sConfigMgr->GetOption<bool>("AutoBalance.LevelEndGameBoost", 1, false), true);
-
-    if (LevelScalingEndGameBoost)
-    {
-        LOG_WARN("server.loading", "mod-autobalance: `AutoBalance.LevelScaling.EndGameBoost` is enabled in the configuration, but is not currently implemented. No effect.");
-        LevelScalingEndGameBoost = 0;
-    }
 
     //
     // RewardScaling.*

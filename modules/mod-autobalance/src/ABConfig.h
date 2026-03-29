@@ -58,7 +58,7 @@ extern uint32                                                        MinPlayerRe
 
 extern bool                                                          Announcement;
 
-extern bool                                                          LevelScalingEndGameBoost;
+
 extern bool                                                          PlayerChangeNotify;
 extern bool                                                          rewardEnabled;
 
