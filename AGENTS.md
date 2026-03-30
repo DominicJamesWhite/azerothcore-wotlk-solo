@@ -280,6 +280,20 @@ Client-side spell modifications (new spells, changed names/descriptions/effects 
 
 **Column reference:** The 234 columns match the `DBC_data/Spell.csv` header exactly. Field types (int/float/string) are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`.
 
+### Talent.dbc Patching
+
+Adding a brand new talent (not just redesigning an existing one) requires a new Talent.dbc entry. The build pipeline handles this alongside Spell.dbc:
+
+1. INSERT into `talent_dbc` SQL table (23 integer columns: ID, TabID, TierID, ColumnIndex, SpellRank_1-9, PrereqTalent_1-3, PrereqRank_1-3, Flags, RequiredSpellID, CategoryMask_1-2)
+2. `build_dbc.py` reads overrides from `talent_dbc`, patches the binary Talent.dbc, and packs it into the MPQ
+3. Config: `BASE_TALENT_DBC_PATH` in `config.py`
+
+**CRITICAL: Talent.dbc record ordering.** The WoW client requires Talent.dbc records sorted by **(TabID, TierID, ColumnIndex) ascending** — NOT by talent ID. If a new talent is appended at the end (sorted by ID), the client will fail to render the entire talent tree for that class. The build script handles this automatically.
+
+**Priest TalentTabIDs:** 201 = Discipline, 202 = Holy, 203 = Shadow.
+
+**Buff tooltip field:** When creating buff spells (visible in the player's buff bar), set `SpellToolTip0` — not just `SpellDescription0`. The description shows in the spellbook/talent tree, but the tooltip shows when hovering over the buff icon in-game.
+
 ## Debugging Tips
 
 - Use `LOG_ERROR("scripts", "Debug message: {}", value);` for logging (not LOG_INFO in production)
