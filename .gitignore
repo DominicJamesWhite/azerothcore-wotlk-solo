@@ -104,3 +104,5 @@ local.properties
 */acore_characters.sql
 */acore_world.sql
 /env/dist/data/*
+
+build_and_run.bat
