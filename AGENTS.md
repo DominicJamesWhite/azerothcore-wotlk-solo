@@ -42,10 +42,18 @@ modules/world_of_alonecraft/
 
 ### Building Custom Scripts
 
+Use the scaffolder to generate all required files automatically:
+
+```bash
+python tools/new_spell_script.py --name spell_example --spell-ids 200100 --type SpellScript --addsc AddSC_example
+```
+
+This creates the C++ file, SQL registration, and updates `MP_loader.cpp` in one step. See `--dry-run` to preview. For manual creation:
+
 1. **Create your script file** in `modules/world_of_alonecraft/src/`
 2. **Follow naming convention**: `YourFeatureName.cpp`
-3. **Follow header patterns** 
-4. **Register your scripts** 
+3. **Follow header patterns**
+4. **Register your scripts**
 
 ## Key API References
 
@@ -140,9 +148,56 @@ These files are auto-applied at server startup and tracked by filename + hash in
 
 1. **Study existing implementations** in `src/server/scripts/Spells/`
 2. **Examine custom examples** in `modules/world_of_alonecraft/src/`
-3. **Create your script** following the established patterns
-4. **Test thoroughly** with different scenarios
-5. **Document your changes** in the appropriate files
+3. **Scaffold your script** using `python tools/new_spell_script.py` (or create manually)
+4. **Verify consistency** with `python tools/verify_scripts.py`
+5. **Build and deploy** using `build_and_run.bat` (see below)
+6. **Test thoroughly** with different scenarios
+7. **Verify database** with `python tools/verify_db.py` (or check build_and_run.bat output)
+
+### Development Tools (`tools/`)
+
+| Tool | Purpose | When to use |
+|------|---------|-------------|
+| `tools/verify_scripts.py` | Cross-references C++ ScriptLoader names, SQL registrations, and MP_loader.cpp | Before building -- catches silent registration mismatches |
+| `tools/new_spell_script.py` | Scaffolds C++ file + SQL file + MP_loader.cpp update | When creating a new spell script |
+| `tools/verify_db.py` | Queries live DB to confirm spells, registrations, procs, SQL applied | After server starts -- replaces manual SQL queries |
+
+```bash
+# Check for registration mismatches (also runs as pre-build step in build_and_run.bat)
+python tools/verify_scripts.py
+python tools/verify_scripts.py --db     # also check live database
+
+# Scaffold a new script (generates all 3 files)
+python tools/new_spell_script.py --name spell_example --spell-ids 200100,-5176 --type AuraScript
+python tools/new_spell_script.py --name spell_example --spell-ids 200100 --dry-run
+
+# Verify database state (also runs as post-start step in build_and_run.bat)
+python tools/verify_db.py                             # auto-detect from git changes
+python tools/verify_db.py --spell-ids 200000 200006   # check specific spells
+python tools/verify_db.py --scripts spell_bloomstrike  # check specific scripts
+```
+
+### Build & Run Script
+
+`build_and_run.bat` in the repo root automates the full build-test cycle:
+
+```bat
+build_and_run.bat                        # Full cycle (with verification)
+build_and_run.bat --skip-build           # DBC/SQL changes only (no C++ recompile)
+build_and_run.bat --skip-dbc --skip-copy # C++ changes only (no DBC rebuild)
+build_and_run.bat --skip-server          # Build everything but don't start servers
+build_and_run.bat --skip-verify          # Skip pre-build and post-start verification
+build_and_run.bat --help                 # Show all flags
+```
+
+**What it does (in order):**
+1. Stops `authserver.exe` and `worldserver.exe` if running
+1.5. Runs `verify_scripts.py` to check for registration mismatches (prompts to continue if issues found)
+2. Builds C++ via MSBuild (VS2022, RelWithDebInfo, x64) from `C:\Build\AzerothCore.sln`
+3. Runs `build_dbc.py` to generate patched `Spell.dbc` + `patch-4.mpq`
+4. Copies `patch-4.mpq` to the WoW client `Data/` folder
+5. Launches authserver and worldserver in separate windows
+5.5. Runs `verify_db.py` to confirm database state after SQL auto-apply
 
 #### **Quick Reference - Method Availability:**
 
@@ -155,7 +210,14 @@ These files are auto-applied at server startup and tracked by filename + hash in
 
 ## Verification Workflow
 
-After making C++ or SQL changes, verify everything is wired up correctly:
+After making C++ or SQL changes, verify everything is wired up correctly. The fastest path is the automated tools:
+
+```bash
+python tools/verify_scripts.py    # pre-build: catch C++/SQL/loader mismatches
+python tools/verify_db.py         # post-start: confirm DB state (auto-detects from git)
+```
+
+For manual verification or debugging specific issues:
 
 ### 1. Verify spell data exists
 ```bash

@@ -32,6 +32,24 @@ make install
 - `BUILD_TESTING`: Enable unit tests (default: OFF)
 - `USE_COREPCH` / `USE_SCRIPTPCH`: Precompiled headers (default: ON)
 
+### Build, deploy, and run (Windows)
+
+```bat
+REM Full cycle: stop servers, verify, build C++, build DBC, copy MPQ, start servers, verify DB
+build_and_run.bat
+
+REM Common shortcuts
+build_and_run.bat --skip-build           # DBC/SQL changes only (no C++ recompile)
+build_and_run.bat --skip-dbc --skip-copy  # C++ changes only (no DBC rebuild)
+build_and_run.bat --skip-server           # Build everything but don't start servers
+build_and_run.bat --skip-verify          # Skip pre-build and post-start verification
+build_and_run.bat --help                 # Show all flags
+```
+
+- Build directory: `C:\Build` (VS2022, RelWithDebInfo, x64)
+- Server executables: `C:\Build\bin\RelWithDebInfo\`
+- WoW client: `C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Data\`
+
 ### Unit tests
 
 ```bash
@@ -196,9 +214,50 @@ python build_dbc.py
 | Verify proc config | `SELECT * FROM spell_proc WHERE SpellId = <id>` |
 | Confirm SQL was applied | `SELECT name, hash FROM updates WHERE name LIKE '<filename>%'` |
 
+## Development Tools (`tools/`)
+
+### Script Consistency Checker (`tools/verify_scripts.py`)
+
+Cross-references C++ `SpellScriptLoader` names, SQL `spell_script_names` registrations, and `MP_loader.cpp` declarations to catch silent registration mismatches before building.
+
+```bash
+python tools/verify_scripts.py        # file-based checks only
+python tools/verify_scripts.py --db   # also query live database
+```
+
+Catches: scripts with no SQL registration, SQL entries with no C++ code, `AddSC_*` missing from `MP_loader.cpp`, and declaration/call mismatches. Integrated into `build_and_run.bat` as a pre-build step.
+
+### New Script Scaffolder (`tools/new_spell_script.py`)
+
+Generates a C++ spell script, SQL registration file, and `MP_loader.cpp` update from a single command:
+
+```bash
+python tools/new_spell_script.py --name spell_example --spell-ids 200100,-12345 --type AuraScript --addsc AddSC_example
+python tools/new_spell_script.py --name spell_example --spell-ids 200100 --type SpellScript --dry-run
+```
+
+- `--name`: Script name (used in `SpellScriptLoader` and `spell_script_names`)
+- `--spell-ids`: Comma-separated spell IDs (negative = all ranks)
+- `--type`: `SpellScript` or `AuraScript` (default: `SpellScript`)
+- `--addsc`: `AddSC_*` function name (default: `AddSC_<name>`)
+- `--dry-run`: Preview output without writing files
+
+### Post-Build DB Verifier (`tools/verify_db.py`)
+
+Runs the 4 standard verification queries (spell_dbc, spell_script_names, spell_proc, updates) against the live database. Auto-detects what to check from `git diff` when run with no arguments.
+
+```bash
+python tools/verify_db.py                              # auto-detect from git changes
+python tools/verify_db.py --spell-ids 200000 200006    # check specific spells
+python tools/verify_db.py --scripts spell_bloomstrike   # check specific scripts
+python tools/verify_db.py --sql-files 2026_03_29_04.sql # check if SQL was applied
+```
+
+Integrated into `build_and_run.bat` as a post-start step (runs after 8s delay for SQL auto-apply).
+
 ## Verification Workflow
 
-After making C++ or SQL changes, verify with database queries:
+After making C++ or SQL changes, verify with database queries (or run `python tools/verify_db.py`):
 1. **Spell data exists** — query `spell_dbc` for your spell ID
 2. **Script registration matches** — `spell_script_names.ScriptName` must exactly match the `SpellScriptLoader` constructor string (mismatch = script silently never runs)
 3. **Proc config** (if applicable) — check `spell_proc` flags and trigger conditions

@@ -109,3 +109,5 @@ compile_commands.json
 */acore_world.sql
 /Datadir/*
 /env/dist/data/*
+
+build_and_run.bat
