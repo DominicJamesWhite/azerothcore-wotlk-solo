@@ -318,7 +318,18 @@ Agents can query the live MySQL database to look up spell data and verify change
 - **Negative** `spell_id` values in `spell_script_names` apply to all ranks of a spell
 - Always query `acore_world` for spell and script data
 
-## Documentation Links
+## Local Wiki Reference
+
+The AzerothCore wiki is cloned locally at `docs/wiki/docs/` (400+ pages). Use it to look up database table schemas and column documentation:
+
+- **Table docs:** `docs/wiki/docs/<table_name>.md` (e.g., `spell_dbc.md`, `creature_template.md`, `spell_proc.md`)
+- **DB indexes:** `database-world.md`, `database-characters.md`, `database-auth.md`
+- **SmartAI/Conditions:** `smart_scripts.md`, `conditions.md`
+- **Loot tables:** `loot_template.md`
+
+Consult the wiki when writing SQL for unfamiliar tables or when you need to know valid column values/types. If `docs/wiki/` doesn't exist, clone it: `git clone https://github.com/azerothcore/wiki.git docs/wiki`
+
+## Documentation Links (external fallback)
 
 - **[AzerothCore Wiki — Home](https://www.azerothcore.org/wiki/home)** — Main documentation index
 - **[World Database Tables](https://www.azerothcore.org/wiki/database-world)** — Reference for 200+ world DB tables

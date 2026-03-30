@@ -106,3 +106,6 @@ local.properties
 /env/dist/data/*
 
 build_and_run.bat
+
+# AzerothCore wiki (local reference for AI agents)
+/docs/wiki/

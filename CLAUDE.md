@@ -242,6 +242,31 @@ python tools/new_spell_script.py --name spell_example --spell-ids 200100 --type 
 - `--addsc`: `AddSC_*` function name (default: `AddSC_<name>`)
 - `--dry-run`: Preview output without writing files
 
+### SQL Generator (`tools/gen_sql.py`)
+
+Generates idempotent SQL files from column overrides. Specify only what you want to change; the tool fetches the full base spell from `DBC_data/Spell.csv`, layers any existing `alonecraft_spell_dbc` overrides, applies your changes, and outputs a complete DELETE+INSERT file.
+
+```bash
+# Modify a spell's DBC entry (only specify changed columns)
+python tools/gen_sql.py dbc --spell-id 33186 --set EffectBasePoints1=50 --set SpellName0="New Name"
+
+# Create new custom spell based on an existing one
+python tools/gen_sql.py dbc --spell-id 200100 --base 12345 --set SpellName0="Custom Spell"
+
+# Generate spell_proc entry (unspecified columns default to 0)
+python tools/gen_sql.py proc --spell-id 200100 --set ProcFlags=65536 --set Chance=100
+
+# Generate spell_script_names entry
+python tools/gen_sql.py script --spell-id "200100,-5176" --script-name spell_example
+
+# Preview or print to stdout
+python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --dry-run
+python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --stdout
+python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --comment "Change to dummy effect"
+```
+
+Subcommands: `dbc` (alonecraft_spell_dbc, 234 cols), `proc` (spell_proc, 16 cols), `script` (spell_script_names). Validates column names with fuzzy "did you mean?" suggestions on typos.
+
 ### Post-Build DB Verifier (`tools/verify_db.py`)
 
 Runs the 4 standard verification queries (spell_dbc, spell_script_names, spell_proc, updates) against the live database. Auto-detects what to check from `git diff` when run with no arguments.
@@ -263,7 +288,50 @@ After making C++ or SQL changes, verify with database queries (or run `python to
 3. **Proc config** (if applicable) — check `spell_proc` flags and trigger conditions
 4. **SQL file was applied** — check the `updates` table for your filename
 
-## Documentation Links
+## Local Wiki Reference
+
+A local clone of the [AzerothCore wiki](https://github.com/azerothcore/wiki) is available at `docs/wiki/docs/` for offline reference. This contains 400+ pages covering every database table, system guide, and development reference.
+
+### When to consult the wiki
+
+- **Before writing SQL** that touches a table you haven't worked with before — look up column definitions, types, and allowed values
+- **When you see an unfamiliar database column** in existing SQL or C++ code — the wiki documents every column's purpose and valid values
+- **When working with spell effects, auras, or proc flags** — the wiki has enum value references
+- **When working with SmartAI, conditions, or loot templates** — these systems have complex flag/type enums documented in the wiki
+
+### How to find the right page
+
+Wiki files are in `docs/wiki/docs/`. The naming convention is predictable:
+
+| You need docs for... | Read this file |
+|----------------------|----------------|
+| A world DB table (e.g., `creature_template`) | `docs/wiki/docs/creature_template.md` |
+| A characters DB table (e.g., `characters`) | `docs/wiki/docs/characters.md` |
+| An auth DB table (e.g., `account`) | `docs/wiki/docs/account.md` |
+| List of all world DB tables | `docs/wiki/docs/database-world.md` |
+| List of all characters DB tables | `docs/wiki/docs/database-characters.md` |
+| List of all auth DB tables | `docs/wiki/docs/database-auth.md` |
+| Spell effect enum values | `docs/wiki/docs/spell-effects-reference.md` |
+| SmartAI scripting | `docs/wiki/docs/smart_scripts.md` |
+| Conditions system | `docs/wiki/docs/conditions.md` |
+| Loot tables (all types) | `docs/wiki/docs/loot_template.md` |
+| GM commands | `docs/wiki/docs/gm-commands.md` |
+
+**Rule of thumb:** The filename is the table name + `.md`. If the table is `spell_proc`, the file is `docs/wiki/docs/spell_proc.md`. For non-table topics, try hyphens: `core-installation.md`.
+
+### Setup / Update
+
+```bash
+# First-time clone (from repo root)
+git clone https://github.com/azerothcore/wiki.git docs/wiki
+
+# Update to latest
+cd docs/wiki && git pull
+```
+
+If `docs/wiki/` does not exist, the wiki has not been cloned yet — tell the user to run the clone command above.
+
+## Documentation Links (external fallback)
 
 - [AzerothCore Wiki](https://www.azerothcore.org/wiki/home)
 - [World Database Tables](https://www.azerothcore.org/wiki/database-world)
