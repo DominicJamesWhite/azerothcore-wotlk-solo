@@ -39,6 +39,7 @@ REM Full cycle: stop servers, verify, build C++, build DBC, copy MPQ, start serv
 build_and_run.bat
 
 REM Common shortcuts
+build_and_run.bat --skip-cmake           # Rebuild C++ without re-running CMake
 build_and_run.bat --skip-build           # DBC/SQL changes only (no C++ recompile)
 build_and_run.bat --skip-dbc --skip-copy  # C++ changes only (no DBC rebuild)
 build_and_run.bat --skip-server           # Build everything but don't start servers
@@ -200,6 +201,18 @@ python build_dbc.py
 **MPQ packing** uses `mpqcli.exe` (downloaded from [TheGrayDot/mpqcli](https://github.com/TheGrayDot/mpqcli/releases)) placed next to `build_dbc.py`. If `patch-4.mpq` already exists, the script updates `Spell.dbc` in-place (preserving all other DBC files in the patch). Otherwise it creates a fresh MPQ. If mpqcli is missing, the script still writes the patched DBC — you just pack it manually.
 
 **Field types** are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`, with SpellDescription and SpellToolTip locale slots corrected from `x` (server-skipped) to `s` (string) for client use. Use `DBC_data/Spell.csv` as the reference for column names, ordering, and sample values.
+
+### Talent.dbc Patching
+
+New talents (not just redesigns of existing ones) require a new entry in Talent.dbc. The build pipeline (`build_dbc.py`) also handles this:
+
+1. Add an INSERT into `talent_dbc` SQL table (23 integer columns: ID, TabID, TierID, ColumnIndex, SpellRank_1-9, PrereqTalent_1-3, PrereqRank_1-3, Flags, RequiredSpellID, CategoryMask_1-2)
+2. `build_dbc.py` reads overrides from `talent_dbc` and patches the binary Talent.dbc into the MPQ alongside Spell.dbc
+3. Config: `BASE_TALENT_DBC_PATH` in `config.py` points to the base Talent.dbc
+
+**CRITICAL: Talent.dbc record ordering.** The WoW client requires Talent.dbc records to be sorted by **(TabID, TierID, ColumnIndex) ascending** — NOT by talent ID. If a new talent record is appended at the end of the file (e.g., sorted by ID), the client will fail to display the entire talent tree for that class. The build script handles this automatically, but be aware of it if ever manually editing the binary DBC.
+
+**Priest TalentTabIDs:** 201 = Discipline (tabpage 0), 202 = Holy (tabpage 1), 203 = Shadow (tabpage 2).
 
 ## Database Query Reference
 
