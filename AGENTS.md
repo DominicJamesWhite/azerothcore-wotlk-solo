@@ -110,6 +110,10 @@ INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (12345, 'my_n
 
 These files are auto-applied at server startup and tracked by filename + hash in the `updates` table. Do **not** apply SQL manually without also committing the corresponding file.
 
+**Custom spell IDs** for Alonecraft use the 200000+ range (e.g., 200035 for Magic Absorption Absorb R1).
+
+**Negative spell IDs** in `spell_script_names` apply to all ranks of a spell (e.g., `-5176` would match all ranks of Wrath). Use this when a script should handle every rank.
+
 ## Common Problem Solutions
 
 ### 1. Modifying Spell Damage/Healing
@@ -149,6 +153,71 @@ These files are auto-applied at server startup and tracked by filename + hash in
 | **SpellScript** | ✅ Damage modification | ✅ Spell effects | ✅ `Validate()` |
 
 
+## Verification Workflow
+
+After making C++ or SQL changes, verify everything is wired up correctly:
+
+### 1. Verify spell data exists
+```bash
+mysql -h 127.0.0.1 -u acore -pacore acore_world -e "SELECT ID, SpellName0, Effect0, EffectBasePoints0, EffectAura0 FROM spell_dbc WHERE ID = <your_spell_id>"
+```
+Confirm the spell ID exists and the effect/aura types match your script's expectations. Cross-reference column meanings with https://www.azerothcore.org/wiki/spell_dbc
+
+### 2. Verify spell_script_names mapping
+```bash
+mysql -h 127.0.0.1 -u acore -pacore acore_world -e "SELECT * FROM spell_script_names WHERE spell_id = <your_spell_id>"
+```
+The `ScriptName` column must exactly match the string passed to the `SpellScriptLoader` constructor in your C++ code. A mismatch means the script silently never runs.
+
+### 3. Verify spell_proc (if applicable)
+```bash
+mysql -h 127.0.0.1 -u acore -pacore acore_world -e "SELECT * FROM spell_proc WHERE SpellId = <your_spell_id>"
+```
+If your script uses proc hooks (`OnProc`, `CheckProc`, `HandleProc`), verify the proc flags and trigger conditions are correct.
+
+### 4. Verify SQL file was applied
+```bash
+mysql -h 127.0.0.1 -u acore -pacore acore_world -e "SELECT name, hash FROM updates WHERE name LIKE '<your_sql_filename>%'"
+```
+If the file does not appear, the server has not processed it yet (restart required).
+
+### 5. Cross-reference with documentation
+Use the wiki links in the Documentation Links section below to confirm field meanings, especially for `EffectAura`, `Effect`, and `ProcFlags` columns which use enum values.
+
+
+## DBC Data
+
+The DBC (DataBaseClient) files are normally binary, but have been exported as CSVs in the `DBC_data/` directory for easy reading and searching. Use these to look up spell effects, aura types, base values, and other client-side data without needing special tools.
+
+### DBC Build Pipeline
+
+Client-side spell modifications (new spells, changed names/descriptions/effects visible to the client) require patching the `Spell.dbc` file. This is automated via a Python build script.
+
+**Location:** `modules/world_of_alonecraft/dbc/`
+
+**How it works:**
+1. The `alonecraft_spell_dbc` MySQL table holds custom/modified spell definitions (all 234 DBC columns)
+2. `build_dbc.py` reads the base `Spell.dbc`, applies overrides from the table, and writes a patched DBC + `patch-4.mpq`
+3. The MPQ goes into the WoW client `Data/` folder
+
+**Adding a new client-side spell (200000+ range):**
+1. Find a similar spell in `DBC_data/Spell.csv` as a template
+2. Write SQL: `DELETE FROM alonecraft_spell_dbc WHERE ID = <id>; INSERT INTO alonecraft_spell_dbc (...) VALUES (...);`
+3. Save as `modules/world_of_alonecraft/data/sql/db-world/YYYY_MM_DD_XX.sql`
+4. Also add server-side entries (`spell_dbc`, `spell_script_names`, `spell_proc`) as needed
+5. Run: `cd modules/world_of_alonecraft/dbc && python build_dbc.py`
+
+**Modifying an existing spell for the client:**
+1. Look up the spell in `DBC_data/Spell.csv` to get all 234 column values
+2. INSERT the full row into `alonecraft_spell_dbc` with your modifications
+3. The build script replaces the base DBC record with your version
+
+**MPQ packing:** The script uses `mpqcli.exe` (placed next to `build_dbc.py`, gitignored). If `patch-4.mpq` already exists, it updates `Spell.dbc` in-place (preserving all other DBC files). Otherwise it creates a fresh MPQ. Download from [TheGrayDot/mpqcli releases](https://github.com/TheGrayDot/mpqcli/releases) if missing. The script still writes the patched DBC even if mpqcli is unavailable.
+
+**Configuration:** Edit `modules/world_of_alonecraft/dbc/config.py` for base DBC path and MySQL connection.
+
+**Column reference:** The 234 columns match the `DBC_data/Spell.csv` header exactly. Field types (int/float/string) are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`.
+
 ## Debugging Tips
 
 - Use `LOG_ERROR("scripts", "Debug message: {}", value);` for logging (not LOG_INFO in production)
@@ -158,12 +227,40 @@ These files are auto-applied at server startup and tracked by filename + hash in
 - Consider performance impact of frequently called hooks
 - Use Valgrind or similar tools to detect memory issues
 - Test with multiple players and combat scenarios
+- Query the database directly to verify spell data, script registrations, and SQL application — see "Database Query Reference" and "Verification Workflow" above
 
-## Additional Resources
+## Database Query Reference
 
-- **AzerothCore Documentation:** https://www.azerothcore.org/wiki/
-- **Spell DBC Reference:** Use database tools to find spell IDs and effects
-- **WoW Dev Wiki:** Historical reference for spell mechanics
-- **Module Examples:** Study other AzerothCore modules for patterns
+Agents can query the live MySQL database to look up spell data and verify changes.
 
-*This guide covers the essential information needed to understand and contribute to the Alonecraft project. For specific implementation questions, refer to the existing codebase examples and AzerothCore documentation.*
+**Connection:** `mysql -h 127.0.0.1 -u acore -pacore <database> -e "QUERY"`
+
+**Databases:**
+- `acore_auth` — Accounts, realm list, bans
+- `acore_world` — Game content: spells, creatures, items, quests, loot
+- `acore_characters` — Character data, inventories, progress
+
+**Common Queries:**
+
+| Purpose | Query |
+|---------|-------|
+| Look up spell by ID | `SELECT ID, SpellName0, Effect0, EffectBasePoints0, EffectAura0 FROM spell_dbc WHERE ID = 200035` |
+| Find spells by name | `SELECT ID, SpellName0 FROM spell_dbc WHERE SpellName0 LIKE '%Ice Lance%'` |
+| Verify script registration | `SELECT * FROM spell_script_names WHERE spell_id = 200035` |
+| Check all-rank mappings | `SELECT * FROM spell_script_names WHERE spell_id < 0 AND ScriptName LIKE '%ice_lance%'` |
+| Verify proc config | `SELECT * FROM spell_proc WHERE SpellId = 200035` |
+| Confirm SQL was applied | `SELECT name, hash FROM updates WHERE name LIKE '2026_03_29%'` |
+
+**Notes:**
+- Custom Alonecraft spell IDs use the **200000+** range
+- **Negative** `spell_id` values in `spell_script_names` apply to all ranks of a spell
+- Always query `acore_world` for spell and script data
+
+## Documentation Links
+
+- **[AzerothCore Wiki — Home](https://www.azerothcore.org/wiki/home)** — Main documentation index
+- **[World Database Tables](https://www.azerothcore.org/wiki/database-world)** — Reference for 200+ world DB tables
+- **[spell_dbc Table](https://www.azerothcore.org/wiki/spell_dbc)** — All 113+ columns of spell data (effects, auras, base values)
+- **[spell_script_names Table](https://www.azerothcore.org/wiki/spell_script_names)** — How C++ scripts bind to spell IDs
+- **[creature_template Table](https://www.azerothcore.org/wiki/creature_template)** — NPC/creature definitions
+- **Module Examples:** Study other AzerothCore modules in `modules/` for patterns
