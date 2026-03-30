@@ -249,7 +249,7 @@ Use the wiki links in the Documentation Links section below to confirm field mea
 
 ## DBC Data
 
-The DBC (DataBaseClient) files are normally binary, but have been exported as CSVs in the `DBC_data/` directory for easy reading and searching. Use these to look up spell effects, aura types, base values, and other client-side data without needing special tools.
+To look up spell data, query the `spell_dbc` table in the running database or use `gen_sql.py` which reads the binary Spell.dbc directly. The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
 
 ### DBC Build Pipeline
 
@@ -263,14 +263,14 @@ Client-side spell modifications (new spells, changed names/descriptions/effects 
 3. The MPQ goes into the WoW client `Data/` folder
 
 **Adding a new client-side spell (200000+ range):**
-1. Find a similar spell in `DBC_data/Spell.csv` as a template
+1. Find a similar spell by querying `spell_dbc` or using `gen_sql.py --base`
 2. Write SQL: `DELETE FROM alonecraft_spell_dbc WHERE ID = <id>; INSERT INTO alonecraft_spell_dbc (...) VALUES (...);`
 3. Save as `modules/world_of_alonecraft/data/sql/db-world/YYYY_MM_DD_XX.sql`
 4. Also add server-side entries (`spell_dbc`, `spell_script_names`, `spell_proc`) as needed
 5. Run: `cd modules/world_of_alonecraft/dbc && python build_dbc.py`
 
 **Modifying an existing spell for the client:**
-1. Look up the spell in `DBC_data/Spell.csv` to get all 234 column values
+1. Use `gen_sql.py dbc --spell-id <id> --set ...` to look up and modify spell values (reads binary Spell.dbc)
 2. INSERT the full row into `alonecraft_spell_dbc` with your modifications
 3. The build script replaces the base DBC record with your version
 
@@ -278,7 +278,7 @@ Client-side spell modifications (new spells, changed names/descriptions/effects 
 
 **Configuration:** Edit `modules/world_of_alonecraft/dbc/config.py` for base DBC path and MySQL connection.
 
-**Column reference:** The 234 columns match the `DBC_data/Spell.csv` header exactly. Field types (int/float/string) are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`.
+**Column reference:** The 234 columns are defined in `SPELL_COLUMNS` in `modules/world_of_alonecraft/dbc/spell_dbc.py`. Field types (int/float/string) are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`.
 
 ### Talent.dbc Patching
 

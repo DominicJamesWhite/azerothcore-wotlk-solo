@@ -173,7 +173,7 @@ All Alonecraft modifications live in this module:
 
 ## DBC Data
 
-The DBC (DataBaseClient) files are normally binary, but have been exported as CSVs in the `DBC_data/` directory for easy reading and searching. Use these to look up spell effects, aura types, base values, and other client-side data without needing special tools.
+To look up spell data, query the `spell_dbc` table in the running database or use `gen_sql.py` which reads the binary Spell.dbc directly. The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
 
 ### DBC Build Pipeline
 
@@ -188,19 +188,20 @@ python build_dbc.py
 ```
 
 **Workflow:**
-1. Define custom/modified spells as SQL INSERTs into `alonecraft_spell_dbc` (234 columns matching `DBC_data/Spell.csv` header)
+1. Define custom/modified spells as SQL INSERTs into `alonecraft_spell_dbc` (234 columns matching `SPELL_COLUMNS` in `spell_dbc.py`)
 2. Run `python build_dbc.py` — reads base `Spell.dbc`, applies SQL overrides, writes patched DBC + MPQ
 3. Copy `output/patch-4.mpq` to the WoW client `Data/` folder
 
 **Key files:**
 - `modules/world_of_alonecraft/dbc/build_dbc.py` — Main build script
+- `modules/world_of_alonecraft/dbc/spell_dbc.py` — Shared DBC constants, column names, read/write utilities
 - `modules/world_of_alonecraft/dbc/config.py` — Paths (base DBC, MySQL connection)
 - `modules/world_of_alonecraft/dbc/mpqcli.exe` — MPQ packing tool (StormLib-based, gitignored)
 - `modules/world_of_alonecraft/data/sql/db-world/2026_03_29_09.sql` — `alonecraft_spell_dbc` table schema
 
 **MPQ packing** uses `mpqcli.exe` (downloaded from [TheGrayDot/mpqcli](https://github.com/TheGrayDot/mpqcli/releases)) placed next to `build_dbc.py`. If `patch-4.mpq` already exists, the script updates `Spell.dbc` in-place (preserving all other DBC files in the patch). Otherwise it creates a fresh MPQ. If mpqcli is missing, the script still writes the patched DBC — you just pack it manually.
 
-**Field types** are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`, with SpellDescription and SpellToolTip locale slots corrected from `x` (server-skipped) to `s` (string) for client use. Use `DBC_data/Spell.csv` as the reference for column names, ordering, and sample values.
+**Field types** are derived from `SpellEntryfmt` in `src/server/shared/DataStores/DBCfmt.h`, with SpellDescription and SpellToolTip locale slots corrected from `x` (server-skipped) to `s` (string) for client use. See `SPELL_COLUMNS` in `spell_dbc.py` for column names and ordering.
 
 ### Talent.dbc Patching
 
@@ -257,7 +258,7 @@ python tools/new_spell_script.py --name spell_example --spell-ids 200100 --type 
 
 ### SQL Generator (`tools/gen_sql.py`)
 
-Generates idempotent SQL files from column overrides. Specify only what you want to change; the tool fetches the full base spell from `DBC_data/Spell.csv`, layers any existing `alonecraft_spell_dbc` overrides, applies your changes, and outputs a complete DELETE+INSERT file.
+Generates idempotent SQL files from column overrides. Specify only what you want to change; the tool fetches the full base spell from the binary `Spell.dbc`, layers any existing `alonecraft_spell_dbc` overrides, applies your changes, and outputs a complete DELETE+INSERT file.
 
 ```bash
 # Modify a spell's DBC entry (only specify changed columns)

@@ -4,8 +4,9 @@ Alonecraft SQL Generator
 
 Generates idempotent SQL files for alonecraft_spell_dbc, spell_proc, and
 spell_script_names from high-level change descriptions.  Specify only the
-columns you want to change; the tool fetches the full base row from the live
-database and produces a complete DELETE+INSERT file.
+columns you want to change; the tool fetches the full base spell from the
+binary Spell.dbc, layers any existing database overrides, applies your
+changes, and outputs a complete DELETE+INSERT file.
 
 Usage:
     python tools/gen_sql.py dbc --spell-id 33186 --set EffectBasePoints1=50 --set SpellName0="New Name"
@@ -20,7 +21,6 @@ Options:
 """
 
 import argparse
-import csv
 import datetime
 import difflib
 import glob
@@ -30,32 +30,11 @@ import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODULE_SQL = os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "data", "sql", "db-world")
-DBC_CSV = os.path.join(REPO_ROOT, "DBC_data", "Spell.csv")
 
-# Add the DBC module to path so we can import config
+# Add the DBC module to path so we can import config and spell_dbc
 sys.path.insert(0, os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "dbc"))
 import config  # noqa: E402
-
-# Column type sets -- derived from the CREATE TABLE DDL in 2026_03_29_09.sql.
-# WoW 3.3.5a DBC format is frozen, so these are stable.
-FLOAT_COLUMNS = {
-    "Speed",
-    "EffectRealPointsPerLevel1", "EffectRealPointsPerLevel2", "EffectRealPointsPerLevel3",
-    "EffectMultipleValue1", "EffectMultipleValue2", "EffectMultipleValue3",
-    "EffectPointsPerComboPoint1", "EffectPointsPerComboPoint2", "EffectPointsPerComboPoint3",
-    "EffectDamageMultiplier1", "EffectDamageMultiplier2", "EffectDamageMultiplier3",
-    "EffectBonusMultiplier1", "EffectBonusMultiplier2", "EffectBonusMultiplier3",
-}
-
-# TEXT columns in the DDL.  Note: SpellNameFlag7, SpellRankFlags7,
-# SpellDescriptionFlags0-7, and SpellToolTipFlags0-7 are INT, not TEXT.
-TEXT_COLUMNS = set()
-for _prefix in ("SpellName", "SpellRank", "SpellDescription", "SpellToolTip"):
-    for _i in range(9):
-        TEXT_COLUMNS.add(f"{_prefix}{_i}")
-for _prefix in ("SpellNameFlag", "SpellRankFlags"):
-    for _i in range(7):  # 0-6 are TEXT; 7 is INT
-        TEXT_COLUMNS.add(f"{_prefix}{_i}")
+from spell_dbc import SPELL_COLUMNS, FLOAT_COLUMNS, TEXT_COLUMNS, load_spell_index  # noqa: E402
 
 SPELL_PROC_COLUMNS = (
     "SpellId", "SchoolMask", "SpellFamilyName",
@@ -69,16 +48,6 @@ SPELL_PROC_COLUMNS = (
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
-def load_field_names():
-    """Read the 234 column names from DBC_data/Spell.csv header."""
-    with open(DBC_CSV, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        header = next(reader)
-    if len(header) != 234:
-        print(f"WARNING: Expected 234 columns in Spell.csv, got {len(header)}")
-    return header
-
 
 def get_next_sql_sequence(sql_dir):
     """Find the next YYYY_MM_DD_XX.sql sequence number for today."""
@@ -159,24 +128,6 @@ def format_sql_value(value, col_name):
         return "0"
 
 
-def load_spell_csv_index(field_names):
-    """Build an index of spell ID -> row dict from DBC_data/Spell.csv.
-
-    Reads the full CSV once and returns a dict keyed by integer spell ID.
-    Each value is a dict mapping field_name -> raw string value.
-    """
-    index = {}
-    with open(DBC_CSV, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        next(reader)  # skip header
-        for row in reader:
-            if len(row) < len(field_names):
-                continue
-            spell_id = int(row[0])
-            index[spell_id] = {field_names[i]: row[i] for i in range(len(field_names))}
-    return index
-
-
 def fetch_override(conn, spell_id):
     """Fetch an existing override from alonecraft_spell_dbc. Returns dict or None."""
     cursor = conn.cursor(dictionary=True)
@@ -186,20 +137,20 @@ def fetch_override(conn, spell_id):
     return row
 
 
-def build_dbc_row(conn, spell_id, base_id, overrides, field_names, csv_index):
-    """Build the final row dict by layering: CSV base -> existing override -> user overrides."""
+def build_dbc_row(conn, spell_id, base_id, overrides, field_names, dbc_index):
+    """Build the final row dict by layering: DBC base -> existing override -> user overrides."""
     source_id = base_id if base_id is not None else spell_id
 
-    base = csv_index.get(source_id)
+    base = dbc_index.get(source_id)
     if base is None:
         if base_id is not None:
-            print(f"ERROR: Base spell {source_id} not found in Spell.csv.")
+            print(f"ERROR: Base spell {source_id} not found in Spell.dbc.")
         else:
-            print(f"ERROR: Spell {source_id} not found in Spell.csv.")
+            print(f"ERROR: Spell {source_id} not found in Spell.dbc.")
             print("Use --base to specify a source spell to copy from.")
         sys.exit(1)
 
-    # Start with a copy of the CSV row (all values are strings at this point)
+    # Start with a copy of the DBC row
     row = dict(base)
 
     # Layer existing alonecraft_spell_dbc override if present
@@ -336,7 +287,7 @@ def write_or_print(sql_content, args):
 
 def cmd_dbc(args):
     """Handle the 'dbc' subcommand."""
-    field_names = load_field_names()
+    field_names = list(SPELL_COLUMNS)
     valid_set = set(field_names)
 
     overrides = parse_set_args(args.set, valid_set)
@@ -348,12 +299,12 @@ def cmd_dbc(args):
     if args.base is not None:
         print(f"  Base spell: {args.base}")
     print(f"  Overrides: {len(overrides)} column(s)")
-    print("  Loading Spell.csv...")
-    csv_index = load_spell_csv_index(field_names)
-    print(f"  Loaded {len(csv_index)} spells from Spell.csv")
+    print("  Loading Spell.dbc...")
+    dbc_index = load_spell_index(config.BASE_DBC_PATH)
+    print(f"  Loaded {len(dbc_index)} spells from Spell.dbc")
 
     conn = get_db_connection()
-    row, old_values = build_dbc_row(conn, args.spell_id, args.base, overrides, field_names, csv_index)
+    row, old_values = build_dbc_row(conn, args.spell_id, args.base, overrides, field_names, dbc_index)
     conn.close()
 
     sql = generate_dbc_sql(args.spell_id, row, field_names, args.comment, overrides, old_values)
