@@ -158,9 +158,52 @@ These files are auto-applied at server startup and tracked by filename + hash in
 
 | Tool | Purpose | When to use |
 |------|---------|-------------|
+| `tools/gen_sql.py` | Spell/talent lookup, DBC research, SQL generation | **First stop for all spell/talent research** -- reads binary DBC files |
 | `tools/verify_scripts.py` | Cross-references C++ ScriptLoader names, SQL registrations, and MP_loader.cpp | Before building -- catches silent registration mismatches |
 | `tools/new_spell_script.py` | Scaffolds C++ file + SQL file + MP_loader.cpp update | When creating a new spell script |
 | `tools/verify_db.py` | Queries live DB to confirm spells, registrations, procs, SQL applied | After server starts -- replaces manual SQL queries |
+
+#### gen_sql.py — Research & SQL Generation
+
+This is the primary tool for **discovering** spell data and generating SQL. It reads the binary Spell.dbc and Talent.dbc files directly — these contain the complete, authoritative spell data (all ~50,000 spells). **Always use gen_sql.py for research; only use live database queries for verification.**
+
+```bash
+# Research: look up spell data
+python tools/gen_sql.py lookup --spell-id 133          # by ID (key fields)
+python tools/gen_sql.py lookup --spell-id 133 --all    # by ID (all 234 columns)
+python tools/gen_sql.py lookup --name "Fireball"       # search by name (substring)
+
+# Research: find talent entries
+python tools/gen_sql.py talent --name "Subversion"     # talent name -> IDs, tree position, ranks
+
+# Research: compute spell family masks
+python tools/gen_sql.py classmask --family 15 --spells 55078,55095  # AND/OR masks for DK diseases
+
+# Research: look up aura/effect enum values
+python tools/gen_sql.py enum --aura MOD_PARRY          # SPELL_AURA_MOD_PARRY_PERCENT = 47
+python tools/gen_sql.py enum --effect APPLY_AURA       # SPELL_EFFECT_APPLY_AURA = 6
+
+# Generate: single spell DBC override
+python tools/gen_sql.py dbc --spell-id 33186 --set EffectBasePoints1=50
+
+# Generate: batch DBC overrides (single DBC load, one output file)
+python tools/gen_sql.py dbc --spell-ids 48997,49490,49491 --set EffectBasePoints1=5
+python tools/gen_sql.py dbc --input changes.csv        # CSV: spell_id,column,value
+
+# Generate: use symbolic enum names (auto-resolved)
+python tools/gen_sql.py dbc --spell-id 200100 --set EffectApplyAuraName1=SPELL_AURA_MOD_PARRY_PERCENT
+
+# Generate: group outputs into one file
+python tools/gen_sql.py dbc --spell-id 48997 --set EffectBasePoints1=5 --append-to 2026_03_31_00.sql --group-comment "Subversion R1"
+
+# Generate: spell_proc and spell_script_names
+python tools/gen_sql.py proc --spell-id 200100 --set ProcFlags=65536 --set Chance=100
+python tools/gen_sql.py script --spell-id "200100,-5176" --script-name spell_example
+```
+
+> **DBC tools vs. database queries:** The binary DBC files (Spell.dbc, Talent.dbc) are the authoritative source for spell/talent data. The live MySQL database only contains server-side *overrides* and *registrations* — it is not a comprehensive spell database. Use `gen_sql.py` subcommands (`lookup`, `talent`, `classmask`, `enum`) for research and discovery. Use database queries (`verify_db.py` or direct MySQL) only to verify that your SQL changes were applied correctly after a server restart.
+
+#### Other tools
 
 ```bash
 # Check for registration mismatches (also runs as pre-build step in build_and_run.bat)
@@ -249,14 +292,20 @@ Use the wiki links in the Documentation Links section below to confirm field mea
 
 ## DBC Data
 
-To look up spell data, use `gen_sql.py lookup` which reads the binary Spell.dbc directly (all ~50,000 spells, 234 columns). The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
+To look up spell data, use `gen_sql.py` which reads the binary Spell.dbc and Talent.dbc directly (all ~50,000 spells, 234 columns; ~900 talents). The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
 
 ```bash
 python tools/gen_sql.py lookup --spell-id <id>        # key fields
 python tools/gen_sql.py lookup --spell-id <id> --all   # all 234 columns
+python tools/gen_sql.py lookup --name "Fireball"       # search by name
+python tools/gen_sql.py talent --name "Subversion"     # talent name -> spell IDs
+python tools/gen_sql.py classmask --family 15 --spells 55078,55095  # spell family masks
+python tools/gen_sql.py enum --aura MOD_PARRY          # aura/effect enum values
 ```
 
 > **Do NOT query the `spell_dbc` MySQL table for spell lookups.** That table only contains server-side custom spells not found in the client DBC files — it is a tiny override table, not a comprehensive spell database. The binary Spell.dbc is the authoritative source for all spell data.
+>
+> **DBC tools first, database queries second.** For discovering and researching spell/talent data, always use `gen_sql.py` subcommands (`lookup`, `talent`, `classmask`, `enum`) which read the complete binary DBC files. The live MySQL database is only useful for *verifying* that SQL changes were applied correctly (script registrations, proc entries, updates table) — not for research.
 
 ### DBC Build Pipeline
 
@@ -305,30 +354,39 @@ Adding a brand new talent (not just redesigning an existing one) requires a new 
 
 - Use `LOG_ERROR("scripts", "Debug message: {}", value);` for logging (not LOG_INFO in production)
 - Check spell IDs with `python tools/gen_sql.py lookup --spell-id <id>` (reads binary Spell.dbc)
+- Search by name with `python tools/gen_sql.py lookup --name "spell name"` or `talent --name "talent name"`
+- Look up aura/effect enums with `python tools/gen_sql.py enum --aura MOD_PARRY`
+- Compute spell family masks with `python tools/gen_sql.py classmask --family <N> --spells <ids>`
 - ALWAYS validate spell info exists before using it
 - Test edge cases like spell immunity, line of sight, and range
 - Consider performance impact of frequently called hooks
 - Use Valgrind or similar tools to detect memory issues
 - Test with multiple players and combat scenarios
-- Use `gen_sql.py lookup` for spell data, and query the database for script registrations and SQL application — see "Database Query Reference" and "Verification Workflow" above
+- Use `gen_sql.py` for spell/talent research (DBC tools first), database queries only for verification — see "Database Query Reference" above
 
 ## Database Query Reference
 
-Agents can query the live MySQL database to look up spell data and verify changes.
+### Research (DBC tools -- use these first)
+
+For discovering and researching spell/talent data, always use `gen_sql.py` which reads the complete binary DBC files. These are faster, more comprehensive, and don't require the server to be running.
+
+| Purpose | Command |
+|---------|---------|
+| Look up spell by ID | `python tools/gen_sql.py lookup --spell-id 200035` |
+| Look up spell (all columns) | `python tools/gen_sql.py lookup --spell-id 200035 --all` |
+| Search spells by name | `python tools/gen_sql.py lookup --name "Fireball"` |
+| Find talent by name | `python tools/gen_sql.py talent --name "Subversion"` |
+| Compute spell family mask | `python tools/gen_sql.py classmask --family 15 --spells 55078,55095` |
+| Look up aura/effect enum | `python tools/gen_sql.py enum --aura MOD_PARRY` |
+
+### Verification (live database -- use after server restart)
+
+The live MySQL database is for *verifying* that SQL changes were applied correctly. It is NOT a comprehensive spell database.
 
 **Connection:** `mysql -h 127.0.0.1 -u acore -pacore <database> -e "QUERY"`
 
-**Databases:**
-- `acore_auth` — Accounts, realm list, bans
-- `acore_world` — Game content: spells, creatures, items, quests, loot
-- `acore_characters` — Character data, inventories, progress
-
-**Common Queries:**
-
 | Purpose | Query |
 |---------|-------|
-| Look up spell by ID | `python tools/gen_sql.py lookup --spell-id 200035` (reads binary Spell.dbc) |
-| Look up spell (all columns) | `python tools/gen_sql.py lookup --spell-id 200035 --all` |
 | Verify script registration | `SELECT * FROM spell_script_names WHERE spell_id = 200035` |
 | Check all-rank mappings | `SELECT * FROM spell_script_names WHERE spell_id < 0 AND ScriptName LIKE '%ice_lance%'` |
 | Verify proc config | `SELECT * FROM spell_proc WHERE SpellId = 200035` |
