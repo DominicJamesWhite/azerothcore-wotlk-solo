@@ -151,6 +151,16 @@ All Alonecraft modifications live in this module:
 - `conf/` — Configuration files
 - `data/sql/db-world/` — Database modifications
 
+### Design philosophy: DBC-first, minimal C++
+
+When implementing talent redesigns or new mechanics, prefer this architecture:
+
+1. **Do as much as possible in the DBC/SQL layer.** Use `alonecraft_spell_dbc` overrides to change spell effects, aura types, proc flags, descriptions, and values. Use `spell_proc` entries to control proc behavior (flags, ICD, chance) without C++.
+2. **Use the teach-two-spells pattern for complex talents.** When a talent needs both an active ability and a passive mechanic, create a learner spell (SPELL_EFFECT_LEARN_SPELL) that teaches both. Modify `talent_dbc` to point the talent at the learner. This keeps the active ability vanilla and isolates custom behavior in a separate hidden passive. Example: Bone Shield (talent 2007 teaches 200119, which teaches vanilla 49222 + hidden passive 200117).
+3. **When C++ is needed, prefer AuraScript.** Register AuraScripts on custom passive auras rather than overriding core spell scripts. This avoids replacing core behavior and reduces the risk of desync between the proc system and script logic.
+4. **Avoid overriding core spell_script_names.** Replacing a core script (e.g., `spell_dk_bone_shield`) means replicating all vanilla behavior and staying in sync with upstream changes. Instead, create a separate spell with its own script registration.
+5. **Never modify core files** (`src/server/scripts/`, `src/server/game/`) when a module-only approach exists. All Alonecraft changes should live in `modules/world_of_alonecraft/`.
+
 ### Module SQL conventions
 
 - **Naming:** `YYYY_MM_DD_XX.sql` (e.g., `2026_03_29_00.sql`). `XX` is a zero-padded sequence number for multiple files on the same day.
