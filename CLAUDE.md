@@ -173,7 +173,14 @@ All Alonecraft modifications live in this module:
 
 ## DBC Data
 
-To look up spell data, query the `spell_dbc` table in the running database or use `gen_sql.py` which reads the binary Spell.dbc directly. The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
+To look up spell data, use `gen_sql.py lookup` which reads the binary Spell.dbc directly (all ~50,000 spells, 234 columns). The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
+
+```bash
+python tools/gen_sql.py lookup --spell-id <id>        # key fields
+python tools/gen_sql.py lookup --spell-id <id> --all   # all 234 columns
+```
+
+> **Do NOT query the `spell_dbc` MySQL table for spell lookups.** That table only contains server-side custom spells not found in the client DBC files — it is a tiny override table, not a comprehensive spell database. The binary Spell.dbc is the authoritative source for all spell data.
 
 ### DBC Build Pipeline
 
@@ -221,8 +228,8 @@ New talents (not just redesigns of existing ones) require a new entry in Talent.
 
 | Purpose | Query |
 |---------|-------|
-| Look up spell by ID | `SELECT ID, SpellName0, Effect0, EffectBasePoints0, EffectAura0 FROM spell_dbc WHERE ID = <id>` |
-| Find spells by name | `SELECT ID, SpellName0 FROM spell_dbc WHERE SpellName0 LIKE '%name%'` |
+| Look up spell by ID | `python tools/gen_sql.py lookup --spell-id <id>` (reads binary Spell.dbc) |
+| Look up spell (all columns) | `python tools/gen_sql.py lookup --spell-id <id> --all` |
 | Verify script registration | `SELECT * FROM spell_script_names WHERE spell_id = <id>` |
 | Check all-rank mappings | `SELECT * FROM spell_script_names WHERE spell_id < 0 AND ScriptName LIKE '%name%'` |
 | Verify proc config | `SELECT * FROM spell_proc WHERE SpellId = <id>` |
@@ -258,9 +265,13 @@ python tools/new_spell_script.py --name spell_example --spell-ids 200100 --type 
 
 ### SQL Generator (`tools/gen_sql.py`)
 
-Generates idempotent SQL files from column overrides. Specify only what you want to change; the tool fetches the full base spell from the binary `Spell.dbc`, layers any existing `alonecraft_spell_dbc` overrides, applies your changes, and outputs a complete DELETE+INSERT file.
+Looks up spell data and generates idempotent SQL files. Reads the binary `Spell.dbc` directly (the authoritative source for all spell data), layers any existing `alonecraft_spell_dbc` overrides, and outputs results or SQL files.
 
 ```bash
+# Look up a spell's data (key fields)
+python tools/gen_sql.py lookup --spell-id 133
+python tools/gen_sql.py lookup --spell-id 133 --all
+
 # Modify a spell's DBC entry (only specify changed columns)
 python tools/gen_sql.py dbc --spell-id 33186 --set EffectBasePoints1=50 --set SpellName0="New Name"
 
@@ -279,7 +290,7 @@ python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --stdout
 python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --comment "Change to dummy effect"
 ```
 
-Subcommands: `dbc` (alonecraft_spell_dbc, 234 cols), `proc` (spell_proc, 16 cols), `script` (spell_script_names). Validates column names with fuzzy "did you mean?" suggestions on typos.
+Subcommands: `lookup` (read-only spell viewer), `dbc` (alonecraft_spell_dbc, 234 cols), `proc` (spell_proc, 16 cols), `script` (spell_script_names). Validates column names with fuzzy "did you mean?" suggestions on typos.
 
 ### Post-Build DB Verifier (`tools/verify_db.py`)
 
@@ -297,7 +308,7 @@ Integrated into `build_and_run.bat` as a post-start step (runs after 8s delay fo
 ## Verification Workflow
 
 After making C++ or SQL changes, verify with database queries (or run `python tools/verify_db.py`):
-1. **Spell data exists** — query `spell_dbc` for your spell ID
+1. **Spell data exists** — run `python tools/gen_sql.py lookup --spell-id <id>` to confirm the spell exists in the binary Spell.dbc
 2. **Script registration matches** — `spell_script_names.ScriptName` must exactly match the `SpellScriptLoader` constructor string (mismatch = script silently never runs)
 3. **Proc config** (if applicable) — check `spell_proc` flags and trigger conditions
 4. **SQL file was applied** — check the `updates` table for your filename
@@ -349,7 +360,7 @@ If `docs/wiki/` does not exist, the wiki has not been cloned yet — tell the us
 
 - [AzerothCore Wiki](https://www.azerothcore.org/wiki/home)
 - [World Database Tables](https://www.azerothcore.org/wiki/database-world)
-- [spell_dbc Table](https://www.azerothcore.org/wiki/spell_dbc)
+- [spell_dbc Table](https://www.azerothcore.org/wiki/spell_dbc) — server-side override table only, not the full spell database
 - [spell_script_names Table](https://www.azerothcore.org/wiki/spell_script_names)
 - [creature_template Table](https://www.azerothcore.org/wiki/creature_template)
 

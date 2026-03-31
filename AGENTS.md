@@ -221,9 +221,9 @@ For manual verification or debugging specific issues:
 
 ### 1. Verify spell data exists
 ```bash
-mysql -h 127.0.0.1 -u acore -pacore acore_world -e "SELECT ID, SpellName0, Effect0, EffectBasePoints0, EffectAura0 FROM spell_dbc WHERE ID = <your_spell_id>"
+python tools/gen_sql.py lookup --spell-id <your_spell_id>
 ```
-Confirm the spell ID exists and the effect/aura types match your script's expectations. Cross-reference column meanings with https://www.azerothcore.org/wiki/spell_dbc
+Confirm the spell ID exists in the binary Spell.dbc and the effect/aura types match your script's expectations. Do NOT query the `spell_dbc` MySQL table — it only contains server-side override spells, not the full spell database.
 
 ### 2. Verify spell_script_names mapping
 ```bash
@@ -249,7 +249,14 @@ Use the wiki links in the Documentation Links section below to confirm field mea
 
 ## DBC Data
 
-To look up spell data, query the `spell_dbc` table in the running database or use `gen_sql.py` which reads the binary Spell.dbc directly. The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
+To look up spell data, use `gen_sql.py lookup` which reads the binary Spell.dbc directly (all ~50,000 spells, 234 columns). The canonical column names and format constants live in `modules/world_of_alonecraft/dbc/spell_dbc.py`.
+
+```bash
+python tools/gen_sql.py lookup --spell-id <id>        # key fields
+python tools/gen_sql.py lookup --spell-id <id> --all   # all 234 columns
+```
+
+> **Do NOT query the `spell_dbc` MySQL table for spell lookups.** That table only contains server-side custom spells not found in the client DBC files — it is a tiny override table, not a comprehensive spell database. The binary Spell.dbc is the authoritative source for all spell data.
 
 ### DBC Build Pipeline
 
@@ -263,10 +270,10 @@ Client-side spell modifications (new spells, changed names/descriptions/effects 
 3. The MPQ goes into the WoW client `Data/` folder
 
 **Adding a new client-side spell (200000+ range):**
-1. Find a similar spell by querying `spell_dbc` or using `gen_sql.py --base`
+1. Find a similar spell using `python tools/gen_sql.py lookup --spell-id <id>` or using `gen_sql.py dbc --base`
 2. Write SQL: `DELETE FROM alonecraft_spell_dbc WHERE ID = <id>; INSERT INTO alonecraft_spell_dbc (...) VALUES (...);`
 3. Save as `modules/world_of_alonecraft/data/sql/db-world/YYYY_MM_DD_XX.sql`
-4. Also add server-side entries (`spell_dbc`, `spell_script_names`, `spell_proc`) as needed
+4. Also add server-side entries (`spell_script_names`, `spell_proc`) as needed
 5. Run: `cd modules/world_of_alonecraft/dbc && python build_dbc.py`
 
 **Modifying an existing spell for the client:**
@@ -297,13 +304,13 @@ Adding a brand new talent (not just redesigning an existing one) requires a new 
 ## Debugging Tips
 
 - Use `LOG_ERROR("scripts", "Debug message: {}", value);` for logging (not LOG_INFO in production)
-- Check spell IDs in the database or DBC files
+- Check spell IDs with `python tools/gen_sql.py lookup --spell-id <id>` (reads binary Spell.dbc)
 - ALWAYS validate spell info exists before using it
 - Test edge cases like spell immunity, line of sight, and range
 - Consider performance impact of frequently called hooks
 - Use Valgrind or similar tools to detect memory issues
 - Test with multiple players and combat scenarios
-- Query the database directly to verify spell data, script registrations, and SQL application — see "Database Query Reference" and "Verification Workflow" above
+- Use `gen_sql.py lookup` for spell data, and query the database for script registrations and SQL application — see "Database Query Reference" and "Verification Workflow" above
 
 ## Database Query Reference
 
@@ -320,8 +327,8 @@ Agents can query the live MySQL database to look up spell data and verify change
 
 | Purpose | Query |
 |---------|-------|
-| Look up spell by ID | `SELECT ID, SpellName0, Effect0, EffectBasePoints0, EffectAura0 FROM spell_dbc WHERE ID = 200035` |
-| Find spells by name | `SELECT ID, SpellName0 FROM spell_dbc WHERE SpellName0 LIKE '%Ice Lance%'` |
+| Look up spell by ID | `python tools/gen_sql.py lookup --spell-id 200035` (reads binary Spell.dbc) |
+| Look up spell (all columns) | `python tools/gen_sql.py lookup --spell-id 200035 --all` |
 | Verify script registration | `SELECT * FROM spell_script_names WHERE spell_id = 200035` |
 | Check all-rank mappings | `SELECT * FROM spell_script_names WHERE spell_id < 0 AND ScriptName LIKE '%ice_lance%'` |
 | Verify proc config | `SELECT * FROM spell_proc WHERE SpellId = 200035` |
@@ -347,7 +354,7 @@ Consult the wiki when writing SQL for unfamiliar tables or when you need to know
 
 - **[AzerothCore Wiki — Home](https://www.azerothcore.org/wiki/home)** — Main documentation index
 - **[World Database Tables](https://www.azerothcore.org/wiki/database-world)** — Reference for 200+ world DB tables
-- **[spell_dbc Table](https://www.azerothcore.org/wiki/spell_dbc)** — All 113+ columns of spell data (effects, auras, base values)
+- **[spell_dbc Table](https://www.azerothcore.org/wiki/spell_dbc)** — Server-side override table only (use `gen_sql.py lookup` to read all spells from binary Spell.dbc)
 - **[spell_script_names Table](https://www.azerothcore.org/wiki/spell_script_names)** — How C++ scripts bind to spell IDs
 - **[creature_template Table](https://www.azerothcore.org/wiki/creature_template)** — NPC/creature definitions
 - **Module Examples:** Study other AzerothCore modules in `modules/` for patterns

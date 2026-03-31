@@ -9,6 +9,8 @@ binary Spell.dbc, layers any existing database overrides, applies your
 changes, and outputs a complete DELETE+INSERT file.
 
 Usage:
+    python tools/gen_sql.py lookup --spell-id 133
+    python tools/gen_sql.py lookup --spell-id 133 --all
     python tools/gen_sql.py dbc --spell-id 33186 --set EffectBasePoints1=50 --set SpellName0="New Name"
     python tools/gen_sql.py dbc --spell-id 200100 --base 12345 --set SpellName0="Custom Spell"
     python tools/gen_sql.py proc --spell-id 200100 --set ProcFlags=65536 --set Chance=100
@@ -285,6 +287,90 @@ def write_or_print(sql_content, args):
 # Subcommand handlers
 # ---------------------------------------------------------------------------
 
+def cmd_lookup(args):
+    """Handle the 'lookup' subcommand -- display spell data from binary Spell.dbc."""
+    field_names = list(SPELL_COLUMNS)
+
+    print(f"  Loading Spell.dbc...")
+    dbc_index = load_spell_index(config.BASE_DBC_PATH)
+    print(f"  Loaded {len(dbc_index)} spells from Spell.dbc")
+
+    row = dbc_index.get(args.spell_id)
+    if row is None:
+        print(f"  ERROR: Spell {args.spell_id} not found in Spell.dbc.")
+        sys.exit(1)
+
+    # Layer alonecraft_spell_dbc override if available
+    try:
+        conn = get_db_connection()
+        existing = fetch_override(conn, args.spell_id)
+        conn.close()
+        if existing:
+            print(f"  Note: Spell {args.spell_id} has an override in alonecraft_spell_dbc (layered below).")
+            row = dict(row)
+            existing_lower = {k.lower(): v for k, v in existing.items()}
+            for col in field_names:
+                val = existing_lower.get(col.lower())
+                if val is not None:
+                    row[col] = val
+    except SystemExit:
+        print("  Warning: Could not connect to MySQL. Showing base DBC values only.")
+
+    # Key fields shown by default (names match SPELL_COLUMNS in spell_dbc.py)
+    KEY_FIELDS = [
+        "ID", "SpellName0", "SpellRank0", "SpellDescription0", "SpellToolTip0",
+        "Category", "Dispel", "Mechanic",
+        "Attributes", "AttributesEx", "AttributesEx2", "AttributesEx3",
+        "AttributesEx4", "AttributesEx5", "AttributesEx6", "AttributesEx7",
+        "CastingTimeIndex", "RecoveryTime", "CategoryRecoveryTime",
+        "ProcFlags", "ProcChance", "ProcCharges",
+        "MaximumLevel", "BaseLevel", "SpellLevel",
+        "DurationIndex", "PowerType", "ManaCost", "ManaCostPercentage",
+        "RangeIndex", "Speed", "StackAmount",
+        "Effect1", "Effect2", "Effect3",
+        "EffectDieSides1", "EffectDieSides2", "EffectDieSides3",
+        "EffectBasePoints1", "EffectBasePoints2", "EffectBasePoints3",
+        "EffectApplyAuraName1", "EffectApplyAuraName2", "EffectApplyAuraName3",
+        "EffectAmplitude1", "EffectAmplitude2", "EffectAmplitude3",
+        "EffectImplicitTargetA1", "EffectImplicitTargetA2", "EffectImplicitTargetA3",
+        "EffectImplicitTargetB1", "EffectImplicitTargetB2", "EffectImplicitTargetB3",
+        "EffectMiscValue1", "EffectMiscValue2", "EffectMiscValue3",
+        "EffectMiscValueB1", "EffectMiscValueB2", "EffectMiscValueB3",
+        "EffectTriggerSpell1", "EffectTriggerSpell2", "EffectTriggerSpell3",
+        "EffectMultipleValue1", "EffectMultipleValue2", "EffectMultipleValue3",
+        "EffectDamageMultiplier1", "EffectDamageMultiplier2", "EffectDamageMultiplier3",
+        "EffectBonusMultiplier1", "EffectBonusMultiplier2", "EffectBonusMultiplier3",
+        "EffectSpellClassMaskA1", "EffectSpellClassMaskA2", "EffectSpellClassMaskA3",
+        "EffectSpellClassMaskB1", "EffectSpellClassMaskB2", "EffectSpellClassMaskB3",
+        "EffectSpellClassMaskC1", "EffectSpellClassMaskC2", "EffectSpellClassMaskC3",
+        "SpellFamilyName", "SpellFamilyFlags", "SpellFamilyFlags1", "SpellFamilyFlags2",
+        "MaximumAffectedTargets", "DamageClass", "PreventionType", "SchoolMask",
+        "SpellIconID", "ActiveIconID",
+        "SpellVisual1", "SpellVisual2",
+        "EquippedItemClass", "EquippedItemSubClassMask", "EquippedItemInventoryTypeMask",
+    ]
+
+    print()
+    if args.all:
+        # Print every column
+        max_col = max(len(c) for c in field_names)
+        for col in field_names:
+            val = row.get(col, "")
+            if val is None:
+                val = ""
+            print(f"  {col:<{max_col}}  {val}")
+    else:
+        # Print key fields, skipping zero-value non-essential fields
+        cols_to_show = [c for c in KEY_FIELDS if c in row]
+        max_col = max(len(c) for c in cols_to_show) if cols_to_show else 30
+        for col in cols_to_show:
+            val = row.get(col, "")
+            if val is None:
+                val = ""
+            print(f"  {col:<{max_col}}  {val}")
+        print(f"\n  ({len(field_names)} total columns -- use --all to see everything)")
+
+
 def cmd_dbc(args):
     """Handle the 'dbc' subcommand."""
     field_names = list(SPELL_COLUMNS)
@@ -352,6 +438,12 @@ def main():
         description="Alonecraft SQL Generator -- produce idempotent SQL from column overrides",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # lookup subcommand
+    p_lookup = subparsers.add_parser("lookup", help="Look up spell data from binary Spell.dbc")
+    p_lookup.add_argument("--spell-id", type=int, required=True, help="Spell ID to look up")
+    p_lookup.add_argument("--all", action="store_true", help="Show all 234 columns (default: key fields only)")
+    p_lookup.set_defaults(func=cmd_lookup)
 
     # dbc subcommand
     p_dbc = subparsers.add_parser("dbc", help="Generate alonecraft_spell_dbc SQL")
