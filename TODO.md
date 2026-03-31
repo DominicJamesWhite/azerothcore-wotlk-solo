@@ -105,9 +105,9 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **On a Pale Horse (Renamed to Harvest of Souls):** Redesigned. Your Unholy Presence now drains life from diseased enemies, draining X life every Y seconds for each disease and transferring it to you.
 - [ ] **Desecration:** Your Blood Strikes and Blood Boil desecrate the ground under you. Targets in the area are slowed by X% by the grasping arms of the dead, and they take Y% more damage from your diseases. Lasts Zs.
 - [ ] **Magic Suppression (Renamed to Magic Siphon):** Redesigned. Your Anti-Magic Shell absorbs X% more damage from spells, and Y% of damage absorbed is returned to you as health.
-- [ ] **Anti-Magic Zone:** Max absorb removed. Reduction reduced to 50%.
+- [ ] **Anti-Magic Zone:** Max absorb removed. Reduction reduced by 50%.
 - [ ] **Improved Unholy Presence:** Swapping presences no longer costs runes. While in Unholy Presence your attack speed is increased by X%, and you retain your attack speed bonus in other presences.
-- [ ] **Bone Shield:** Redesigned. Auto-attacks have a chance to chip away enemy bones and add a charge. This effect can only occur once every three seconds.
+- [ ] **Bone Shield:**  Also gives your attacks a chance to chip away enemy bones and add a charge. This effect can only occur once every second.
 - [ ] **Summon Gargoyle (Renamed to Summon Abomination):** It’s an Abomination instead of a gargoyle because I hate that fucking thing.
 
 **Class Signature Skill:**
@@ -118,7 +118,7 @@ An attempt to make WOW better to play alone or in very small groups.
 **Class Changes:**
 - [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1) Also can use Balance spells. (4.2)
 
-**Spec Passives:**
+**Spec Themes:**
 - [ ] **Balance:** Summons healing trees.
 - [ ] **Feral:** Dodging restores rage and energy; swapping between forms increases armor (Bear) or Dodge (Cat).
 
@@ -148,7 +148,7 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ### Hunter
 
-**Spec Passives:**
+**Spec Themes:**
 - [ ] **Beast Mastery:** Pet armor and health is boosted.
 - [ ] **Marksmanship:** Your attacks reduce the damage taken by pets.
 - [ ] **Survival:** Traps reduce enemy damage.
@@ -212,7 +212,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Lightform (NEW):** Holy damage and healing increased. Shadow damage reduced by 95%. (4.35)
 
 **Talent Changes:**s
-- [ ] **Shadow Affinity:** Threat and dispel effect no longer affected. Instead increases healing and restores X% mana.
+- [x] **Shadow Affinity:** Threat and dispel effect no longer affected. Instead increases healing and restores X% mana. (4.43)
 
 - [x] **Healing Focus (Renamed to Monasticism):** The cost of your Holy damaging spells is reduced by X% (4.36)
 - [x] **Improved Renew (Renamed to Light of Prophecy):** Increase the amount healed by renew and the damage done by Penitent Mark by X%. (4.36)
@@ -244,10 +244,10 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ### Rogue
 
-**Spec Passives:**
-- [ ] **Assassination:** Poisons debilitate reducing damage done by enemies.
-- [ ] **Combat:** Lots of parries.
-- [ ] **Subtlety:** Lots of dodges and dummies.
+**Spec Themes:**
+- [ ] **Assassination:** Poisons debilitate reducing damage done by enemies to the rogue.
+- [ ] **Combat:** Lots of parries and dodges.
+- [ ] **Subtlety:** Bloodlust!.
 
 **Talent Changes:**
 - [ ] **Shadowstep:** Threat no longer affected. Instead reduces your chance to be hit.
@@ -258,7 +258,7 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ### Shaman
 
-**Spec Passives:**
+**Spec Themes:**
 - [ ] **Elemental:** Healing stream totem converts 10% of damage to healing.
 - [ ] **Enhancement:** Heal after dodging or parrying.
 
@@ -285,16 +285,16 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Warlock
 
 **Spell changes**
-- [ ] Soulstone now just applies the soulstone effect, no item creation.
-- [ ] Max of 32 Soul Shards in possession
+- [ ] Soulstone now just applies the soulstone effect to whoever you've targeted, no intermediate step of creating an item.
+- [ ] Soul shards stack but you have a max of 32.
 
-**Spec Passives:**
+**Spec Themes:**
 - [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel armor.
 - [ ] **Demonology:** Open demon portals for damage / tanking / healing help
 
 **Talent changes** 
 SWAP Emberstorm and Molten Skin positions 
-- [ ] **Ruin:** No longer afffects Imp. Instead critical hits on an Immolated target spread Immolate to nearby targets. 
+- [ ] **Ruin:** No longer afffects Imp. Instead critical hits on an targets with Immolate active spread Immolate to nearby targets (so long as those targets aren't CCed)
 - [ ] **Backlash:** Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health. 
 - [ ] **Intensity (Renamed to Burning Soul):** Critical hits from your fire spells have an X% chance to generate a Soul Shard. 
 - [ ] **Shadowburn:** Doesn't cost a Soul Shard anymore. Instead generates one, and another if the target dies. Longer cooldown.

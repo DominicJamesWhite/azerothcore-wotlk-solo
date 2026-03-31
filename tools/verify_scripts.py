@@ -22,20 +22,32 @@ MODULE_SRC = os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "src")
 MODULE_SQL = os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "data", "sql", "db-world")
 LOADER_FILE = os.path.join(MODULE_SRC, "MP_loader.cpp")
 
+# Scripts implemented in core (src/server/scripts/) but registered via module SQL.
+# These are intentional cross-boundary registrations — not typos.
+CORE_SCRIPT_WHITELIST = {
+    "spell_mage_burning_determination",
+}
+
 
 def extract_cpp_script_names(src_dir):
-    """Extract SpellScriptLoader("name") strings from all .cpp files (excluding MP_loader.cpp)."""
-    names = {}  # script_name -> file_path
-    pattern = re.compile(r'SpellScriptLoader\("([^"]+)"\)')
+    """Extract script names from all .cpp files (excluding MP_loader.cpp).
+
+    Detects both the older SpellScriptLoader("name") pattern and the newer
+    RegisterSpellScript(ClassName) pattern (where class name = script name).
+    """
+    names = {}  # script_name -> [file_path, ...]
+    loader_pattern = re.compile(r'SpellScriptLoader\("([^"]+)"\)')
+    register_pattern = re.compile(r'RegisterSpellScript\((\w+)\)\s*;')
 
     for cpp_file in glob.glob(os.path.join(src_dir, "*.cpp")):
         if os.path.basename(cpp_file) == "MP_loader.cpp":
             continue
         with open(cpp_file, "r", encoding="utf-8", errors="replace") as f:
             content = f.read()
-        for match in pattern.finditer(content):
-            name = match.group(1)
-            names.setdefault(name, []).append(os.path.basename(cpp_file))
+        for pattern in [loader_pattern, register_pattern]:
+            for match in pattern.finditer(content):
+                name = match.group(1)
+                names.setdefault(name, []).append(os.path.basename(cpp_file))
 
     return names
 
@@ -234,7 +246,8 @@ def main():
     # Check 2: SQL script names without C++ implementation
     for name, files in sorted(sql_script_names.items()):
         if name not in cpp_script_names:
-            # Check if it might be from the core (not our module)
+            if name in CORE_SCRIPT_WHITELIST:
+                continue  # Intentionally uses a core-provided script
             warnings.append(
                 f"[SQL -> C++] Script '{name}' registered in {', '.join(files)} "
                 f"has no SpellScriptLoader in module src/ -- may be a core script or typo"
