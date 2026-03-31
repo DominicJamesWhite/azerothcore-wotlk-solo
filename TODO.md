@@ -61,7 +61,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Unholy dk 
     - [ ]  Tuning
-- [ ] Blood dk
+- [x] Blood dk
     - [ ]  Tuning
 - [ ] Frost dk
     - [ ]  Tuning
@@ -81,37 +81,35 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Death Knight
 
 **Talent Changes:**
-- [ ] **Subversion:** Threat no longer affected. Instead increases parry.
-- [ ] **Improved Rune Tap:** Additionally Rune Tap increases your Heart Strike and Death Strike damage by X% for Ys.
-- [ ] **Vendetta (Renamed to Bloody Lesions):** Redesigned. Blood Boil now leaves your enemies with bleeding lesions, dealing X damage over Ys, and refreshes the duration of diseases on affected enemies.
-- [ ] **Mark of Blood:** Redesigned. Place a Mark of Blood on the enemy. X% of the healing you do to yourself is done to the marked enemy. Parrying an attack from a marked enemy opens them up for a counter-attack, increasing your armor penetration by X% for Ys.
-- [ ] **Improved Blood Presence:** Swapping presences no longer costs runes. While in Blood Presence you do an additional X% damage, and you retain your healing bonus in other presences.
-- [ ] **Will of the Necropolis:** Additionally, doing damage with Heart Strike increases your parry chance by X%. Stacks Y times.
-- [ ] **Runic Power Mastery:** Spending Runic Power has a chance to restore X% of your health. Additionally increases your maximum runic power by Y.
+- [x] **Subversion:** Threat no longer affected. Instead increases parry.
+- [x] **Improved Rune Tap:** Additionally Rune Tap increases your Heart Strike and Death Strike damage by X% for Ys. (4.46)
+- [x] **Vendetta (Renamed to Bloody Lesions):** Redesigned. Blood Boil now leaves your enemies with bleeding lesions, dealing X damage over Ys, and refreshes the duration of diseases on affected enemies. (4.46)
+- [x] **Mark of Blood:** Redesigned. Place a Mark of Blood on the enemy. X% of the healing you do to yourself is done to the marked enemy. Parrying an attack from a marked enemy opens them up for a counter-attack, increasing your armor penetration by X% for Ys. (4.46)
+- [x] **Improved Blood Presence:** Swapping presences no longer costs runes. While in Blood Presence you do an additional X% damage, and you retain your healing bonus in other presences. (4.46)
+- [x] **Will of the Necropolis:** Additionally, doing damage with Heart Strike increases your parry chance by X%. Stacks Y times. (4.46)
+- [x] **Runic Power Mastery:** Spending Runic Power has a chance to restore X% of your health. Additionally increases your maximum runic power by Y. (4.46)
 - [ ] **Chillblains:** Victims of your Frost Fever disease are Chilled, reducing movement speed by X% for 10 sec. When Frost Fever does damage to a Chilled target, there is a chance to drain X health from the target and transfer it to the Death Knight.
 - [ ] **Hungering Cold:** Purges the earth around the Death Knight of all heat. Enemies within 10 yards are trapped in ice, preventing them from performing any action for 10 sec and infecting them with Frost Fever. After they thaw, X health is drained from them and transferred to the Death Knight.
 - [ ] **Improved Frost Presence:** Swapping presences no longer costs runes. While in Frost Presence you take X% less damage, and you retain your armor bonus in other presences.
 - [ ] **Acclimation:** When you are hit by a spell, you have an X% chance to reduce the damage of spells from that school by Y% for Zs.
-- [ ] **Virulence:** Increases your chance to hit with spells by X% and increases the duration of your diseases by X seconds.
-- [ ] **Anticipation:** Increases your dodge chance and disease damage by X%.
+- [x] **Virulence:** Increases your chance to hit with spells by X% and increases the duration of your diseases by X seconds.
+- [x] **Anticipation:** Increases your dodge chance and disease damage by X%.
 - [ ] **Master of Ghouls:** Raise Dead summons Y additional ghouls and Army of the Dead raises twice as many undead soldiers.
 - [ ] **Hungry Dead:** Redesigned. Ghouls do X% more damage for each of your diseases on the target.
 - [ ] **Crypt Fever:** Your diseases cause Crypt Fever, increasing disease damage done to the target by X% and dealing Y damage over Zs.
 - [ ] **Ebon Plaguebringer:** Your diseases also cause Ebon Plague, increasing magical damage taken by X% and dealing Y damage over Zs.
 - [ ] **Epidemic:** For each of your diseases on an enemy, increase your shadow damage against them by X%.
 - [ ] **Unholy Blight:** Dispel protection is removed. Instead targets affected by Unholy Blight have a reduced chance to hit you.
-- [ ] **Unholy Command:** Reduces the cooldown on Death Grip by X%, and SOMETHING ELSE.
+- [x] **Unholy Command:** Reduces the cooldown on Death Grip by X%, and SOMETHING ELSE.
 - [ ] **Corpse Explosion (Renamed to Grim Prophecy):** Redesigned. Using Scourge Strike or Death Strike with a two-handed weapon has an X% chance to increase your parry chance by Y%.
 - [ ] **On a Pale Horse (Renamed to Harvest of Souls):** Redesigned. Your Unholy Presence now drains life from diseased enemies, draining X life every Y seconds for each disease and transferring it to you.
 - [ ] **Desecration:** Your Blood Strikes and Blood Boil desecrate the ground under you. Targets in the area are slowed by X% by the grasping arms of the dead, and they take Y% more damage from your diseases. Lasts Zs.
 - [ ] **Magic Suppression (Renamed to Magic Siphon):** Redesigned. Your Anti-Magic Shell absorbs X% more damage from spells, and Y% of damage absorbed is returned to you as health.
-- [ ] **Anti-Magic Zone:** Max absorb removed. Reduction reduced by 50%.
+- [x] **Anti-Magic Zone:** Max absorb removed. Reduction reduced by 50%.
 - [ ] **Improved Unholy Presence:** Swapping presences no longer costs runes. While in Unholy Presence your attack speed is increased by X%, and you retain your attack speed bonus in other presences.
 - [ ] **Bone Shield:**  Also gives your attacks a chance to chip away enemy bones and add a charge. This effect can only occur once every second.
 - [ ] **Summon Gargoyle (Renamed to Summon Abomination):** It’s an Abomination instead of a gargoyle because I hate that fucking thing.
 
-**Class Signature Skill:**
-- [ ] **Ossification:** Increases armor and parry by X% for Y seconds, and spending a rune with Ossification active heals you for X% of your health.
 
 ### Druid
 

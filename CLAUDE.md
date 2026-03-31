@@ -178,9 +178,13 @@ To look up spell data, use `gen_sql.py lookup` which reads the binary Spell.dbc 
 ```bash
 python tools/gen_sql.py lookup --spell-id <id>        # key fields
 python tools/gen_sql.py lookup --spell-id <id> --all   # all 234 columns
+python tools/gen_sql.py lookup --name "Fireball"       # search by spell name
+python tools/gen_sql.py talent --name "Subversion"     # find talent entry by name
 ```
 
 > **Do NOT query the `spell_dbc` MySQL table for spell lookups.** That table only contains server-side custom spells not found in the client DBC files — it is a tiny override table, not a comprehensive spell database. The binary Spell.dbc is the authoritative source for all spell data.
+>
+> **DBC lookups vs. database queries for research:** When investigating spells, talents, or class mechanics, always start with `gen_sql.py lookup`/`talent`/`classmask`/`enum` — these read the binary DBC files which contain the complete, authoritative spell data. The live MySQL database is useful for *verifying* that SQL was applied correctly (script registrations, proc entries, updates table), but is not the right tool for *discovering* spell data or researching mechanics.
 
 ### DBC Build Pipeline
 
@@ -230,6 +234,10 @@ New talents (not just redesigns of existing ones) require a new entry in Talent.
 |---------|-------|
 | Look up spell by ID | `python tools/gen_sql.py lookup --spell-id <id>` (reads binary Spell.dbc) |
 | Look up spell (all columns) | `python tools/gen_sql.py lookup --spell-id <id> --all` |
+| Search spells by name | `python tools/gen_sql.py lookup --name "Fireball"` |
+| Find talent by name | `python tools/gen_sql.py talent --name "Subversion"` |
+| Compute spell family mask | `python tools/gen_sql.py classmask --family 15 --spells 55078,55095` |
+| Look up aura/effect enum | `python tools/gen_sql.py enum --aura MOD_PARRY` |
 | Verify script registration | `SELECT * FROM spell_script_names WHERE spell_id = <id>` |
 | Check all-rank mappings | `SELECT * FROM spell_script_names WHERE spell_id < 0 AND ScriptName LIKE '%name%'` |
 | Verify proc config | `SELECT * FROM spell_proc WHERE SpellId = <id>` |
@@ -265,15 +273,26 @@ python tools/new_spell_script.py --name spell_example --spell-ids 200100 --type 
 
 ### SQL Generator (`tools/gen_sql.py`)
 
-Looks up spell data and generates idempotent SQL files. Reads the binary `Spell.dbc` directly (the authoritative source for all spell data), layers any existing `alonecraft_spell_dbc` overrides, and outputs results or SQL files.
+Looks up spell data and generates idempotent SQL files. Reads the binary `Spell.dbc` and `Talent.dbc` directly (the authoritative source for all spell/talent data), layers any existing `alonecraft_spell_dbc` overrides, and outputs results or SQL files.
 
 ```bash
 # Look up a spell's data (key fields)
 python tools/gen_sql.py lookup --spell-id 133
 python tools/gen_sql.py lookup --spell-id 133 --all
 
+# Search spells by name (substring match)
+python tools/gen_sql.py lookup --name "Fireball"
+python tools/gen_sql.py lookup --name "Fireball" --exact --limit 100
+
+# Look up talent entries by spell name (cross-references Talent.dbc + Spell.dbc)
+python tools/gen_sql.py talent --name "Subversion"
+
 # Modify a spell's DBC entry (only specify changed columns)
 python tools/gen_sql.py dbc --spell-id 33186 --set EffectBasePoints1=50 --set SpellName0="New Name"
+
+# Batch mode: modify multiple spells at once (single DBC load)
+python tools/gen_sql.py dbc --spell-ids 48997,49490,49491 --set EffectBasePoints1=5
+python tools/gen_sql.py dbc --input changes.csv    # CSV: spell_id,column,value
 
 # Create new custom spell based on an existing one
 python tools/gen_sql.py dbc --spell-id 200100 --base 12345 --set SpellName0="Custom Spell"
@@ -284,13 +303,27 @@ python tools/gen_sql.py proc --spell-id 200100 --set ProcFlags=65536 --set Chanc
 # Generate spell_script_names entry
 python tools/gen_sql.py script --spell-id "200100,-5176" --script-name spell_example
 
+# Compute SpellFamilyFlags mask for a set of spells
+python tools/gen_sql.py classmask --family 15 --spells 55078,55095
+
+# Look up aura/effect enum values by name
+python tools/gen_sql.py enum --aura MOD_PARRY
+python tools/gen_sql.py enum --effect APPLY_AURA
+
+# Use symbolic enum names in --set (auto-resolved to integers)
+python tools/gen_sql.py dbc --spell-id 200100 --set EffectApplyAuraName1=SPELL_AURA_MOD_PARRY_PERCENT
+
 # Preview or print to stdout
 python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --dry-run
 python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --stdout
 python tools/gen_sql.py dbc --spell-id 33186 --set Effect1=6 --comment "Change to dummy effect"
+
+# Group multiple outputs into one file
+python tools/gen_sql.py dbc --spell-id 48997 --set EffectBasePoints1=5 --append-to 2026_03_31_00.sql --group-comment "Subversion rank 1"
+python tools/gen_sql.py dbc --spell-id 49490 --set EffectBasePoints1=7 --append-to 2026_03_31_00.sql --group-comment "Subversion rank 2"
 ```
 
-Subcommands: `lookup` (read-only spell viewer), `dbc` (alonecraft_spell_dbc, 234 cols), `proc` (spell_proc, 16 cols), `script` (spell_script_names). Validates column names with fuzzy "did you mean?" suggestions on typos.
+Subcommands: `lookup` (spell viewer + name search), `talent` (talent lookup by name), `dbc` (alonecraft_spell_dbc, single or batch), `proc` (spell_proc), `script` (spell_script_names), `classmask` (SpellFamilyFlags computation), `enum` (aura/effect enum lookup). Validates column names with fuzzy "did you mean?" suggestions on typos. Enum names (`SPELL_AURA_*`, `SPELL_EFFECT_*`) are auto-resolved in `--set` arguments.
 
 ### Post-Build DB Verifier (`tools/verify_db.py`)
 
