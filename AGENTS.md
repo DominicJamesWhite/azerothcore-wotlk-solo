@@ -40,6 +40,16 @@ modules/world_of_alonecraft/
 └── README.md              # Module documentation
 ```
 
+### Design Philosophy: DBC-First, Minimal C++
+
+When implementing talent redesigns or new mechanics, follow this priority order:
+
+1. **DBC/SQL first.** Use `alonecraft_spell_dbc` overrides and `spell_proc` entries to handle as much as possible without C++. Change spell effects, aura types, proc flags, descriptions, and values in SQL.
+2. **Teach-two-spells pattern for complex talents.** When a talent needs both an active ability and a passive mechanic, create a learner spell (`SPELL_EFFECT_LEARN_SPELL`, type 36) that teaches both. Modify `talent_dbc` to point the talent at the learner. This keeps the active ability vanilla and isolates custom behavior in a hidden passive. Example: Bone Shield (talent 2007 → learner 200119 → teaches vanilla 49222 + hidden passive 200117).
+3. **Prefer AuraScript when C++ is needed.** Register AuraScripts on custom passive auras rather than overriding core spell scripts. This avoids replacing core behavior and reduces desync risk between the proc system and script logic.
+4. **Never override core `spell_script_names`** when avoidable. Replacing a core script means replicating all vanilla behavior and staying in sync with upstream. Instead, create a separate spell with its own script.
+5. **Never modify core files** (`src/server/scripts/`, `src/server/game/`). All Alonecraft changes live in `modules/world_of_alonecraft/`.
+
 ### Building Custom Scripts
 
 Use the scaffolder to generate all required files automatically:
