@@ -88,9 +88,9 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Improved Blood Presence:** Swapping presences no longer costs runes. While in Blood Presence you do an additional X% damage, and you retain your healing bonus in other presences. (4.46)
 - [x] **Will of the Necropolis:** Additionally, doing damage with Heart Strike increases your parry chance by X%. Stacks Y times. (4.46)
 - [x] **Runic Power Mastery:** Spending Runic Power has a chance to restore X% of your health. Additionally increases your maximum runic power by Y. (4.46)
-- [ ] **Chillblains:** Victims of your Frost Fever disease are Chilled, reducing movement speed by X% for 10 sec. When Frost Fever does damage to a Chilled target, there is a chance to drain X health from the target and transfer it to the Death Knight.
-- [ ] **Hungering Cold:** Purges the earth around the Death Knight of all heat. Enemies within 10 yards are trapped in ice, preventing them from performing any action for 10 sec and infecting them with Frost Fever. After they thaw, X health is drained from them and transferred to the Death Knight.
-- [ ] **Improved Frost Presence:** Swapping presences no longer costs runes. While in Frost Presence you take X% less damage, and you retain your armor bonus in other presences.
+- [x] **Chillblains:** Victims of your Frost Fever disease are Chilled, reducing movement speed by X% for 10 sec. When Frost Fever does damage to a Chilled target, there is a chance to drain X health from the target and transfer it to the Death Knight.
+- [x] **Hungering Cold:** Purges the earth around the Death Knight of all heat. Enemies within 10 yards are trapped in ice, preventing them from performing any action for 10 sec and infecting them with Frost Fever. After they thaw, X health is drained from them and transferred to the Death Knight.
+- [x] **Improved Frost Presence:** Swapping presences no longer costs runes. While in Frost Presence you take X% less damage, and you retain your armor bonus in other presences. (4.49)
 - [ ] **Acclimation:** When you are hit by a spell, you have an X% chance to reduce the damage of spells from that school by Y% for Zs.
 - [x] **Virulence:** Increases your chance to hit with spells by X% and increases the duration of your diseases by X seconds.
 - [x] **Anticipation:** Increases your dodge chance and disease damage by X%.
