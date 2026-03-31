@@ -747,6 +747,8 @@ class spell_dk_dancing_rune_weapon : public AuraScript
         else if (eventInfo.GetDamageInfo())
         {
             target = player->GetMeleeHitRedirectTarget(target);
+            if (!target)
+                return;
             CalcDamageInfo damageInfo;
             player->CalculateMeleeDamage(target, &damageInfo, eventInfo.GetDamageInfo()->GetAttackType());
             for (uint8 i = 0; i < MAX_ITEM_PROTO_DAMAGES; ++i)
@@ -776,7 +778,10 @@ class spell_dk_dancing_rune_weapon_visual : public AuraScript
     void HandleEffectApply(AuraEffect const*  /*aurEff*/, AuraEffectHandleModes /*mode*/)
     {
         PreventDefaultAction();
-        if (Unit* owner = GetUnitOwner()->ToTempSummon()->GetSummonerUnit())
+        TempSummon* tempSummon = GetUnitOwner()->ToTempSummon();
+        if (!tempSummon)
+            return;
+        if (Unit* owner = tempSummon->GetSummonerUnit())
         {
             GetUnitOwner()->SetUInt32Value(UNIT_VIRTUAL_ITEM_SLOT_ID, owner->GetUInt32Value(PLAYER_VISIBLE_ITEM_16_ENTRYID));
             GetUnitOwner()->SetUInt32Value(UNIT_VIRTUAL_ITEM_SLOT_ID + 1, owner->GetUInt32Value(PLAYER_VISIBLE_ITEM_17_ENTRYID));
