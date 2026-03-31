@@ -1,0 +1,3 @@
+[submodule "modules/world_of_alonecraft"]
+	path = modules/world_of_alonecraft
+	url = https://github.com/DominicJamesWhite/world_of_alonecraft.git
