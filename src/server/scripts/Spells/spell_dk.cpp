@@ -117,7 +117,8 @@ enum DeathKnightSpellIcons
     DK_ICON_ID_NECROSIS                         = 2709,
     DK_ICON_ID_THREAT_OF_THASSARIAN             = 2023,
     DK_ICON_ID_SUDDEN_DOOM                      = 1939,
-    DK_ICON_ID_EPIDEMIC                         = 234
+    DK_ICON_ID_EPIDEMIC                         = 234,
+    DK_ICON_ID_VIRULENCE                        = 208
 };
 
 enum Misc
@@ -2971,9 +2972,9 @@ class spell_dk_glyph_of_scourge_strike_script : public SpellScript
 
                 // this Glyph
                 countMax += 9000;
-                // talent Epidemic
-                if (AuraEffect const* epidemic = caster->GetAuraEffect(SPELL_AURA_ADD_FLAT_MODIFIER, SPELLFAMILY_DEATHKNIGHT, DK_ICON_ID_EPIDEMIC, EFFECT_0))
-                    countMax += epidemic->GetAmount();
+                // talent Virulence (disease duration bonus on effect 2)
+                if (AuraEffect const* virulence = caster->GetAuraEffect(SPELL_AURA_ADD_FLAT_MODIFIER, SPELLFAMILY_DEATHKNIGHT, DK_ICON_ID_VIRULENCE, EFFECT_2))
+                    countMax += virulence->GetAmount();
 
                 if (countMin < countMax)
                 {

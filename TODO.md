@@ -98,7 +98,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Hungry Dead:** Redesigned. Ghouls do X% more damage for each of your diseases on the target.
 - [ ] **Crypt Fever:** Your diseases cause Crypt Fever, increasing disease damage done to the target by X% and dealing Y damage over Zs.
 - [ ] **Ebon Plaguebringer:** Your diseases also cause Ebon Plague, increasing magical damage taken by X% and dealing Y damage over Zs.
-- [ ] **Epidemic:** For each of your diseases on an enemy, increase your shadow damage against them by X%.
+- [x] **Epidemic:** For each of your diseases on an enemy, increase your shadow damage against them by 8/15%.
 - [ ] **Unholy Blight:** Dispel protection is removed. Instead targets affected by Unholy Blight have a reduced chance to hit you.
 - [x] **Unholy Command:** Reduces the cooldown on Death Grip by X%, and SOMETHING ELSE.
 - [ ] **Corpse Explosion (Renamed to Grim Prophecy):** Redesigned. Using Scourge Strike or Death Strike with a two-handed weapon has an X% chance to increase your parry chance by Y%.
