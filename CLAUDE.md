@@ -170,6 +170,37 @@ When implementing talent redesigns or new mechanics, prefer this architecture:
 - **Custom spell IDs** use the **200000+** range.
 - **Negative spell IDs** in `spell_script_names` apply to all ranks of a spell (e.g., `-5176` matches all ranks of Wrath).
 
+### DBC spell field pitfalls
+
+**Tooltip variables:** `$s1` = BasePoints + max(1, DieSides) (always adds at least 1). Use `$m1` to show raw BasePoints. If you want the tooltip to display the exact BasePoints value, use `$m1`, not `$s1`.
+
+**SpellClassMask inheritance:** When cloning a spell via `gen_sql.py dbc --base`, ALL fields are copied including SpellClassMask for unused effects. If you add a new effect (e.g., Effect2), explicitly zero out its SpellClassMaskB/C if the base spell had values there, or the mask will silently fail to match target spells.
+
+### SummonProperties.dbc
+
+The binary DBC at `Azerothcore Vanilla Data/dbc/SummonProperties.dbc` has 6 fields: ID, Control (Category), Faction, Title (Type), Slot, Flags. See `docs/wiki/docs/summonproperties_dbc.md` for field documentation.
+
+Key rules:
+- **Slot > 0** limits summons to one per slot — additional casts replace the existing summon, not add more.
+- Only specific SummonProperties IDs support multi-summon (`numSummons = damage`) — whitelisted in `SpellEffects.cpp:2373`. Use **713** (Bloodworms pattern) for guardian multi-summon with no slot limit.
+- **ImplicitTarget matters for summons:** Spells using `TARGET_DEST_DEST` (87) require a pre-set destination via `SpellCastTargets::SetDst()`. Use `TARGET_DEST_CASTER` (18) for self-resolving summon positioning.
+
+### Spell modifier MiscValues (ADD_FLAT/PCT_MODIFIER auras)
+
+The MiscValue field maps to `SpellModOp` in `SpellDefines.h`:
+
+| Value | Enum | What it modifies |
+|-------|------|-----------------|
+| 0 | SPELLMOD_DAMAGE | Direct damage |
+| 1 | SPELLMOD_DURATION | Spell/aura duration |
+| 10 | SPELLMOD_CASTING_TIME | Cast time |
+| 11 | SPELLMOD_COOLDOWN | Spell cooldown |
+| 14 | SPELLMOD_COST | Mana/resource cost |
+| 19 | SPELLMOD_ACTIVATION_TIME | **Periodic tick amplitude** |
+| 22 | SPELLMOD_DOT | Periodic damage |
+
+To modify a channeled spell's tick rate, use **ADD_FLAT_MODIFIER** (not PCT) with MiscValue=**19** (SPELLMOD_ACTIVATION_TIME). Value is in milliseconds (e.g., -250 to reduce 500ms ticks to 250ms). This is how Missile Barrage (44401) speeds up Arcane Missiles.
+
 ### Script type capabilities
 
 | Script Type | Damage Handling | Spell Handling | Validation |
