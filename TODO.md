@@ -100,14 +100,14 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Crypt Fever:** Your diseases cause Crypt Fever, increasing disease damage done to the target by X% and dealing Y damage (50% of Blood Plague) every 3 seconds.
 - [x] **Ebon Plaguebringer:** Your diseases also cause Ebon Plague, increasing magical damage taken by X% and dealing Y damage (50% of Frost Fever) every 3 seconds.
 - [x] **Epidemic:** For each of your diseases on an enemy, increase your shadow damage against them by 8/15%.
-- [ ] **Unholy Blight:** Dispel protection is removed. Instead targets affected by Unholy Blight have a reduced chance to hit (shared with Imp Faerie Fire, etc.)
+- [x] **Unholy Blight:** Dispel protection is removed. Instead targets affected by Unholy Blight have a reduced chance to hit (shared with Imp Faerie Fire, etc.) (4.57)
 - [x] **Unholy Command:** Reduces the cooldown on Death Grip by X%, and SOMETHING ELSE.
 - [x] **Corpse Explosion (Renamed to Grim Prophecy):** Redesigned. Using Scourge Strike or Death Strike with a two-handed weapon has a 30% chance to increase your dodge chance by 5%.
 - [x] **On a Pale Horse (Renamed to Harvest of Souls):** Redesigned. Your Death Strike now drains life from diseased enemies within 15 yards, draining (~blood plague damage per tick) life every 5 seconds for each disease and transferring it to you. (This should be a new disease applied when Death Strike hits, added to nearby enemies)
-- [ ] **Desecration:** Your Blood Strikes and Blood Boil desecrate the ground under you. Targets in the area are slowed by X% by the grasping arms of the dead, and they take Y% more damage from your diseases. Lasts Zs.
+- [x] **Desecration:** Your Blood Strikes and Blood Boil desecrate the ground under you. Targets in the area are slowed by X% by the grasping arms of the dead, and they take Y% more damage from your diseases. Lasts Zs. (4.57)
 - [x] **Magic Suppression (Renamed to Magic Siphon):** Redesigned. Your Anti-Magic Shell absorbs an additional 8/16/25% of spell damage, and 10/20/30% of damage absorbed is returned to you as health.
 - [x] **Anti-Magic Zone:** Max absorb removed. Reduction reduced by 50%.
-- [ ] **Improved Unholy Presence:** Swapping presences no longer costs runes. While in Unholy Presence your attack speed is increased by X%, and you retain your attack speed bonus in other presences.
+- [x] **Improved Unholy Presence:** Swapping presences no longer costs runes. While in Unholy Presence your attack speed is increased by X%, and you retain your attack speed bonus in other presences. (4.57)
 - [x] **Bone Shield:**  Also your auto-attacks chip away enemy bones and add a charge. This effect can only occur once every second.
 - [x] **Summon Gargoyle (Renamed to Summon Reanimated Sorceror):** It’s an necromancer model (NPC ID 31155) instead of a gargoyle because I hate that fucking thing.
 
