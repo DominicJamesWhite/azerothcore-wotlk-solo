@@ -109,7 +109,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Anti-Magic Zone:** Max absorb removed. Reduction reduced by 50%.
 - [ ] **Improved Unholy Presence:** Swapping presences no longer costs runes. While in Unholy Presence your attack speed is increased by X%, and you retain your attack speed bonus in other presences.
 - [x] **Bone Shield:**  Also your auto-attacks chip away enemy bones and add a charge. This effect can only occur once every second.
-- [ ] **Summon Gargoyle (Renamed to Summon Abomination):** It’s an Abomination instead of a gargoyle because I hate that fucking thing.
+- [x] **Summon Gargoyle (Renamed to Summon Reanimated Sorceror):** It’s an necromancer model (NPC ID 31155) instead of a gargoyle because I hate that fucking thing.
 
 
 ### Druid
