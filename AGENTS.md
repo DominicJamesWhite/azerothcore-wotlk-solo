@@ -360,6 +360,16 @@ Adding a brand new talent (not just redesigning an existing one) requires a new 
 
 **Buff tooltip field:** When creating buff spells (visible in the player's buff bar), set `SpellToolTip0` — not just `SpellDescription0`. The description shows in the spellbook/talent tree, but the tooltip shows when hovering over the buff icon in-game.
 
+### DBC field pitfalls
+
+**EffectBasePoints and the +1 rule:** The WoW client (and server CalcValue) always computes `BasePoints + max(1, DieSides)`. Even with `DieSides=0`, the displayed and runtime value is **BasePoints + 1**. To show "10%" in a tooltip, set `EffectBasePoints = 9`. Both `$s1` and `$m1` tooltip variables apply this +1. The server's `AuraEffect::GetAmount()` also returns BasePoints+1, so C++ scripts reading the amount will get the correct post-+1 value — just make sure the BasePoints in SQL is N-1 for intended value N.
+
+**SpellClassMask inheritance when cloning:** When creating a new spell via `gen_sql.py dbc --base`, ALL 234 columns are copied from the base spell — including SpellClassMask fields for effects you didn't intend to use. If you add a new Effect2, the base spell's `EffectSpellClassMaskB2`/`C2` values carry over silently. This causes spell modifier matching to fail because the mask requires bits the target spell doesn't have. Always explicitly zero out SpellClassMask fields for newly-added effects.
+
+**SummonProperties and multi-summon:** Summoning spells use `EffectMiscValueB` to reference SummonProperties.dbc. Two critical fields: (1) **Slot** — if Slot > 0, only one summon can exist in that slot; additional casts replace rather than add. (2) **Multi-summon whitelist** — only specific SummonProperties IDs (listed in `SpellEffects.cpp:2373`) respect `EffectBasePoints` for spawning multiple creatures. Use SummonProperties **713** (Bloodworms) for guardian multi-summon with no slot limit. See `docs/wiki/docs/summonproperties_dbc.md` for field documentation. Read the binary DBC with a Python script to check specific property values.
+
+**Spell modifier MiscValues:** `ADD_FLAT_MODIFIER` (aura 107) and `ADD_PCT_MODIFIER` (aura 108) use `EffectMiscValue` to select which spell parameter to modify, mapped to `SpellModOp` in `SpellDefines.h`. Common values: 0=DAMAGE, 1=DURATION, 10=CASTING_TIME, 11=COOLDOWN, 14=COST, **19=ACTIVATION_TIME** (periodic tick amplitude), 22=DOT. To modify a channeled spell's tick rate, use `ADD_FLAT_MODIFIER` with MiscValue=**19**. The value is in milliseconds (e.g., -250 reduces 500ms ticks to 250ms). This is how Missile Barrage (44401) speeds up Arcane Missiles. Note: `ADD_PCT_MODIFIER` does NOT work for SPELLMOD_ACTIVATION_TIME — use FLAT only.
+
 ## Debugging Tips
 
 - Use `LOG_ERROR("scripts", "Debug message: {}", value);` for logging (not LOG_INFO in production)
