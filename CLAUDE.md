@@ -172,7 +172,7 @@ When implementing talent redesigns or new mechanics, prefer this architecture:
 
 ### DBC spell field pitfalls
 
-**Tooltip variables:** `$s1` = BasePoints + max(1, DieSides) (always adds at least 1). Use `$m1` to show raw BasePoints. If you want the tooltip to display the exact BasePoints value, use `$m1`, not `$s1`.
+**Tooltip variables:** Both `$s1` and `$m1` add 1 to BasePoints (CalcValue = BasePoints + max(1, DieSides)). To display a value of N in the tooltip, set BasePoints to **N-1**. There is no tooltip variable that shows raw BasePoints without adding 1.
 
 **SpellClassMask inheritance:** When cloning a spell via `gen_sql.py dbc --base`, ALL fields are copied including SpellClassMask for unused effects. If you add a new effect (e.g., Effect2), explicitly zero out its SpellClassMaskB/C if the base spell had values there, or the mask will silently fail to match target spells.
 
@@ -199,7 +199,7 @@ The MiscValue field maps to `SpellModOp` in `SpellDefines.h`:
 | 19 | SPELLMOD_ACTIVATION_TIME | **Periodic tick amplitude** |
 | 22 | SPELLMOD_DOT | Periodic damage |
 
-To modify a channeled spell's tick rate, use **ADD_FLAT_MODIFIER** (not PCT) with MiscValue=**19** (SPELLMOD_ACTIVATION_TIME). Value is in milliseconds (e.g., -250 to reduce 500ms ticks to 250ms). This is how Missile Barrage (44401) speeds up Arcane Missiles.
+To modify a channeled spell's tick rate, use **ADD_FLAT_MODIFIER** (not PCT) with MiscValue=**19** (SPELLMOD_ACTIVATION_TIME). Value is in milliseconds (e.g., -250 to reduce 500ms ticks to 250ms). This is how Missile Barrage (44401) speeds up Arcane Missiles. `ADD_PCT_MODIFIER` does NOT work for SPELLMOD_ACTIVATION_TIME — use FLAT only.
 
 ### Script type capabilities
 
