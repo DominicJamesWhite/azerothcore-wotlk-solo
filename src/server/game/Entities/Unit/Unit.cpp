@@ -6116,6 +6116,7 @@ uint32 Unit::GetDiseasesByCaster(ObjectGuid casterGUID, uint8 mode)
     if (Player* playerCaster = ObjectAccessor::GetPlayer(*this, casterGUID))
         drwGUID = playerCaster->getRuneWeaponGUID();
 
+    std::set<uint32> seenSpells;
     uint32 diseases = 0;
     for (uint8 index = 0; diseaseAuraTypes[index] != SPELL_AURA_NONE; ++index)
     {
@@ -6125,7 +6126,10 @@ uint32 Unit::GetDiseasesByCaster(ObjectGuid casterGUID, uint8 mode)
             if ((*i)->GetSpellInfo()->Dispel == DISPEL_DISEASE
                     && ((*i)->GetCasterGUID() == casterGUID || (*i)->GetCasterGUID() == drwGUID)) // if its caster or his dancing rune weapon
             {
-                ++diseases;
+                // Count each disease spell only once (a spell may have multiple
+                // aura effects that appear in different diseaseAuraTypes lists).
+                if (seenSpells.insert((*i)->GetId()).second)
+                    ++diseases;
 
                 if (mode == 1)
                 {

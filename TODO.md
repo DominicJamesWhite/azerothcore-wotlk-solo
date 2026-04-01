@@ -96,13 +96,13 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Anticipation:** Increases your dodge chance and disease damage by X%.
 - [ ] **Master of Ghouls:** Raise Dead summons Y additional ghouls and Army of the Dead raises twice as many undead soldiers.
 - [ ] **Hungry Dead:** Redesigned. Ghouls do X% more damage for each of your diseases on the target.
-- [ ] **Crypt Fever:** Your diseases cause Crypt Fever, increasing disease damage done to the target by X% and dealing Y damage over Zs.
-- [ ] **Ebon Plaguebringer:** Your diseases also cause Ebon Plague, increasing magical damage taken by X% and dealing Y damage over Zs.
+- [x] **Crypt Fever:** Your diseases cause Crypt Fever, increasing disease damage done to the target by X% and dealing Y damage (50% of Blood Plague) every 3 seconds.
+- [x] **Ebon Plaguebringer:** Your diseases also cause Ebon Plague, increasing magical damage taken by X% and dealing Y damage (50% of Frost Fever) every 3 seconds.
 - [x] **Epidemic:** For each of your diseases on an enemy, increase your shadow damage against them by 8/15%.
 - [ ] **Unholy Blight:** Dispel protection is removed. Instead targets affected by Unholy Blight have a reduced chance to hit (shared with Imp Faerie Fire, etc.)
 - [x] **Unholy Command:** Reduces the cooldown on Death Grip by X%, and SOMETHING ELSE.
 - [x] **Corpse Explosion (Renamed to Grim Prophecy):** Redesigned. Using Scourge Strike or Death Strike with a two-handed weapon has a 30% chance to increase your dodge chance by 5%.
-- [ ] **On a Pale Horse (Renamed to Harvest of Souls):** Redesigned. Your Unholy Presence now drains life from diseased enemies, draining X life every Y seconds for each disease and transferring it to you.
+- [ ] **On a Pale Horse (Renamed to Harvest of Souls):** Redesigned. Your Death Strike now drains life from diseased enemies within 15 yards, draining X life every Y seconds for each disease and transferring it to you.
 - [ ] **Desecration:** Your Blood Strikes and Blood Boil desecrate the ground under you. Targets in the area are slowed by X% by the grasping arms of the dead, and they take Y% more damage from your diseases. Lasts Zs.
 - [x] **Magic Suppression (Renamed to Magic Siphon):** Redesigned. Your Anti-Magic Shell absorbs an additional 8/16/25% of spell damage, and 10/20/30% of damage absorbed is returned to you as health.
 - [x] **Anti-Magic Zone:** Max absorb removed. Reduction reduced by 50%.
