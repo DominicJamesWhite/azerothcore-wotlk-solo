@@ -176,6 +176,12 @@ When implementing talent redesigns or new mechanics, prefer this architecture:
 
 **SpellClassMask inheritance:** When cloning a spell via `gen_sql.py dbc --base`, ALL fields are copied including SpellClassMask for unused effects. If you add a new effect (e.g., Effect2), explicitly zero out its SpellClassMaskB/C if the base spell had values there, or the mask will silently fail to match target spells.
 
+### spell_proc pitfalls
+
+**SpellPhaseMask must be non-zero.** A `spell_proc` entry with `SpellPhaseMask = 0` silently never triggers — no error, no warning. Always set it to **2** (`PROC_SPELL_PHASE_HIT`) for standard proc behavior. Reference patterns:
+- Positive magic heals: `ProcFlags = 0x4000` (`DONE_SPELL_MAGIC_DMG_CLASS_POS`), `SpellPhaseMask = 2` (e.g., Serendipity -63730)
+- Negative magic spells: `ProcFlags = 0x10000` (`DONE_SPELL_MAGIC_DMG_CLASS_NEG`), `SpellPhaseMask = 2` (e.g., Empowered Touch -33879)
+
 ### SummonProperties.dbc
 
 The binary DBC at `Azerothcore Vanilla Data/dbc/SummonProperties.dbc` has 6 fields: ID, Control (Category), Faction, Title (Type), Slot, Flags. See `docs/wiki/docs/summonproperties_dbc.md` for field documentation.
@@ -200,6 +206,19 @@ The MiscValue field maps to `SpellModOp` in `SpellDefines.h`:
 | 22 | SPELLMOD_DOT | Periodic damage |
 
 To modify a channeled spell's tick rate, use **ADD_FLAT_MODIFIER** (not PCT) with MiscValue=**19** (SPELLMOD_ACTIVATION_TIME). Value is in milliseconds (e.g., -250 to reduce 500ms ticks to 250ms). This is how Missile Barrage (44401) speeds up Arcane Missiles. `ADD_PCT_MODIFIER` does NOT work for SPELLMOD_ACTIVATION_TIME — use FLAT only.
+
+### "Next spell" consumption buffs (ProcCharges pattern)
+
+To create a buff that modifies the next cast of a specific spell and then is consumed, use `ADD_FLAT_MODIFIER` or `ADD_PCT_MODIFIER` (aura 107/108) with:
+- **SpellClassMask** targeting the desired spells (e.g., Lightning Bolt, Wrath)
+- **SpellFamilyName** matching the class (e.g., 11 = Shaman, 7 = Druid)
+- **ProcCharges = 1**
+
+The engine auto-consumes the charge when the modifier matches a cast. No `spell_proc` entry or C++ needed.
+
+**Do NOT use** `SPELL_AURA_MOD_SPELL_CRIT_CHANCE` (aura 57) or other global stat auras for this pattern — they have no SpellClassMask, so the engine never "matches" them against a cast and charges are never consumed.
+
+Reference implementations: Gift of Nature buff (200004), Ancestral Fury (200210).
 
 ### Script type capabilities
 
