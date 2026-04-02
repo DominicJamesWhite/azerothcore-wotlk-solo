@@ -23,9 +23,9 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Feral druid 
     - [ ]  Tuning
-- [ ] Resto Shaman 
+- [x] Resto Shaman 
     - [ ]  Tuning
-- [ ] Enh shaman 
+- [x] Enh shaman 
     - [ ]  Tuning
 - [ ] Ele shaman 
     - [ ]  Tuning
