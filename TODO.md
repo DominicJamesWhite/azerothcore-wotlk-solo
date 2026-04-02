@@ -31,9 +31,9 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [x] Holy priest 
     - [ ]  Tuning
-- [] Disc priest
+- [x] Disc priest
     - [ ]  Tuning
-- [ ] Shadow priest
+- [x] Shadow priest
     - [ ]  Tuning
 - [x] Holy paladin 
     - [ ]  Tuning
@@ -59,23 +59,17 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Combat rogue
     - [ ]  Tuning
-- [ ] Unholy dk 
+- [x] Unholy dk 
     - [ ]  Tuning
 - [x] Blood dk
     - [ ]  Tuning
-- [ ] Frost dk
+- [x] Frost dk
     - [ ]  Tuning
 - [ ] MM hunter
     - [ ]  Tuning
 - [ ] BM hunter
     - [ ]  Tuning
 - [ ] Surv hunter
-    - [ ]  Tuning
-- [ ] Sub rogue 
-    - [ ]  Tuning
-- [ ] Ass rogue
-    - [ ]  Tuning
-- [ ] Combat rogue
     - [ ]  Tuning
 
 ### Death Knight
@@ -264,10 +258,10 @@ An attempt to make WOW better to play alone or in very small groups.
 **Talent Changes:**
 - [ ] **Elemental Precision:** Threat no longer affected. Instead increases your critical chance.
 - [ ] **Healing Grace:** Threat no longer affected. Instead gives your healing spells an additional X% chance to crit.
-- [ ] **Spirit Weapons:** Threat no longer affected. Instead increases your parry chance by X% of your agility.
+- [ ] **Spirit Weapons:** Threat no longer affected. Instead increases your parry chance by X% of your agility (like the DK equivalent with strength)
 - [ ] **Tidal Focus:** Reduces the mana cost of your healing spells by X%, and reduces their casting time by Xs.
 - [ ] **Focused Mind:** Casting Healing Wave, Lesser Healing Wave or Chain Heal clears your mind, making your next Lightning Bolt or Chain Lightning deal X% more damage and cost Y% less mana.
-- [ ] **Healing Focus:** Your shock spells have an X% chance to make Healing Wave free and instant cast. Additionally, casting a heal on a shielded target increases the damage of your next 5 casts by X%.
+- [ ] **Healing Focus:** Your shock spells have an X% chance to make Healing Wave free and instant cast. Additionally, casting a heal on a target with your Earth Shield, Water Shield or Lightning Shield, increases the damage of your next cast by 25%.
 - [ ] **Improved Reincarnation (Renamed to Defence of Nature):** Your Water Shield, Earth Shield and Lightning Shield have a X% chance to cleanse the earth around you, dealing X damage over Y seconds to all enemies within 15 yards.
 - [ ] **Ancestral Awakening:** Additionally the Ancestral spirit increases the critical strike chance of your next damaging spell by 100%.
 - [ ] **Natures Guardian:** Redesigned. All your totems summon lesser elemental guardians to aid and protect you. Additionally the cooldowns on your Earth Elemental totem and Fire Elemental totem are reduced by X%, and their damage is increased by X%.
@@ -278,9 +272,6 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Tidal Waves:** Casting Chain Lightning, Lightning Bolt or Lava Burst increases the critical strike chance of Healing Wave, Lesser Healing Wave and Chain Heal by X%. In addition, your damage and healing spells permanently gain an additional 20% of your spellpower.
 - [ ] **Riptide:** Heals a friendly target or damages an enemy target for 639 to 691 and another 665 over 15 sec. Your next Chain Heal or Chain Lightning cast on that primary target within 15 sec will consume the over time effect and increase the amount of the Chain Heal or Chain Lightning by 25%.
 
-**Class Signature Skill:**
-- [ ] **Blessing of the Ancestors:** Massively boost effects of totems temporarily.
-
 ### Warlock
 
 **Spell changes**
@@ -288,12 +279,12 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] Soul shards stack but you have a max of 32.
 
 **Spec Themes:**
-- [ ] **Affliction:** Leech leech leech, vast amounts of HPS and stagger mechanic on Fel armor.
-- [ ] **Demonology:** Open demon portals for damage / tanking / healing help
+- [ ] **Affliction:** Leech leech leech, vast amounts of HPS and damage stagger mechanic on Fel armor.
+- [ ] **Demonology:** Open demon portals for damage / tanking / healing help, demon skin and demon armour are massively boosted
 
 **Talent changes** 
 SWAP Emberstorm and Molten Skin positions 
-- [ ] **Ruin:** No longer afffects Imp. Instead critical hits on an targets with Immolate active spread Immolate to nearby targets (so long as those targets aren't CCed)
+- [ ] **Ruin:** No longer afffects Imp. Instead critical hits on an targets with Immolate active spread Immolate to nearby targets (so long as those targets aren't CCed with something that breaks on damage)
 - [ ] **Backlash:** Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health. 
 - [ ] **Intensity (Renamed to Burning Soul):** Critical hits from your fire spells have an X% chance to generate a Soul Shard. 
 - [ ] **Shadowburn:** Doesn't cost a Soul Shard anymore. Instead generates one, and another if the target dies. Longer cooldown.
@@ -302,5 +293,5 @@ SWAP Emberstorm and Molten Skin positions
 - [ ] **Demonic Power (Renamed to Molten Rain):** Rain of Fire has an X% chance to generate a Soul Shard from each enemy hit.  
 - [ ] **Destructive Reach:** Threat no longer reduced. Fire damage increased by X%. 
 - [ ] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 15% for 10 seconds. Max 3 stacks. 
-- [ ] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 30% chance to return health equal to 200% of the damage caused. 
+- [ ] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 15% chance to return health equal to 200% of the damage caused. 
 - [ ] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken and increasing the critical effect chance of your spells by 1% for each Soul Shard in your possession. 
