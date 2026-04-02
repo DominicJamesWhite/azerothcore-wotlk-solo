@@ -256,21 +256,21 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] **Enhancement:** Heal after dodging or parrying.
 
 **Talent Changes:**
-- [ ] **Elemental Precision:** Threat no longer affected. Instead increases your critical chance.
-- [ ] **Healing Grace:** Threat no longer affected. Instead gives your healing spells an additional X% chance to crit.
-- [ ] **Spirit Weapons:** Threat no longer affected. Instead increases your parry chance by X% of your agility (like the DK equivalent with strength)
-- [ ] **Tidal Focus:** Reduces the mana cost of your healing spells by X%, and reduces their casting time by Xs.
-- [ ] **Focused Mind:** Casting Healing Wave, Lesser Healing Wave or Chain Heal clears your mind, making your next Lightning Bolt or Chain Lightning deal X% more damage and cost Y% less mana.
-- [ ] **Healing Focus:** Your shock spells have an X% chance to make Healing Wave free and instant cast. Additionally, casting a heal on a target with your Earth Shield, Water Shield or Lightning Shield, increases the damage of your next cast by 25%.
-- [ ] **Improved Reincarnation (Renamed to Defence of Nature):** Your Water Shield, Earth Shield and Lightning Shield have a X% chance to cleanse the earth around you, dealing X damage over Y seconds to all enemies within 15 yards.
-- [ ] **Ancestral Awakening:** Additionally the Ancestral spirit increases the critical strike chance of your next damaging spell by 100%.
-- [ ] **Natures Guardian:** Redesigned. All your totems summon lesser elemental guardians to aid and protect you. Additionally the cooldowns on your Earth Elemental totem and Fire Elemental totem are reduced by X%, and their damage is increased by X%.
-- [ ] **Healing Way:** Your Healing Wave and Lesser Healing Wave spells chances to critically hit are increased by X%. Additionally, casting Healing Wave or Lesser Healing Wave on yourself increases your damage by X% and reduces the cooldown on Chain Lightning by Xs for X seconds.
-- [ ] **Purification:** Additionally, when Earthliving Weapon heals you have an X% chance to reset the cooldown on your shock spells.
-- [ ] **Nature’s Blessing:** Increases damage and healing by an amount equal to 5% of your intellect.
-- [ ] **Improved Chain Heal (Renamed to Spiritsurge):** When Earthliving Weapon heals, your shock spells are empowered by the elements. Earth Shock summons elemental guardians, Flame Shock apples to all enemies within 15 yards of the target, and Frost Shock freezes enemies in place. Can only occur once every 8 seconds.
-- [ ] **Tidal Waves:** Casting Chain Lightning, Lightning Bolt or Lava Burst increases the critical strike chance of Healing Wave, Lesser Healing Wave and Chain Heal by X%. In addition, your damage and healing spells permanently gain an additional 20% of your spellpower.
-- [ ] **Riptide:** Heals a friendly target or damages an enemy target for 639 to 691 and another 665 over 15 sec. Your next Chain Heal or Chain Lightning cast on that primary target within 15 sec will consume the over time effect and increase the amount of the Chain Heal or Chain Lightning by 25%.
+- [x] **Elemental Precision:** Threat no longer affected. Instead increases your critical chance.
+- [x] **Healing Grace:** Threat no longer affected. Instead gives your healing spells an additional X% chance to crit.
+- [x] **Spirit Weapons:** Threat no longer affected. Instead increases your parry chance by X% of your agility (like the DK equivalent with strength)
+- [x] **Tidal Focus:** Reduces the mana cost of your healing spells by X%, and reduces their casting time by Xs.
+- [x] **Focused Mind:** Casting Healing Wave, Lesser Healing Wave or Chain Heal clears your mind, making your next Lightning Bolt or Chain Lightning deal X% more damage and cost Y% less mana.
+- [x] **Healing Focus:** Your shock spells have an X% chance to make Healing Wave free and instant cast. Additionally, casting a heal on a target with your Earth Shield, Water Shield or Lightning Shield, increases the damage of your next cast by 25%.
+- [x] **Improved Reincarnation (Renamed to Defence of Nature):** Your Water Shield, Earth Shield and Lightning Shield have a X% chance to cleanse the earth around you, dealing X damage over Y seconds to all enemies within 15 yards.
+- [x] **Ancestral Awakening:** Additionally the Ancestral spirit increases the critical strike chance of your next damaging spell by 100%.
+- [x] **Natures Guardian:** Redesigned. All your totems summon lesser elemental guardians to aid and protect you. Additionally the cooldowns on your Earth Elemental totem and Fire Elemental totem are reduced by X%, and their damage is increased by X%.
+- [x] **Healing Way:** Your Healing Wave and Lesser Healing Wave spells chances to critically hit are increased by 3/6/9% and all spell damage is increased by 10%. Additionally, casting Healing Wave or Lesser Healing Wave on yourself reduces the cooldown on Chain Lightning by 3 sec.
+- [x] **Purification:** Additionally, when Earthliving Weapon heals you have an X% chance to reset the cooldown on your shock spells.
+- [x] **Nature’s Blessing:** Increases damage and healing by an amount equal to 5% of your intellect.
+- [x] **Improved Chain Heal (Renamed to Spiritsurge):** When Earthliving Weapon heals, your shock spells are empowered by the elements. Earth Shock summons elemental guardians, Flame Shock apples to all enemies within 15 yards of the target, and Frost Shock freezes enemies in place. Can only occur once every 8 seconds.
+- [x] **Tidal Waves:** Casting Chain Lightning, Lightning Bolt or Lava Burst increases the critical strike chance of Healing Wave, Lesser Healing Wave and Chain Heal by X%. In addition, your damage and healing spells permanently gain an additional 20% of your spellpower.
+- [x] **Riptide:** Heals a friendly target or damages an enemy target for 639 to 691 and another 665 over 15 sec. Your next Chain Heal or Chain Lightning cast on that primary target within 15 sec will consume the over time effect and increase the amount of the Chain Heal or Chain Lightning by 25%.
 
 ### Warlock
 
