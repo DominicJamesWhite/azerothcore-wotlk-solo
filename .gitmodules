@@ -1,3 +1,6 @@
 [submodule "modules/world_of_alonecraft"]
 	path = modules/world_of_alonecraft
 	url = https://github.com/DominicJamesWhite/world_of_alonecraft.git
+[submodule "modules/mod-dungeon-master"]
+	path = modules/mod-dungeon-master
+	url = https://github.com/DominicJamesWhite/mod-dungeon-master.git
