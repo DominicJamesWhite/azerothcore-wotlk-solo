@@ -4,3 +4,6 @@
 [submodule "modules/mod-dungeon-master"]
 	path = modules/mod-dungeon-master
 	url = https://github.com/DominicJamesWhite/mod-dungeon-master.git
+[submodule "modules/mod-mythic-plus"]
+	path = modules/mod-mythic-plus
+	url = https://github.com/silviu20092/mod-mythic-plus.git
