@@ -293,15 +293,26 @@ Custom WoW client UI modifications (Lua/XML) live in `Interface/` at the repo ro
 Interface/
   base/           # 3.3.5a FrameXML + Blizzard AddOns reference (committed, read-only)
   custom/         # Our new/modified UI files (committed, this is what we edit)
-    FrameXML/     # Overrides for core Blizzard frames
-    AddOns/       # Custom addon-style UI panels
+    AddOns/       # Custom addon-style UI panels (ALWAYS use this for new UI)
   screenshots/    # Screenshot captures from watcher daemon (gitignored)
   output/         # Build staging area (gitignored)
   build_interface.py   # Packs custom/ files into patch-4.mpq
   watch_screenshots.py # Screenshot watcher daemon
 ```
 
-**How it works:** Files in `custom/` map to MPQ archive paths — `custom/FrameXML/Foo.lua` becomes `Interface\FrameXML\Foo.lua` in the MPQ. WoW's patch loading overlays files by path, so our files replace/extend the base ones.
+**How it works:** Files in `custom/` map to MPQ archive paths — `custom/AddOns/Foo/Foo.lua` becomes `Interface\AddOns\Foo\Foo.lua` in the MPQ. WoW's patch loading overlays files by path.
+
+**CRITICAL: Use AddOns, NEVER modify FrameXML.** The WoW client digitally signs `FrameXML.toc` via `FRAMEXML.TOC.SIG`. If a modified `FrameXML.toc` is packed into the MPQ (even accidentally), the client will crash on login with "Your game interface files are corrupt." This applies to ANY file in `Interface\FrameXML\` that the client signature-checks. Always create new UI as an addon in `custom/AddOns/YourAddon/` with its own `.toc` file — addon TOCs are not signature-checked.
+
+**If the MPQ gets corrupted with FrameXML files:** Delete `patch-4.mpq` from `modules/world_of_alonecraft/dbc/output/`, re-run `build_dbc.py` to create a fresh MPQ, then re-run `build_interface.py` to pack only addon files.
+
+**Creating a new UI addon:**
+```
+Interface/custom/AddOns/YourAddon/
+  YourAddon.toc         # Must have: ## Interface: 30300
+  YourAddon.lua         # Lua code
+  YourAddon.xml         # XML frame definitions (optional)
+```
 
 **Build:** Integrated into `build_and_run.bat` as step 3.5 (after DBC, before copy). Skip with `--skip-ui`. Can also run standalone:
 ```bash
@@ -309,7 +320,7 @@ python Interface/build_interface.py          # pack modified files
 python Interface/build_interface.py --dry-run # preview without packing
 ```
 
-**Screenshot watcher:** Monitors WoW's Screenshots folder, copies new screenshots to `Interface/screenshots/` for visual review:
+**Screenshot watcher:** Monitors WoW's Screenshots folder, copies new screenshots (resized to max 1920px wide, converted to JPEG) to `Interface/screenshots/` for visual review:
 ```bash
 python Interface/watch_screenshots.py              # interactive (prompts for names)
 python Interface/watch_screenshots.py --auto       # auto-name with timestamps

@@ -370,6 +370,59 @@ Adding a brand new talent (not just redesigning an existing one) requires a new 
 
 **Spell modifier MiscValues:** `ADD_FLAT_MODIFIER` (aura 107) and `ADD_PCT_MODIFIER` (aura 108) use `EffectMiscValue` to select which spell parameter to modify, mapped to `SpellModOp` in `SpellDefines.h`. Common values: 0=DAMAGE, 1=DURATION, 10=CASTING_TIME, 11=COOLDOWN, 14=COST, **19=ACTIVATION_TIME** (periodic tick amplitude), 22=DOT. To modify a channeled spell's tick rate, use `ADD_FLAT_MODIFIER` with MiscValue=**19**. The value is in milliseconds (e.g., -250 reduces 500ms ticks to 250ms). This is how Missile Barrage (44401) speeds up Arcane Missiles. Note: `ADD_PCT_MODIFIER` does NOT work for SPELLMOD_ACTIVATION_TIME — use FLAT only.
 
+## Client UI Modifications
+
+Custom WoW client UI (Lua/XML) lives in `Interface/custom/AddOns/` and is packed into `patch-4.mpq` alongside DBC files.
+
+### CRITICAL: Never modify FrameXML
+
+The WoW 3.3.5a client digitally signs `FrameXML.toc` via `FRAMEXML.TOC.SIG`. If a modified `FrameXML.toc` (or any signature-checked FrameXML file) ends up in the MPQ, the client crashes on login with:
+
+> "Your game interface files are corrupt. Please remove your Interface/FrameXML folder."
+
+**Always create new UI as an addon** in `Interface/custom/AddOns/YourAddon/` with its own `.toc` file. Addon TOCs are not signature-checked and load normally.
+
+**If the MPQ gets corrupted:** Delete `modules/world_of_alonecraft/dbc/output/patch-4.mpq`, re-run `build_dbc.py` to create a fresh one, then re-run `build_interface.py`.
+
+### Creating a new UI addon
+
+```
+Interface/custom/AddOns/YourAddon/
+  YourAddon.toc         # Required - addon metadata and file list
+  YourAddon.lua         # Lua code
+  YourAddon.xml         # XML frame definitions (optional)
+```
+
+**TOC format:**
+```
+## Interface: 30300
+## Title: Your Addon Name
+## Notes: Description of what it does
+YourAddon.lua
+YourAddon.xml
+```
+
+### Build & deploy
+
+```bash
+python Interface/build_interface.py          # pack into patch-4.mpq
+python Interface/build_interface.py --dry-run # preview without packing
+```
+
+Also integrated into `build_and_run.bat` step 3.5 (after DBC build, before MPQ copy). Skip with `--skip-ui`.
+
+### Base reference
+
+`Interface/base/` contains the vanilla 3.3.5a FrameXML source ([wowgaming/3.3.5-interface-files](https://github.com/wowgaming/3.3.5-interface-files)). Use this to understand existing Blizzard frames, API patterns, and event handling before writing custom UI. The base has a flat layout: FrameXML `.lua`/`.xml` files at root, `Blizzard_*` addon directories at root.
+
+### Screenshot verification
+
+A watcher daemon monitors WoW's Screenshots folder, resizes (max 1920px), converts to JPEG, and copies to `Interface/screenshots/` (gitignored) for visual review:
+
+```bash
+python Interface/watch_screenshots.py --auto --prefix my-feature
+```
+
 ## Debugging Tips
 
 - Use `LOG_ERROR("scripts", "Debug message: {}", value);` for logging (not LOG_INFO in production)
