@@ -35,13 +35,14 @@ make install
 ### Build, deploy, and run (Windows)
 
 ```bat
-REM Full cycle: stop servers, verify, build C++, build DBC, copy MPQ, start servers, verify DB
+REM Full cycle: stop servers, verify, build C++, build DBC, build UI, copy MPQ, start servers, verify DB
 build_and_run.bat
 
 REM Common shortcuts
 build_and_run.bat --skip-cmake           # Rebuild C++ without re-running CMake
 build_and_run.bat --skip-build           # DBC/SQL changes only (no C++ recompile)
 build_and_run.bat --skip-dbc --skip-copy  # C++ changes only (no DBC rebuild)
+build_and_run.bat --skip-ui              # Skip Interface UI build step
 build_and_run.bat --skip-server           # Build everything but don't start servers
 build_and_run.bat --skip-verify          # Skip pre-build and post-start verification
 build_and_run.bat --help                 # Show all flags
@@ -282,6 +283,40 @@ New talents (not just redesigns of existing ones) require a new entry in Talent.
 **CRITICAL: Talent.dbc record ordering.** The WoW client requires Talent.dbc records to be sorted by **(TabID, TierID, ColumnIndex) ascending** — NOT by talent ID. If a new talent record is appended at the end of the file (e.g., sorted by ID), the client will fail to display the entire talent tree for that class. The build script handles this automatically, but be aware of it if ever manually editing the binary DBC.
 
 **Priest TalentTabIDs:** 201 = Discipline (tabpage 0), 202 = Holy (tabpage 1), 203 = Shadow (tabpage 2).
+
+### Interface UI Pipeline
+
+Custom WoW client UI modifications (Lua/XML) live in `Interface/` at the repo root and are packed into `patch-4.mpq` alongside DBC files.
+
+**Directory structure:**
+```
+Interface/
+  base/           # 3.3.5a FrameXML + Blizzard AddOns reference (committed, read-only)
+  custom/         # Our new/modified UI files (committed, this is what we edit)
+    FrameXML/     # Overrides for core Blizzard frames
+    AddOns/       # Custom addon-style UI panels
+  screenshots/    # Screenshot captures from watcher daemon (gitignored)
+  output/         # Build staging area (gitignored)
+  build_interface.py   # Packs custom/ files into patch-4.mpq
+  watch_screenshots.py # Screenshot watcher daemon
+```
+
+**How it works:** Files in `custom/` map to MPQ archive paths — `custom/FrameXML/Foo.lua` becomes `Interface\FrameXML\Foo.lua` in the MPQ. WoW's patch loading overlays files by path, so our files replace/extend the base ones.
+
+**Build:** Integrated into `build_and_run.bat` as step 3.5 (after DBC, before copy). Skip with `--skip-ui`. Can also run standalone:
+```bash
+python Interface/build_interface.py          # pack modified files
+python Interface/build_interface.py --dry-run # preview without packing
+```
+
+**Screenshot watcher:** Monitors WoW's Screenshots folder, copies new screenshots to `Interface/screenshots/` for visual review:
+```bash
+python Interface/watch_screenshots.py              # interactive (prompts for names)
+python Interface/watch_screenshots.py --auto       # auto-name with timestamps
+python Interface/watch_screenshots.py --prefix mythic-hud  # auto with prefix
+```
+
+**Base reference:** `Interface/base/` contains the vanilla 3.3.5a FrameXML source (from [wowgaming/3.3.5-interface-files](https://github.com/wowgaming/3.3.5-interface-files)). Use this to understand existing frames before modifying them. The base has a flat layout: FrameXML files at root, Blizzard_* addon dirs at root.
 
 ## Database Query Reference
 

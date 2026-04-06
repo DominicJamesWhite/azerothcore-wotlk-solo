@@ -104,3 +104,9 @@ local.properties
 */acore_characters.sql
 */acore_world.sql
 /env/dist/data/*
+
+#
+# Interface UI pipeline
+#
+/Interface/screenshots/
+/Interface/output/
