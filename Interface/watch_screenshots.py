@@ -17,6 +17,12 @@ import shutil
 import argparse
 from pathlib import Path
 
+try:
+    from PIL import Image
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
+
 SCRIPT_DIR = Path(__file__).parent.resolve()
 SCREENSHOTS_DIR = SCRIPT_DIR / "screenshots"
 
@@ -27,6 +33,9 @@ WOW_SCREENSHOT_DIRS = [
 
 WATCH_EXTENSIONS = {".tga", ".jpg", ".jpeg", ".png", ".bmp"}
 POLL_INTERVAL = 2  # seconds
+MAX_WIDTH = 1920  # resize to this width max (maintains aspect ratio)
+OUTPUT_FORMAT = ".jpg"  # convert all screenshots to JPEG
+OUTPUT_QUALITY = 85
 
 
 def find_wow_screenshot_dir():
@@ -48,10 +57,9 @@ def get_existing_files(watch_dir):
 
 
 def make_name(original_name, prefix=None, counter=None):
-    """Generate a descriptive filename from the original WoW screenshot name."""
-    ext = Path(original_name).suffix.lower()
-    # Convert .tga to .tga (keep as-is, it's what WoW produces)
+    """Generate a descriptive filename, always using OUTPUT_FORMAT."""
     stem = Path(original_name).stem
+    ext = OUTPUT_FORMAT
 
     if prefix:
         if counter is not None:
@@ -62,25 +70,23 @@ def make_name(original_name, prefix=None, counter=None):
 
 def prompt_name(original_name):
     """Ask user for a descriptive name."""
-    ext = Path(original_name).suffix.lower()
     print(f"\n  New screenshot: {original_name}")
     name = input("  Name (enter for timestamp, 'skip' to ignore): ").strip()
 
     if name.lower() == "skip":
         return None
     if not name:
-        return original_name
+        return make_name(original_name)
 
-    # Ensure correct extension
-    if not name.endswith(ext):
-        name = name + ext
-    # Sanitize
+    # Sanitize and ensure correct extension
     name = name.replace(" ", "_")
+    if not name.endswith(OUTPUT_FORMAT):
+        name = Path(name).stem + OUTPUT_FORMAT
     return name
 
 
-def copy_screenshot(src_path, dest_name):
-    """Copy screenshot to our screenshots directory."""
+def process_screenshot(src_path, dest_name):
+    """Resize, convert to JPEG, and save screenshot."""
     SCREENSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     dest = SCREENSHOTS_DIR / dest_name
 
@@ -93,7 +99,23 @@ def copy_screenshot(src_path, dest_name):
             dest = SCREENSHOTS_DIR / f"{stem}_{i}{ext}"
             i += 1
 
-    shutil.copy2(src_path, dest)
+    if HAS_PIL:
+        img = Image.open(src_path)
+        orig_size = f"{img.width}x{img.height}"
+        if img.width > MAX_WIDTH:
+            ratio = MAX_WIDTH / img.width
+            new_h = int(img.height * ratio)
+            img = img.resize((MAX_WIDTH, new_h), Image.LANCZOS)
+        # Convert RGBA (TGA) to RGB for JPEG
+        if img.mode in ("RGBA", "P"):
+            img = img.convert("RGB")
+        img.save(dest, "JPEG", quality=OUTPUT_QUALITY)
+        print(f"    {orig_size} -> {img.width}x{img.height}")
+    else:
+        # Fallback: just copy without resizing
+        shutil.copy2(src_path, dest)
+        print("    (Pillow not installed - copied without resize)")
+
     return dest
 
 
@@ -101,6 +123,10 @@ def watch(watch_dir, auto=False, prefix=None):
     """Main watch loop."""
     print(f"Watching: {watch_dir}")
     print(f"Copying to: {SCREENSHOTS_DIR}")
+    if HAS_PIL:
+        print(f"Resize: max {MAX_WIDTH}px wide, JPEG q{OUTPUT_QUALITY}")
+    else:
+        print("WARNING: Pillow not installed (pip install Pillow) - no resize")
     if auto:
         print(f"Auto-name mode{f' (prefix: {prefix})' if prefix else ''}")
     else:
@@ -131,7 +157,7 @@ def watch(watch_dir, auto=False, prefix=None):
                         known_files.add(fname)
                         continue
 
-                dest = copy_screenshot(src, dest_name)
+                dest = process_screenshot(src, dest_name)
                 print(f"  Saved: {dest.relative_to(SCRIPT_DIR)}")
 
             known_files = current_files
