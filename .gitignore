@@ -114,3 +114,9 @@ build_and_run.bat
 
 # AzerothCore wiki (local reference for AI agents)
 /docs/wiki/
+
+#
+# Interface UI pipeline
+#
+/Interface/screenshots/
+/Interface/output/

@@ -25,6 +25,7 @@ REM -- Parse command-line flags --------------------------------
 SET "SKIP_CMAKE=0"
 SET "SKIP_BUILD=0"
 SET "SKIP_DBC=0"
+SET "SKIP_UI=0"
 SET "SKIP_COPY=0"
 SET "SKIP_SERVER=0"
 SET "SKIP_VERIFY=0"
@@ -34,6 +35,7 @@ IF "%~1"=="" GOTO ARGS_DONE
 IF /I "%~1"=="--skip-cmake"  SET "SKIP_CMAKE=1"  & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-build"  SET "SKIP_BUILD=1"  & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-dbc"    SET "SKIP_DBC=1"    & SHIFT & GOTO PARSE_ARGS
+IF /I "%~1"=="--skip-ui"     SET "SKIP_UI=1"     & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-copy"   SET "SKIP_COPY=1"   & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-server" SET "SKIP_SERVER=1"  & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-verify" SET "SKIP_VERIFY=1" & SHIFT & GOTO PARSE_ARGS
@@ -244,6 +246,36 @@ ECHO       DBC build succeeded.
 :AFTER_DBC
 
 REM ============================================================
+REM  STEP 3.5: Build Interface (pack custom UI into patch-4.mpq)
+REM ============================================================
+IF "%SKIP_UI%"=="1" (
+    ECHO.
+    ECHO [3.5/5] Interface build SKIPPED ^(--skip-ui^)
+    GOTO AFTER_UI
+)
+
+SET "UI_SCRIPT_DIR=%~dp0Interface"
+SET "UI_SCRIPT=build_interface.py"
+
+IF NOT EXIST "%UI_SCRIPT_DIR%\%UI_SCRIPT%" (
+    ECHO.
+    ECHO [3.5/5] build_interface.py not found, skipping UI build.
+    GOTO AFTER_UI
+)
+
+ECHO.
+ECHO [3.5/5] Building Interface (custom UI files)...
+
+%PYTHON% "%UI_SCRIPT_DIR%\%UI_SCRIPT%"
+IF %ERRORLEVEL% NEQ 0 (
+    ECHO.
+    ECHO       WARNING: Interface build had errors. Continuing anyway.
+)
+
+ECHO       Interface build step done.
+:AFTER_UI
+
+REM ============================================================
 REM  STEP 4: Copy patch-4.mpq to WoW client
 REM ============================================================
 IF "%SKIP_COPY%"=="1" (
@@ -342,6 +374,7 @@ ECHO Options:
 ECHO   --skip-cmake    Skip CMake configure (reuses existing solution)
 ECHO   --skip-build    Skip C++ MSBuild step (also skips CMake)
 ECHO   --skip-dbc      Skip DBC build (build_dbc.py)
+ECHO   --skip-ui       Skip Interface UI build (build_interface.py)
 ECHO   --skip-copy     Skip copying patch-4.mpq to WoW client
 ECHO   --skip-server   Skip launching worldserver
 ECHO   --skip-verify   Skip pre-build consistency check and post-start DB verify
