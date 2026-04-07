@@ -6,4 +6,4 @@
 	url = https://github.com/silviu20092/mod-mythic-plus.git
 [submodule "modules/mod-dungeon-respawn"]
 	path = modules/mod-dungeon-respawn
-	url = https://github.com/AnchyDev/DungeonRespawn.git
+	url = https://github.com/DominicJamesWhite/DungeonRespawn.git
