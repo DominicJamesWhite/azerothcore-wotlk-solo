@@ -284,6 +284,21 @@ New talents (not just redesigns of existing ones) require a new entry in Talent.
 
 **Priest TalentTabIDs:** 201 = Discipline (tabpage 0), 202 = Holy (tabpage 1), 203 = Shadow (tabpage 2).
 
+### SpellShapeshiftForm.dbc Patching
+
+Custom shapeshift forms need correct flags in `SpellShapeshiftForm.dbc`. The build pipeline reads the base DBC, patches form entries, and packs the result into `patch-4.mpq`.
+
+- Config: `BASE_SHAPESHIFT_DBC_PATH` in `config.py` points to `base/SpellShapeshiftForm.dbc`
+- Patching is hard-coded in `build_dbc.py` (currently just form 23/Lightform)
+- Server-side overrides go in the `spellshapeshiftform_dbc` MySQL table
+
+Key flags (`flags1` field, index 19):
+- `SHAPESHIFT_FLAG_STANCE` (0x01) — acts as stance, not full shapeshift (allows normal spell casting)
+- `SHAPESHIFT_FLAG_CAN_NPC_INTERACT` (0x08) — can interact with NPCs
+- `SHAPESHIFT_FLAG_DONT_AUTO_UNSHIFT` (0x100) — client won't auto-cancel the form on spell cast
+
+**Shadowform** (form 28) uses `flags=0x9` (STANCE + NPC_INTERACT). **Lightform** (form 23) uses `flags=0x109` (STANCE + NPC_INTERACT + DONT_AUTO_UNSHIFT) with server-side C++ logic to cancel on non-Holy spell cast.
+
 ### Interface UI Pipeline
 
 Custom WoW client UI modifications (Lua/XML) live in `Interface/` at the repo root and are packed into `patch-4.mpq` alongside DBC files.

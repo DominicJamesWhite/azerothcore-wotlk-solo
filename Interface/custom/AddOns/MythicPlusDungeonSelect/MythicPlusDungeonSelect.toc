@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: Mythic Plus Dungeon Select
+## Notes: Split-panel dungeon selection UI for Mythic Plus. Replaces the gossip menu.
+## Author: Alonecraft
+## Version: 1.0
+## Dependencies: MythicPlusHUD
+
+MythicPlusDungeonSelect.lua

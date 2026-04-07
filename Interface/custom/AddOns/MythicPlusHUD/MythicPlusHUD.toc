@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Mythic Plus HUD
+## Notes: Displays Mythic Plus dungeon timer, speed tier, deaths, and affixes.
+## Author: Alonecraft
+## Version: 1.0
+
+MythicPlusHUD.lua
