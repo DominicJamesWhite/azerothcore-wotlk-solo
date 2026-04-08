@@ -626,7 +626,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 end)
 
-RegisterAddonMessagePrefix(ADDON_PREFIX)
+-- RegisterAddonMessagePrefix does not exist in 3.3.5a (added in 4.0)
+if RegisterAddonMessagePrefix then RegisterAddonMessagePrefix(ADDON_PREFIX) end
 
 -- ================================================================
 --  SLASH COMMANDS

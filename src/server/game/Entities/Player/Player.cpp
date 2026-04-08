@@ -306,6 +306,7 @@ Player::Player(WorldSession* session): Unit(), m_mover(this), _cinematicMgr(*thi
 
     m_activeSpec = 0;
     m_specsCount = 1;
+    m_clientPreviewSpec = 1;
 
     for (uint8 i = 0; i < MAX_TALENT_SPECS; ++i)
     {
@@ -14430,14 +14431,28 @@ bool Player::CanSeeTrainer(Creature const* creature) const
 void Player::BuildPlayerTalentsInfoData(WorldPacket* data)
 {
     *data << uint32(GetFreeTalentPoints());                 // unspentTalentPoints
-    *data << uint8(m_specsCount);                           // talent group count (0, 1 or 2)
-    *data << uint8(m_activeSpec);                           // talent group index (0 or 1)
+
+    // The 3.3.5a client crashes if it receives more than 2 specs in this packet.
+    // Always tell the client there are at most 2 specs, with the active spec
+    // mapped to client slot 0. Server-side we support up to MAX_TALENT_SPECS (8)
+    // and the MultiSpec addon + .spec command handle switching.
+    uint8 clientSpecCount = std::min<uint8>(m_specsCount, 2);
+    *data << uint8(clientSpecCount);                        // talent group count (client sees 1 or 2)
+    *data << uint8(0);                                     // active group is always client slot 0
+
+    // Build the list of real spec indices to send.
+    // Slot 0 = active spec, Slot 1 = preview spec (set via .spec preview N).
+    uint8 clientSpecs[2];
+    clientSpecs[0] = m_activeSpec;
+    clientSpecs[1] = m_clientPreviewSpec;
 
     if (m_specsCount > MAX_TALENT_SPECS)
         m_specsCount = MAX_TALENT_SPECS;
 
-    for (uint32 specIdx = 0; specIdx < m_specsCount; ++specIdx)
+    for (uint32 clientIdx = 0; clientIdx < clientSpecCount; ++clientIdx)
     {
+        uint8 realSpec = clientSpecs[clientIdx];
+
         uint8 talentIdCount = 0;
         std::size_t pos = data->wpos();
         *data << uint8(talentIdCount);                      // [PH], talentIdCount
@@ -14445,7 +14460,7 @@ void Player::BuildPlayerTalentsInfoData(WorldPacket* data)
         const PlayerTalentMap& talentMap = GetTalentMap();
         for (PlayerTalentMap::const_iterator itr = talentMap.begin(); itr != talentMap.end(); ++itr)
             if (TalentSpellPos const* talentPos = GetTalentSpellPos(itr->first))
-                if (itr->second->State != PLAYERSPELL_REMOVED && itr->second->IsInSpec(specIdx)) // pussywizard
+                if (itr->second->State != PLAYERSPELL_REMOVED && itr->second->IsInSpec(realSpec))
                 {
                     *data << uint32(talentPos->talent_id);  // Talent.dbc
                     *data << uint8(talentPos->rank);        // talentMaxRank (0-4)
@@ -14457,7 +14472,7 @@ void Player::BuildPlayerTalentsInfoData(WorldPacket* data)
         *data << uint8(MAX_GLYPH_SLOT_INDEX);               // glyphs count
 
         for (uint8 i = 0; i < MAX_GLYPH_SLOT_INDEX; ++i)
-            *data << uint16(m_Glyphs[specIdx][i]);          // GlyphProperties.dbc
+            *data << uint16(m_Glyphs[realSpec][i]);         // GlyphProperties.dbc
     }
 }
 
@@ -15186,7 +15201,7 @@ void Player::ActivateSpec(uint8 spec)
     if (GetActiveSpec() == spec)
         return;
 
-    if (spec > GetSpecsCount())
+    if (spec >= GetSpecsCount())
         return;
 
     // xinef: interrupt currently casted spell just in case

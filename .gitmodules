@@ -7,3 +7,6 @@
 [submodule "modules/mod-dungeon-respawn"]
 	path = modules/mod-dungeon-respawn
 	url = https://github.com/DominicJamesWhite/DungeonRespawn.git
+[submodule "modules/mod-transmog"]
+	path = modules/mod-transmog
+	url = https://github.com/DominicJamesWhite/mod-transmog.git

@@ -1758,6 +1758,8 @@ public:
     void SetActiveSpec(uint8 spec) { m_activeSpec = spec; }
     [[nodiscard]] uint8 GetSpecsCount() const { return m_specsCount; }
     void SetSpecsCount(uint8 count) { m_specsCount = count; }
+    [[nodiscard]] uint8 GetClientPreviewSpec() const { return m_clientPreviewSpec; }
+    void SetClientPreviewSpec(uint8 spec) { m_clientPreviewSpec = spec; }
     void ActivateSpec(uint8 spec);
     void LoadActions(PreparedQueryResult result);
     void GetTalentTreePoints(uint8 (&specPoints)[3]) const;
@@ -2866,6 +2868,7 @@ protected:
 
     uint8 m_activeSpec;
     uint8 m_specsCount;
+    uint8 m_clientPreviewSpec; // which real spec occupies client slot 1 for preview
 
     uint32 m_Glyphs[MAX_TALENT_SPECS][MAX_GLYPH_SLOT_INDEX];
 

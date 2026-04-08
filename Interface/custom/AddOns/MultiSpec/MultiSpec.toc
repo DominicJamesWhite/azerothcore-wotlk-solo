@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: MultiSpec
+## Notes: Provides UI for switching between up to 8 talent specs.
+## Author: Alonecraft
+## Version: 1.0
+
+MultiSpec.lua

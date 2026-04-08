@@ -2196,20 +2196,23 @@ void Player::UpdateSpecCount(uint8 count)
     CharacterDatabaseTransaction        trans = CharacterDatabase.BeginTransaction();
     CharacterDatabasePreparedStatement* stmt  = nullptr;
 
-    // Copy spec data
+    // Copy current action bar to each newly unlocked spec
     if (count > curCount)
     {
         _SaveActions(trans); // make sure the button list is cleaned up
-        for (ActionButtonList::iterator itr = m_actionButtons.begin();
-             itr != m_actionButtons.end(); ++itr)
+        for (uint8 newSpec = curCount; newSpec < count; ++newSpec)
         {
-            stmt = CharacterDatabase.GetPreparedStatement(CHAR_INS_CHAR_ACTION);
-            stmt->SetData(0, GetGUID().GetCounter());
-            stmt->SetData(1, 1);
-            stmt->SetData(2, itr->first);
-            stmt->SetData(3, itr->second.GetAction());
-            stmt->SetData(4, uint8(itr->second.GetType()));
-            trans->Append(stmt);
+            for (ActionButtonList::iterator itr = m_actionButtons.begin();
+                 itr != m_actionButtons.end(); ++itr)
+            {
+                stmt = CharacterDatabase.GetPreparedStatement(CHAR_INS_CHAR_ACTION);
+                stmt->SetData(0, GetGUID().GetCounter());
+                stmt->SetData(1, newSpec);
+                stmt->SetData(2, itr->first);
+                stmt->SetData(3, itr->second.GetAction());
+                stmt->SetData(4, uint8(itr->second.GetType()));
+                trans->Append(stmt);
+            }
         }
     }
     // Delete spec data for removed spec.
