@@ -883,7 +883,8 @@ eventFrame:RegisterEvent("CHAT_MSG_ADDON")
 eventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "CHAT_MSG_ADDON" then OnAddonMessage(...) end
 end)
-RegisterAddonMessagePrefix(ADDON_PREFIX)
+-- RegisterAddonMessagePrefix does not exist in 3.3.5a (added in 4.0)
+if RegisterAddonMessagePrefix then RegisterAddonMessagePrefix(ADDON_PREFIX) end
 
 -- ================================================================
 --  Slash commands

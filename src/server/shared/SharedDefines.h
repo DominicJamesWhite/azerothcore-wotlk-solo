@@ -660,7 +660,7 @@ enum SpellAttr7 : uint32
     SPELL_ATTR7_ALWAYS_CAST_LOG                               = 0x80000000  // TITLE Client indicator (client only)
 };
 
-#define MAX_TALENT_SPECS        2
+#define MAX_TALENT_SPECS        8
 #define MAX_GLYPH_SLOT_INDEX    6
 
 // Custom values

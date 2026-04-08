@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: TransmogUI
+## Notes: Retail-style transmogrification UI replacing the gossip menu.
+## Author: Alonecraft
+## Version: 1.0
+
+TransmogUI.lua
