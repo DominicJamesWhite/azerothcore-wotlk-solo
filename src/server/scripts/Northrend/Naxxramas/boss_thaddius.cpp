@@ -542,7 +542,9 @@ public:
                 case EVENT_MINION_CHECK_DISTANCE:
                     if (Creature* cr = ObjectAccessor::GetCreature(*me, myCoil))
                     {
-                        if (!me->GetHomePosition().IsInDist(me, 28) && me->IsInCombat())
+                        // Alonecraft: skip tesla overload at low player count
+                        bool lowN = me->GetMap()->GetPlayersCountExceptGMs() < 3;
+                        if (!lowN && !me->GetHomePosition().IsInDist(me, 28) && me->IsInCombat())
                         {
                             if (!overload)
                             {

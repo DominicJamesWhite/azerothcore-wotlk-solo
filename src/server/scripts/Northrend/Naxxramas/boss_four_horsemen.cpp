@@ -16,6 +16,7 @@
  */
 
 #include "CreatureScript.h"
+#include "GameTime.h"
 #include "Player.h"
 #include "ScriptedCreature.h"
 #include "SpellAuraEffects.h"
@@ -144,6 +145,7 @@ public:
         uint8 currentWaypoint{};
         uint8 movementPhase{};
         uint8 horsemanId;
+        uint32 lastPunishTime{};
 
         void MoveToCorner()
         {
@@ -328,8 +330,21 @@ public:
                 }
                 else if (!me->IsWithinDistInMap(me->GetVictim(), 45.0f) || !me->IsValidAttackTarget(me->GetVictim()))
                 {
-                    DoCastAOE(TABLE_SPELL_PUNISH[horsemanId]);
-                    Talk(EMOTE_RAGECAST);
+                    // Alonecraft: throttle punish casts at low player count
+                    uint32 N = me->GetMap()->GetPlayersCountExceptGMs();
+                    uint32 minInterval = 0;
+                    if (N <= 1)
+                        minInterval = 30;
+                    else if (N == 2)
+                        minInterval = 20;
+
+                    uint32 now = GameTime::GetGameTime().count();
+                    if (minInterval == 0 || !lastPunishTime || (now - lastPunishTime) >= minInterval)
+                    {
+                        DoCastAOE(TABLE_SPELL_PUNISH[horsemanId]);
+                        Talk(EMOTE_RAGECAST);
+                        lastPunishTime = now;
+                    }
                 }
             }
             else
