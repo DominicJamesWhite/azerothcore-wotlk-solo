@@ -20,6 +20,7 @@ SET "WOW_DATA=C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Data"
 SET "PYTHON=python"
 SET "VERIFY_SCRIPT=%~dp0tools\verify_scripts.py"
 SET "VERIFY_DB_SCRIPT=%~dp0tools\verify_db.py"
+SET "WOW_CACHE=C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Cache"
 
 REM -- Parse command-line flags --------------------------------
 SET "SKIP_CMAKE=0"
@@ -60,6 +61,14 @@ FOR %%s IN (worldserver.exe authserver.exe) DO (
 )
 IF "%KILLED%"=="0" ECHO       No servers were running.
 IF "%KILLED%"=="1" timeout /t 2 /nobreak >NUL
+
+REM -- Clear WoW client cache so changed data is picked up -----
+IF EXIST "%WOW_CACHE%" (
+    RMDIR /S /Q "%WOW_CACHE%" >NUL 2>&1
+    ECHO       WoW client cache cleared.
+) ELSE (
+    ECHO       No client cache to clear.
+)
 
 REM ============================================================
 REM  STEP 1.5: Verify script consistency
