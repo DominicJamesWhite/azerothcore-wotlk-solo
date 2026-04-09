@@ -10,3 +10,6 @@
 [submodule "modules/mod-transmog"]
 	path = modules/mod-transmog
 	url = https://github.com/DominicJamesWhite/mod-transmog.git
+[submodule "modules/mod-learn-spells"]
+	path = modules/mod-learn-spells
+	url = https://github.com/azerothcore/mod-learn-spells.git
