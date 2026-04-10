@@ -6760,9 +6760,7 @@ SpellCastResult Spell::CheckCast(bool strict, uint32* /*param1*/, uint32* /*para
     // check if caster has at least 1 combo point on target for spells that require combo points
     if (m_needComboPoints)
     {
-        // Player-based combo points: skip the target-specific check,
-        // finishers work on any target as long as the caster has points.
-        if (m_spellInfo->NeedsExplicitUnitTarget() && !sScriptMgr->IsPlayerBasedComboPoints(m_caster))
+        if (m_spellInfo->NeedsExplicitUnitTarget())
         {
             if (!m_caster->GetComboPoints(m_targets.GetUnitTarget()))
             {

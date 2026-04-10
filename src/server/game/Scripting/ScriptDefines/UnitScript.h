@@ -43,7 +43,6 @@ enum UnitHook
     UNITHOOK_ON_UNIT_ENTER_COMBAT,
     UNITHOOK_ON_UNIT_DEATH,
     UNITHOOK_ON_UNIT_SET_SHAPESHIFT_FORM,
-    UNITHOOK_IS_PLAYER_BASED_COMBO_POINTS,
     UNITHOOK_END
 };
 
@@ -109,11 +108,6 @@ public:
     virtual void OnUnitEnterCombat(Unit* /*unit*/, Unit* /*victim*/) { }
     virtual void OnUnitDeath(Unit* /*unit*/, Unit* /*killer*/) { }
     virtual void OnUnitSetShapeshiftForm(Unit* /*unit*/, uint8 /*form*/) { }
-
-    // Called to check if a unit uses player-based (retail-style) combo points
-    // instead of target-based combo points. When true, combo points are preserved
-    // on target switch and target death, and finishers can be used on any target.
-    [[nodiscard]] virtual bool IsPlayerBasedComboPoints(Unit* /*unit*/) { return false; }
 };
 
 #endif

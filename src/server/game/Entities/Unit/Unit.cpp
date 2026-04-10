@@ -13216,13 +13216,8 @@ void Unit::AddComboPoints(Unit* target, int8 count)
             m_comboTarget->RemoveComboPointHolder(this);
         }
 
-        // Player-based combo points: accumulate instead of resetting on target switch
-        if (sScriptMgr->IsPlayerBasedComboPoints(this))
-            m_comboPoints = std::max<int8>(std::min<int8>(m_comboPoints + count, 5), 0);
-        else
-            m_comboPoints = count;
-
         m_comboTarget = target;
+        m_comboPoints = count;
         target->AddComboPointHolder(this);
     }
     else
@@ -13292,20 +13287,7 @@ void Unit::ClearComboPointHolders()
 {
     while (!m_ComboPointHolders.empty())
     {
-        Unit* holder = *m_ComboPointHolders.begin();
-
-        if (sScriptMgr->IsPlayerBasedComboPoints(holder))
-        {
-            // Preserve combo points but detach from the dying target.
-            // The holder set and target pointer must be cleaned up
-            // (the target is being destroyed), but points are kept.
-            m_ComboPointHolders.erase(holder);
-            holder->m_comboTarget = nullptr;
-        }
-        else
-        {
-            holder->ClearComboPoints(); // this also removes it from m_ComboPointHolders
-        }
+        (*m_ComboPointHolders.begin())->ClearComboPoints(); // this also removes it from m_comboPointHolders
     }
 }
 
