@@ -106,6 +106,12 @@ local.properties
 /env/dist/data/*
 
 #
+# Python
+#
+__pycache__/
+*.pyc
+
+#
 # Interface UI pipeline
 #
 /Interface/screenshots/
