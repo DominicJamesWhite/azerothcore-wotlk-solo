@@ -288,6 +288,7 @@ enum Misc
     ACTION_SIF_START_DOMINION   = 5,
     ACTION_SIF_TRANSFORM        = 6,
     ACTION_IRON_HONOR_DIED      = 7,
+    ACTION_FORCE_ARENA_PHASE2   = 8,
 
     EVENT_PHASE_START           = 1,
     EVENT_PHASE_RING            = 2,
@@ -465,6 +466,30 @@ struct boss_thorim : public BossAI
         }
         else if (param == ACTION_ALLOW_HIT)
             _isHitAllowed = true;
+        else if (param == ACTION_FORCE_ARENA_PHASE2)
+        {
+            // Module-driven P2 transition for solo play (no corridor required).
+            // Same as DamageTaken transition but skips Z>430 / _isHitAllowed
+            // checks and does NOT trigger hard mode (Sif).
+            _isHitAllowed = false;
+            DisableThorim(false);
+
+            events.SetPhase(EVENT_PHASE_RING);
+            events.ScheduleEvent(EVENT_THORIM_UNBALANCING_STRIKE, 8s, 0, EVENT_PHASE_RING);
+            events.ScheduleEvent(EVENT_THORIM_LIGHTNING_CHARGE, 12500ms, 0, EVENT_PHASE_RING);
+            events.ScheduleEvent(EVENT_THORIM_CHAIN_LIGHTNING, 13s, 0, EVENT_PHASE_RING);
+            events.ScheduleEvent(EVENT_THORIM_BERSERK, 5min, 0, EVENT_PHASE_RING);
+
+            me->GetMotionMaster()->MoveChase(me->GetVictim());
+            me->GetMotionMaster()->MoveJump(Middle.GetPositionX(), Middle.GetPositionY(), Middle.GetPositionZ(), 20, 20);
+            me->RemoveAura(SPELL_SHEATH_OF_LIGHTNING);
+
+            Talk(SAY_JUMPDOWN);
+
+            DoResetThreatList();
+            if (Player* player = GetArenaPlayer())
+                me->AddThreat(player, 1000.0f);
+        }
     }
 
     void KilledUnit(Unit* victim) override

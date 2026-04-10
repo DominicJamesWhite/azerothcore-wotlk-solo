@@ -96,8 +96,11 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recv_data)
 
     recv_data >> guid >> menuId >> gossipListId;
 
+    LOG_ERROR("network", "GOSSIP_SELECT: guid={}, menuId={}, gossipListId={}", guid.ToString(), menuId, gossipListId);
+
     if (!_player->PlayerTalkClass->GetGossipMenu().GetItem(gossipListId))
     {
+        LOG_ERROR("network", "GOSSIP_SELECT: GetItem({}) returned null, bailing", gossipListId);
         recv_data.rfinish();
         return;
     }
@@ -108,6 +111,7 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recv_data)
     // Prevent cheating on C++ scripted menus
     if (_player->PlayerTalkClass->GetGossipMenu().GetSenderGUID() != guid)
     {
+        LOG_ERROR("network", "GOSSIP_SELECT: SenderGUID mismatch: menu={}, packet={}", _player->PlayerTalkClass->GetGossipMenu().GetSenderGUID().ToString(), guid.ToString());
         return;
     }
 
@@ -119,7 +123,7 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recv_data)
         unit = GetPlayer()->GetNPCIfCanInteractWith(guid, UNIT_NPC_FLAG_NONE);
         if (!unit)
         {
-            LOG_DEBUG("network", "WORLD: HandleGossipSelectOptionOpcode - Unit ({}) not found or you can't interact with him.", guid.ToString());
+            LOG_ERROR("network", "GOSSIP_SELECT: GetNPCIfCanInteractWith failed for {}", guid.ToString());
             return;
         }
     }
@@ -161,7 +165,9 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recv_data)
 
     if ((unit && unit->GetScriptId() != unit->LastUsedScriptID) || (go && go->GetScriptId() != go->LastUsedScriptID))
     {
-        LOG_DEBUG("network", "WORLD: HandleGossipSelectOptionOpcode - Script reloaded while in use, ignoring and set new scipt id");
+        LOG_ERROR("network", "GOSSIP_SELECT: Script ID changed (current={}, last={}), closing gossip",
+            unit ? unit->GetScriptId() : (go ? go->GetScriptId() : 0),
+            unit ? unit->LastUsedScriptID : (go ? go->LastUsedScriptID : 0));
         if (unit)
             unit->LastUsedScriptID = unit->GetScriptId();
         if (go)
@@ -193,8 +199,10 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recv_data)
     }
     else
     {
+        LOG_ERROR("network", "GOSSIP_SELECT: Dispatching - unit={}, go={}, item={}", unit != nullptr, go != nullptr, item != nullptr);
         if (unit)
         {
+            LOG_ERROR("network", "GOSSIP_SELECT: Calling sGossipSelect + OnGossipSelect for entry={}, scriptId={}", unit->GetEntry(), unit->GetScriptId());
             unit->AI()->sGossipSelect(_player, menuId, gossipListId);
             if (!sScriptMgr->OnGossipSelect(_player, unit, _player->PlayerTalkClass->GetGossipOptionSender(gossipListId), _player->PlayerTalkClass->GetGossipOptionAction(gossipListId)))
                 _player->OnGossipSelect(unit, gossipListId, menuId);

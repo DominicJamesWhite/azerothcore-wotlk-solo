@@ -181,9 +181,15 @@ struct boss_razorscale : public BossAI
 
     void JustEngagedWith(Unit* who) override
     {
+        LOG_ERROR("scripts.ulduar", "Razorscale: JustEngagedWith called! who={}", who ? who->GetName() : "null");
         me->SetImmuneToPC(false);
         BossAI::JustEngagedWith(who);
+        // Ensure the engaging player is on the threat list — air-phase pathing
+        // can prevent normal threat generation, causing UpdateVictim() to fail.
+        if (who)
+            me->AddThreat(who, 1.0f);
         events.ScheduleEvent(EVENT_COMMANDER_SAY_AGGRO, 5s);
+        LOG_ERROR("scripts.ulduar", "Razorscale: Events scheduled. Threat list empty={}", me->GetThreatMgr().IsThreatListEmpty());
         events.ScheduleEvent(EVENT_EE_SAY_MOVE_OUT, 10s);
         events.ScheduleEvent(EVENT_ENRAGE, 10min);
         events.ScheduleEvent(EVENT_SPELL_FIREBALL, 6s);
@@ -301,7 +307,111 @@ struct boss_razorscale : public BossAI
         }
 
         if (!UpdateVictim())
+        {
+            // Air phase: boss can't path to victim, threat list stays empty.
+            // Skip evade check so scheduled events (fireballs, mole machines) still fire.
+            if (!bGroundPhase && me->IsInCombat())
+            {
+                events.Update(diff);
+                uint32 airEvent = events.ExecuteEvent();
+                if (airEvent)
+                    LOG_ERROR("scripts.ulduar", "Razorscale: Air phase event fired: {}", airEvent);
+                switch (airEvent)
+                {
+                    case EVENT_ENRAGE:
+                        Talk(EMOTE_BERSERK);
+                        me->CastSpell(me, SPELL_BERSERK, true);
+                        break;
+                    case EVENT_COMMANDER_SAY_AGGRO:
+                        if (Creature* commander = ObjectAccessor::GetCreature(*me, CommanderGUID))
+                            commander->AI()->Talk(SAY_COMMANDER_AGGRO);
+                        break;
+                    case EVENT_EE_SAY_MOVE_OUT:
+                        for (uint8 i = 0; i < 3; ++i)
+                            if (Creature* c = ObjectAccessor::GetCreature(*me, ExpeditionEngineerGUIDs[i]))
+                            {
+                                if (!i)
+                                    c->AI()->Talk(SAY_EE_START_REPAIR);
+                                c->AI()->SetData(1, 0);
+                            }
+                        break;
+                    case EVENT_SPELL_FIREBALL:
+                        {
+                            Unit* pTarget = SelectTarget(SelectTargetMethod::Random, 0, 200.0f, true);
+                            if (!pTarget)
+                                pTarget = me->SelectNearestPlayer(200.0f);
+                            if (pTarget)
+                                me->CastSpell(pTarget, SPELL_FIREBALL, false);
+                            events.Repeat(4s);
+                        }
+                        break;
+                    case EVENT_SPELL_DEVOURING_FLAME:
+                        {
+                            Unit* pTarget = SelectTarget(SelectTargetMethod::Random, 0, 200.0f, true);
+                            if (!pTarget)
+                                pTarget = me->SelectNearestPlayer(200.0f);
+                            if (pTarget)
+                                me->CastSpell(pTarget, SPELL_DEVOURINGFLAME, false);
+                            events.Repeat(13s);
+                        }
+                        break;
+                    case EVENT_SUMMON_MOLE_MACHINES:
+                        {
+                            memset(cords, '\0', sizeof(cords));
+                            uint8 num = RAID_MODE(urand(2, 3), urand(2, 4));
+                            for (int i = 0; i < num; ++i)
+                            {
+                                cords[i][0] = urand(550, 625);
+                                cords[i][1] = -230 + rand() % 45;
+                                if (GameObject* drill = me->SummonGameObject(GO_DRILL, cords[i][0], cords[i][1], 391.1f, M_PI / 4, 0.0f, 0.0f, 0.0f, 0.0f, 8))
+                                {
+                                    drill->SetGoState(GO_STATE_ACTIVE);
+                                    drill->SetGoAnimProgress(0);
+                                }
+                            }
+                            events.Repeat(45s);
+                            events.RescheduleEvent(EVENT_SUMMON_ADDS, 4s);
+                        }
+                        break;
+                    case EVENT_SUMMON_ADDS:
+                        for (int i = 0; i < 4; ++i)
+                        {
+                            if (!cords[i][0])
+                                break;
+                            uint8 opt;
+                            uint8 r = urand(1, 100);
+                            if (r <= 30) opt = 1;
+                            else if (r <= 65) opt = 2;
+                            else opt = 3;
+                            for (int j = 0; j < 4; ++j)
+                            {
+                                float x = cords[i][0] + 4.0f * cos(j * M_PI / 2);
+                                float y = cords[i][1] + 4.0f * std::sin(j * M_PI / 2);
+                                uint32 npc_entry = 0;
+                                switch (opt)
+                                {
+                                    case 1:
+                                        if (j == 1) npc_entry = NPC_DARK_RUNE_SENTINEL;
+                                        break;
+                                    case 2:
+                                        if (j == 1) npc_entry = NPC_DARK_RUNE_WATCHER;
+                                        else if (j == 2) npc_entry = NPC_DARK_RUNE_GUARDIAN;
+                                        break;
+                                    default:
+                                        if (j == 1) npc_entry = NPC_DARK_RUNE_WATCHER;
+                                        else if (j == 2 || j == 3) npc_entry = NPC_DARK_RUNE_GUARDIAN;
+                                        break;
+                                }
+                                if (npc_entry)
+                                    if (Creature* c = me->SummonCreature(npc_entry, x, y, 391.1f, j * M_PI / 2, TEMPSUMMON_CORPSE_TIMED_DESPAWN, 5000))
+                                        DoZoneInCombat(c);
+                            }
+                        }
+                        break;
+                }
+            }
             return;
+        }
 
         events.Update(diff);
 
@@ -552,6 +662,7 @@ struct boss_razorscale : public BossAI
 
     void EnterEvadeMode(EvadeReason why) override
     {
+        LOG_ERROR("scripts.ulduar", "Razorscale: EnterEvadeMode called! reason={}", (int)why);
         me->SetDisableGravity(true);
         me->SetControlled(false, UNIT_STATE_ROOT);
         me->DisableRotate(false);
@@ -590,31 +701,66 @@ public:
         if (!player || !creature)
             return true;
 
+        LOG_ERROR("scripts.ulduar", "Razorscale: OnGossipSelect called, uiAction={}", uiAction);
+
         if (uiAction == GOSSIP_ACTION_INFO_DEF + 1)
         {
             InstanceScript* instance = creature->GetInstanceScript();
-            if (!instance || instance->GetBossState(BOSS_RAZORSCALE) == DONE)
+            if (!instance)
+            {
+                LOG_ERROR("scripts.ulduar", "Razorscale: No instance script found");
                 return true;
+            }
+            if (instance->GetBossState(BOSS_RAZORSCALE) == DONE)
+            {
+                LOG_ERROR("scripts.ulduar", "Razorscale: Boss state is DONE, aborting");
+                return true;
+            }
+
+            LOG_ERROR("scripts.ulduar", "Razorscale: Boss state={}", instance->GetBossState(BOSS_RAZORSCALE));
 
             Creature* razorscale = instance->GetCreature(BOSS_RAZORSCALE);
-            if (razorscale && !razorscale->IsInCombat())
+            if (!razorscale)
             {
-                // Do not show gossip icon if encounter is in progress
-                creature->RemoveNpcFlag(UNIT_NPC_FLAG_GOSSIP);
-
-                // reset npcs NPC_HARPOON_FIRE_STATE
-                std::list<Creature*> hfsList;
-                razorscale->GetCreaturesWithEntryInRange(hfsList, 300.0f, NPC_HARPOON_FIRE_STATE);
-                for (Creature* hfs : hfsList)
-                    hfs->AI()->SetData(1, 0);
-
-                if (razorscale->AI())
-                {
-                    razorscale->AI()->AttackStart(player);
-                    razorscale->GetMotionMaster()->MoveIdle();
-                    razorscale->GetMotionMaster()->MovePoint(POINT_RAZORSCALE_INIT, CORDS_AIR.GetPositionX(), CORDS_AIR.GetPositionY(), CORDS_AIR.GetPositionZ(), FORCED_MOVEMENT_NONE, 0.f, 0.f, false, false, MOTION_SLOT_ACTIVE, AnimTier::Fly);
-                }
+                LOG_ERROR("scripts.ulduar", "Razorscale: GetCreature(BOSS_RAZORSCALE) returned null");
+                return true;
             }
+            if (razorscale->IsInCombat())
+            {
+                LOG_ERROR("scripts.ulduar", "Razorscale: Already in combat, aborting");
+                return true;
+            }
+
+            LOG_ERROR("scripts.ulduar", "Razorscale: Starting encounter. Razorscale GUID={}, alive={}, pos=({}, {}, {})",
+                razorscale->GetGUID().GetCounter(), razorscale->IsAlive(),
+                razorscale->GetPositionX(), razorscale->GetPositionY(), razorscale->GetPositionZ());
+
+            // Do not show gossip icon if encounter is in progress
+            creature->RemoveNpcFlag(UNIT_NPC_FLAG_GOSSIP);
+
+            // reset npcs NPC_HARPOON_FIRE_STATE
+            std::list<Creature*> hfsList;
+            razorscale->GetCreaturesWithEntryInRange(hfsList, 300.0f, NPC_HARPOON_FIRE_STATE);
+            LOG_ERROR("scripts.ulduar", "Razorscale: Found {} HARPOON_FIRE_STATE npcs", hfsList.size());
+            for (Creature* hfs : hfsList)
+                hfs->AI()->SetData(1, 0);
+
+            if (razorscale->AI())
+            {
+                LOG_ERROR("scripts.ulduar", "Razorscale: Calling AttackStart + MovePoint");
+                razorscale->SetImmuneToPC(false);
+                razorscale->AI()->AttackStart(player);
+                razorscale->GetMotionMaster()->MoveIdle();
+                razorscale->GetMotionMaster()->MovePoint(POINT_RAZORSCALE_INIT, CORDS_AIR.GetPositionX(), CORDS_AIR.GetPositionY(), CORDS_AIR.GetPositionZ(), FORCED_MOVEMENT_NONE, 0.f, 0.f, false, false, MOTION_SLOT_ACTIVE, AnimTier::Fly);
+            }
+            else
+            {
+                LOG_ERROR("scripts.ulduar", "Razorscale: AI() returned null!");
+            }
+        }
+        else
+        {
+            LOG_ERROR("scripts.ulduar", "Razorscale: Unexpected uiAction={}, expected={}", uiAction, GOSSIP_ACTION_INFO_DEF + 1);
         }
 
         player->PlayerTalkClass->SendCloseGossip();

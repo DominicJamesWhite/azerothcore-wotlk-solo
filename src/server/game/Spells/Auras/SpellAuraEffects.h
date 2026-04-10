@@ -67,6 +67,7 @@ public:
 
     int32 GetPeriodicTimer() const { return m_periodicTimer; }
     void SetPeriodicTimer(int32 periodicTimer) { m_periodicTimer = periodicTimer; }
+    void SetAmplitude(int32 amplitude) { m_amplitude = amplitude; }
 
     int32 CalculateAmount(Unit* caster);
     void CalculatePeriodic(Unit* caster, bool create = false, bool load = false);

@@ -716,20 +716,26 @@ struct boss_stormcaller_brundir : public ScriptedAI
         if (me->HasUnitState(UNIT_STATE_CASTING))
             return;
 
+        // Don't process non-flight events while tendrils are active
+        bool inTendrils = me->HasAura(SPELL_LIGHTNING_TENDRILS) || me->HasAura(sSpellMgr->GetSpellIdForDifficulty(SPELL_LIGHTNING_TENDRILS, me));
+
         switch (events.ExecuteEvent())
         {
             case EVENT_CHAIN_LIGHTNING:
+                if (inTendrils) { events.Repeat(1s); break; }
                 if (Unit* target = SelectTarget(SelectTargetMethod::Random, 0))
                     me->CastSpell(target, SPELL_CHAIN_LIGHTNING, false);
 
                 events.Repeat(9s, 17s);
                 break;
             case EVENT_OVERLOAD:
+                if (inTendrils) { events.Repeat(1s); break; }
                 Talk(EMOTE_BRUNDIR_OVERLOAD);
                 me->CastSpell(me, SPELL_OVERLOAD, true);
                 events.RescheduleEvent(EVENT_OVERLOAD, 25s, 40s);
                 break;
             case EVENT_LIGHTNING_WHIRL:
+                if (inTendrils) { events.Repeat(1s); break; }
                 Talk(SAY_BRUNDIR_SPECIAL);
                 me->CastSpell(me, SPELL_LIGHTNING_WHIRL, true);
                 events.Repeat(10s, 25s);
@@ -747,7 +753,7 @@ struct boss_stormcaller_brundir : public ScriptedAI
                     me->SetDisableGravity(true);
                     me->SetHover(true);
 
-                    me->CombatStop();
+                    me->AttackStop();
                     me->StopMoving();
                     me->SetReactState(REACT_PASSIVE);
                     me->SetGuidValue(UNIT_FIELD_TARGET, ObjectGuid::Empty);
@@ -761,27 +767,29 @@ struct boss_stormcaller_brundir : public ScriptedAI
                 }
             case EVENT_LIGHTNING_LAND:
                 {
-                    float speed = me->GetDistance(me->GetPositionX(), me->GetPositionY(), me->GetPositionZ()) / (1000.0f * 0.001f);
-                    me->GetMotionMaster()->MovePoint(0, me->GetPositionX(), me->GetPositionY(), me->GetPositionZ(), FORCED_MOVEMENT_NONE, speed);
+                    me->RemoveUnitFlag(UNIT_FLAG_STUNNED);
+                    me->SetCanFly(false);
+                    me->SetHover(false);
+                    me->SetDisableGravity(false);
                     events.ScheduleEvent(EVENT_LAND_LAND, 1s);
                     break;
                 }
             case EVENT_LAND_LAND:
-                me->SetCanFly(false);
-                me->SetHover(false);
                 me->SetReactState(REACT_AGGRESSIVE);
-                me->SetDisableGravity(false);
-                if (Unit* flyTarget = ObjectAccessor::GetUnit(*me, _flyTargetGUID))
-                {
-                    me->Attack(flyTarget, false);
-                }
-
                 me->SetRegeneratingHealth(true);
-                _flyTargetGUID.Clear();
                 me->RemoveAura(sSpellMgr->GetSpellIdForDifficulty(SPELL_LIGHTNING_TENDRILS, me));
                 me->RemoveAura(SPELL_LIGHTNING_TENDRILS_2);
-                DoResetThreatList();
                 events.CancelEvent(EVENT_LIGHTNING_FLIGHT);
+
+                if (Unit* flyTarget = ObjectAccessor::GetUnit(*me, _flyTargetGUID))
+                {
+                    me->Attack(flyTarget, true);
+                    me->GetMotionMaster()->MoveChase(flyTarget);
+                }
+                else
+                    DoResetThreatList();
+
+                _flyTargetGUID.Clear();
                 break;
             case EVENT_ENRAGE:
                 Talk(SAY_BRUNDIR_BERSERK);
@@ -789,9 +797,7 @@ struct boss_stormcaller_brundir : public ScriptedAI
                 break;
             case EVENT_LIGHTNING_FLIGHT:
                 if (Unit* target = SelectTarget(SelectTargetMethod::Random, 0, 0.0f, true))
-                {
                     me->GetMotionMaster()->MovePoint(0, *target);
-                }
                 events.ScheduleEvent(EVENT_LIGHTNING_FLIGHT, 6s);
                 break;
         }
