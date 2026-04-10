@@ -21,6 +21,8 @@ SET "PYTHON=python"
 SET "VERIFY_SCRIPT=%~dp0tools\verify_scripts.py"
 SET "VERIFY_DB_SCRIPT=%~dp0tools\verify_db.py"
 SET "WOW_CACHE=C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Cache"
+SET "LLM_BRIDGE_SCRIPT=%~dp0modules\mod-llm-chatter\tools\llm_chatter_bridge.py"
+SET "LLM_BRIDGE_CONF=%BUILD_DIR%\bin\%BUILD_CONFIG%\configs\modules\mod_llm_chatter.conf"
 
 REM -- Parse command-line flags --------------------------------
 SET "SKIP_CMAKE=0"
@@ -30,6 +32,7 @@ SET "SKIP_UI=0"
 SET "SKIP_COPY=0"
 SET "SKIP_SERVER=0"
 SET "SKIP_VERIFY=0"
+SET "SKIP_BRIDGE=0"
 
 :PARSE_ARGS
 IF "%~1"=="" GOTO ARGS_DONE
@@ -40,6 +43,7 @@ IF /I "%~1"=="--skip-ui"     SET "SKIP_UI=1"     & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-copy"   SET "SKIP_COPY=1"   & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-server" SET "SKIP_SERVER=1"  & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-verify" SET "SKIP_VERIFY=1" & SHIFT & GOTO PARSE_ARGS
+IF /I "%~1"=="--skip-bridge" SET "SKIP_BRIDGE=1" & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--help" GOTO SHOW_HELP
 ECHO Unknown flag: %~1
 GOTO SHOW_HELP
@@ -51,6 +55,16 @@ REM ============================================================
 ECHO.
 ECHO [1/5] Stopping servers if running...
 SET "KILLED=0"
+REM Also kill any running LLM chatter bridge
+FOR /F "tokens=2" %%p IN ('WMIC PROCESS WHERE "CommandLine LIKE '%%llm_chatter_bridge%%' AND Name='python.exe'" GET ProcessId /FORMAT:VALUE 2^>NUL ^| %SystemRoot%\System32\find.exe "="') DO (
+    SET "PID=%%p"
+    SET "PID=!PID: =!"
+    IF DEFINED PID (
+        taskkill /PID !PID! /F >NUL 2>&1
+        ECHO       LLM chatter bridge stopped.
+        SET "KILLED=1"
+    )
+)
 FOR %%s IN (worldserver.exe authserver.exe) DO (
     tasklist /FI "IMAGENAME eq %%s" 2>NUL | %SystemRoot%\System32\find.exe /I "%%s" >NUL
     IF !ERRORLEVEL!==0 (
@@ -349,6 +363,19 @@ ECHO       Authserver launched in new window.
 START "Worldserver" /D "%SERVER_DIR%" "%SERVER_DIR%\worldserver.exe"
 ECHO       Worldserver launched in new window.
 
+IF "%SKIP_BRIDGE%"=="1" (
+    ECHO       LLM chatter bridge SKIPPED ^(--skip-bridge^)
+) ELSE IF EXIST "%LLM_BRIDGE_SCRIPT%" (
+    IF EXIST "%LLM_BRIDGE_CONF%" (
+        START "LLM Chatter Bridge" cmd /k %PYTHON% "%LLM_BRIDGE_SCRIPT%" --config "%LLM_BRIDGE_CONF%"
+        ECHO       LLM chatter bridge launched in new window.
+    ) ELSE (
+        ECHO       LLM chatter bridge config not found, skipping.
+    )
+) ELSE (
+    ECHO       LLM chatter bridge script not found, skipping.
+)
+
 REM ============================================================
 REM  STEP 5.5: Post-start database verification
 REM ============================================================
@@ -387,6 +414,7 @@ ECHO   --skip-ui       Skip Interface UI build (build_interface.py)
 ECHO   --skip-copy     Skip copying patch-4.mpq to WoW client
 ECHO   --skip-server   Skip launching worldserver
 ECHO   --skip-verify   Skip pre-build consistency check and post-start DB verify
+ECHO   --skip-bridge   Skip launching LLM chatter bridge
 ECHO   --help          Show this help message
 ECHO.
 ECHO Examples:

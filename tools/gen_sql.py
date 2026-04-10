@@ -21,6 +21,7 @@ Usage:
     python tools/gen_sql.py classmask --family 15 --spells 55078,55095
     python tools/gen_sql.py enum --aura MOD_PARRY
     python tools/gen_sql.py enum --effect APPLY_AURA
+    python tools/gen_sql.py talent-link --class priest --link "05032031-235050032302152530000331351"
 
 Options:
     --dry-run         Show what would be generated without writing files
@@ -50,6 +51,33 @@ from spell_dbc import SPELL_COLUMNS, FLOAT_COLUMNS, TEXT_COLUMNS, load_spell_ind
 from build_dbc import (  # noqa: E402
     TALENT_COLUMNS, TALENT_FIELD_COUNT, TALENT_RECORD_SIZE, read_int_dbc,
 )
+
+# ---------------------------------------------------------------------------
+# DBC source resolution (--source base|live)
+# ---------------------------------------------------------------------------
+
+LIVE_DBC_DIR = r"C:\Build\bin\RelWithDebInfo\Data\dbc"
+
+
+def resolve_dbc_paths(source):
+    """Return (spell_dbc_path, talent_dbc_path) for the given source.
+
+    'base' = safe backup DBCs (default, never edited by build pipeline)
+    'live' = built DBCs with all alonecraft_spell_dbc overrides baked in
+    """
+    if source == "live":
+        spell_path = os.path.join(LIVE_DBC_DIR, "Spell.dbc")
+        talent_path = os.path.join(LIVE_DBC_DIR, "Talent.dbc")
+        if not os.path.exists(spell_path):
+            print(f"  ERROR: Live Spell.dbc not found at {spell_path}")
+            print(f"  Have you built the server? Try --source base instead.")
+            sys.exit(1)
+        if not os.path.exists(talent_path):
+            print(f"  ERROR: Live Talent.dbc not found at {talent_path}")
+            sys.exit(1)
+        return spell_path, talent_path
+    else:
+        return config.BASE_DBC_PATH, getattr(config, "BASE_TALENT_DBC_PATH", None)
 
 SPELL_PROC_COLUMNS = (
     "SpellId", "SchoolMask", "SpellFamilyName",
@@ -459,13 +487,14 @@ def search_spells_by_name(dbc_index, query, exact=False):
 # Talent index
 # ---------------------------------------------------------------------------
 
-def load_talent_index():
+def load_talent_index(talent_path=None):
     """Load Talent.dbc and build lookup structures.
     Returns (talent_records, spell_to_talent) where:
       talent_records: {talent_id: dict with TALENT_COLUMNS keys}
       spell_to_talent: {spell_id: talent_dict} for all non-zero SpellRank slots
     """
-    talent_path = getattr(config, "BASE_TALENT_DBC_PATH", None)
+    if talent_path is None:
+        talent_path = getattr(config, "BASE_TALENT_DBC_PATH", None)
     if not talent_path or not os.path.exists(talent_path):
         print("  ERROR: Talent.dbc not found. Check BASE_TALENT_DBC_PATH in config.py.")
         sys.exit(1)
@@ -540,8 +569,11 @@ def cmd_lookup(args):
     """Handle the 'lookup' subcommand -- display spell data from binary Spell.dbc."""
     field_names = list(SPELL_COLUMNS)
 
+    source = getattr(args, "source", "base") or "base"
+    spell_path, _ = resolve_dbc_paths(source)
+    print(f"  Source: {source} ({spell_path})")
     print(f"  Loading Spell.dbc...")
-    dbc_index = load_spell_index(config.BASE_DBC_PATH)
+    dbc_index = load_spell_index(spell_path)
     print(f"  Loaded {len(dbc_index)} spells from Spell.dbc")
 
     # Name search mode
@@ -647,12 +679,15 @@ def cmd_lookup(args):
 
 def cmd_talent(args):
     """Handle the 'talent' subcommand -- look up talent entries by spell name."""
+    source = getattr(args, "source", "base") or "base"
+    spell_path, talent_path = resolve_dbc_paths(source)
+    print(f"  Source: {source} ({spell_path})")
     print("  Loading Spell.dbc...")
-    dbc_index = load_spell_index(config.BASE_DBC_PATH)
+    dbc_index = load_spell_index(spell_path)
     print(f"  Loaded {len(dbc_index)} spells")
 
     print("  Loading Talent.dbc...")
-    talent_records, spell_to_talent = load_talent_index()
+    talent_records, spell_to_talent = load_talent_index(talent_path)
     print(f"  Loaded {len(talent_records)} talents")
 
     # Search by name in Spell.dbc
@@ -714,6 +749,203 @@ def cmd_talent(args):
             name = row.get("SpellName0", "")
             rank = row.get("SpellRank0", "")
             print(f"    {spell_id:>8}  {name}  {rank}")
+
+
+# ---------------------------------------------------------------------------
+# TalentTab -> class/spec mapping (from TalentTab.dbc)
+# ---------------------------------------------------------------------------
+
+# TabID -> (ClassName, SpecName, tabpage)
+TALENT_TAB_INFO = {
+    # Warrior
+    161: ("Warrior", "Arms", 0),
+    163: ("Warrior", "Fury", 1),
+    164: ("Warrior", "Protection", 2),
+    # Paladin
+    381: ("Paladin", "Holy", 0),
+    382: ("Paladin", "Protection", 1),
+    383: ("Paladin", "Retribution", 2),
+    # Hunter
+    361: ("Hunter", "Beast Mastery", 0),
+    363: ("Hunter", "Marksmanship", 1),
+    362: ("Hunter", "Survival", 2),
+    # Rogue
+    182: ("Rogue", "Assassination", 0),
+    181: ("Rogue", "Combat", 1),
+    183: ("Rogue", "Subtlety", 2),
+    # Priest
+    201: ("Priest", "Discipline", 0),
+    202: ("Priest", "Holy", 1),
+    203: ("Priest", "Shadow", 2),
+    # Death Knight
+    398: ("Death Knight", "Blood", 0),
+    399: ("Death Knight", "Frost", 1),
+    400: ("Death Knight", "Unholy", 2),
+    # Shaman
+    261: ("Shaman", "Elemental", 0),
+    263: ("Shaman", "Enhancement", 1),
+    262: ("Shaman", "Restoration", 2),
+    # Mage
+    81: ("Mage", "Arcane", 0),
+    41: ("Mage", "Fire", 1),
+    61: ("Mage", "Frost", 2),
+    # Warlock
+    302: ("Warlock", "Affliction", 0),
+    303: ("Warlock", "Demonology", 1),
+    301: ("Warlock", "Destruction", 2),
+    # Druid
+    283: ("Druid", "Balance", 0),
+    281: ("Druid", "Feral", 1),
+    282: ("Druid", "Restoration", 2),
+}
+
+# Class name (lowercase) -> list of TabIDs in tabpage order [0, 1, 2]
+CLASS_TABS = {}
+for _tab_id, (_cls, _spec, _page) in TALENT_TAB_INFO.items():
+    _cls_lower = _cls.lower()
+    if _cls_lower not in CLASS_TABS:
+        CLASS_TABS[_cls_lower] = [None, None, None]
+    CLASS_TABS[_cls_lower][_page] = _tab_id
+
+
+def _build_talent_tree(talent_records, tab_id, dbc_index):
+    """Build sorted list of talents for a talent tab.
+    Returns list of dicts with talent info, sorted by (TierID, ColumnIndex).
+    """
+    talents = []
+    for tid, row in talent_records.items():
+        if row["TabID"] != tab_id:
+            continue
+        # Count max ranks
+        max_rank = 0
+        for ri in range(1, 10):
+            if row.get(f"SpellRank_{ri}", 0):
+                max_rank = ri
+        # Get spell name from rank 1
+        spell_id = row.get("SpellRank_1", 0)
+        spell_name = "?"
+        spell_desc = ""
+        if spell_id and spell_id in dbc_index:
+            spell_name = dbc_index[spell_id].get("SpellName0", "?")
+            spell_desc = dbc_index[spell_id].get("SpellDescription0", "")
+        talents.append({
+            "talent_id": tid,
+            "tier": row["TierID"],
+            "col": row["ColumnIndex"],
+            "max_rank": max_rank,
+            "spell_id": spell_id,
+            "name": spell_name,
+            "desc": spell_desc,
+        })
+    talents.sort(key=lambda t: (t["tier"], t["col"]))
+    return talents
+
+
+def cmd_talent_link(args):
+    """Decode a wowhead-style talent link into human-readable talent names."""
+    # Resolve class
+    cls = args.class_name.lower()
+    if cls == "dk":
+        cls = "death knight"
+    if cls not in CLASS_TABS:
+        print(f"  ERROR: Unknown class '{args.class_name}'.")
+        print(f"  Valid classes: {', '.join(sorted(CLASS_TABS.keys()))}")
+        sys.exit(1)
+
+    tab_ids = CLASS_TABS[cls]
+    class_name = TALENT_TAB_INFO[tab_ids[0]][0]
+
+    # Parse the link: "digits-digits-digits" for each tree
+    link = args.link
+    parts = link.split("-")
+    # Handle leading/trailing dashes (empty trees)
+    # e.g. "-235050032302152530000331351" means tree 0 is empty
+    # Split on '-' gives ['', '2350...'] — pad to 3 parts
+    while len(parts) < 3:
+        parts.append("")
+
+    source = getattr(args, "source", "base") or "base"
+    spell_path, talent_path = resolve_dbc_paths(source)
+
+    print(f"  Source: {source} ({spell_path})")
+    print(f"  Loading Spell.dbc...")
+    dbc_index = load_spell_index(spell_path)
+    print(f"  Loaded {len(dbc_index)} spells")
+
+    print(f"  Loading Talent.dbc...")
+    talent_records_raw, _ = load_talent_index(talent_path)
+    # Convert to dict-of-dicts if needed
+    talent_records = {}
+    for tid, val in talent_records_raw.items():
+        if isinstance(val, dict):
+            talent_records[tid] = val
+        else:
+            talent_records[tid] = dict(zip(TALENT_COLUMNS, val))
+    print(f"  Loaded {len(talent_records)} talents")
+
+    total_points = 0
+    all_unspent = []  # collect talents with 0 points for summary
+
+    for tree_idx in range(3):
+        tab_id = tab_ids[tree_idx]
+        spec_name = TALENT_TAB_INFO[tab_id][1]
+        link_str = parts[tree_idx]
+        tree_talents = _build_talent_tree(talent_records, tab_id, dbc_index)
+
+        if not tree_talents:
+            print(f"\n  {spec_name} (TabID {tab_id}): no talents found")
+            continue
+
+        # Map link characters to talents
+        tree_points = 0
+        rows = []
+        for i, talent in enumerate(tree_talents):
+            if i < len(link_str):
+                pts = int(link_str[i])
+            else:
+                pts = 0
+            tree_points += pts
+            total_points += pts
+
+            flag = ""
+            if pts == 0 and talent["max_rank"] > 0:
+                all_unspent.append((spec_name, talent))
+            if pts > 0 and pts < talent["max_rank"]:
+                flag = " (partial)"
+            rows.append((talent, pts, flag))
+
+        print(f"\n  === {spec_name} ({tree_points} points) ===")
+        if tree_points == 0 and not link_str:
+            print(f"  (no points spent)")
+            continue
+
+        # Print header
+        print(f"  {'Tier':<5} {'Col':<4} {'Pts':<8} {'Talent Name':<30} {'Description'}")
+        print(f"  {'-'*4}  {'-'*3} {'-'*7} {'-'*29} {'-'*50}")
+
+        for talent, pts, flag in rows:
+            pts_str = f"{pts}/{talent['max_rank']}{flag}"
+            desc = talent["desc"]
+            if len(desc) > 50:
+                desc = desc[:47] + "..."
+            if pts > 0:
+                print(f"  {talent['tier']:<5} {talent['col']:<4} {pts_str:<8} {talent['name']:<30} {desc}")
+            elif args.show_all:
+                print(f"  {talent['tier']:<5} {talent['col']:<4} {pts_str:<8} {talent['name']:<30} {desc}")
+
+        # Check for link overflow
+        if len(link_str) > len(tree_talents):
+            print(f"  WARNING: Link has {len(link_str)} chars but tree only has {len(tree_talents)} talents")
+
+    print(f"\n  Total: {total_points} points")
+
+    if not args.show_all and all_unspent:
+        print(f"\n  Skipped talents (0 points, use --all to show):")
+        for spec_name, t in all_unspent:
+            desc = t["desc"]
+            if len(desc) > 60:
+                desc = desc[:57] + "..."
+            print(f"    [{spec_name}] T{t['tier']}.{t['col']} {t['name']}: {desc}")
 
 
 def cmd_dbc(args):
@@ -978,13 +1210,29 @@ def main():
     p_lookup.add_argument("--all", action="store_true", help="Show all 234 columns (default: key fields only)")
     p_lookup.add_argument("--exact", action="store_true", help="Require exact name match (with --name)")
     p_lookup.add_argument("--limit", type=int, default=50, help="Max results for name search (default: 50)")
+    p_lookup.add_argument("--source", choices=["base", "live"], default="base",
+                          help="DBC source: 'base' (safe backup) or 'live' (built with overrides)")
     p_lookup.set_defaults(func=cmd_lookup)
 
     # talent subcommand
     p_talent = subparsers.add_parser("talent", help="Look up talent entries by spell name")
     p_talent.add_argument("--name", required=True, help="Talent/spell name to search for")
     p_talent.add_argument("--exact", action="store_true", help="Require exact name match")
+    p_talent.add_argument("--source", choices=["base", "live"], default="base",
+                          help="DBC source: 'base' (safe backup) or 'live' (built with overrides)")
     p_talent.set_defaults(func=cmd_talent)
+
+    # talent-link subcommand
+    p_tlink = subparsers.add_parser("talent-link", help="Decode a wowhead-style talent link string")
+    p_tlink.add_argument("--class", dest="class_name", required=True,
+                         help="Class name (e.g. priest, warrior, dk)")
+    p_tlink.add_argument("--link", required=True,
+                         help="Talent link string (e.g. '05032031-235050032302152530000331351')")
+    p_tlink.add_argument("--all", dest="show_all", action="store_true",
+                         help="Show all talents including those with 0 points")
+    p_tlink.add_argument("--source", choices=["base", "live"], default="base",
+                         help="DBC source: 'base' (safe backup) or 'live' (built with overrides)")
+    p_tlink.set_defaults(func=cmd_talent_link)
 
     # dbc subcommand
     p_dbc = subparsers.add_parser("dbc", help="Generate alonecraft_spell_dbc SQL")

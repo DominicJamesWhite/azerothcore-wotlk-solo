@@ -428,6 +428,15 @@ python tools/gen_sql.py classmask --family 15 --spells 55078,55095
 python tools/gen_sql.py enum --aura MOD_PARRY
 python tools/gen_sql.py enum --effect APPLY_AURA
 
+# Decode a wowhead-style talent link string into human-readable talent names
+python tools/gen_sql.py talent-link --class priest --link "05032031-235050032302152530000331351"
+python tools/gen_sql.py talent-link --class priest --link "05032031-235050032302152530000331351" --all
+python tools/gen_sql.py talent-link --class priest --link "05032031-235050032302152530000331351" --source live
+
+# Use --source live on lookup/talent/talent-link to read built DBCs with overrides
+python tools/gen_sql.py lookup --spell-id 14750 --source live    # shows "Gnosticism" not "Improved Mana Burn"
+python tools/gen_sql.py talent --name "Gnosticism" --source live  # finds renamed talent
+
 # Use symbolic enum names in --set (auto-resolved to integers)
 python tools/gen_sql.py dbc --spell-id 200100 --set EffectApplyAuraName1=SPELL_AURA_MOD_PARRY_PERCENT
 
@@ -441,7 +450,7 @@ python tools/gen_sql.py dbc --spell-id 48997 --set EffectBasePoints1=5 --append-
 python tools/gen_sql.py dbc --spell-id 49490 --set EffectBasePoints1=7 --append-to 2026_03_31_00.sql --group-comment "Subversion rank 2"
 ```
 
-Subcommands: `lookup` (spell viewer + name search), `talent` (talent lookup by name), `dbc` (alonecraft_spell_dbc, single or batch), `proc` (spell_proc), `script` (spell_script_names), `classmask` (SpellFamilyFlags computation), `enum` (aura/effect enum lookup). Validates column names with fuzzy "did you mean?" suggestions on typos. Enum names (`SPELL_AURA_*`, `SPELL_EFFECT_*`) are auto-resolved in `--set` arguments.
+Subcommands: `lookup` (spell viewer + name search), `talent` (talent lookup by name), `talent-link` (decode wowhead talent link strings), `dbc` (alonecraft_spell_dbc, single or batch), `proc` (spell_proc), `script` (spell_script_names), `classmask` (SpellFamilyFlags computation), `enum` (aura/effect enum lookup). Validates column names with fuzzy "did you mean?" suggestions on typos. Enum names (`SPELL_AURA_*`, `SPELL_EFFECT_*`) are auto-resolved in `--set` arguments.
 
 ### Post-Build DB Verifier (`tools/verify_db.py`)
 
