@@ -581,23 +581,6 @@ class spell_dk_rune_of_the_fallen_crusader : public SpellScript
     }
 };
 
-// 49222 - Bone Shield
-class spell_dk_bone_shield : public AuraScript
-{
-    PrepareAuraScript(spell_dk_bone_shield);
-
-    void HandleProc(ProcEventInfo& eventInfo)
-    {
-        if (eventInfo.GetSpellInfo() && eventInfo.GetSpellInfo()->IsTargetingArea())
-            PreventDefaultAction();
-    }
-
-    void Register() override
-    {
-        OnProc += AuraProcFn(spell_dk_bone_shield::HandleProc);
-    }
-};
-
 // 51209 - Hungering Cold
 class spell_dk_hungering_cold : public AuraScript
 {
@@ -2996,7 +2979,7 @@ class spell_dk_pvp_4p_bonus : public AuraScript
         if (!spellInfo)
             return false;
 
-        return (spellInfo->GetAllEffectsMechanicMask() & ((1 << MECHANIC_ROOT) | (1 << MECHANIC_SNARE))) != 0;
+        return (spellInfo->GetAllEffectsMechanicMask() & ((1ULL << MECHANIC_ROOT) | (1ULL << MECHANIC_SNARE))) != 0;
     }
 
     void HandleProc(AuraEffect const* aurEff, ProcEventInfo& eventInfo)
@@ -3026,7 +3009,6 @@ void AddSC_deathknight_spell_scripts()
     RegisterSpellScript(spell_dk_improved_blood_presence_triggered);
     RegisterSpellScript(spell_dk_wandering_plague_aura);
     RegisterSpellScript(spell_dk_rune_of_the_fallen_crusader);
-    RegisterSpellScript(spell_dk_bone_shield);
     RegisterSpellScript(spell_dk_hungering_cold);
     RegisterSpellScript(spell_dk_blood_caked_blade);
     RegisterSpellScript(spell_dk_dancing_rune_weapon);
