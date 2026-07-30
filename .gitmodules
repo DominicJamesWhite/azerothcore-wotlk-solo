@@ -3,7 +3,7 @@
 	url = https://github.com/DominicJamesWhite/world_of_alonecraft.git
 [submodule "modules/mod-mythic-plus"]
 	path = modules/mod-mythic-plus
-	url = https://github.com/silviu20092/mod-mythic-plus.git
+	url = https://github.com/DominicJamesWhite/mod-mythic-plus.git
 [submodule "modules/mod-dungeon-respawn"]
 	path = modules/mod-dungeon-respawn
 	url = https://github.com/DominicJamesWhite/DungeonRespawn.git
@@ -13,3 +13,9 @@
 [submodule "modules/mod-learn-spells"]
 	path = modules/mod-learn-spells
 	url = https://github.com/azerothcore/mod-learn-spells.git
+[submodule "modules/mod-llm-chatter"]
+	path = modules/mod-llm-chatter
+	url = https://github.com/DominicJamesWhite/mod-llm-chatter.git
+[submodule "modules/mod-playerbots"]
+	path = modules/mod-playerbots
+	url = https://github.com/DominicJamesWhite/mod-playerbots.git
