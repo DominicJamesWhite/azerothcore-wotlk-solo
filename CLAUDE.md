@@ -161,7 +161,9 @@ When implementing talent redesigns or new mechanics, prefer this architecture:
 
 ### Module SQL conventions
 
-- **Naming:** `YYYY_MM_DD_XX.sql` (e.g., `2026_03_29_00.sql`). `XX` is a zero-padded sequence number for multiple files on the same day.
+- **Naming:** `woa_YYYY_MM_DD_XX.sql` (e.g., `woa_2026_03_29_00.sql`). `XX` is a zero-padded sequence number for multiple files on the same day.
+- **Always use the `woa_` prefix on new files.** The updater orders *all* updates — core and module alike — by filename alone, and a single duplicate name aborts the entire world DB update with "Duplicate filename ... occurred". Core `data/sql/updates/db_world/` uses bare `YYYY_MM_DD_XX.sql`, so an unprefixed module file will eventually collide with an upstream file created the same day. (mod-mythic-plus uses `u_mp_` for the same reason.)
+- Existing unprefixed files are left as-is: renaming one makes the updater re-apply it, and its old `updates` row is orphaned. That is harmless — orphan cleanup skips `MODULE`-state rows — but only rename when a real collision forces it.
 - **Files must be idempotent** — always `DELETE` before `INSERT`:
   ```sql
   DELETE FROM `spell_script_names` WHERE `spell_id` = 12345;
