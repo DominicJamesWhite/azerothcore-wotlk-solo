@@ -45,7 +45,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Demo lock
     - [ ]  Tuning
-- [ ] Destro lock
+- [x] Destro lock
     - [ ]  Tuning
 - [x] Fire mage 
     - [ ]  Tuning
@@ -53,7 +53,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [x] Frost mage
     - [ ]  Tuning
-- [ ] Sub rogue 
+- [x] Sub rogue 
     - [ ]  Tuning
 - [ ] Ass rogue
     - [ ]  Tuning
@@ -240,14 +240,31 @@ An attempt to make WOW better to play alone or in very small groups.
 **Spec Themes:**
 - [ ] **Assassination:** Poisons debilitate reducing damage done by enemies to the rogue.
 - [ ] **Combat:** Lots of parries and dodges.
-- [ ] **Subtlety:** Bloodlust!.
+- [ ] **Subtlety:** Bloodlust!
+
+**Spell Changes:**
+- [x] **Feint:** Threat no longer affected. Instead increases your chance to parry (basically a spare Evasion). (4.61)
+- [x] **Tricks of the Trade:** Can be self-cast. When self-cast it also increases dodge chance by 20% of your crit chance and doubles threat. (4.61)
 
 **Talent Changes:**
-- [ ] **Shadowstep:** Threat no longer affected. Instead reduces your chance to be hit.
-- [ ] **Sleight of Hand:** Threat no longer affected. Instead increases your chance to dodge.
+- [x] **Shadowstep:** Threat no longer affected. Instead reduces your chance to be hit. (4.61)
+- [x] **Master of Deception:** Your agility is 33/66/100% more effective at increasing your dodge chance, and (as today). (4.61)
+- [x] **Sleight of Hand:** Reduces your chance to be hit by melee and ranged attacks by 3/6% and increases the parry chance of your Feint ability by 20/40%. (4.61)
+- [x] **Dirty Tricks:** Redesigned. Ambush and Backstab no longer require you to be behind the target. (4.61)
+- [x] **Camouflage:** Also reduces the cooldown of Shadowstep and Shadow Dance by 4/7/10 sec. (4.61)
+- [x] **Elusiveness:** Also reduces the cooldown on Evasion by 15/30 sec (sharing the Cloak of Shadows effect) and on Shadow Dance by 5/10 sec. (4.61)
+- [x] **Ghostly Strike:** A strike that deals 125% weapon damage (180% if a dagger is equipped) and increases your chance to dodge by 15% for 20 sec. Awards 1 combo point. 20s cooldown. (4.61)
+- [x] **Heightened Senses:** Redesigned. When you dodge an attack, you restore 2/4% of your maximum health. (4.61)
+- [x] **Preparation (Renamed to Bladework):** Redesigned. AOE combo point spender, 30 energy. Nearby enemies are marked for rapid counterattack, causing their next attacks on you — one per combo point spent, including attacks you dodge or parry — to be immediately countered for 125% weapon damage (180% if a dagger is equipped). 30s debuff duration. (4.61)
+- [x] **Dirty Deeds:** Also reduces the energy cost of Bladework. (4.61)
+- [x] **Hemorrhage:** Physical damage increase no longer has charges and is increased by attack power. (4.61)
+- [x] **Enveloping Shadows:** Your finishing moves have a 6/12/20% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies. (4.61)
+- [x] **Waylay:** Your Ambush and Backstab hits unbalance your target, reducing their chance to hit you by 2/4% and increasing your chance to critically strike against them by 2/4%. (4.61)
+- [x] **Filthy Tricks:** Preparation cooldown reduction removed, replaced with Evasion and Feint cooldown reduction. (4.61)
 
 **Class Signature Skill:**
 - [ ] **Trickery:** Reveal that your injuries were faked, restoring X% health and boosting energy regeneration for 5 seconds.
+
 
 ### Shaman
 
@@ -275,23 +292,39 @@ An attempt to make WOW better to play alone or in very small groups.
 ### Warlock
 
 **Spell changes**
-- [ ] Soulstone now just applies the soulstone effect to whoever you've targeted, no intermediate step of creating an item.
-- [ ] Soul shards stack but you have a max of 32.
-
-**Spec Themes:**
-- [ ] **Affliction:** Leech leech leech, vast amounts of HPS and damage stagger mechanic on Fel armor.
-- [ ] **Demonology:** Open demon portals for damage / tanking / healing help, demon skin and demon armour are massively boosted
+- [x] Soulstone now just applies the soulstone effect to whoever you've targeted, no intermediate step of creating an item.
+- [x] Soul shards stack but you have a max of 32. (4.50)
+- [] Voidwalker torment should be an actual taunt, like warrior taunt
+- [] Succubus Seduction works more like 'Fear' - usable in combat, broken by damage (but not _instantly_ by _any_ damage)
 
 **Talent changes** 
-SWAP Emberstorm and Molten Skin positions 
-- [ ] **Ruin:** No longer afffects Imp. Instead critical hits on an targets with Immolate active spread Immolate to nearby targets (so long as those targets aren't CCed with something that breaks on damage)
-- [ ] **Backlash:** Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health. 
-- [ ] **Intensity (Renamed to Burning Soul):** Critical hits from your fire spells have an X% chance to generate a Soul Shard. 
-- [ ] **Shadowburn:** Doesn't cost a Soul Shard anymore. Instead generates one, and another if the target dies. Longer cooldown.
-- [ ] **Aftermath:** Increases the periodic damage on your Immolate by X%, and Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard. 
-- [ ] **Molten Skin (Renamed to Infernal Bargain):** Channel souls to the nether in exchange for power and protection. For each Soul Shard thrown into the endless void, you do X% more damage and the critical effect chance of your spells is increased by X% for 10 seconds. While committing to the pact you are protected by demonic forces, taking X% less damage. 
-- [ ] **Demonic Power (Renamed to Molten Rain):** Rain of Fire has an X% chance to generate a Soul Shard from each enemy hit.  
-- [ ] **Destructive Reach:** Threat no longer reduced. Fire damage increased by X%. 
-- [ ] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 15% for 10 seconds. Max 3 stacks. 
-- [ ] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 15% chance to return health equal to 200% of the damage caused. 
-- [ ] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken and increasing the critical effect chance of your spells by 1% for each Soul Shard in your possession. 
+- [x] **Improved Healthstone:** Healthstone also restores 10/20% max mana
+- [x] **Improved Imp (Renamed to Imperious Flames):** Redesigned. Your Imp's firebolt does 2x damage against targets affected by your Immolate. Your Felguard also learns Immolation Aura (spell from Metamorphosis to give it even better AOE and give you a reason to care about this talent)
+- [x] **Demonic Embrace:** (As today plus) and your Voidwalker and Felguard chance to dodge is increased by your intellect (same rate as bear agi conversion?).
+- [x] **Fel Synergy:** (As today plus) and 20/40% of the damage done by your pet heals you.
+- [x] **Improved Health Funnel (Renamed to Sacrifice of Blood):** Redesigned. Health Funnel transfers 25/50% more health, and while channelling it the targeted demon takes 15/30% less damage and deals 25/50% more damage. Pure DBC — core's `spell_warl_health_funnel` already casts buff 60955/60956 on the demon gated on the talent, so the demon half is a rewrite of those two rows; the transfer bonus is an `ADD_PCT_MODIFIER` / `SPELLMOD_DOT` on the talent, class-masked to Health Funnel so it touches nothing else. No script. The old 40/80% health-cost cut was dropped: Health Funnel charges health in three places and only one honours `SPELLMOD_COST`, so it required a per-tick refund hack; the healing bonus delivers the same relief as throughput instead (the tick self-damage is capped at `ManaPerSecond`, so a bigger heal costs no more).
+- [x] **Demonic Brutality:** Redesigned. Your Voidwalker's and Felguard's attacks — and your Voidwalker's Torment and Suffering — generate 67/134/200% additional threat, and the cooldown on Suffering is reduced by 30/60/90s. Damage-derived threat (melee, Cleave, Intercept) comes from the 200412 `MOD_THREAT` carrier; Torment and Suffering need `spell_warl_demon_brutality_threat` because `SPELL_EFFECT_THREAT` ignores threat modifiers.
+- [x] **Demonic Lash:** Redesigned. Your Succubus' Lash of Pain leaves a Nether Scar, increasing your shadow damage on affected enemies by 5/10/15%. Your Felguard also does 5/10/15% weapon damage as additional shadow damage.
+- [x] **Fel Domination:** For 30 seconds your demons do 10% more damage for each of your DoT effects on your target.
+- [x] **Demonic Aegis:** Your Demon Armor increases your armor by 200/400/600% and reduces your and your pet's chance to be critically hit by 2/4/6%.
+- [x] **Master Summoner:** Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, Felhunter and Fel Guard Summoning spells by 4/8 sec and the Mana cost by 40/80%. 
+- [x] **Mana Feed:** When your demons deal damage they return 5% to you as mana. Health Funnel also restores 5% of your max mana of your summoned demon per tick.
+- [x] **Master Conjuror (Renamed to Fel Attunement):** Redesigned. Your demons gain 75/150% of your haste. (Crit inheritance dropped — haste has a working precedent on the DK ghoul, crit has none anywhere in the core; the haste share was raised from 50/100% to compensate.)
+- [x] **Molten Core:** Can also apply to Shadow Bolt, adding a stacking DoT for 3/6/10% of damage done like Unholy Blight does for Death Coil for DKs
+- [x] **Demonic Resilience:** Hit instead of critically hit
+- [x] **Nemesis:** (as today plus) your and your demon's critical strikes have a chance to generate a soul shard (2/4/6PPM)
+- [x] **Metamorphosis:** Redesigned. No cooldown or duration. Costs 1 Soul Shard to transform, and then one more every 6s. (All defensive benefits removed and put in Demonic Aegis). 
+
+
+- [x] SWAP Emberstorm and Molten Skin positions (4.50)
+- [x] **Ruin:** No longer afffects Imp. Instead critical hits on an targets with Immolate active spread Immolate to nearby targets (so long as those targets aren't CCed with something that breaks on damage)
+- [x] **Backlash:** Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health. 
+- [x] **Intensity (Renamed to Burning Soul):** Critical hits from your fire spells have an X% chance to generate a Soul Shard. 
+- [x] **Shadowburn:** Doesn't cost a Soul Shard anymore. Instead generates one, and another if the target dies. Longer cooldown.
+- [x] **Aftermath:** Increases the periodic damage on your Immolate by X%, and Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard. 
+- [x] **Molten Skin (Renamed to Infernal Bargain):** Channel souls to the nether in exchange for power and protection. The void doubles its price every second — 1, then 2, 4, 8 and 16 Soul Shards — and the pact ends the instant you cannot pay. Each payment grants stacks equal to the shards spent, each increasing your damage by X% and the critical effect chance of your spells by X% for 10 seconds. While committing to the pact you are immune to all damage. Going all the way costs 31 of the 32 shards you can carry — i.e. the whole of Nathrezim Foresight — so the panic button and the burst button are the same button. 
+- [x] **Demonic Power (Renamed to Molten Rain):** Rain of Fire has an X% chance to generate a Soul Shard from each enemy hit.  
+- [x] **Destructive Reach:** Threat no longer reduced. Fire damage increased by X%. 
+- [x] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 15% for 10 seconds. Max 3 stacks. 
+- [x] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 15% chance to return health equal to 200% of the damage caused. 
+- [x] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken and increasing the critical effect damage bonus of your spells by 1% for each Soul Shard in your possession. 

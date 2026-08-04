@@ -81,8 +81,15 @@ def auto_detect_from_git():
     return spell_ids, script_names, sql_files
 
 
+# SpellAttr0 bits that silently make an aura invisible.  Getting these wrong
+# is indistinguishable in-game from "the script never ran", so they are
+# called out explicitly rather than left for the reader to decode.
+SPELL_ATTR0_PASSIVE = 0x40
+SPELL_ATTR0_DO_NOT_DISPLAY = 0x80
+
+
 def verify_spell_data(conn, spell_ids):
-    """Check that spells exist in spell_dbc."""
+    """Check that spells exist in alonecraft_spell_dbc (or core spell_dbc)."""
     if not spell_ids:
         return
 
@@ -93,26 +100,66 @@ def verify_spell_data(conn, spell_ids):
         return
 
     print("-" * 60)
-    print("  Spell Data (spell_dbc)")
+    print("  Spell Data (alonecraft_spell_dbc)")
     print("-" * 60)
 
     placeholders = ",".join(["%s"] * len(positive_ids))
+
+    # alonecraft_spell_dbc is the module's source of truth: build_dbc.py bakes
+    # it into the Spell.dbc the worldserver loads.  The core `spell_dbc` table
+    # is a small override table that never holds 200000+ custom spells, so
+    # checking it alone reports every custom spell as missing.
     cursor.execute(
-        f"SELECT ID, SpellName0, Effect1, EffectBasePoints1, EffectAura1 "
-        f"FROM spell_dbc WHERE ID IN ({placeholders})",
+        f"SELECT ID, SpellName0, Attributes, StackAmount, Effect1, "
+        f"EffectBasePoints1, EffectApplyAuraName1 "
+        f"FROM alonecraft_spell_dbc WHERE ID IN ({placeholders})",
         positive_ids,
     )
     rows = cursor.fetchall()
     found_ids = set()
 
-    for row in rows:
-        found_ids.add(row[0])
-        print(f"  [{row[0]}] {row[1]}  Effect1={row[2]} Base1={row[3]} Aura1={row[4]}")
+    for sid, name, attrs, stacks, effect1, base1, aura1 in rows:
+        found_ids.add(sid)
+        stack_note = f" stacks={stacks}" if stacks else ""
+        print(
+            f"  [{sid}] {name}  Effect1={effect1} Base1={base1} "
+            f"Aura1={aura1} Attributes={attrs}{stack_note}"
+        )
+
+        hidden = []
+        if attrs & SPELL_ATTR0_PASSIVE:
+            hidden.append("PASSIVE (0x40) -- never sent to the client at all")
+        if attrs & SPELL_ATTR0_DO_NOT_DISPLAY:
+            hidden.append("DO_NOT_DISPLAY (0x80) -- client hides it in the buff bar")
+        for reason in hidden:
+            print(f"        ! hidden aura: {reason}")
 
     missing = set(positive_ids) - found_ids
     if missing:
-        for sid in sorted(missing):
-            print(f"  [{sid}] NOT FOUND in spell_dbc")
+        # Fall back to the core table: a modified stock spell may legitimately
+        # live there instead.
+        # Note the different column naming: the core table is generated from
+        # the DBC field names (Effect_1, Name_Lang_enUS), not the flattened
+        # names alonecraft_spell_dbc uses.
+        placeholders = ",".join(["%s"] * len(missing))
+        cursor.execute(
+            f"SELECT ID, Name_Lang_enUS, Effect_1, EffectBasePoints_1, EffectAura_1 "
+            f"FROM spell_dbc WHERE ID IN ({placeholders})",
+            sorted(missing),
+        )
+        for sid, name, effect1, base1, aura1 in cursor.fetchall():
+            found_ids.add(sid)
+            print(
+                f"  [{sid}] {name}  Effect1={effect1} Base1={base1} "
+                f"Aura1={aura1}   (core spell_dbc)"
+            )
+
+        for sid in sorted(set(positive_ids) - found_ids):
+            print(
+                f"  [{sid}] NOT FOUND in alonecraft_spell_dbc or spell_dbc "
+                f"-- if this is a stock spell, look it up with "
+                f"`gen_sql.py lookup --spell-id {sid} --source live` instead"
+            )
     elif rows:
         print(f"  All {len(rows)} spell(s) found.")
 

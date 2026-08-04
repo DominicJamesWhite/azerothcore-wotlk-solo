@@ -179,11 +179,40 @@ When implementing talent redesigns or new mechanics, prefer this architecture:
 
 **SpellClassMask inheritance:** When cloning a spell via `gen_sql.py dbc --base`, ALL fields are copied including SpellClassMask for unused effects. If you add a new effect (e.g., Effect2), explicitly zero out its SpellClassMaskB/C if the base spell had values there, or the mask will silently fail to match target spells.
 
+**The buff bar renders `SpellToolTip`, NOT `SpellDescription`.** This is the single most common cause of "my custom buff has no tooltip" and "my custom buff shows the wrong text":
+
+- `SpellDescription` is what the **spellbook and talent pane** show.
+- `SpellToolTip` is what the **buff/debuff bar** shows on hover.
+
+Setting only the description leaves the buff with no hover text at all. Worse, a spell cloned via `--base` inherits the base spell's tooltip verbatim — Wailing Soul (200402), cloned from Nether Protection (54370), showed *"Holy spell damage reduced by $s1%"* on the buff bar while its description was perfectly correct. **When adding or cloning any player-visible aura, set both fields.**
+
+**Aura tooltips DO scale by stack count — prefer `$sN` over hardcoded numbers.** The client multiplies `$sN` in an aura tooltip by that aura's current stack count, so a 1%-per-stack buff at 17 stacks displays "17%" on its own. Blizzard depends on this: Sunder Armor (7386, 5 stacks) is `'Armor decreased by $s1%.'` and Deadly Poison (2818, 5 stacks) is `'Target takes $s1 Nature damage every $t1 seconds.'` — neither says "per stack". There is no current-stack tooltip variable in the DBC (`$u` is *max* stacks) because none is needed.
+
+Corollary: writing a literal "1% per stack" into a `SpellToolTip` is a bug, not a safe fallback — it defeats scaling the client would have done for free.
+
+Use plain text only when the amount is written by C++ at aura-apply time — base points are 0 in those rows, so a variable renders "0%".
+
+Note the split: the **spellbook/talent description** is shown out of context with no stack count to scale against, so a flat "1% per Soul Shard" explanation belongs there. The **tooltip** should use variables.
+
+To audit for this, diff `alonecraft_spell_dbc` against base `Spell.dbc` for rows that apply an aura (`Effect = 6`), are not `PASSIVE` (0x40) or `DO_NOT_DISPLAY` (0x80), and have an empty `SpellToolTip0`.
+
+**Aura MiscValue semantics change per aura type.** When swapping `EffectApplyAuraName`, check the handler — MiscValue may go from unused to load-bearing. `SPELL_AURA_MOD_SPELL_CRIT_CHANCE` (57) ignores MiscValue; `SPELL_AURA_MOD_CRIT_DAMAGE_BONUS` (163) reads it as a **school mask** via `GetTotalAuraModifierByMiscMask` (`Unit.cpp:9421`), so leaving it at 0 means the bonus matches no school and silently applies to nothing. Use 127 for all schools.
+
+**Stack scaling is automatic and unconditional.** `AuraEffect::CalculateAmount` ends with `amount *= GetBase()->GetStackAmount()` (`SpellAuraEffects.cpp:580`) for *every* aura type. Per-stack designs only need the per-stack value in base points.
+
+**Single-column changes to custom spells: use `UPDATE`, not `DELETE` + 234-column `INSERT`.** A full-row re-INSERT silently reverts every other column to whatever the generating tool thought they were, and will clobber a field another SQL file set. Files are applied in filename order, so a later full-row INSERT beats an earlier UPDATE.
+
 ### spell_proc pitfalls
 
 **SpellPhaseMask must be non-zero.** A `spell_proc` entry with `SpellPhaseMask = 0` silently never triggers — no error, no warning. Always set it to **2** (`PROC_SPELL_PHASE_HIT`) for standard proc behavior. Reference patterns:
 - Positive magic heals: `ProcFlags = 0x4000` (`DONE_SPELL_MAGIC_DMG_CLASS_POS`), `SpellPhaseMask = 2` (e.g., Serendipity -63730)
 - Negative magic spells: `ProcFlags = 0x10000` (`DONE_SPELL_MAGIC_DMG_CLASS_NEG`), `SpellPhaseMask = 2` (e.g., Empowered Touch -33879)
+
+**Procs off a *triggered* spell need `AttributesMask = 2`.** `Aura::IsProcTriggeredOnEvent` (`SpellAuras.cpp:2152`) drops any proc whose triggering spell was itself cast as triggered, unless the aura has `SPELL_ATTR3_CAN_PROC_FROM_PROCS` or the `spell_proc` row sets `PROC_ATTR_TRIGGERED_CAN_PROC` (`0x2`). No error is logged — the proc simply never fires.
+
+This bites whenever the "damage" you want to proc from is actually a child spell. Rain of Fire (5740) is `PERIODIC_TRIGGER_SPELL` casting 42223, so Molten Rain matched on family mask and phase and still never fired until `AttributesMask = 2` was added. ~74 core `spell_proc` rows already use this flag.
+
+Diagnostic: if a proc looks correctly configured but never fires, check whether the triggering spell is a real player cast or a triggered child (`EffectTriggerSpell*` on a periodic aura). Note that `SPELL_AURA_PERIODIC_DAMAGE` ticks have **no** `Spell` object, so they skip this check entirely — which is why sibling talents procing off plain DoT ticks (Aftermath) work without the flag.
 
 ### SummonProperties.dbc
 
@@ -257,6 +286,15 @@ Custom/modified spells for the WoW client are managed via the `alonecraft_spell_
 cd modules/world_of_alonecraft/dbc
 python build_dbc.py
 ```
+
+> **Ordering trap:** `build_dbc.py` reads `alonecraft_spell_dbc` from **MySQL**, not from the `.sql` files on disk. But `build_and_run.bat` builds the DBC *before* starting the server, and the server is what auto-applies pending SQL. So a brand-new SQL file will NOT be in the DBC after a single run — the build reads the pre-change table, then the server applies the file afterwards.
+>
+> Apply the SQL directly first, then build:
+> ```bash
+> mysql -h 127.0.0.1 -u acore -pacore acore_world < modules/world_of_alonecraft/data/sql/db-world/woa_YYYY_MM_DD_XX.sql
+> build_and_run.bat --skip-build --skip-ui
+> ```
+> The server re-applying it at startup is harmless because module SQL is idempotent. When applying several files by hand, run them in **filename order** — that is the order the updater uses, and a later full-row `INSERT` will overwrite an earlier `UPDATE`.
 
 **Workflow:**
 1. Define custom/modified spells as SQL INSERTs into `alonecraft_spell_dbc` (234 columns matching `SPELL_COLUMNS` in `spell_dbc.py`)

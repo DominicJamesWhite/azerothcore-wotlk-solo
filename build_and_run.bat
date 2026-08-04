@@ -55,16 +55,18 @@ REM ============================================================
 ECHO.
 ECHO [1/5] Stopping servers if running...
 SET "KILLED=0"
-REM Also kill any running LLM chatter bridge
-FOR /F "tokens=2" %%p IN ('WMIC PROCESS WHERE "CommandLine LIKE '%%llm_chatter_bridge%%' AND Name='python.exe'" GET ProcessId /FORMAT:VALUE 2^>NUL ^| %SystemRoot%\System32\find.exe "="') DO (
-    SET "PID=%%p"
-    SET "PID=!PID: =!"
-    IF DEFINED PID (
-        taskkill /PID !PID! /F >NUL 2>&1
-        ECHO       LLM chatter bridge stopped.
-        SET "KILLED=1"
-    )
+REM Also kill any running LLM chatter bridge: the python process plus the
+REM "cmd /k" wrapper it was launched from (which stays open on its own once
+REM python exits). Matching is restricted to python* processes because the
+REM FOR /F helper "cmd /c" and PowerShell itself carry the search string in
+REM their own command lines and would otherwise match themselves.
+SET "BRIDGE_KILLED=0"
+FOR /F "usebackq tokens=*" %%p IN (`powershell -NoProfile -Command "Get-CimInstance Win32_Process | Where-Object { $_.Name -like 'python*' -and $_.CommandLine -like '*llm_chatter_bridge*' } | ForEach-Object { $_.ProcessId; $par = Get-CimInstance Win32_Process -Filter ('ProcessId=' + $_.ParentProcessId); if ($par -and $par.Name -eq 'cmd.exe') { $par.ProcessId } }" 2^>NUL`) DO (
+    taskkill /PID %%p /F /T >NUL 2>&1
+    SET "BRIDGE_KILLED=1"
+    SET "KILLED=1"
 )
+IF "!BRIDGE_KILLED!"=="1" ECHO       LLM chatter bridge stopped.
 FOR %%s IN (worldserver.exe authserver.exe) DO (
     tasklist /FI "IMAGENAME eq %%s" 2>NUL | %SystemRoot%\System32\find.exe /I "%%s" >NUL
     IF !ERRORLEVEL!==0 (
@@ -97,7 +99,11 @@ IF EXIST "%VERIFY_SCRIPT%" (
     ECHO.
     ECHO [1.5/5] Verifying script consistency...
     %PYTHON% "%VERIFY_SCRIPT%"
-    IF %ERRORLEVEL% NEQ 0 (
+    REM Must be !ERRORLEVEL!, not %ERRORLEVEL%: this IF lives inside the
+    REM parenthesised IF EXIST block, so %VAR% would be expanded once when the
+    REM block is parsed -- i.e. before python runs -- and would test a stale
+    REM value, prompting even when the checker passed.
+    IF !ERRORLEVEL! NEQ 0 (
         ECHO.
         ECHO  Script consistency issues found. Review above and fix before building.
         SET /P "CONTINUE=  Continue anyway? (y/N): "
@@ -324,15 +330,21 @@ IF %ERRORLEVEL% NEQ 0 (
 
 ECHO       Copied to: %WOW_DATA%\patch-4.mpq
 
-REM Also deploy patched Spell.dbc to the server's DBC directory
-SET "PATCHED_DBC=%DBC_SCRIPT_DIR%\output\DBFilesClient\Spell.dbc"
-SET "SERVER_DBC=%BUILD_DIR%\bin\%BUILD_CONFIG%\Data\dbc\Spell.dbc"
-IF EXIST "%PATCHED_DBC%" (
-    COPY /Y "%PATCHED_DBC%" "%SERVER_DBC%" >NUL
-    IF !ERRORLEVEL! NEQ 0 (
-        ECHO       WARNING: Failed to copy patched Spell.dbc to server DBC directory.
-    ) ELSE (
-        ECHO       Copied patched Spell.dbc to server.
+REM Also deploy the patched DBCs to the server's DBC directory.
+REM The server reads these too, not just the client -- Talent.dbc in
+REM particular, where Flags=1 (addToSpellBook) is what makes
+REM Player::LearnTalent actually call learnSpell() for talents we
+REM redesigned from passives into active abilities.
+SET "SERVER_DBC_DIR=%BUILD_DIR%\bin\%BUILD_CONFIG%\Data\dbc"
+FOR %%D IN (Spell.dbc Talent.dbc SpellShapeshiftForm.dbc) DO (
+    SET "PATCHED_DBC=%DBC_SCRIPT_DIR%\output\DBFilesClient\%%D"
+    IF EXIST "!PATCHED_DBC!" (
+        COPY /Y "!PATCHED_DBC!" "%SERVER_DBC_DIR%\%%D" >NUL
+        IF !ERRORLEVEL! NEQ 0 (
+            ECHO       WARNING: Failed to copy patched %%D to server DBC directory.
+        ) ELSE (
+            ECHO       Copied patched %%D to server.
+        )
     )
 )
 :AFTER_COPY
