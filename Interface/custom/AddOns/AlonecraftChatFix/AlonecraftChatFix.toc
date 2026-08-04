@@ -1,0 +1,6 @@
+## Interface: 30300
+## Title: Alonecraft Chat Fix
+## Notes: Suppresses channel notices the 3.3.5a client has no format string for.
+## Version: 1.0
+
+AlonecraftChatFix.lua

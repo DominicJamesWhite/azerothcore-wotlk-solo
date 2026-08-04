@@ -27,6 +27,23 @@ local specNameCache = {}
 local specTabs = {}
 local initialized = false
 
+local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
+
+-- Reset a spec's cached visuals back to the unspecced question mark.
+-- Called when a spec has zero talent points (fresh spec or after a reset).
+local function ClearSpecVisuals(specNum, dist)
+    if dist == "" then dist = nil end
+    specDistCache[specNum] = dist
+    MultiSpec_SpecDist[specNum] = dist
+    specIconCache[specNum] = nil
+    MultiSpec_SpecIcons[specNum] = nil
+    specNameCache[specNum] = nil
+    MultiSpec_SpecNames[specNum] = nil
+    if specTabs[specNum] then
+        specTabs[specNum]:GetNormalTexture():SetTexture(QUESTION_MARK)
+    end
+end
+
 local function SendCommand(cmd)
     SendChatMessage(cmd, "SAY")
 end
@@ -58,8 +75,11 @@ local function CacheSpecIcon(specNum, talentGroup)
         total = total + pts
     end
 
-    -- Skip empty specs — leave them as question marks
-    if total == 0 then return end
+    -- Empty spec (fresh or freshly reset) — drop back to the question mark
+    if total == 0 then
+        ClearSpecVisuals(specNum, table.concat(parts, "/"))
+        return
+    end
 
     if #parts > 0 then
         local dist = table.concat(parts, "/")
@@ -198,6 +218,27 @@ local function CreateSpecTabs()
         else
             PlayerTalentFrameActivateButton:Show()
             PlayerTalentFrameStatusFrame:Hide()
+        end
+
+        -- Preview bar (Learn/Reset). Blizzard's UpdateControls is the only code
+        -- that shows this frame, so our override has to do it too. Only the
+        -- active spec can accept talent clicks, so don't offer it elsewhere.
+        local talentGroup = PlayerTalentFrame.talentGroup or 1
+        local unspent = GetUnspentTalentPoints(false, false, talentGroup)
+        if selectedTab == realActiveSpec and unspent > 0 and GetCVarBool("previewTalents") then
+            PlayerTalentFramePreviewBar:Show()
+            if GetGroupPreviewTalentPointsSpent(false, talentGroup) > 0 then
+                PlayerTalentFrameLearnButton:Enable()
+                PlayerTalentFrameResetButton:Enable()
+            else
+                PlayerTalentFrameLearnButton:Disable()
+                PlayerTalentFrameResetButton:Disable()
+            end
+            -- squish the points bar to make room
+            PlayerTalentFramePointsBar:SetPoint("BOTTOM", PlayerTalentFramePreviewBar, "TOP", 0, -4)
+        else
+            PlayerTalentFramePreviewBar:Hide()
+            PlayerTalentFramePointsBar:SetPoint("BOTTOM", PlayerTalentFrame, "BOTTOM", 0, 81)
         end
     end
 
@@ -383,6 +424,13 @@ loader:SetScript("OnEvent", function(self, event, arg1)
             local dist = p1 .. "/" .. p2 .. "/" .. p3
             specDistCache[specNum] = dist
             MultiSpec_SpecDist[specNum] = dist
+
+            -- No points spent — show the question mark, not tree 1's icon
+            if p1 + p2 + p3 == 0 then
+                ClearSpecVisuals(specNum, dist)
+                UpdateAllTabs()
+                return
+            end
 
             -- Derive icon and name from the tree with the most points
             local bestTab, bestPoints = 1, p1
