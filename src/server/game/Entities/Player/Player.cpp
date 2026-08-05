@@ -3382,6 +3382,21 @@ void Player::removeSpell(uint32 spell_id, uint8 removeSpecMask, bool onlyTempora
     {
         if (itr->second->State == PLAYERSPELL_NEW || itr->second->State == PLAYERSPELL_TEMPORARY)
         {
+            // PLAYERSPELL_NEW has no row yet, but PLAYERSPELL_TEMPORARY might:
+            // _LoadSkills runs before _LoadSpells and learns skill-rewarded spells
+            // as temporary, so _addSpell's "already present and temporary" early-out
+            // leaves the persisted row bound to an entry _SaveSpells skips. Erasing
+            // it here without a DELETE orphans that row, and the next non-temporary
+            // learn then blind-INSERTs a duplicate over it. The DELETE is a no-op
+            // for a purely in-memory temporary spell.
+            if (itr->second->State == PLAYERSPELL_TEMPORARY)
+            {
+                CharacterDatabasePreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_DEL_CHAR_SPELL_BY_SPELL);
+                stmt->SetData(0, GetGUID().GetCounter());
+                stmt->SetData(1, spell_id);
+                CharacterDatabase.Execute(stmt);
+            }
+
             delete itr->second;
             m_spells.erase(itr);
         }
@@ -12086,7 +12101,11 @@ void Player::learnSkillRewardedSpells(uint32 skill_id, uint32 skill_value)
         // need unlearn spell
         if (skill_value < pAbility->MinSkillLineRank && pAbility->AcquireMethod == SKILL_LINE_ABILITY_LEARNED_ON_SKILL_VALUE)
         {
-            removeSpell(pAbility->Spell, GetActiveSpec(), true);
+            // SPEC_MASK_ALL to mirror the learn branch below, which adds these with
+            // SPEC_MASK_ALL. GetActiveSpec() was wrong twice over: removeSpell takes a
+            // spec *mask*, not an index, and index 0 gave a mask of 0 -- so
+            // `specMask & ~0` stripped nothing and the spell never unlearned at all.
+            removeSpell(pAbility->Spell, SPEC_MASK_ALL, true);
         }
         // need learn
         else
