@@ -139,6 +139,88 @@ Type(Scope/Subscope): Short description (max 50 chars)
 - Use {} to parse variables into output instead of %u etc.
 - CI enforces code style checks and compiles with `-Werror`
 
+## Logging
+
+### Temporary diagnostics: use `alonecraft.debug`, never `LOG_ERROR`
+
+The old habit was "`LOG_INFO`/`LOG_DEBUG` are filtered out, so use `LOG_ERROR` for
+temporary diagnostics." That is how ~21 debug `LOG_ERROR` calls ended up committed in
+`MiscHandler.cpp` (firing on *every* gossip click, for every player and every bot) and
+`boss_razorscale.cpp`. Debug logging at ERROR is invisible as debt: it looks like a real
+error, so nobody removes it.
+
+Instead, use the dedicated category:
+
+```cpp
+LOG_DEBUG("alonecraft.debug", "Razorscale: evade reason={}", (int)why);
+```
+
+`worldserver.conf` defines `Logger.alonecraft.debug=4,Console Server`, so these appear
+without being promoted to ERROR. `tools/verify_scripts.py` lists every
+`alonecraft.debug` call site on each build — a visible reminder, not a blocker.
+
+Remove them when the investigation ends. Anything in a per-tick, per-bot, or
+per-packet path must be gated by a config option, not left on.
+
+### Log noise is budgeted
+
+`tools/audit_logs.py` buckets log lines by *signature* (the line with ids, names,
+numbers and timestamps normalised away), so 1192 repetitions of one problem read as one
+row with a count instead of a wall of text.
+
+```bash
+python tools/audit_logs.py                 # what did this run log?
+python tools/audit_logs.py --check         # regressions vs tools/log_budget.json
+python tools/audit_logs.py --baseline      # rewrite the budget from this run
+```
+
+`tools/log_budget.json` records the accepted count for each known signature, each with a
+written reason. `build_and_run.bat` runs `--check` after startup (step 5.6, skip with
+`--skip-audit`). It reports loudly but does not fail the build.
+
+**When you fix a noise source, ratchet its budget down to 0.** That is what stops it
+coming back.
+
+### Deployed configs are generated, not hand-edited
+
+The live server configs at `C:\Build\bin\RelWithDebInfo\configs\` are **generated**.
+Do not hand-edit them — the next `sync_configs.py --write` overwrites them.
+
+```bash
+python tools/sync_configs.py                        # report drift
+python tools/sync_configs.py --write                # preview the diff only
+python tools/sync_configs.py --write --accept-changes
+```
+
+Each deployed `.conf` = its `.conf.dist` template + a small tracked override layer in
+`modules/world_of_alonecraft/deploy/configs/`. Only keys where Alonecraft deliberately
+differs live in the override files; everything else comes from the template, so new
+upstream settings arrive automatically instead of silently falling back to compiled-in
+defaults. **To change a setting permanently, edit the override file and re-run
+`--write`.**
+
+Secrets and machine-specific values go in `*.overrides.local.conf` next to them, which is
+gitignored. Never put an API key in a tracked `.overrides.conf`.
+
+`--write` refuses to act without `--accept-changes` and prints an effective-value diff
+first, because adopting template defaults can switch on features that have never run.
+`build_and_run.bat` runs the check pre-build (step 1.6, skip with `--skip-config-check`).
+
+Why an override layer rather than a tracked copy of each config: a full copy is a
+snapshot that rots the moment a template gains a key. That is precisely how the deployed
+tree ended up missing 23 keys in `worldserver.conf`, ~80 in `playerbots.conf` and ~85 in
+`mod_llm_chatter.conf` — and mod-llm-chatter reads its config with
+`sConfigMgr->GetOption(..., showLogs=false)`, so its drift produced no warning at all.
+
+### Logs are rotated, not truncated
+
+The file appenders run in append mode with flags `7` (timestamp | level | category) so
+`audit_logs.py` can attribute lines. `build_and_run.bat` rotates `Server.log`,
+`Errors.log`, `Playerbots.log` and `Auth.log` into `logs\archive\` before each start and
+keeps the newest 30. Servers are stopped via `tools/stop_server.ps1`, which raises a real
+`CTRL_BREAK` so `World::StopNow` runs, flushing logs and saving players — plain
+`taskkill` (with or without `/F`) does neither.
+
 ## Alonecraft Project
 
 This fork is the **Alonecraft** project — a modification of AzerothCore designed for solo and small group gameplay. Goals include removing casting pushback, adding Diablo-like potions, boosting talents, redesigning class abilities, and retuning encounters for solo progression.
@@ -504,6 +586,79 @@ python tools/verify_db.py --sql-files 2026_03_29_04.sql # check if SQL was appli
 ```
 
 Integrated into `build_and_run.bat` as a post-start step (runs after 8s delay for SQL auto-apply).
+
+## Web Talent Calculator (`site/`)
+
+A static talent calculator published to GitHub Pages, showing Alonecraft's
+trees rather than retail's. Wowhead cannot render our talents, so the whole
+data layer — names, per-rank descriptions, icons — is generated from the same
+DBCs that ship to the client.
+
+```bash
+python tools/export_talents.py                  # write site/data/*.json
+python tools/export_talents.py --validate       # structural assertions, non-zero on failure
+python tools/export_talents.py --check          # non-zero if committed data is stale
+python tools/export_talents.py --report-tokens  # tooltip token census
+python tools/extract_icons.py                   # BLP -> PNG into site/assets/icons/
+python tools/extract_icons.py --check           # report missing icons
+python -m http.server 8000 --directory site     # preview (file:// will NOT work)
+```
+
+**The exported JSON is committed, and CI only publishes it.** This is not
+laziness: the post-override DBCs live in `C:\Build\bin\RelWithDebInfo\Data\dbc`,
+the override tables live in local MySQL, and the base DBCs are in the
+`world_of_alonecraft` **submodule**. GitHub Actions can reach none of them.
+`build_and_run.bat` step 3.6 runs the export after the DBC build (skip with
+`--skip-talent-export`), so the data tracks the MPQ you just built — but you
+still have to **commit `site/data/`**, or the site silently serves stale
+talents. `index.json` carries a `generated` timestamp, rendered in the page
+footer, so staleness is visible.
+
+`.github/workflows/talent-calculator.yml` is **deliberately not** guarded by
+`if: github.repository == 'azerothcore/azerothcore-wotlk'`. Every other
+workflow is, so forks don't run upstream CI; this one only makes sense on the
+fork, and adding the guard would silently stop all deploys.
+
+### The "modified" badge diffs against retail, not `dbc/base/`
+
+`dbc/base/Spell.dbc` already contains pre-tooling manual edits (the 4.45 era),
+so diffing against it under-reports: 89 modified talents versus **177** against
+a pristine baseline. The real 3.3.5a DBCs are extracted from the client's
+locale MPQ chain into `dbc/base/retail/`. Note `Spell.dbc` comes from
+`enUS/patch-enUS-3.MPQ` but `Talent.dbc` from `enUS/patch-enUS-2.MPQ` — the
+later patch does not contain one.
+
+### Tooltip variables are resolved at export time
+
+`tools/tooltip_vars.py` turns `"Reduces cast time by $s1 sec"` into real
+numbers. It is a pure function, so it can be tested without touching a DBC.
+Currently 98.6% of talent descriptions resolve fully.
+
+Traps worth knowing:
+
+- **`$s1`/`$m1` add 1 to BasePoints** (`CalcValue = BasePoints + max(1, DieSides)`),
+  and prose shows the **magnitude** — a debuff stores BasePoints −11 and prints
+  "10%". But inside a `${...}` expression the **sign is load-bearing**:
+  Empowered Frostbolt's `${$m2/-1000}` needs −100 / −1000 to reach 0.1.
+- **`${...}` takes a `.N` precision suffix** — `${$m2/-1000}.1` means one decimal.
+- **`$<spellid><token><n>`** reads an effect off *another* spell (`$14181s1`),
+  and combines with the `$/N;` prefix (`$/10;12536s1`).
+- **`$h`, `$h1`** are both ProcChance; the trailing digit is ignored.
+- Anything character-dependent (`$AP`, `$SPH`, `$mw`) is **left raw and listed
+  in `unresolved[]`**, never stripped. "Increases damage by ." is a silent lie;
+  "Increases damage by $AP." is self-diagnosing.
+- `$b` is deliberately **not** resolved — its meaning is unconfirmed, and a
+  plausible-but-wrong number is worse than a visible token.
+
+### Talent array order is a wire format
+
+Build links are one digit per talent in `(tier, col)` order — the ordering
+`_build_talent_tree` (`tools/gen_sql.py:832`) produces, stored as each talent's
+`i`. A link made on the site decodes identically via
+`gen_sql.py talent-link`. **Change that ordering and every previously shared
+link silently decodes to a different build**, which is why `--validate` asserts
+`i` equals array position, and why retail's empty talent rows (e.g. 2085) keep
+their slot with `"placeholder": true` instead of being dropped.
 
 ## Verification Workflow
 

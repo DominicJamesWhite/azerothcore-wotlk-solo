@@ -8,11 +8,12 @@ An attempt to make WOW better to play alone or in very small groups.
 
 ## Key Changes
 
-- [ ] All classes get a Diablo-like potion that can be used to refill X% of health and mana every X seconds. Other potions all provide temporary combat bonuses as well as their healing and mana restoration.
+- [x] All classes get a Diablo-like potion that can be used to refill 50% of health and mana every 30 seconds. 
+- [ ] Other potions all provide temporary combat bonuses as well as their healing and mana restoration.
 - [x] mod-autobalance is used to allow solo play in dungeons and raids, and scale their difficulty with more players. 
 - [x] Casting pushback from enemy damage is removed entirely. (4.11)
 - [x] Talents are boosted to provide more impact in levelling and solo play.
-- [ ] More NPCs in major cities and towns, and between them doing courier or transport work.
+- [x] More NPCs in major cities and towns, and between them doing courier or transport work.
 - [ ] Each tree now has changed talents relating to holy trinity specs’ inherent weaknesses while retaining class character.
 - [ ] Retuned and redesigned dungeon and raid encounters with lots of new difficulty settings to allow solo progression.
 
@@ -312,7 +313,7 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Master Conjuror (Renamed to Fel Attunement):** Redesigned. Your demons gain 75/150% of your haste. (Crit inheritance dropped — haste has a working precedent on the DK ghoul, crit has none anywhere in the core; the haste share was raised from 50/100% to compensate.)
 - [x] **Molten Core:** Can also apply to Shadow Bolt, adding a stacking DoT for 3/6/10% of damage done like Unholy Blight does for Death Coil for DKs
 - [x] **Demonic Resilience:** Hit instead of critically hit
-- [x] **Nemesis:** (as today plus) your and your demon's critical strikes have a chance to generate a soul shard (2/4/6PPM)
+- [x] **Nemesis:** (as today plus) your and your demon's attacks have a chance to generate a soul shard (2/4/6 PPM each half). 
 - [x] **Metamorphosis:** Redesigned. No cooldown or duration. Costs 1 Soul Shard to transform, and then one more every 6s. (All defensive benefits removed and put in Demonic Aegis). 
 
 

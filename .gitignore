@@ -127,3 +127,10 @@ build_and_run.bat
 #
 /Interface/screenshots/
 /Interface/output/
+
+# Alonecraft deploy config: secrets and machine-specific values.
+# The tracked *.overrides.conf siblings are safe to commit; these are not.
+*.overrides.local.conf
+
+# Python bytecode from tools/
+__pycache__/
