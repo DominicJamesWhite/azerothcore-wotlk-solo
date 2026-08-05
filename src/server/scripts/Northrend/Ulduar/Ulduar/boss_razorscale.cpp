@@ -182,7 +182,6 @@ struct boss_razorscale : public BossAI
 
     void JustEngagedWith(Unit* who) override
     {
-        LOG_ERROR("scripts.ulduar", "Razorscale: JustEngagedWith called! who={}", who ? who->GetName() : "null");
         me->SetImmuneToPC(false);
         BossAI::JustEngagedWith(who);
         // Ensure the engaging player is on the threat list — air-phase pathing
@@ -190,7 +189,6 @@ struct boss_razorscale : public BossAI
         if (who)
             me->AddThreat(who, 1.0f);
         events.ScheduleEvent(EVENT_COMMANDER_SAY_AGGRO, 5s);
-        LOG_ERROR("scripts.ulduar", "Razorscale: Events scheduled. Threat list empty={}", me->GetThreatMgr().IsThreatListEmpty());
         events.ScheduleEvent(EVENT_EE_SAY_MOVE_OUT, 10s);
         events.ScheduleEvent(EVENT_ENRAGE, 10min);
         events.ScheduleEvent(EVENT_SPELL_FIREBALL, 6s);
@@ -315,8 +313,6 @@ struct boss_razorscale : public BossAI
             {
                 events.Update(diff);
                 uint32 airEvent = events.ExecuteEvent();
-                if (airEvent)
-                    LOG_ERROR("scripts.ulduar", "Razorscale: Air phase event fired: {}", airEvent);
                 switch (airEvent)
                 {
                     case EVENT_ENRAGE:
@@ -663,7 +659,6 @@ struct boss_razorscale : public BossAI
 
     void EnterEvadeMode(EvadeReason why) override
     {
-        LOG_ERROR("scripts.ulduar", "Razorscale: EnterEvadeMode called! reason={}", (int)why);
         me->SetDisableGravity(true);
         me->SetControlled(false, UNIT_STATE_ROOT);
         me->DisableRotate(false);
@@ -702,39 +697,27 @@ public:
         if (!player || !creature)
             return true;
 
-        LOG_ERROR("scripts.ulduar", "Razorscale: OnGossipSelect called, uiAction={}", uiAction);
-
         if (uiAction == GOSSIP_ACTION_INFO_DEF + 1)
         {
             InstanceScript* instance = creature->GetInstanceScript();
             if (!instance)
             {
-                LOG_ERROR("scripts.ulduar", "Razorscale: No instance script found");
                 return true;
             }
             if (instance->GetBossState(BOSS_RAZORSCALE) == DONE)
             {
-                LOG_ERROR("scripts.ulduar", "Razorscale: Boss state is DONE, aborting");
                 return true;
             }
-
-            LOG_ERROR("scripts.ulduar", "Razorscale: Boss state={}", instance->GetBossState(BOSS_RAZORSCALE));
 
             Creature* razorscale = instance->GetCreature(BOSS_RAZORSCALE);
             if (!razorscale)
             {
-                LOG_ERROR("scripts.ulduar", "Razorscale: GetCreature(BOSS_RAZORSCALE) returned null");
                 return true;
             }
             if (razorscale->IsInCombat())
             {
-                LOG_ERROR("scripts.ulduar", "Razorscale: Already in combat, aborting");
                 return true;
             }
-
-            LOG_ERROR("scripts.ulduar", "Razorscale: Starting encounter. Razorscale GUID={}, alive={}, pos=({}, {}, {})",
-                razorscale->GetGUID().GetCounter(), razorscale->IsAlive(),
-                razorscale->GetPositionX(), razorscale->GetPositionY(), razorscale->GetPositionZ());
 
             // Do not show gossip icon if encounter is in progress
             creature->RemoveNpcFlag(UNIT_NPC_FLAG_GOSSIP);
@@ -742,26 +725,16 @@ public:
             // reset npcs NPC_HARPOON_FIRE_STATE
             std::list<Creature*> hfsList;
             razorscale->GetCreaturesWithEntryInRange(hfsList, 300.0f, NPC_HARPOON_FIRE_STATE);
-            LOG_ERROR("scripts.ulduar", "Razorscale: Found {} HARPOON_FIRE_STATE npcs", hfsList.size());
             for (Creature* hfs : hfsList)
                 hfs->AI()->SetData(1, 0);
 
             if (razorscale->AI())
             {
-                LOG_ERROR("scripts.ulduar", "Razorscale: Calling AttackStart + MovePoint");
                 razorscale->SetImmuneToPC(false);
                 razorscale->AI()->AttackStart(player);
                 razorscale->GetMotionMaster()->MoveIdle();
                 razorscale->GetMotionMaster()->MovePoint(POINT_RAZORSCALE_INIT, CORDS_AIR.GetPositionX(), CORDS_AIR.GetPositionY(), CORDS_AIR.GetPositionZ(), FORCED_MOVEMENT_NONE, 0.f, 0.f, false, false, MOTION_SLOT_ACTIVE, AnimTier::Fly);
             }
-            else
-            {
-                LOG_ERROR("scripts.ulduar", "Razorscale: AI() returned null!");
-            }
-        }
-        else
-        {
-            LOG_ERROR("scripts.ulduar", "Razorscale: Unexpected uiAction={}, expected={}", uiAction, GOSSIP_ACTION_INFO_DEF + 1);
         }
 
         player->PlayerTalkClass->SendCloseGossip();
