@@ -1651,7 +1651,7 @@
      "spellIds": [
       200056,
       200058,
-      200058
+      200059
      ],
      "maxPoints": 3,
      "name": "Gift of Prophecy",
@@ -1669,8 +1669,8 @@
       },
       {
        "r": 3,
-       "spell": 200058,
-       "desc": "Melee hits have a chance to grant you Prophecy, increasing Holy damage by 10% and increasing the critical effect chance of Holy Shock by 100%. Effect occurs more often than Gift of Prophecy (Rank1). "
+       "spell": 200059,
+       "desc": "Melee hits have a chance to grant you Prophecy, increasing Holy damage by 10% and increasing the critical effect chance of Holy Shock by 100%. Effect occurs more often than Gift of Prophecy (Rank2). "
       }
      ],
      "modified": true,
