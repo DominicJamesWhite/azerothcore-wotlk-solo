@@ -1,0 +1,3016 @@
+{
+ "schema": 1,
+ "key": "hunter",
+ "name": "Hunter",
+ "trees": [
+  {
+   "tabId": 361,
+   "name": "Beast Mastery",
+   "page": 0,
+   "talents": [
+    {
+     "i": 0,
+     "id": 1382,
+     "fieldName": "improvedAspectOfTheHawk",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19552,
+      19553,
+      19554,
+      19555,
+      19556
+     ],
+     "maxPoints": 5,
+     "name": "Improved Aspect of the Hawk",
+     "icon": "spell_nature_ravenform",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19552,
+       "desc": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a 10% chance of increasing ranged attack speed by 3% for 12 sec.",
+       "raw": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a $s1% chance of increasing ranged attack speed by $s2% for $6150d."
+      },
+      {
+       "r": 2,
+       "spell": 19553,
+       "desc": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a 10% chance of increasing ranged attack speed by 6% for 12 sec.",
+       "raw": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a $s1% chance of increasing ranged attack speed by $s2% for $6150d."
+      },
+      {
+       "r": 3,
+       "spell": 19554,
+       "desc": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a 10% chance of increasing ranged attack speed by 9% for 12 sec.",
+       "raw": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a $s1% chance of increasing ranged attack speed by $s2% for $6150d."
+      },
+      {
+       "r": 4,
+       "spell": 19555,
+       "desc": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a 10% chance of increasing ranged attack speed by 12% for 12 sec.",
+       "raw": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a $s1% chance of increasing ranged attack speed by $s2% for $6150d."
+      },
+      {
+       "r": 5,
+       "spell": 19556,
+       "desc": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a 10% chance of increasing ranged attack speed by 15% for 12 sec.",
+       "raw": "While Aspect of the Hawk or Dragonhawk is active, all normal ranged attacks have a $s1% chance of increasing ranged attack speed by $s2% for $6150d."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 1389,
+     "fieldName": "enduranceTraining",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19583,
+      19584,
+      19585,
+      19586,
+      19587
+     ],
+     "maxPoints": 5,
+     "name": "Endurance Training",
+     "icon": "spell_nature_reincarnation",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19583,
+       "desc": "Increases the health of your pet by 2% and your total health by 1%.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 19584,
+       "desc": "Increases the health of your pet by 4% and your total health by 2%.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 19585,
+       "desc": "Increases the health of your pet by 6% and your total health by 3%.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 19586,
+       "desc": "Increases the health of your pet by 8% and your total health by 4%.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 19587,
+       "desc": "Increases the health of your pet by 10% and your total health by 5%.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 1624,
+     "fieldName": "focusedFire",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      35029,
+      35030
+     ],
+     "maxPoints": 2,
+     "name": "Focused Fire",
+     "icon": "ability_hunter_silenthunter",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 35029,
+       "desc": "All damage caused by you is increased by 1% while your pet is active and the critical strike chance of your pet's special abilities is increased by 10% while Kill Command is active.",
+       "raw": "All damage caused by you is increased by $s1% while your pet is active and the critical strike chance of your pet's special abilities is increased by $s2% while Kill Command is active."
+      },
+      {
+       "r": 2,
+       "spell": 35030,
+       "desc": "All damage caused by you is increased by 2% while your pet is active and the critical strike chance of your pet's special abilities is increased by 20% while Kill Command is active.",
+       "raw": "All damage caused by you is increased by $s1% while your pet is active and the critical strike chance of your pet's special abilities is increased by $s2% while Kill Command is active."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1381,
+     "fieldName": "improvedAspectOfTheMonkey",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19549,
+      19550,
+      19551
+     ],
+     "maxPoints": 3,
+     "name": "Improved Aspect of the Monkey",
+     "icon": "ability_hunter_aspectofthemonkey",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19549,
+       "desc": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 2%.",
+       "raw": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19550,
+       "desc": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 4%.",
+       "raw": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19551,
+       "desc": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 6%.",
+       "raw": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 1395,
+     "fieldName": "thickHide",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19609,
+      19610,
+      19612
+     ],
+     "maxPoints": 3,
+     "name": "Thick Hide",
+     "icon": "inv_misc_pelt_bear_03",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19609,
+       "desc": "Increases the armor rating of your pets by 7% and your armor contribution from items by 4%.",
+       "raw": "Increases the armor rating of your pets by $s1% and your armor contribution from items by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 19610,
+       "desc": "Increases the armor rating of your pets by 14% and your armor contribution from items by 7%.",
+       "raw": "Increases the armor rating of your pets by $s1% and your armor contribution from items by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 19612,
+       "desc": "Increases the armor rating of your pets by 20% and your armor contribution from items by 10%.",
+       "raw": "Increases the armor rating of your pets by $s1% and your armor contribution from items by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 1625,
+     "fieldName": "improvedRevivePet",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 3
+     },
+     "spellIds": [
+      24443,
+      19575
+     ],
+     "maxPoints": 2,
+     "name": "Improved Revive Pet",
+     "icon": "ability_hunter_beastsoothe",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 24443,
+       "desc": "Revive Pet's casting time is reduced by 3 sec, mana cost is reduced by 20%, and increases the health your pet returns with by an additional 15%.",
+       "raw": "Revive Pet's casting time is reduced by $/1000;s1 sec, mana cost is reduced by $s2%, and increases the health your pet returns with by an additional $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 19575,
+       "desc": "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%.",
+       "raw": "Revive Pet's casting time is reduced by $/1000;s1 sec, mana cost is reduced by $s2%, and increases the health your pet returns with by an additional $s3%."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 1384,
+     "fieldName": "pathfinding",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19559,
+      19560
+     ],
+     "maxPoints": 2,
+     "name": "Pathfinding",
+     "icon": "ability_mount_jungletiger",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19559,
+       "desc": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 4%, and increases your speed while mounted by 5%. The mounted movement speed increase does not stack with other effects.",
+       "raw": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by $s1%, and increases your speed while mounted by $s2%. The mounted movement speed increase does not stack with other effects."
+      },
+      {
+       "r": 2,
+       "spell": 19560,
+       "desc": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 8%, and increases your speed while mounted by 10%. The mounted movement speed increase does not stack with other effects.",
+       "raw": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by $s1%, and increases your speed while mounted by $s2%. The mounted movement speed increase does not stack with other effects."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 2138,
+     "fieldName": "aspectMastery",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53265
+     ],
+     "maxPoints": 1,
+     "name": "Aspect Mastery",
+     "icon": "ability_hunter_aspectmastery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53265,
+       "desc": "Aspect of the Viper - Reduces the damage penalty by 10%.\n\nAspect of the Monkey - Reduces the damage done to you while active by 5%.\n\nAspect of the Hawk - Increases the attack power bonus by 30%.\n\nAspect of the Dragonhawk - Combines the bonuses from Aspect of the Monkey and Hawk.",
+       "raw": "Aspect of the Viper - Reduces the damage penalty by $s1%.\n\nAspect of the Monkey - Reduces the damage done to you while active by $s2%.\n\nAspect of the Hawk - Increases the attack power bonus by $s3%.\n\nAspect of the Dragonhawk - Combines the bonuses from Aspect of the Monkey and Hawk."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1396,
+     "fieldName": "unleashedFury",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19616,
+      19617,
+      19618,
+      19619,
+      19620
+     ],
+     "maxPoints": 5,
+     "name": "Unleashed Fury",
+     "icon": "ability_bullrush",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19616,
+       "desc": "Increases the damage done by your pets by 3%.",
+       "raw": "Increases the damage done by your pets by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19617,
+       "desc": "Increases the damage done by your pets by 6%.",
+       "raw": "Increases the damage done by your pets by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19618,
+       "desc": "Increases the damage done by your pets by 9%.",
+       "raw": "Increases the damage done by your pets by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 19619,
+       "desc": "Increases the damage done by your pets by 12%.",
+       "raw": "Increases the damage done by your pets by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 19620,
+       "desc": "Increases the damage done by your pets by 15%.",
+       "raw": "Increases the damage done by your pets by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 1385,
+     "fieldName": "improvedMendPet",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19572,
+      19573
+     ],
+     "maxPoints": 2,
+     "name": "Improved Mend Pet",
+     "icon": "ability_hunter_mendpet",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19572,
+       "desc": "Reduces the mana cost of your Mend Pet spell by 10% and gives the Mend Pet spell a 25% chance of cleansing 1 Curse, Disease, Magic or Poison effect from the pet each tick.",
+       "raw": "Reduces the mana cost of your Mend Pet spell by $s2% and gives the Mend Pet spell a $s1% chance of cleansing $24406s1 Curse, Disease, Magic or Poison effect from the pet each tick."
+      },
+      {
+       "r": 2,
+       "spell": 19573,
+       "desc": "Reduces the mana cost of your Mend Pet spell by 20% and gives the Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic or Poison effect from the pet each tick.",
+       "raw": "Reduces the mana cost of your Mend Pet spell by $s2% and gives the Mend Pet spell a $s1% chance of cleansing $24406s1 Curse, Disease, Magic or Poison effect from the pet each tick."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 1393,
+     "fieldName": "ferocity",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19598,
+      19599,
+      19600,
+      19601,
+      19602
+     ],
+     "maxPoints": 5,
+     "name": "Ferocity",
+     "icon": "inv_misc_monsterclaw_04",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19598,
+       "desc": "Increases the critical strike chance of your pet by 2%.",
+       "raw": "Increases the critical strike chance of your pet by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19599,
+       "desc": "Increases the critical strike chance of your pet by 4%.",
+       "raw": "Increases the critical strike chance of your pet by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19600,
+       "desc": "Increases the critical strike chance of your pet by 6%.",
+       "raw": "Increases the critical strike chance of your pet by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 19601,
+       "desc": "Increases the critical strike chance of your pet by 8%.",
+       "raw": "Increases the critical strike chance of your pet by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 19602,
+       "desc": "Increases the critical strike chance of your pet by 10%.",
+       "raw": "Increases the critical strike chance of your pet by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1388,
+     "fieldName": "spiritBond",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19578,
+      20895
+     ],
+     "maxPoints": 2,
+     "name": "Spirit Bond",
+     "icon": "ability_druid_demoralizingroar",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19578,
+       "desc": "While your pet is active, you and your pet will regenerate 1% of total health every 10 sec., and increases healing done to you and your pet by 5%.",
+       "raw": "While your pet is active, you and your pet will regenerate $19579s1% of total health every $19579t1 sec., and increases healing done to you and your pet by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 20895,
+       "desc": "While your pet is active, you and your pet will regenerate 2% of total health every 10 sec., and increases healing done to you and your pet by 10%.",
+       "raw": "While your pet is active, you and your pet will regenerate $24529s1% of total health every $24529t1 sec., and increases healing done to you and your pet by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1387,
+     "fieldName": "intimidation",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19577
+     ],
+     "maxPoints": 1,
+     "name": "Intimidation",
+     "icon": "ability_devour",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19577,
+       "desc": "Command your pet to intimidate the target, causing a high amount of threat and stunning the target for 3 sec. Lasts 15 sec.",
+       "raw": "Command your pet to intimidate the target, causing a high amount of threat and stunning the target for $24394d. Lasts $19577d."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 1390,
+     "fieldName": "bestialDiscipline",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 3
+     },
+     "spellIds": [
+      19590,
+      19592
+     ],
+     "maxPoints": 2,
+     "name": "Bestial Discipline",
+     "icon": "spell_nature_abolishmagic",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19590,
+       "desc": "Increases the Focus regeneration of your pets by 50%.",
+       "raw": "Increases the Focus regeneration of your pets by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19592,
+       "desc": "Increases the Focus regeneration of your pets by 100%.",
+       "raw": "Increases the Focus regeneration of your pets by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1799,
+     "fieldName": "animalHandler",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34453,
+      34454
+     ],
+     "maxPoints": 2,
+     "name": "Animal Handler",
+     "icon": "ability_hunter_animalhandler",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34453,
+       "desc": "Increases your pet's attack power by 5%, and increases the duration of your Master's Call effect by 3 sec.",
+       "raw": "Increases your pet's attack power by $s2%, and increases the duration of your Master's Call effect by $/1000;s1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 34454,
+       "desc": "Increases your pet's attack power by 10%, and increases the duration of your Master's Call effect by 6 sec.",
+       "raw": "Increases your pet's attack power by $s2%, and increases the duration of your Master's Call effect by $/1000;s1 sec."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 1397,
+     "fieldName": "frenzy",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19621,
+      19622,
+      19623,
+      19624,
+      19625
+     ],
+     "maxPoints": 5,
+     "name": "Frenzy",
+     "icon": "inv_misc_monsterclaw_03",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19621,
+       "desc": "Gives your pet a 20% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+       "raw": "Gives your pet a $s1% chance to gain a $19615s1% attack speed increase for $19615d after dealing a critical strike."
+      },
+      {
+       "r": 2,
+       "spell": 19622,
+       "desc": "Gives your pet a 40% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+       "raw": "Gives your pet a $s1% chance to gain a $19615s1% attack speed increase for $19615d after dealing a critical strike."
+      },
+      {
+       "r": 3,
+       "spell": 19623,
+       "desc": "Gives your pet a 60% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+       "raw": "Gives your pet a $s1% chance to gain a $19615s1% attack speed increase for $19615d after dealing a critical strike."
+      },
+      {
+       "r": 4,
+       "spell": 19624,
+       "desc": "Gives your pet a 80% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+       "raw": "Gives your pet a $s1% chance to gain a $19615s1% attack speed increase for $19615d after dealing a critical strike."
+      },
+      {
+       "r": 5,
+       "spell": 19625,
+       "desc": "Gives your pet a 100% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+       "raw": "Gives your pet a $s1% chance to gain a $19615s1% attack speed increase for $19615d after dealing a critical strike."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 16,
+     "id": 1800,
+     "fieldName": "ferociousInspiration",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34455,
+      34459,
+      34460
+     ],
+     "maxPoints": 3,
+     "name": "Ferocious Inspiration",
+     "icon": "ability_hunter_ferociousinspiration",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34455,
+       "desc": "All party and raid members have all damage increased by 1% within 100 yards of your pet. In addition, increases the damage dealt by Arcane Shot and Steady Shot by 3%.",
+       "raw": "All party and raid members have all damage increased by $75593s1% within $75593a1 yards of your pet. In addition, increases the damage dealt by Arcane Shot and Steady Shot by $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 34459,
+       "desc": "All party and raid members have all damage increased by 2% within 100 yards of your pet. In addition, increases the damage dealt by Arcane Shot and Steady Shot by 6%.",
+       "raw": "All party and raid members have all damage increased by $75446s1% within $75446a1 yards of your pet. In addition, increases the damage dealt by Arcane Shot and Steady Shot by $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 34460,
+       "desc": "All party and raid members have all damage increased by 3% within 100 yards of your pet. In addition, increases the damage dealt by Arcane Shot and Steady Shot by 9%.",
+       "raw": "All party and raid members have all damage increased by $75447s1% within $75447a1 yards of your pet. In addition, increases the damage dealt by Arcane Shot and Steady Shot by $s3%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1386,
+     "fieldName": "bestialWrath",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19574
+     ],
+     "maxPoints": 1,
+     "name": "Bestial Wrath",
+     "icon": "ability_druid_ferociousbite",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19574,
+       "desc": "Send your pet into a rage causing 50% additional damage for 10 sec.  While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed.",
+       "raw": "Send your pet into a rage causing $s2% additional damage for $d.  While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 18,
+     "id": 1801,
+     "fieldName": "catlikeReflexes",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      34462,
+      34464,
+      34465
+     ],
+     "maxPoints": 3,
+     "name": "Catlike Reflexes",
+     "icon": "ability_hunter_catlikereflexes",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34462,
+       "desc": "Increases your chance to dodge by 1% and your pet's chance to dodge by an additional 3%. In addition, reduces the cooldown of your Kill Command ability by 10 sec.",
+       "raw": "Increases your chance to dodge by $s1% and your pet's chance to dodge by an additional $s2%. In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
+      },
+      {
+       "r": 2,
+       "spell": 34464,
+       "desc": "Increases your chance to dodge by 2% and your pet's chance to dodge by an additional 6%. In addition, reduces the cooldown of your Kill Command ability by 20 sec.",
+       "raw": "Increases your chance to dodge by $s1% and your pet's chance to dodge by an additional $s2%. In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
+      },
+      {
+       "r": 3,
+       "spell": 34465,
+       "desc": "Increases your chance to dodge by 3% and your pet's chance to dodge by an additional 9%. In addition, reduces the cooldown of your Kill Command ability by 30 sec.",
+       "raw": "Increases your chance to dodge by $s1% and your pet's chance to dodge by an additional $s2%. In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "id": 2136,
+     "fieldName": "invigoration",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53252,
+      53253
+     ],
+     "maxPoints": 2,
+     "name": "Invigoration",
+     "icon": "ability_hunter_invigeration",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53252,
+       "desc": "When your pet scores a critical hit with a special ability, you have a 50% chance to instantly regenerate 1% mana.",
+       "raw": "When your pet scores a critical hit with a special ability, you have a $s1% chance to instantly regenerate $53398s1% mana."
+      },
+      {
+       "r": 2,
+       "spell": 53253,
+       "desc": "When your pet scores a critical hit with a special ability, you have a 100% chance to instantly regenerate 1% mana.",
+       "raw": "When your pet scores a critical hit with a special ability, you have a $s1% chance to instantly regenerate $53398s1% mana."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 20,
+     "id": 1802,
+     "fieldName": "serpentsSwiftness",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      34466,
+      34467,
+      34468,
+      34469,
+      34470
+     ],
+     "maxPoints": 5,
+     "name": "Serpent's Swiftness",
+     "icon": "ability_hunter_serpentswiftness",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34466,
+       "desc": "Increases ranged combat attack speed by 4% and your pet's melee attack speed by 4%.",
+       "raw": "Increases ranged combat attack speed by $s1% and your pet's melee attack speed by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 34467,
+       "desc": "Increases ranged combat attack speed by 8% and your pet's melee attack speed by 8%.",
+       "raw": "Increases ranged combat attack speed by $s1% and your pet's melee attack speed by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 34468,
+       "desc": "Increases ranged combat attack speed by 12% and your pet's melee attack speed by 12%.",
+       "raw": "Increases ranged combat attack speed by $s1% and your pet's melee attack speed by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 34469,
+       "desc": "Increases ranged combat attack speed by 16% and your pet's melee attack speed by 16%.",
+       "raw": "Increases ranged combat attack speed by $s1% and your pet's melee attack speed by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 34470,
+       "desc": "Increases ranged combat attack speed by 20% and your pet's melee attack speed by 20%.",
+       "raw": "Increases ranged combat attack speed by $s1% and your pet's melee attack speed by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 2140,
+     "fieldName": "longevity",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53262,
+      53263,
+      53264
+     ],
+     "maxPoints": 3,
+     "name": "Longevity",
+     "icon": "ability_hunter_longevity",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53262,
+       "desc": "Reduces the cooldown of your Bestial Wrath, Intimidation and Pet Special Abilities by 10%.",
+       "raw": "Reduces the cooldown of your Bestial Wrath, Intimidation and Pet Special Abilities by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 53263,
+       "desc": "Reduces the cooldown of your Bestial Wrath, Intimidation and Pet Special Abilities by 20%.",
+       "raw": "Reduces the cooldown of your Bestial Wrath, Intimidation and Pet Special Abilities by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 53264,
+       "desc": "Reduces the cooldown of your Bestial Wrath, Intimidation and Pet Special Abilities by 30%.",
+       "raw": "Reduces the cooldown of your Bestial Wrath, Intimidation and Pet Special Abilities by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1803,
+     "fieldName": "theBeastWithin",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      34692
+     ],
+     "maxPoints": 1,
+     "name": "The Beast Within",
+     "icon": "ability_hunter_beastwithin",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34692,
+       "desc": "Increases all damage you deal by 10% and while your pet is under the effects of Bestial Wrath, you also go into a rage causing 10% additional damage and reducing mana costs of all spells by 50% for 10 sec.  While enraged, you do not feel pity or remorse or fear and you cannot be stopped unless killed.",
+       "raw": "Increases all damage you deal by $s1% and while your pet is under the effects of Bestial Wrath, you also go into a rage causing $34471s2% additional damage and reducing mana costs of all spells by $34471s1% for $34471d.  While enraged, you do not feel pity or remorse or fear and you cannot be stopped unless killed."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 23,
+     "id": 2137,
+     "fieldName": "cobraStrikes",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      53256,
+      53259,
+      53260
+     ],
+     "maxPoints": 3,
+     "name": "Cobra Strikes",
+     "icon": "ability_hunter_cobrastrikes",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53256,
+       "desc": "You have a 20% chance when you critically hit with Arcane Shot, Steady Shot or Kill Shot to cause your pet's next 2 special attacks to critically hit.",
+       "raw": "You have a $h% chance when you critically hit with Arcane Shot, Steady Shot or Kill Shot to cause your pet's next 2 special attacks to critically hit."
+      },
+      {
+       "r": 2,
+       "spell": 53259,
+       "desc": "You have a 40% chance when you critically hit with Arcane Shot, Steady Shot or Kill Shot to cause your pet's next 2 special attacks to critically hit.",
+       "raw": "You have a $h% chance when you critically hit with Arcane Shot, Steady Shot or Kill Shot to cause your pet's next 2 special attacks to critically hit."
+      },
+      {
+       "r": 3,
+       "spell": 53260,
+       "desc": "You have a 60% chance when you critically hit with Arcane Shot, Steady Shot or Kill Shot to cause your pet's next 2 special attacks to critically hit.",
+       "raw": "You have a $h% chance when you critically hit with Arcane Shot, Steady Shot or Kill Shot to cause your pet's next 2 special attacks to critically hit."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 24,
+     "id": 2227,
+     "fieldName": "kindredSpirits",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      56314,
+      56315,
+      56316,
+      56317,
+      56318
+     ],
+     "maxPoints": 5,
+     "name": "Kindred Spirits",
+     "icon": "ability_hunter_separationanxiety",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 56314,
+       "desc": "Increases your pet's damage by 4% and you and your pet's movement speed by 2% while your pet is active. This does not stack with other movement speed increasing effects.",
+       "raw": "Increases your pet's damage by $s1% and you and your pet's movement speed by $s2% while your pet is active. This does not stack with other movement speed increasing effects."
+      },
+      {
+       "r": 2,
+       "spell": 56315,
+       "desc": "Increases your pet's damage by 8% and you and your pet's movement speed by 4% while your pet is active. This does not stack with other movement speed increasing effects.",
+       "raw": "Increases your pet's damage by $s1% and you and your pet's movement speed by $s2% while your pet is active. This does not stack with other movement speed increasing effects."
+      },
+      {
+       "r": 3,
+       "spell": 56316,
+       "desc": "Increases your pet's damage by 12% and you and your pet's movement speed by 6% while your pet is active. This does not stack with other movement speed increasing effects.",
+       "raw": "Increases your pet's damage by $s1% and you and your pet's movement speed by $s2% while your pet is active. This does not stack with other movement speed increasing effects."
+      },
+      {
+       "r": 4,
+       "spell": 56317,
+       "desc": "Increases your pet's damage by 16% and you and your pet's movement speed by 8% while your pet is active. This does not stack with other movement speed increasing effects.",
+       "raw": "Increases your pet's damage by $s1% and you and your pet's movement speed by $s2% while your pet is active. This does not stack with other movement speed increasing effects."
+      },
+      {
+       "r": 5,
+       "spell": 56318,
+       "desc": "Increases your pet's damage by 20% and you and your pet's movement speed by 10% while your pet is active. This does not stack with other movement speed increasing effects.",
+       "raw": "Increases your pet's damage by $s1% and you and your pet's movement speed by $s2% while your pet is active. This does not stack with other movement speed increasing effects."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 2139,
+     "fieldName": "beastMastery",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53270
+     ],
+     "maxPoints": 1,
+     "name": "Beast Mastery",
+     "icon": "ability_hunter_beastmastery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53270,
+       "desc": "You master the art of Beast training, teaching you the ability to tame Exotic pets and increasing your total amount of Pet Skill Points by 4.",
+       "raw": "You master the art of Beast training, teaching you the ability to tame Exotic pets and increasing your total amount of Pet Skill Points by $s2."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 363,
+   "name": "Marksmanship",
+   "page": 1,
+   "talents": [
+    {
+     "i": 0,
+     "id": 1341,
+     "fieldName": "improvedConcussiveShot",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19407,
+      19412
+     ],
+     "maxPoints": 2,
+     "name": "Improved Concussive Shot",
+     "icon": "spell_frost_stun",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19407,
+       "desc": "Increases the duration of your Concussive Shot's daze effect by 1 sec.",
+       "raw": "Increases the duration of your Concussive Shot's daze effect by $/1000;s1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 19412,
+       "desc": "Increases the duration of your Concussive Shot's daze effect by 2 sec.",
+       "raw": "Increases the duration of your Concussive Shot's daze effect by $/1000;s1 sec."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 2197,
+     "fieldName": "focusedAim",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53620,
+      53621,
+      53622
+     ],
+     "maxPoints": 3,
+     "name": "Focused Aim",
+     "icon": "ability_hunter_focusedaim",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53620,
+       "desc": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by 23%, and increases your chance to hit by 1%.",
+       "raw": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by $s1%, and increases your chance to hit by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 53621,
+       "desc": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by 46%, and increases your chance to hit by 2%.",
+       "raw": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by $s1%, and increases your chance to hit by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 53622,
+       "desc": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by 70%, and increases your chance to hit by 3%.",
+       "raw": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by $s1%, and increases your chance to hit by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 1344,
+     "fieldName": "lethalShots",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19426,
+      19427,
+      19429,
+      19430,
+      19431
+     ],
+     "maxPoints": 5,
+     "name": "Lethal Shots",
+     "icon": "ability_searingarrow",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19426,
+       "desc": "Increases your critical strike chance with ranged weapons by 1%.",
+       "raw": "Increases your critical strike chance with ranged weapons by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19427,
+       "desc": "Increases your critical strike chance with ranged weapons by 2%.",
+       "raw": "Increases your critical strike chance with ranged weapons by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19429,
+       "desc": "Increases your critical strike chance with ranged weapons by 3%.",
+       "raw": "Increases your critical strike chance with ranged weapons by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 19430,
+       "desc": "Increases your critical strike chance with ranged weapons by 4%.",
+       "raw": "Increases your critical strike chance with ranged weapons by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 19431,
+       "desc": "Increases your critical strike chance with ranged weapons by 5%.",
+       "raw": "Increases your critical strike chance with ranged weapons by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1806,
+     "fieldName": "carefulAim",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34482,
+      34483,
+      34484
+     ],
+     "maxPoints": 3,
+     "name": "Careful Aim",
+     "icon": "ability_hunter_zenarchery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34482,
+       "desc": "Increases your ranged attack power by an amount equal to 33% of your total Intellect.",
+       "raw": "Increases your ranged attack power by an amount equal to $s1% of your total Intellect."
+      },
+      {
+       "r": 2,
+       "spell": 34483,
+       "desc": "Increases your ranged attack power by an amount equal to 66% of your total Intellect.",
+       "raw": "Increases your ranged attack power by an amount equal to $s1% of your total Intellect."
+      },
+      {
+       "r": 3,
+       "spell": 34484,
+       "desc": "Increases your ranged attack power by an amount equal to 100% of your total Intellect.",
+       "raw": "Increases your ranged attack power by an amount equal to $s1% of your total Intellect."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 1343,
+     "fieldName": "improvedHuntersMark",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19421,
+      19422,
+      19423
+     ],
+     "maxPoints": 3,
+     "name": "Improved Hunter's Mark",
+     "icon": "ability_hunter_snipershot",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19421,
+       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 10%, and reduces the mana cost of your Hunter's Mark ability by 33%.",
+       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 19422,
+       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 20%, and reduces the mana cost of your Hunter's Mark ability by 66%.",
+       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 19423,
+       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 30%, and reduces the mana cost of your Hunter's Mark ability by 100%.",
+       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 1349,
+     "fieldName": "mortalShots",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19485,
+      19487,
+      19488,
+      19489,
+      19490
+     ],
+     "maxPoints": 5,
+     "name": "Mortal Shots",
+     "icon": "ability_piercedamage",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19485,
+       "desc": "Increases the critical strike damage bonus of your ranged abilities by 6%.",
+       "raw": "Increases the critical strike damage bonus of your ranged abilities by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19487,
+       "desc": "Increases the critical strike damage bonus of your ranged abilities by 12%.",
+       "raw": "Increases the critical strike damage bonus of your ranged abilities by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19488,
+       "desc": "Increases the critical strike damage bonus of your ranged abilities by 18%.",
+       "raw": "Increases the critical strike damage bonus of your ranged abilities by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 19489,
+       "desc": "Increases the critical strike damage bonus of your ranged abilities by 24%.",
+       "raw": "Increases the critical strike damage bonus of your ranged abilities by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 19490,
+       "desc": "Increases the critical strike damage bonus of your ranged abilities by 30%.",
+       "raw": "Increases the critical strike damage bonus of your ranged abilities by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 1818,
+     "fieldName": "goForTheThroat",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34950,
+      34954
+     ],
+     "maxPoints": 2,
+     "name": "Go for the Throat",
+     "icon": "ability_hunter_goforthethroat",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34950,
+       "desc": "Your ranged critical hits cause your pet to generate 25 Focus.",
+       "raw": "Your ranged critical hits cause your pet to generate $34952s1 Focus."
+      },
+      {
+       "r": 2,
+       "spell": 34954,
+       "desc": "Your ranged critical hits cause your pet to generate 50 Focus.",
+       "raw": "Your ranged critical hits cause your pet to generate $34953s1 Focus."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 1346,
+     "fieldName": "improvedArcaneShot",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19454,
+      19455,
+      19456
+     ],
+     "maxPoints": 3,
+     "name": "Improved Arcane Shot",
+     "icon": "ability_impalingbolt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19454,
+       "desc": "Increases the damage done by your Arcane Shot by 5%.",
+       "raw": "Increases the damage done by your Arcane Shot by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19455,
+       "desc": "Increases the damage done by your Arcane Shot by 10%.",
+       "raw": "Increases the damage done by your Arcane Shot by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19456,
+       "desc": "Increases the damage done by your Arcane Shot by 15%.",
+       "raw": "Increases the damage done by your Arcane Shot by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1345,
+     "fieldName": "aimedShot",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19434
+     ],
+     "maxPoints": 1,
+     "name": "Aimed Shot",
+     "icon": "inv_spear_07",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19434,
+       "desc": "An aimed shot that increases ranged damage by 5 and reduces healing done to that target by 50%.  Lasts 10 sec.",
+       "raw": "An aimed shot that increases ranged damage by $s1 and reduces healing done to that target by $s2%.  Lasts $d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 9,
+     "id": 1819,
+     "fieldName": "rapidKilling",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 3
+     },
+     "spellIds": [
+      34948,
+      34949
+     ],
+     "maxPoints": 2,
+     "name": "Rapid Killing",
+     "icon": "ability_hunter_rapidkilling",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34948,
+       "desc": "Reduces the cooldown of your Rapid Fire ability by 1 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes 10% additional damage.  Lasts 20 sec.",
+       "raw": "Reduces the cooldown of your Rapid Fire ability by $/60000;s2 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes $35098s1% additional damage.  Lasts $35098d."
+      },
+      {
+       "r": 2,
+       "spell": 34949,
+       "desc": "Reduces the cooldown of your Rapid Fire ability by 2 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes 20% additional damage.  Lasts 20 sec.",
+       "raw": "Reduces the cooldown of your Rapid Fire ability by $/60000;s2 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes $35099s1% additional damage.  Lasts $35099d."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 1348,
+     "fieldName": "improvedStings",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19464,
+      19465,
+      19466
+     ],
+     "maxPoints": 3,
+     "name": "Improved Stings",
+     "icon": "ability_hunter_quickshot",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19464,
+       "desc": "Increases the damage done by your Serpent Sting and Wyvern Sting by 10% and the mana drained by your Viper Sting by 10%.  In addition, reduces the chance your Sting damage over time effects will be dispelled by 10%.",
+       "raw": "Increases the damage done by your Serpent Sting and Wyvern Sting by $s1% and the mana drained by your Viper Sting by $s2%.  In addition, reduces the chance your Sting damage over time effects will be dispelled by $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 19465,
+       "desc": "Increases the damage done by your Serpent Sting and Wyvern Sting by 20% and the mana drained by your Viper Sting by 20%.  In addition, reduces the chance your Sting damage over time effects will be dispelled by 20%.",
+       "raw": "Increases the damage done by your Serpent Sting and Wyvern Sting by $s1% and the mana drained by your Viper Sting by $s2%.  In addition, reduces the chance your Sting damage over time effects will be dispelled by $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 19466,
+       "desc": "Increases the damage done by your Serpent Sting and Wyvern Sting by 30% and the mana drained by your Viper Sting by 30%.  In addition, reduces the chance your Sting damage over time effects will be dispelled by 30%.",
+       "raw": "Increases the damage done by your Serpent Sting and Wyvern Sting by $s1% and the mana drained by your Viper Sting by $s2%.  In addition, reduces the chance your Sting damage over time effects will be dispelled by $s3%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1342,
+     "fieldName": "efficiency",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19416,
+      19417,
+      19418,
+      19419,
+      19420
+     ],
+     "maxPoints": 5,
+     "name": "Efficiency",
+     "icon": "spell_frost_wizardmark",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19416,
+       "desc": "Reduces the Mana cost of your Shots and Stings by 3%.",
+       "raw": "Reduces the Mana cost of your Shots and Stings by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19417,
+       "desc": "Reduces the Mana cost of your Shots and Stings by 6%.",
+       "raw": "Reduces the Mana cost of your Shots and Stings by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19418,
+       "desc": "Reduces the Mana cost of your Shots and Stings by 9%.",
+       "raw": "Reduces the Mana cost of your Shots and Stings by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 19419,
+       "desc": "Reduces the Mana cost of your Shots and Stings by 12%.",
+       "raw": "Reduces the Mana cost of your Shots and Stings by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 19420,
+       "desc": "Reduces the Mana cost of your Shots and Stings by 15%.",
+       "raw": "Reduces the Mana cost of your Shots and Stings by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1351,
+     "fieldName": "concussiveBarrage",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      35100,
+      35102
+     ],
+     "maxPoints": 2,
+     "name": "Concussive Barrage",
+     "icon": "spell_arcane_starfire",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 35100,
+       "desc": "Your successful Chimera Shot and Multi-Shot attacks have a 50% chance to Daze the target for 4 sec.",
+       "raw": "Your successful Chimera Shot and Multi-Shot attacks have a $h% chance to Daze the target for $35101d."
+      },
+      {
+       "r": 2,
+       "spell": 35102,
+       "desc": "Your successful Chimera Shot and Multi-Shot attacks have a 100% chance to Daze the target for 4 sec.",
+       "raw": "Your successful Chimera Shot and Multi-Shot attacks have a $h% chance to Daze the target for $35101d."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 1353,
+     "fieldName": "readiness",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      23989
+     ],
+     "maxPoints": 1,
+     "name": "Readiness",
+     "icon": "ability_hunter_readiness",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 23989,
+       "desc": "When activated, this ability immediately finishes the cooldown on your other Hunter abilities except Bestial Wrath."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1347,
+     "fieldName": "barrage",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19461,
+      19462,
+      24691
+     ],
+     "maxPoints": 3,
+     "name": "Barrage",
+     "icon": "ability_upgrademoonglaive",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19461,
+       "desc": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley spells by 4%.",
+       "raw": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19462,
+       "desc": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley spells by 8%.",
+       "raw": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 24691,
+       "desc": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley spells by 12%.",
+       "raw": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 1804,
+     "fieldName": "combatExperience",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34475,
+      34476
+     ],
+     "maxPoints": 2,
+     "name": "Combat Experience",
+     "icon": "ability_hunter_combatexperience",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34475,
+       "desc": "Increases your total Agility and Intellect by 2%.",
+       "raw": "Increases your total Agility and Intellect by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 34476,
+       "desc": "Increases your total Agility and Intellect by 4%.",
+       "raw": "Increases your total Agility and Intellect by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "id": 1362,
+     "fieldName": "rangedWeaponSpecialization",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 3
+     },
+     "spellIds": [
+      19507,
+      19508,
+      19509
+     ],
+     "maxPoints": 3,
+     "name": "Ranged Weapon Specialization",
+     "icon": "inv_weapon_rifle_06",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19507,
+       "desc": "Increases the damage you deal with ranged weapons by 1%.",
+       "raw": "Increases the damage you deal with ranged weapons by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19508,
+       "desc": "Increases the damage you deal with ranged weapons by 3%.",
+       "raw": "Increases the damage you deal with ranged weapons by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19509,
+       "desc": "Increases the damage you deal with ranged weapons by 5%.",
+       "raw": "Increases the damage you deal with ranged weapons by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 2130,
+     "fieldName": "piercingShots",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53234,
+      53237,
+      53238
+     ],
+     "maxPoints": 3,
+     "name": "Piercing Shots",
+     "icon": "ability_hunter_piercingshots",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53234,
+       "desc": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for 10% of the damage dealt over 8 sec.",
+       "raw": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for $s1% of the damage dealt over $63468d."
+      },
+      {
+       "r": 2,
+       "spell": 53237,
+       "desc": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for 20% of the damage dealt over 8 sec.",
+       "raw": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for $s1% of the damage dealt over $63468d."
+      },
+      {
+       "r": 3,
+       "spell": 53238,
+       "desc": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for 30% of the damage dealt over 8 sec.",
+       "raw": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for $s1% of the damage dealt over $63468d."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1361,
+     "fieldName": "trueshotAura",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19506
+     ],
+     "maxPoints": 1,
+     "name": "Trueshot Aura",
+     "icon": "ability_trueshot",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19506,
+       "desc": "Increases the attack power of party and raid members within 100 yards by 10%.  Lasts 0 sec.",
+       "raw": "Increases the attack power of party and raid members within $a1 yards by $s1%.  Lasts $d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 19,
+     "id": 1821,
+     "fieldName": "improvedBarrage",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      35104,
+      35110,
+      35111
+     ],
+     "maxPoints": 3,
+     "name": "Improved Barrage",
+     "icon": "ability_upgrademoonglaive",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 35104,
+       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 4% and reduces the pushback suffered from damaging attacks while channeling Volley by 33%.",
+       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the pushback suffered from damaging attacks while channeling Volley by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 35110,
+       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 8% and reduces the pushback suffered from damaging attacks while channeling Volley by 66%.",
+       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the pushback suffered from damaging attacks while channeling Volley by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 35111,
+       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 12% and reduces the pushback suffered from damaging attacks while channeling Volley by 100%.",
+       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the pushback suffered from damaging attacks while channeling Volley by $s2%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 20,
+     "id": 1807,
+     "fieldName": "masterMarksman",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      34485,
+      34486,
+      34487,
+      34488,
+      34489
+     ],
+     "maxPoints": 5,
+     "name": "Master Marksman",
+     "icon": "ability_hunter_mastermarksman",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34485,
+       "desc": "Increases your critical strike chance by 1%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by 5%.",
+       "raw": "Increases your critical strike chance by $s1%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 34486,
+       "desc": "Increases your critical strike chance by 2%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by 10%.",
+       "raw": "Increases your critical strike chance by $s1%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 34487,
+       "desc": "Increases your critical strike chance by 3%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by 15%.",
+       "raw": "Increases your critical strike chance by $s1%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 34488,
+       "desc": "Increases your critical strike chance by 4%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by 20%.",
+       "raw": "Increases your critical strike chance by $s1%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 34489,
+       "desc": "Increases your critical strike chance by 5%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by 25%.",
+       "raw": "Increases your critical strike chance by $s1%, and reduces the Mana cost of your Steady Shot, Aimed Shot, and Chimera Shot by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 2131,
+     "fieldName": "rapidRecuperation",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      53228,
+      53232
+     ],
+     "maxPoints": 2,
+     "name": "Rapid Recuperation",
+     "icon": "ability_hunter_rapidregeneration",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53228,
+       "desc": "You gain 2% of your mana every 3 sec while under the effect of Rapid Fire, and you gain 1% of your mana every 2 sec for 6 sec when you gain Rapid Killing.",
+       "raw": "You gain $64180s1% of your mana every $53230t1 sec while under the effect of Rapid Fire, and you gain $56654s1% of your mana every $56654t1 sec for $56654d when you gain Rapid Killing."
+      },
+      {
+       "r": 2,
+       "spell": 53232,
+       "desc": "You gain 4% of your mana every 3 sec while under the effect of Rapid Fire, and you gain 2% of your mana every 2 sec for 6 sec when you gain Rapid Killing.",
+       "raw": "You gain $64181s1% of your mana every $54227t1 sec while under the effect of Rapid Fire, and you gain $58882s1% of your mana every $58882t1 sec for $58882d when you gain Rapid Killing."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 2132,
+     "fieldName": "wildQuiver",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53215,
+      53216,
+      53217
+     ],
+     "maxPoints": 3,
+     "name": "Wild Quiver",
+     "icon": "ability_hunter_wildquiver",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53215,
+       "desc": "You have a 4% chance to shoot an additional shot when doing damage with your auto shot, dealing 80% weapon nature damage. Wild Quiver consumes no ammo.",
+       "raw": "You have a $h% chance to shoot an additional shot when doing damage with your auto shot, dealing $53254s1% weapon nature damage. Wild Quiver consumes no ammo."
+      },
+      {
+       "r": 2,
+       "spell": 53216,
+       "desc": "You have a 8% chance to shoot an additional shot when doing damage with your auto shot, dealing 80% weapon nature damage. Wild Quiver consumes no ammo.",
+       "raw": "You have a $h% chance to shoot an additional shot when doing damage with your auto shot, dealing $53254s1% weapon nature damage. Wild Quiver consumes no ammo."
+      },
+      {
+       "r": 3,
+       "spell": 53217,
+       "desc": "You have a 12% chance to shoot an additional shot when doing damage with your auto shot, dealing 80% weapon nature damage. Wild Quiver consumes no ammo.",
+       "raw": "You have a $h% chance to shoot an additional shot when doing damage with your auto shot, dealing $53254s1% weapon nature damage. Wild Quiver consumes no ammo."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 1808,
+     "fieldName": "silencingShot",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      34490
+     ],
+     "maxPoints": 1,
+     "name": "Silencing Shot",
+     "icon": "ability_theblackarrow",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34490,
+       "desc": "A shot that deals 50% weapon damage and Silences the target for 3 sec.  Non-player victim spellcasting is also interrupted for 3 sec.",
+       "raw": "A shot that deals $s1% weapon damage and Silences the target for $d.  Non-player victim spellcasting is also interrupted for $32747d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 24,
+     "id": 2133,
+     "fieldName": "improvedSteadyShot",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      53221,
+      53222,
+      53224
+     ],
+     "maxPoints": 3,
+     "name": "Improved Steady Shot",
+     "icon": "ability_hunter_improvedsteadyshot",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53221,
+       "desc": "Your Steady Shot hits have a 5% chance to increase the damage done by your next Aimed Shot, Arcane Shot or Chimera Shot by 15%, and reduce the mana cost of your next Aimed Shot, Arcane Shot or Chimera Shot by 20%.",
+       "raw": "Your Steady Shot hits have a $h% chance to increase the damage done by your next Aimed Shot, Arcane Shot or Chimera Shot by $53220s1%, and reduce the mana cost of your next Aimed Shot, Arcane Shot or Chimera Shot by $53220s2%."
+      },
+      {
+       "r": 2,
+       "spell": 53222,
+       "desc": "Your Steady Shot hits have a 10% chance to increase the damage done by your next Aimed Shot, Arcane Shot or Chimera Shot by 15%, and reduce the mana cost of your next Aimed Shot, Arcane Shot or Chimera Shot by 20%.",
+       "raw": "Your Steady Shot hits have a $h% chance to increase the damage done by your next Aimed Shot, Arcane Shot or Chimera Shot by $53220s1%, and reduce the mana cost of your next Aimed Shot, Arcane Shot or Chimera Shot by $53220s2%."
+      },
+      {
+       "r": 3,
+       "spell": 53224,
+       "desc": "Your Steady Shot hits have a 15% chance to increase the damage done by your next Aimed Shot, Arcane Shot or Chimera Shot by 15%, and reduce the mana cost of your next Aimed Shot, Arcane Shot or Chimera Shot by 20%.",
+       "raw": "Your Steady Shot hits have a $h% chance to increase the damage done by your next Aimed Shot, Arcane Shot or Chimera Shot by $53220s1%, and reduce the mana cost of your next Aimed Shot, Arcane Shot or Chimera Shot by $53220s2%."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 2134,
+     "fieldName": "markedForDeath",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53241,
+      53243,
+      53244,
+      53245,
+      53246
+     ],
+     "maxPoints": 5,
+     "name": "Marked for Death",
+     "icon": "ability_hunter_assassinate",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53241,
+       "desc": "Increases your damage done by your shots and the damage done by your pet's special abilities by 1% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by 2%.",
+       "raw": "Increases your damage done by your shots and the damage done by your pet's special abilities by $s1% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 53243,
+       "desc": "Increases your damage done by your shots and the damage done by your pet's special abilities by 2% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by 4%.",
+       "raw": "Increases your damage done by your shots and the damage done by your pet's special abilities by $s1% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 53244,
+       "desc": "Increases your damage done by your shots and the damage done by your pet's special abilities by 3% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by 6%.",
+       "raw": "Increases your damage done by your shots and the damage done by your pet's special abilities by $s1% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 53245,
+       "desc": "Increases your damage done by your shots and the damage done by your pet's special abilities by 4% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by 8%.",
+       "raw": "Increases your damage done by your shots and the damage done by your pet's special abilities by $s1% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 53246,
+       "desc": "Increases your damage done by your shots and the damage done by your pet's special abilities by 5% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by 10%.",
+       "raw": "Increases your damage done by your shots and the damage done by your pet's special abilities by $s1% on marked targets, and increases the critical strike damage bonus of your Aimed Shot, Arcane Shot, Steady Shot, Kill Shot and Chimera Shot by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 2135,
+     "fieldName": "chimeraShot",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53209
+     ],
+     "maxPoints": 1,
+     "name": "Chimera Shot",
+     "icon": "ability_hunter_chimerashot2",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53209,
+       "desc": "You deal 125% weapon damage, refreshing the current Sting on your target and triggering an effect:\n\nSerpent Sting - Instantly deals 40% of the damage done by your Serpent Sting.\n\nViper Sting - Instantly restores mana to you equal to 60% of the total amount drained by your Viper Sting.\n\nScorpid Sting - Attempts to Disarm the target for 10 sec. This effect cannot occur more than once per 1 minute.",
+       "raw": "You deal $s3% weapon damage, refreshing the current Sting on your target and triggering an effect:\n\nSerpent Sting - Instantly deals 40% of the damage done by your Serpent Sting.\n\nViper Sting - Instantly restores mana to you equal to 60% of the total amount drained by your Viper Sting.\n\nScorpid Sting - Attempts to Disarm the target for 10 sec. This effect cannot occur more than once per 1 minute."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 362,
+   "name": "Survival",
+   "page": 2,
+   "talents": [
+    {
+     "i": 0,
+     "id": 1623,
+     "fieldName": "improvedTracking",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      52783,
+      52785,
+      52786,
+      52787,
+      52788
+     ],
+     "maxPoints": 5,
+     "name": "Improved Tracking",
+     "icon": "ability_hunter_improvedtracking",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 52783,
+       "desc": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by 1%.",
+       "raw": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 52785,
+       "desc": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by 2%.",
+       "raw": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 52786,
+       "desc": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by 3%.",
+       "raw": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 52787,
+       "desc": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by 4%.",
+       "raw": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 52788,
+       "desc": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by 5%.",
+       "raw": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids and Undead, all damage done to those types by the Hunter is increased by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 1820,
+     "fieldName": "hawkEye",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19498,
+      19499,
+      19500
+     ],
+     "maxPoints": 3,
+     "name": "Hawk Eye",
+     "icon": "ability_townwatch",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19498,
+       "desc": "Increases the range of your ranged weapons by 2 yards.",
+       "raw": "Increases the range of your ranged weapons by $s1 yards."
+      },
+      {
+       "r": 2,
+       "spell": 19499,
+       "desc": "Increases the range of your ranged weapons by 4 yards.",
+       "raw": "Increases the range of your ranged weapons by $s1 yards."
+      },
+      {
+       "r": 3,
+       "spell": 19500,
+       "desc": "Increases the range of your ranged weapons by 6 yards.",
+       "raw": "Increases the range of your ranged weapons by $s1 yards."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 1621,
+     "fieldName": "savageStrikes",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19159,
+      19160
+     ],
+     "maxPoints": 2,
+     "name": "Savage Strikes",
+     "icon": "ability_racial_bloodrage",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19159,
+       "desc": "Increases the critical strike chance of Raptor Strike, Mongoose Bite and Counterattack by 10%.",
+       "raw": "Increases the critical strike chance of Raptor Strike, Mongoose Bite and Counterattack by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19160,
+       "desc": "Increases the critical strike chance of Raptor Strike, Mongoose Bite and Counterattack by 20%.",
+       "raw": "Increases the critical strike chance of Raptor Strike, Mongoose Bite and Counterattack by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1310,
+     "fieldName": "surefooted",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19290,
+      19294,
+      24283
+     ],
+     "maxPoints": 3,
+     "name": "Surefooted",
+     "icon": "ability_kick",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19290,
+       "desc": "Reduces the duration of movement impairing effects by 10%.",
+       "raw": "Reduces the duration of movement impairing effects by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19294,
+       "desc": "Reduces the duration of movement impairing effects by 20%.",
+       "raw": "Reduces the duration of movement impairing effects by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 24283,
+       "desc": "Reduces the duration of movement impairing effects by 30%.",
+       "raw": "Reduces the duration of movement impairing effects by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 1304,
+     "fieldName": "entrapment",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19184,
+      19387,
+      19388
+     ],
+     "maxPoints": 3,
+     "name": "Entrapment",
+     "icon": "spell_nature_stranglevines",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19184,
+       "desc": "When your Frost Trap or Snake Trap are triggered you entrap all afflicted targets, preventing them from moving for 2 sec.",
+       "raw": "When your Frost Trap or Snake Trap are triggered you entrap all afflicted targets, preventing them from moving for $19185d."
+      },
+      {
+       "r": 2,
+       "spell": 19387,
+       "desc": "When your Frost Trap or Snake Trap are triggered you entrap all afflicted targets, preventing them from moving for 3 sec.",
+       "raw": "When your Frost Trap or Snake Trap are triggered you entrap all afflicted targets, preventing them from moving for $64803d."
+      },
+      {
+       "r": 3,
+       "spell": 19388,
+       "desc": "When your Frost Trap or Snake Trap are triggered you entrap all afflicted targets, preventing them from moving for 4 sec.",
+       "raw": "When your Frost Trap or Snake Trap are triggered you entrap all afflicted targets, preventing them from moving for $64804d."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 1305,
+     "fieldName": "trapMastery",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19376,
+      63457,
+      63458
+     ],
+     "maxPoints": 3,
+     "name": "Trap Mastery",
+     "icon": "ability_ensnare",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19376,
+       "desc": "Frost Trap and Freezing Trap - Increases the duration by 10%.\n\nImmolation Trap, Explosive Trap and Black Arrow - Increases the periodic damage done by 10%.\n\nSnake Trap - Increases the number of snakes summoned by 2.",
+       "raw": "Frost Trap and Freezing Trap - Increases the duration by $s1%.\n\nImmolation Trap, Explosive Trap and Black Arrow - Increases the periodic damage done by $s2%.\n\nSnake Trap - Increases the number of snakes summoned by $*2;s3."
+      },
+      {
+       "r": 2,
+       "spell": 63457,
+       "desc": "Frost Trap and Freezing Trap - Increases the duration by 20%.\n\nImmolation Trap, Explosive Trap and Black Arrow - Increases the periodic damage done by 20%.\n\nSnake Trap - Increases the number of snakes summoned by 4.",
+       "raw": "Frost Trap and Freezing Trap - Increases the duration by $s1%.\n\nImmolation Trap, Explosive Trap and Black Arrow - Increases the periodic damage done by $s2%.\n\nSnake Trap - Increases the number of snakes summoned by $*2;s3."
+      },
+      {
+       "r": 3,
+       "spell": 63458,
+       "desc": "Frost Trap and Freezing Trap - Increases the duration by 30%.\n\nImmolation Trap, Explosive Trap and Black Arrow - Increases the periodic damage done by 30%.\n\nSnake Trap - Increases the number of snakes summoned by 6.",
+       "raw": "Frost Trap and Freezing Trap - Increases the duration by $s1%.\n\nImmolation Trap, Explosive Trap and Black Arrow - Increases the periodic damage done by $s2%.\n\nSnake Trap - Increases the number of snakes summoned by $*2;s3."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 6,
+     "id": 1810,
+     "fieldName": "survivalInstincts",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 3
+     },
+     "spellIds": [
+      34494,
+      34496
+     ],
+     "maxPoints": 2,
+     "name": "Survival Instincts",
+     "icon": "ability_hunter_survivalinstincts",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34494,
+       "desc": "Reduces all damage taken by 2% and increases the critical strike chance of your Arcane Shot, Steady Shot, and Explosive Shot by 2%.",
+       "raw": "Reduces all damage taken by $s1% and increases the critical strike chance of your Arcane Shot, Steady Shot, and Explosive Shot by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 34496,
+       "desc": "Reduces all damage taken by 4% and increases the critical strike chance of your Arcane Shot, Steady Shot, and Explosive Shot by 4%.",
+       "raw": "Reduces all damage taken by $s1% and increases the critical strike chance of your Arcane Shot, Steady Shot, and Explosive Shot by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 1622,
+     "fieldName": "survivalist",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19255,
+      19256,
+      19257,
+      19258,
+      19259
+     ],
+     "maxPoints": 5,
+     "name": "Survivalist",
+     "icon": "spell_shadow_twilight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19255,
+       "desc": "Increases your Stamina by 2%.",
+       "raw": "Increases your Stamina by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19256,
+       "desc": "Increases your Stamina by 4%.",
+       "raw": "Increases your Stamina by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19257,
+       "desc": "Increases your Stamina by 6%.",
+       "raw": "Increases your Stamina by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 19258,
+       "desc": "Increases your Stamina by 8%.",
+       "raw": "Increases your Stamina by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 19259,
+       "desc": "Increases your Stamina by 10%.",
+       "raw": "Increases your Stamina by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1814,
+     "fieldName": "scatterShot",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19503
+     ],
+     "maxPoints": 1,
+     "name": "Scatter Shot",
+     "icon": "ability_golemstormbolt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19503,
+       "desc": "A short-range shot that deals 50% weapon damage and disorients the target for 4 sec.  Any damage caused will remove the effect.  Turns off your attack when used.",
+       "raw": "A short-range shot that deals $s1% weapon damage and disorients the target for $d.  Any damage caused will remove the effect.  Turns off your attack when used."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 1311,
+     "fieldName": "deflection",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19295,
+      19297,
+      19298
+     ],
+     "maxPoints": 3,
+     "name": "Deflection",
+     "icon": "ability_parry",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19295,
+       "desc": "Increases your chance to parry by 1%, and reduces the duration of all Disarm effects used against you by 16%.  This does not stack with other Disarm duration reducing effects.",
+       "raw": "Increases your chance to parry by $s1%, and reduces the duration of all Disarm effects used against you by $s2%.  This does not stack with other Disarm duration reducing effects."
+      },
+      {
+       "r": 2,
+       "spell": 19297,
+       "desc": "Increases your chance to parry by 2%, and reduces the duration of all Disarm effects used against you by 25%.  This does not stack with other Disarm duration reducing effects.",
+       "raw": "Increases your chance to parry by $s1%, and reduces the duration of all Disarm effects used against you by $s2%.  This does not stack with other Disarm duration reducing effects."
+      },
+      {
+       "r": 3,
+       "spell": 19298,
+       "desc": "Increases your chance to parry by 3%, and reduces the duration of all Disarm effects used against you by 50%.  This does not stack with other Disarm duration reducing effects.",
+       "raw": "Increases your chance to parry by $s1%, and reduces the duration of all Disarm effects used against you by $s2%.  This does not stack with other Disarm duration reducing effects."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 1309,
+     "fieldName": "survivalTactics",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 3
+     },
+     "spellIds": [
+      19286,
+      19287
+     ],
+     "maxPoints": 2,
+     "name": "Survival Tactics",
+     "icon": "ability_rogue_feigndeath",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19286,
+       "desc": "Reduces the chance your Feign Death ability and all trap spells will be resisted by 2%, and reduces the cooldown of your Disengage ability by 2 sec.",
+       "raw": "Reduces the chance your Feign Death ability and all trap spells will be resisted by $s1%, and reduces the cooldown of your Disengage ability by $/1000;S2 sec."
+      },
+      {
+       "r": 2,
+       "spell": 19287,
+       "desc": "Reduces the chance your Feign Death ability and all trap spells will be resisted by 4%, and reduces the cooldown of your Disengage ability by 4 sec.",
+       "raw": "Reduces the chance your Feign Death ability and all trap spells will be resisted by $s1%, and reduces the cooldown of your Disengage ability by $/1000;S2 sec."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 2229,
+     "fieldName": "tnt",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      56333,
+      56336,
+      56337
+     ],
+     "maxPoints": 3,
+     "name": "T.N.T.",
+     "icon": "inv_misc_bomb_05",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 56333,
+       "desc": "Increases the damage done by your Explosive Shot,  Explosive Trap, Black Arrow and Immolation Trap by 2%.",
+       "raw": "Increases the damage done by your Explosive Shot,  Explosive Trap, Black Arrow and Immolation Trap by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 56336,
+       "desc": "Increases the damage done by your Explosive Shot,  Explosive Trap, Black Arrow and Immolation Trap by 4%.",
+       "raw": "Increases the damage done by your Explosive Shot,  Explosive Trap, Black Arrow and Immolation Trap by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 56337,
+       "desc": "Increases the damage done by your Explosive Shot,  Explosive Trap, Black Arrow and Immolation Trap by 6%.",
+       "raw": "Increases the damage done by your Explosive Shot,  Explosive Trap, Black Arrow and Immolation Trap by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1306,
+     "fieldName": "lockAndLoad",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      56342,
+      56343,
+      56344
+     ],
+     "maxPoints": 3,
+     "name": "Lock and Load",
+     "icon": "ability_hunter_lockandload",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 56342,
+       "desc": "You have a 33% chance when you trap a target with Freezing Trap, Freezing Arrow or Frost Trap and a 2% chance when you deal periodic damage with your Immolation Trap, Explosive Trap or Black Arrow to cause your next 2 Arcane Shot or Explosive Shot spells to trigger no cooldown, cost no mana and consume no ammo. This effect has a 22 sec cooldown.",
+       "raw": "You have a $s1% chance when you trap a target with Freezing Trap, Freezing Arrow or Frost Trap and a $s2% chance when you deal periodic damage with your Immolation Trap, Explosive Trap or Black Arrow to cause your next 2 Arcane Shot or Explosive Shot spells to trigger no cooldown, cost no mana and consume no ammo. This effect has a $56342s3 sec cooldown."
+      },
+      {
+       "r": 2,
+       "spell": 56343,
+       "desc": "You have a 66% chance when you trap a target with Freezing Trap, Freezing Arrow or Frost Trap and a 4% chance when you deal periodic damage with your Immolation Trap, Explosive Trap or Black Arrow to cause your next 2 Arcane Shot or Explosive Shot spells to trigger no cooldown, cost no mana and consume no ammo. This effect has a 22 sec cooldown.",
+       "raw": "You have a $s1% chance when you trap a target with Freezing Trap, Freezing Arrow or Frost Trap and a $s2% chance when you deal periodic damage with your Immolation Trap, Explosive Trap or Black Arrow to cause your next 2 Arcane Shot or Explosive Shot spells to trigger no cooldown, cost no mana and consume no ammo. This effect has a $56342s3 sec cooldown."
+      },
+      {
+       "r": 3,
+       "spell": 56344,
+       "desc": "You have a 100% chance when you trap a target with Freezing Trap, Freezing Arrow or Frost Trap and a 6% chance when you deal periodic damage with your Immolation Trap, Explosive Trap or Black Arrow to cause your next 2 Arcane Shot or Explosive Shot spells to trigger no cooldown, cost no mana and consume no ammo. This effect has a 22 sec cooldown.",
+       "raw": "You have a $s1% chance when you trap a target with Freezing Trap, Freezing Arrow or Frost Trap and a $s2% chance when you deal periodic damage with your Immolation Trap, Explosive Trap or Black Arrow to cause your next 2 Arcane Shot or Explosive Shot spells to trigger no cooldown, cost no mana and consume no ammo. This effect has a $56342s3 sec cooldown."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 2228,
+     "fieldName": "hunterVsWild",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      56339,
+      56340,
+      56341
+     ],
+     "maxPoints": 3,
+     "name": "Hunter vs. Wild",
+     "icon": "ability_hunter_huntervswild",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 56339,
+       "desc": "Increases you and your pet's attack power and ranged attack power equal to 10% of your total Stamina.",
+       "raw": "Increases you and your pet's attack power and ranged attack power equal to $s1% of your total Stamina."
+      },
+      {
+       "r": 2,
+       "spell": 56340,
+       "desc": "Increases you and your pet's attack power and ranged attack power equal to 20% of your total Stamina.",
+       "raw": "Increases you and your pet's attack power and ranged attack power equal to $s1% of your total Stamina."
+      },
+      {
+       "r": 3,
+       "spell": 56341,
+       "desc": "Increases you and your pet's attack power and ranged attack power equal to 30% of your total Stamina.",
+       "raw": "Increases you and your pet's attack power and ranged attack power equal to $s1% of your total Stamina."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 14,
+     "id": 1321,
+     "fieldName": "killerInstinct",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19370,
+      19371,
+      19373
+     ],
+     "maxPoints": 3,
+     "name": "Killer Instinct",
+     "icon": "spell_holy_blessingofstamina",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19370,
+       "desc": "Increases your critical strike chance with all attacks by 1%.",
+       "raw": "Increases your critical strike chance with all attacks by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19371,
+       "desc": "Increases your critical strike chance with all attacks by 2%.",
+       "raw": "Increases your critical strike chance with all attacks by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19373,
+       "desc": "Increases your critical strike chance with all attacks by 3%.",
+       "raw": "Increases your critical strike chance with all attacks by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 1312,
+     "fieldName": "counterattack",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      19306
+     ],
+     "maxPoints": 1,
+     "name": "Counterattack",
+     "icon": "ability_warrior_challange",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19306,
+       "desc": "A strike that becomes active after parrying an opponent's attack.  This attack deals ${$AP*0.2+48} damage and immobilizes the target for 5 sec.  Counterattack cannot be blocked, dodged, or parried.",
+       "raw": "A strike that becomes active after parrying an opponent's attack.  This attack deals ${$AP*0.2+$m1} damage and immobilizes the target for $d.  Counterattack cannot be blocked, dodged, or parried.",
+       "unresolved": [
+        "${$AP*0.2+48}"
+       ]
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 16,
+     "id": 1303,
+     "fieldName": "lightningReflexes",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19168,
+      19180,
+      19181,
+      24296,
+      24297
+     ],
+     "maxPoints": 5,
+     "name": "Lightning Reflexes",
+     "icon": "spell_nature_invisibilty",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19168,
+       "desc": "Increases your Agility by 3%.",
+       "raw": "Increases your Agility by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 19180,
+       "desc": "Increases your Agility by 6%.",
+       "raw": "Increases your Agility by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 19181,
+       "desc": "Increases your Agility by 9%.",
+       "raw": "Increases your Agility by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 24296,
+       "desc": "Increases your Agility by 12%.",
+       "raw": "Increases your Agility by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 24297,
+       "desc": "Increases your Agility by 15%.",
+       "raw": "Increases your Agility by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1809,
+     "fieldName": "resourcefulness",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      34491,
+      34492,
+      34493
+     ],
+     "maxPoints": 3,
+     "name": "Resourcefulness",
+     "icon": "ability_hunter_resourcefulness",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34491,
+       "desc": "Reduces the mana cost of all traps, melee abilities and Black Arrow by 20% and reduces the cooldown of all traps and Black Arrow by 2 sec.",
+       "raw": "Reduces the mana cost of all traps, melee abilities and Black Arrow by $s1% and reduces the cooldown of all traps and Black Arrow by $/1000;s2 sec."
+      },
+      {
+       "r": 2,
+       "spell": 34492,
+       "desc": "Reduces the mana cost of all traps, melee abilities and Black Arrow by 40% and reduces the cooldown of all traps and Black Arrow by 4 sec.",
+       "raw": "Reduces the mana cost of all traps, melee abilities and Black Arrow by $s1% and reduces the cooldown of all traps and Black Arrow by $/1000;s2 sec."
+      },
+      {
+       "r": 3,
+       "spell": 34493,
+       "desc": "Reduces the mana cost of all traps, melee abilities and Black Arrow by 60% and reduces the cooldown of all traps and Black Arrow by 6 sec.",
+       "raw": "Reduces the mana cost of all traps, melee abilities and Black Arrow by $s1% and reduces the cooldown of all traps and Black Arrow by $/1000;s2 sec."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1812,
+     "fieldName": "exposeWeakness",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34500,
+      34502,
+      34503
+     ],
+     "maxPoints": 3,
+     "name": "Expose Weakness",
+     "icon": "ability_rogue_findweakness",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34500,
+       "desc": "Your ranged criticals have a 33% chance to grant you Expose Weakness. Expose Weakness increases your attack power by 25% of your Agility for 7 sec.",
+       "raw": "Your ranged criticals have a $h% chance to grant you Expose Weakness. Expose Weakness increases your attack power by $34501s1% of your Agility for $34501d."
+      },
+      {
+       "r": 2,
+       "spell": 34502,
+       "desc": "Your ranged criticals have a 66% chance to grant you Expose Weakness. Expose Weakness increases your attack power by 25% of your Agility for 7 sec.",
+       "raw": "Your ranged criticals have a $h% chance to grant you Expose Weakness. Expose Weakness increases your attack power by $34501s1% of your Agility for $34501d."
+      },
+      {
+       "r": 3,
+       "spell": 34503,
+       "desc": "Your ranged criticals have a 100% chance to grant you Expose Weakness. Expose Weakness increases your attack power by 25% of your Agility for 7 sec.",
+       "raw": "Your ranged criticals have a $h% chance to grant you Expose Weakness. Expose Weakness increases your attack power by $34501s1% of your Agility for $34501d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 19,
+     "id": 1325,
+     "fieldName": "wyvernSting",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19386
+     ],
+     "maxPoints": 1,
+     "name": "Wyvern Sting",
+     "icon": "inv_spear_02",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19386,
+       "desc": "A stinging shot that puts the target to sleep for 30 sec.  Any damage will cancel the effect.  When the target wakes up, the Sting causes 300 Nature damage over 6 sec.  Only one Sting per Hunter can be active on the target at a time.",
+       "raw": "A stinging shot that puts the target to sleep for $d.  Any damage will cancel the effect.  When the target wakes up, the Sting causes $24131o1 Nature damage over $24131d.  Only one Sting per Hunter can be active on the target at a time."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 20,
+     "id": 1811,
+     "fieldName": "thrillOfTheHunt",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      34497,
+      34498,
+      34499
+     ],
+     "maxPoints": 3,
+     "name": "Thrill of the Hunt",
+     "icon": "ability_hunter_thrillofthehunt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34497,
+       "desc": "Gives you a 33% chance to regain 40% of the mana cost of any shot when it critically hits.",
+       "raw": "Gives you a $s1% chance to regain 40% of the mana cost of any shot when it critically hits."
+      },
+      {
+       "r": 2,
+       "spell": 34498,
+       "desc": "Gives you a 66% chance to regain 40% of the mana cost of any shot when it critically hits.",
+       "raw": "Gives you a $s1% chance to regain 40% of the mana cost of any shot when it critically hits."
+      },
+      {
+       "r": 3,
+       "spell": 34499,
+       "desc": "Gives you a 100% chance to regain 40% of the mana cost of any shot when it critically hits.",
+       "raw": "Gives you a $s1% chance to regain 40% of the mana cost of any shot when it critically hits."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 1813,
+     "fieldName": "masterTactician",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34506,
+      34507,
+      34508,
+      34838,
+      34839
+     ],
+     "maxPoints": 5,
+     "name": "Master Tactician",
+     "icon": "ability_hunter_mastertactitian",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34506,
+       "desc": "Your successful ranged attacks have a 10% chance to increase your critical strike chance with all attacks by 2% for 8 sec.",
+       "raw": "Your successful ranged attacks have a $h% chance to increase your critical strike chance with all attacks by $34833s1% for $34833d."
+      },
+      {
+       "r": 2,
+       "spell": 34507,
+       "desc": "Your successful ranged attacks have a 10% chance to increase your critical strike chance with all attacks by 4% for 8 sec.",
+       "raw": "Your successful ranged attacks have a $h% chance to increase your critical strike chance with all attacks by $34834s1% for $34834d."
+      },
+      {
+       "r": 3,
+       "spell": 34508,
+       "desc": "Your successful ranged attacks have a 10% chance to increase your critical strike chance with all attacks by 6% for 8 sec.",
+       "raw": "Your successful ranged attacks have a $h% chance to increase your critical strike chance with all attacks by $34835s1% for $34835d."
+      },
+      {
+       "r": 4,
+       "spell": 34838,
+       "desc": "Your successful ranged attacks have a 10% chance to increase your critical strike chance with all attacks by 8% for 8 sec.",
+       "raw": "Your successful ranged attacks have a $h% chance to increase your critical strike chance with all attacks by $34836s1% for $34836d."
+      },
+      {
+       "r": 5,
+       "spell": 34839,
+       "desc": "Your successful ranged attacks have a 10% chance to increase your critical strike chance with all attacks by 10% for 8 sec.",
+       "raw": "Your successful ranged attacks have a $h% chance to increase your critical strike chance with all attacks by $34837s1% for $34837d."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 2141,
+     "fieldName": "noxiousStings",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53295,
+      53296,
+      53297
+     ],
+     "maxPoints": 3,
+     "name": "Noxious Stings",
+     "icon": "ability_hunter_potentvenom",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53295,
+       "desc": "If Wyvern Sting is dispelled, the dispeller is also afflicted by Wyvern Sting lasting 16% of the duration remaining, and increases all damage done by you on targets afflicted by your Serpent Sting by 1%.",
+       "raw": "If Wyvern Sting is dispelled, the dispeller is also afflicted by Wyvern Sting lasting $s2% of the duration remaining, and increases all damage done by you on targets afflicted by your Serpent Sting by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 53296,
+       "desc": "If Wyvern Sting is dispelled, the dispeller is also afflicted by Wyvern Sting lasting 25% of the duration remaining, and increases all damage done by you on targets afflicted by your Serpent Sting by 2%.",
+       "raw": "If Wyvern Sting is dispelled, the dispeller is also afflicted by Wyvern Sting lasting $s2% of the duration remaining, and increases all damage done by you on targets afflicted by your Serpent Sting by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 53297,
+       "desc": "If Wyvern Sting is dispelled, the dispeller is also afflicted by Wyvern Sting lasting 50% of the duration remaining, and increases all damage done by you on targets afflicted by your Serpent Sting by 3%.",
+       "raw": "If Wyvern Sting is dispelled, the dispeller is also afflicted by Wyvern Sting lasting $s2% of the duration remaining, and increases all damage done by you on targets afflicted by your Serpent Sting by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 23,
+     "id": 2142,
+     "fieldName": "pointOfNoEscape",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53298,
+      53299
+     ],
+     "maxPoints": 2,
+     "name": "Point of No Escape",
+     "icon": "ability_hunter_pointofnoescape",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53298,
+       "desc": "Increases the critical strike chance of all of your attacks on targets affected by your Frost Trap, Freezing Trap and Freezing Arrow by 3%.",
+       "raw": "Increases the critical strike chance of all of your attacks on targets affected by your Frost Trap, Freezing Trap and Freezing Arrow by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 53299,
+       "desc": "Increases the critical strike chance of all of your attacks on targets affected by your Frost Trap, Freezing Trap and Freezing Arrow by 6%.",
+       "raw": "Increases the critical strike chance of all of your attacks on targets affected by your Frost Trap, Freezing Trap and Freezing Arrow by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1322,
+     "fieldName": "blackArrow",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      3674
+     ],
+     "maxPoints": 1,
+     "name": "Black Arrow",
+     "icon": "spell_shadow_painspike",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 3674,
+       "desc": "Fires a Black Arrow at the target, increasing all damage done by you to the target by 6% and dealing ${$RAP*0.1+157*5} Shadow damage over 15 sec. Black Arrow shares a cooldown with Trap spells.",
+       "raw": "Fires a Black Arrow at the target, increasing all damage done by you to the target by $s2% and dealing ${$RAP*0.1+$m1*5} Shadow damage over $d. Black Arrow shares a cooldown with Trap spells.",
+       "unresolved": [
+        "${$RAP*0.1+157*5}"
+       ]
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 2143,
+     "fieldName": "sniperTraining",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 3
+     },
+     "spellIds": [
+      53302,
+      53303,
+      53304
+     ],
+     "maxPoints": 3,
+     "name": "Sniper Training",
+     "icon": "ability_hunter_longshots",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53302,
+       "desc": "Increases the critical strike chance of your Kill Shot ability by 5%, and while standing still for 6 sec, you gain Sniper Training increasing the damage done by your Steady Shot, Aimed Shot, Black Arrow and Explosive Shot by 2% for 15 sec.",
+       "raw": "Increases the critical strike chance of your Kill Shot ability by $53302s2%, and while standing still for $53302s1 sec, you gain Sniper Training increasing the damage done by your Steady Shot, Aimed Shot, Black Arrow and Explosive Shot by $64418s1% for $64418d."
+      },
+      {
+       "r": 2,
+       "spell": 53303,
+       "desc": "Increases the critical strike chance of your Kill Shot ability by 10%, and while standing still for 6 sec, you gain Sniper Training increasing the damage done by your Steady Shot, Aimed Shot, Black Arrow and Explosive Shot by 4% for 15 sec.",
+       "raw": "Increases the critical strike chance of your Kill Shot ability by $53303s2%, and while standing still for $53303s1 sec, you gain Sniper Training increasing the damage done by your Steady Shot, Aimed Shot, Black Arrow and Explosive Shot by $64419s1% for $64419d."
+      },
+      {
+       "r": 3,
+       "spell": 53304,
+       "desc": "Increases the critical strike chance of your Kill Shot ability by 15%, and while standing still for 6 sec, you gain Sniper Training increasing the damage done by your Steady Shot, Aimed Shot, Black Arrow and Explosive Shot by 6% for 15 sec.",
+       "raw": "Increases the critical strike chance of your Kill Shot ability by $53304s2%, and while standing still for $53304s1 sec, you gain Sniper Training increasing the damage done by your Steady Shot, Aimed Shot, Black Arrow and Explosive Shot by $64420s1% for $64420d."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 2144,
+     "fieldName": "huntingParty",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 2
+     },
+     "spellIds": [
+      53290,
+      53291,
+      53292
+     ],
+     "maxPoints": 3,
+     "name": "Hunting Party",
+     "icon": "ability_hunter_huntingparty",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53290,
+       "desc": "Increases your total Agility by an additional 1%, and your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a 33% chance to grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec. Lasts for 15 sec.",
+       "raw": "Increases your total Agility by an additional $s2%, and your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a $h% chance to grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec. Lasts for $57669d."
+      },
+      {
+       "r": 2,
+       "spell": 53291,
+       "desc": "Increases your total Agility by an additional 2%, and your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a 66% chance to grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec. Lasts for 15 sec.",
+       "raw": "Increases your total Agility by an additional $s2%, and your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a $h% chance to grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec. Lasts for $57669d."
+      },
+      {
+       "r": 3,
+       "spell": 53292,
+       "desc": "Increases your total Agility by an additional 3%, and your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a 100% chance to grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec. Lasts for 15 sec.",
+       "raw": "Increases your total Agility by an additional $s2%, and your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a $h% chance to grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec. Lasts for $57669d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 27,
+     "id": 2145,
+     "fieldName": "explosiveShot",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53301
+     ],
+     "maxPoints": 1,
+     "name": "Explosive Shot",
+     "icon": "ability_hunter_explosiveshot",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53301,
+       "desc": "You fire an explosive charge into the enemy target, dealing ${$RAP*0.14+172}-${$RAP*0.14+172} Fire damage. The charge will blast the target every second for an additional 2 sec.",
+       "raw": "You fire an explosive charge into the enemy target, dealing ${$RAP*0.14+$m1}-${$RAP*0.14+$M1} Fire damage. The charge will blast the target every second for an additional $d.",
+       "unresolved": [
+        "${$RAP*0.14+172}"
+       ]
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3150 @@
+{
+ "schema": 1,
+ "key": "warlock",
+ "name": "Warlock",
+ "trees": [
+  {
+   "tabId": 302,
+   "name": "Affliction",
+   "page": 0,
+   "talents": [
+    {
+     "i": 0,
+     "id": 1284,
+     "fieldName": "improvedCurseOfAgony",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18827,
+      18829
+     ],
+     "maxPoints": 2,
+     "name": "Improved Curse of Agony",
+     "icon": "spell_shadow_curseofsargeras",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18827,
+       "desc": "Increases the damage done by your Curse of Agony by 5%.",
+       "raw": "Increases the damage done by your Curse of Agony by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18829,
+       "desc": "Increases the damage done by your Curse of Agony by 10%.",
+       "raw": "Increases the damage done by your Curse of Agony by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 1005,
+     "fieldName": "suppression",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18174,
+      18175,
+      18176
+     ],
+     "maxPoints": 3,
+     "name": "Suppression",
+     "icon": "spell_shadow_unsummonbuilding",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18174,
+       "desc": "Increases your chance to hit with spells by 1%, and reduces the mana cost of your Affliction spells by 2%.",
+       "raw": "Increases your chance to hit with spells by $s1%, and reduces the mana cost of your Affliction spells by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 18175,
+       "desc": "Increases your chance to hit with spells by 2%, and reduces the mana cost of your Affliction spells by 4%.",
+       "raw": "Increases your chance to hit with spells by $s1%, and reduces the mana cost of your Affliction spells by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 18176,
+       "desc": "Increases your chance to hit with spells by 3%, and reduces the mana cost of your Affliction spells by 6%.",
+       "raw": "Increases your chance to hit with spells by $s1%, and reduces the mana cost of your Affliction spells by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 1003,
+     "fieldName": "improvedCorruption",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      17810,
+      17811,
+      17812,
+      17813,
+      17814
+     ],
+     "maxPoints": 5,
+     "name": "Improved Corruption",
+     "icon": "spell_shadow_abominationexplosion",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17810,
+       "desc": "Increases the damage done by your Corruption by 2%, and increases the critical strike chance of your Seed of Corruption by 1%.",
+       "raw": "Increases the damage done by your Corruption by $s1%, and increases the critical strike chance of your Seed of Corruption by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 17811,
+       "desc": "Increases the damage done by your Corruption by 4%, and increases the critical strike chance of your Seed of Corruption by 2%.",
+       "raw": "Increases the damage done by your Corruption by $s1%, and increases the critical strike chance of your Seed of Corruption by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 17812,
+       "desc": "Increases the damage done by your Corruption by 6%, and increases the critical strike chance of your Seed of Corruption by 3%.",
+       "raw": "Increases the damage done by your Corruption by $s1%, and increases the critical strike chance of your Seed of Corruption by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 17813,
+       "desc": "Increases the damage done by your Corruption by 8%, and increases the critical strike chance of your Seed of Corruption by 4%.",
+       "raw": "Increases the damage done by your Corruption by $s1%, and increases the critical strike chance of your Seed of Corruption by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 17814,
+       "desc": "Increases the damage done by your Corruption by 10%, and increases the critical strike chance of your Seed of Corruption by 5%.",
+       "raw": "Increases the damage done by your Corruption by $s1%, and increases the critical strike chance of your Seed of Corruption by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1006,
+     "fieldName": "improvedCurseOfWeakness",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18179,
+      18180
+     ],
+     "maxPoints": 2,
+     "name": "Improved Curse of Weakness",
+     "icon": "spell_shadow_curseofmannoroth",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18179,
+       "desc": "Increases the amount of attack power reduced by your Curse of Weakness by 10%.",
+       "raw": "Increases the amount of attack power reduced by your Curse of Weakness by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18180,
+       "desc": "Increases the amount of attack power reduced by your Curse of Weakness by 20%.",
+       "raw": "Increases the amount of attack power reduced by your Curse of Weakness by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 1101,
+     "fieldName": "improvedDrainSoul",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18213,
+      18372
+     ],
+     "maxPoints": 2,
+     "name": "Improved Drain Soul",
+     "icon": "spell_shadow_haunting",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18213,
+       "desc": "Returns 7% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate 10% less threat.",
+       "raw": "Returns $s3% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate $s2% less threat."
+      },
+      {
+       "r": 2,
+       "spell": 18372,
+       "desc": "Returns 15% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate 20% less threat.",
+       "raw": "Returns $s3% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate $s2% less threat."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 1007,
+     "fieldName": "improvedLifeTap",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18182,
+      18183
+     ],
+     "maxPoints": 2,
+     "name": "Improved Life Tap",
+     "icon": "spell_shadow_burningspirit",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18182,
+       "desc": "Increases the amount of Mana awarded by your Life Tap spell by 10%.",
+       "raw": "Increases the amount of Mana awarded by your Life Tap spell by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18183,
+       "desc": "Increases the amount of Mana awarded by your Life Tap spell by 20%.",
+       "raw": "Increases the amount of Mana awarded by your Life Tap spell by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 1004,
+     "fieldName": "soulSiphon",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 3
+     },
+     "spellIds": [
+      17804,
+      17805
+     ],
+     "maxPoints": 2,
+     "name": "Soul Siphon",
+     "icon": "spell_shadow_lifedrain02",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17804,
+       "desc": "Increases the amount drained by your Drain Life and Drain Soul spells by an additional 3% for each of your Affliction effects on the target, up to a maximum of 9% additional effect.",
+       "raw": "Increases the amount drained by your Drain Life and Drain Soul spells by an additional $s1% for each of your Affliction effects on the target, up to a maximum of $s2% additional effect."
+      },
+      {
+       "r": 2,
+       "spell": 17805,
+       "desc": "Increases the amount drained by your Drain Life and Drain Soul spells by an additional 6% for each of your Affliction effects on the target, up to a maximum of 18% additional effect.",
+       "raw": "Increases the amount drained by your Drain Life and Drain Soul spells by an additional $s1% for each of your Affliction effects on the target, up to a maximum of $s2% additional effect."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 2205,
+     "fieldName": "improvedFear",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53754,
+      53759
+     ],
+     "maxPoints": 2,
+     "name": "Improved Fear",
+     "icon": "spell_shadow_possession",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53754,
+       "desc": "Causes your Fear spell to inflict a Nightmare on the target when the fear effect ends. The Nightmare effect reduces the target's movement speed by 15% for 5 sec.",
+       "raw": "Causes your Fear spell to inflict a Nightmare on the target when the fear effect ends. The Nightmare effect reduces the target's movement speed by $60946s1% for $60946d."
+      },
+      {
+       "r": 2,
+       "spell": 53759,
+       "desc": "Causes your Fear spell to inflict a Nightmare on the target when the fear effect ends. The Nightmare effect reduces the target's movement speed by 30% for 5 sec.",
+       "raw": "Causes your Fear spell to inflict a Nightmare on the target when the fear effect ends. The Nightmare effect reduces the target's movement speed by $60947s1% for $60947d."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1001,
+     "fieldName": "felConcentration",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17783,
+      17784,
+      17785
+     ],
+     "maxPoints": 3,
+     "name": "Fel Concentration",
+     "icon": "spell_shadow_fingerofdeath",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17783,
+       "desc": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt by 23%.",
+       "raw": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 17784,
+       "desc": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt spells by 46%.",
+       "raw": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 17785,
+       "desc": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul,  Unstable Affliction, and Haunt spells by 70%.",
+       "raw": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul,  Unstable Affliction, and Haunt spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 1061,
+     "fieldName": "amplifyCurse",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18288
+     ],
+     "maxPoints": 1,
+     "name": "Amplify Curse",
+     "icon": "spell_shadow_contagion",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18288,
+       "desc": "Reduces the global cooldown of your Curses by 0.5 sec.",
+       "raw": "Reduces the global cooldown of your Curses by ${$m2/-1000}.1 sec."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 1021,
+     "fieldName": "grimReach",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18218,
+      18219
+     ],
+     "maxPoints": 2,
+     "name": "Grim Reach",
+     "icon": "spell_shadow_callofbone",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18218,
+       "desc": "Increases the range of your Affliction spells by 10%.",
+       "raw": "Increases the range of your Affliction spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18219,
+       "desc": "Increases the range of your Affliction spells by 20%.",
+       "raw": "Increases the range of your Affliction spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1002,
+     "fieldName": "nightfall",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18094,
+      18095
+     ],
+     "maxPoints": 2,
+     "name": "Nightfall",
+     "icon": "spell_shadow_twilight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18094,
+       "desc": "Gives your Corruption and Drain Life spells a 2% chance to cause you to enter a Shadow Trance state after damaging the opponent.  The Shadow Trance state reduces the casting time of your next Shadow Bolt spell by 100%.",
+       "raw": "Gives your Corruption and Drain Life spells a 2% chance to cause you to enter a Shadow Trance state after damaging the opponent.  The Shadow Trance state reduces the casting time of your next Shadow Bolt spell by $17941s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18095,
+       "desc": "Gives your Corruption and Drain Life spells a 4% chance to cause you to enter a Shadow Trance state after damaging the opponent.  The Shadow Trance state reduces the casting time of your next Shadow Bolt spell by 100%.",
+       "raw": "Gives your Corruption and Drain Life spells a 4% chance to cause you to enter a Shadow Trance state after damaging the opponent.  The Shadow Trance state reduces the casting time of your next Shadow Bolt spell by $17941s1%."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1764,
+     "fieldName": "empoweredCorruption",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      32381,
+      32382,
+      32383
+     ],
+     "maxPoints": 3,
+     "name": "Empowered Corruption",
+     "icon": "spell_shadow_abominationexplosion",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 32381,
+       "desc": "Increases the damage of your Corruption spell by an amount equal to 12% of your spell power.",
+       "raw": "Increases the damage of your Corruption spell by an amount equal to $*6;s1% of your spell power."
+      },
+      {
+       "r": 2,
+       "spell": 32382,
+       "desc": "Increases the damage of your Corruption spell by an amount equal to 24% of your spell power.",
+       "raw": "Increases the damage of your Corruption spell by an amount equal to $*6;s1% of your spell power."
+      },
+      {
+       "r": 3,
+       "spell": 32383,
+       "desc": "Increases the damage of your Corruption spell by an amount equal to 36% of your spell power.",
+       "raw": "Increases the damage of your Corruption spell by an amount equal to $*6;s1% of your spell power."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 1763,
+     "fieldName": "shadowEmbrace",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      32385,
+      32387,
+      32392,
+      32393,
+      32394
+     ],
+     "maxPoints": 5,
+     "name": "Shadow Embrace",
+     "icon": "spell_shadow_shadowembrace",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 32385,
+       "desc": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by 1%, and reduces all periodic healing done to the target by 2%. Lasts for 12 sec. Stacks up to 3  times.",
+       "raw": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by $32386s1%, and reduces all periodic healing done to the target by $60448s1%. Lasts for $32386d. Stacks up to $32386u  times."
+      },
+      {
+       "r": 2,
+       "spell": 32387,
+       "desc": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by 2%, and reduces all periodic healing done to the target by 4%. Lasts for 12 sec. Stacks up to 3 times.",
+       "raw": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by $32388s1%, and reduces all periodic healing done to the target by $60465s1%. Lasts for $32388d. Stacks up to $32386u times."
+      },
+      {
+       "r": 3,
+       "spell": 32392,
+       "desc": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by 3%, and reduces all periodic healing done to the target by 6%. Lasts for 12 sec. Stacks up to 3 times.",
+       "raw": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by $32389s1%, and reduces all periodic healing done to the target by $60466s1%. Lasts for $32389d. Stacks up to $32386u times."
+      },
+      {
+       "r": 4,
+       "spell": 32393,
+       "desc": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by 4%, and reduces all periodic healing done to the target by 8%. Lasts for 12 sec. Stacks up to 3 times.",
+       "raw": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by $32390s1%, and reduces all periodic healing done to the target by $60467s1%. Lasts for $32390d. Stacks up to $32386u times."
+      },
+      {
+       "r": 5,
+       "spell": 32394,
+       "desc": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by 5%, and reduces all periodic healing done to the target by 10%. Lasts for 12 sec. Stacks up to 3 times.",
+       "raw": "Your Shadow Bolt and Haunt spells apply the Shadow Embrace effect, increasing all shadow periodic damage dealt to the target by you by $32391s1%, and reduces all periodic healing done to the target by $60468s1%. Lasts for $32391d. Stacks up to $32386u times."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1041,
+     "fieldName": "siphonLife",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      63108
+     ],
+     "maxPoints": 1,
+     "name": "Siphon Life",
+     "icon": "spell_shadow_requiem",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63108,
+       "desc": "When you deal damage with your Corruption spell, you are instantly healed for $<percent>% of the damage done. In addition, the damage done by your Corruption, Seed of Corruption and Unstable Affliction damage over time effects is increased by 5%.",
+       "raw": "When you deal damage with your Corruption spell, you are instantly healed for $<percent>% of the damage done. In addition, the damage done by your Corruption, Seed of Corruption and Unstable Affliction damage over time effects is increased by $s2%.",
+       "unresolved": [
+        "$<percent>"
+       ]
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 1081,
+     "fieldName": "curseOfExhaustion",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18223
+     ],
+     "maxPoints": 1,
+     "name": "Curse of Exhaustion",
+     "icon": "spell_shadow_grimward",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18223,
+       "desc": "Reduces the target's movement speed by 30% for 12 sec.  Only one Curse per Warlock can be active on any one target.",
+       "raw": "Reduces the target's movement speed by $s1% for $d.  Only one Curse per Warlock can be active on any one target."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 16,
+     "id": 1873,
+     "fieldName": "improvedFelhunter",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      54037,
+      54038
+     ],
+     "maxPoints": 2,
+     "name": "Improved Felhunter",
+     "icon": "spell_shadow_summonfelhunter",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 54037,
+       "desc": "Your Felhunter regains 4% of its maximum mana each time it hits with its Shadow Bite ability and the cooldown on that ability is reduced by 2 sec.  In addition, increases the effect of your Felhunter's Fel Intelligence by 5%.",
+       "raw": "Your Felhunter regains 4% of its maximum mana each time it hits with its Shadow Bite ability and the cooldown on that ability is reduced by ${$m1/-1000} sec.  In addition, increases the effect of your Felhunter's Fel Intelligence by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 54038,
+       "desc": "Your Felhunter regains 8% of its maximum mana each time it hits with its Shadow Bite ability and the cooldown on that ability is reduced by 4 sec.  In addition, increases the effect of your Felhunter's Fel Intelligence by 10%.",
+       "raw": "Your Felhunter regains 8% of its maximum mana each time it hits with its Shadow Bite ability and the cooldown on that ability is reduced by ${$m1/-1000} sec.  In addition, increases the effect of your Felhunter's Fel Intelligence by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1042,
+     "fieldName": "shadowMastery",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18271,
+      18272,
+      18273,
+      18274,
+      18275
+     ],
+     "maxPoints": 5,
+     "name": "Shadow Mastery",
+     "icon": "spell_shadow_shadetruesight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18271,
+       "desc": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by 3%.",
+       "raw": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18272,
+       "desc": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by 6%.",
+       "raw": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 18273,
+       "desc": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by 9%.",
+       "raw": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 18274,
+       "desc": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by 12%.",
+       "raw": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 18275,
+       "desc": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by 15%.",
+       "raw": "Increases the damage dealt or life drained by your Shadow spells and your Felhunter's Shadow Bite ability by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 18,
+     "id": 1878,
+     "fieldName": "eradication",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      47195,
+      47196,
+      47197
+     ],
+     "maxPoints": 3,
+     "name": "Eradication",
+     "icon": "ability_warlock_eradication",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47195,
+       "desc": "When you deal damage with Corruption, you have 6% chance to increase your spell casting speed by 6% for 10 sec.",
+       "raw": "When you deal damage with Corruption, you have $h% chance to increase your spell casting speed by $64368s1% for $64368d."
+      },
+      {
+       "r": 2,
+       "spell": 47196,
+       "desc": "When you deal damage with Corruption, you have 6% chance to increase your spell casting speed by 12% for 10 sec.",
+       "raw": "When you deal damage with Corruption, you have $h% chance to increase your spell casting speed by $64370s1% for $64370d."
+      },
+      {
+       "r": 3,
+       "spell": 47197,
+       "desc": "When you deal damage with Corruption, you have 6% chance to increase your spell casting speed by 20% for 10 sec.",
+       "raw": "When you deal damage with Corruption, you have $h% chance to increase your spell casting speed by $64371s1% for $64371d."
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "id": 1669,
+     "fieldName": "contagion",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30060,
+      30061,
+      30062,
+      30063,
+      30064
+     ],
+     "maxPoints": 5,
+     "name": "Contagion",
+     "icon": "spell_shadow_painfulafflictions",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30060,
+       "desc": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by 1% and reduces the chance your helpful Affliction spells and damage over time effects will be dispelled by an additional 6%.",
+       "raw": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by $s1% and reduces the chance your helpful Affliction spells and damage over time effects will be dispelled by an additional $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 30061,
+       "desc": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by 2% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional 12%.",
+       "raw": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by $s1% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 30062,
+       "desc": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by 3% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional 18%.",
+       "raw": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by $s1% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional $s3%."
+      },
+      {
+       "r": 4,
+       "spell": 30063,
+       "desc": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by 4% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional 24%.",
+       "raw": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by $s1% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional $s3%."
+      },
+      {
+       "r": 5,
+       "spell": 30064,
+       "desc": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by 5% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional 30%.",
+       "raw": "Increases the damage of Curse of Agony, Corruption and Seed of Corruption by $s1% and reduces the chance your helpful Affliction spells and damage over time effects  will be dispelled by an additional $s3%."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 1022,
+     "fieldName": "darkPact",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18220
+     ],
+     "maxPoints": 1,
+     "name": "Dark Pact",
+     "icon": "spell_shadow_darkritual",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18220,
+       "desc": "Drains 305 of your summoned demon's Mana, returning 100% to you.",
+       "raw": "Drains $s1 of your summoned demon's Mana, returning 100% to you."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 1668,
+     "fieldName": "improvedHowlOfTerror",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      30054,
+      30057
+     ],
+     "maxPoints": 2,
+     "name": "Improved Howl of Terror",
+     "icon": "spell_shadow_deathscream",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30054,
+       "desc": "Reduces the casting time of your Howl of Terror spell by 0.8 sec.",
+       "raw": "Reduces the casting time of your Howl of Terror spell by $/1000;S1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 30057,
+       "desc": "Reduces the casting time of your Howl of Terror spell by 1.5 sec.",
+       "raw": "Reduces the casting time of your Howl of Terror spell by $/1000;S1 sec."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1667,
+     "fieldName": "malediction",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      32477,
+      32483,
+      32484
+     ],
+     "maxPoints": 3,
+     "name": "Malediction",
+     "icon": "spell_shadow_curseofachimonde",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 32477,
+       "desc": "Increases your spell damage by 1%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by 3%.",
+       "raw": "Increases your spell damage by $s2%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 32483,
+       "desc": "Increases your spell damage by 2%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by 6%.",
+       "raw": "Increases your spell damage by $s2%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 32484,
+       "desc": "Increases your spell damage by 3%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by 9%.",
+       "raw": "Increases your spell damage by $s2%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 1875,
+     "fieldName": "deathsEmbrace",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      47198,
+      47199,
+      47200
+     ],
+     "maxPoints": 3,
+     "name": "Death's Embrace",
+     "icon": "spell_shadow_deathsembrace",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47198,
+       "desc": "Increases the amount drained by your Drain Life by 10% while your health is at or below 20% health, and increases the damage done by your Shadow spells by 4% when your target is at or below 35% health.",
+       "raw": "Increases the amount drained by your Drain Life by $s1% while your health is at or below 20% health, and increases the damage done by your Shadow spells by $s2% when your target is at or below 35% health."
+      },
+      {
+       "r": 2,
+       "spell": 47199,
+       "desc": "Increases the amount drained by your Drain Life by 20% while your health is at or below 20% health, and increases the damage done by your Shadow spells by 8% when your target is at or below 35% health.",
+       "raw": "Increases the amount drained by your Drain Life by $s1% while your health is at or below 20% health, and increases the damage done by your Shadow spells by $s2% when your target is at or below 35% health."
+      },
+      {
+       "r": 3,
+       "spell": 47200,
+       "desc": "Increases the amount drained by your Drain Life by 30% while your health is at or below 20% health, and increases the damage done by your Shadow spells by 12% when your target is at or below 35% health.",
+       "raw": "Increases the amount drained by your Drain Life by $s1% while your health is at or below 20% health, and increases the damage done by your Shadow spells by $s2% when your target is at or below 35% health."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1670,
+     "fieldName": "unstableAffliction",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30108
+     ],
+     "maxPoints": 1,
+     "name": "Unstable Affliction",
+     "icon": "spell_shadow_unstableaffliction_3",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30108,
+       "desc": "Shadow energy slowly destroys the target, causing 550 damage over 15 sec.  In addition, if the Unstable Affliction is dispelled it will cause 990 damage to the dispeller and silence them for 5 sec. Only one Unstable Affliction or Immolate per Warlock can be active on any one target.",
+       "raw": "Shadow energy slowly destroys the target, causing $o1 damage over $d.  In addition, if the Unstable Affliction is dispelled it will cause $*9;s1 damage to the dispeller and silence them for $31117d. Only one Unstable Affliction or Immolate per Warlock can be active on any one target."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 25,
+     "id": 2245,
+     "fieldName": "pandemic",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      58435
+     ],
+     "maxPoints": 1,
+     "name": "Pandemic",
+     "icon": "spell_shadow_unstableaffliction_2",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 58435,
+       "desc": "Grants the periodic damage from your Corruption and Unstable Affliction spells the ability to critically hit for 100% increased damage, and increases the critical strike damage bonus of your Haunt spell by 100%.",
+       "raw": "Grants the periodic damage from your Corruption and Unstable Affliction spells the ability to critically hit for $s1% increased damage, and increases the critical strike damage bonus of your Haunt spell by $s2%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 26,
+     "id": 1876,
+     "fieldName": "everlastingAffliction",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47201,
+      47202,
+      47203,
+      47204,
+      47205
+     ],
+     "maxPoints": 5,
+     "name": "Everlasting Affliction",
+     "icon": "ability_warlock_everlastingaffliction",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47201,
+       "desc": "Your Corruption and Unstable Affliction spells gain an additional 1% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a 20% chance to reset the duration of your Corruption spell on the target.",
+       "raw": "Your Corruption and Unstable Affliction spells gain an additional $s2% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a $h% chance to reset the duration of your Corruption spell on the target."
+      },
+      {
+       "r": 2,
+       "spell": 47202,
+       "desc": "Your Corruption and Unstable Affliction spells gain an additional 2% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a 40% chance to reset the duration of your Corruption spell on the target.",
+       "raw": "Your Corruption and Unstable Affliction spells gain an additional $s2% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a $h% chance to reset the duration of your Corruption spell on the target."
+      },
+      {
+       "r": 3,
+       "spell": 47203,
+       "desc": "Your Corruption and Unstable Affliction spells gain an additional 3% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a 60% chance to reset the duration of your Corruption spell on the target.",
+       "raw": "Your Corruption and Unstable Affliction spells gain an additional $s2% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a $h% chance to reset the duration of your Corruption spell on the target."
+      },
+      {
+       "r": 4,
+       "spell": 47204,
+       "desc": "Your Corruption and Unstable Affliction spells gain an additional 4% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a 80% chance to reset the duration of your Corruption spell on the target.",
+       "raw": "Your Corruption and Unstable Affliction spells gain an additional $s2% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a $h% chance to reset the duration of your Corruption spell on the target."
+      },
+      {
+       "r": 5,
+       "spell": 47205,
+       "desc": "Your Corruption and Unstable Affliction spells gain an additional 5% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a 100% chance to reset the duration of your Corruption spell on the target.",
+       "raw": "Your Corruption and Unstable Affliction spells gain an additional $s2% of your bonus spell damage, and your Drain Life, Drain Soul, Shadow Bolt, and Haunt spells have a $h% chance to reset the duration of your Corruption spell on the target."
+      }
+     ]
+    },
+    {
+     "i": 27,
+     "id": 2041,
+     "fieldName": "haunt",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      48181
+     ],
+     "maxPoints": 1,
+     "name": "Haunt",
+     "icon": "ability_warlock_haunt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 48181,
+       "desc": "You send a ghostly soul into the target, dealing 473 Shadow damage and increasing all damage done by your Shadow damage-over-time effects on the target by 20% for 12 sec. When the Haunt spell ends or is dispelled, the soul returns to you, healing you for 100% of the damage it did to the target.",
+       "raw": "You send a ghostly soul into the target, dealing $s1 Shadow damage and increasing all damage done by your Shadow damage-over-time effects on the target by $s3% for $d. When the Haunt spell ends or is dispelled, the soul returns to you, healing you for $s2% of the damage it did to the target."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 303,
+   "name": "Demonology",
+   "page": 1,
+   "talents": [
+    {
+     "i": 0,
+     "id": 1221,
+     "fieldName": "improvedHealthstone",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18692,
+      18693
+     ],
+     "maxPoints": 2,
+     "name": "Improved Healthstone",
+     "icon": "inv_stone_04",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18692,
+       "desc": "Increases the amount of Health restored by your Healthstone by 10%, and your Healthstone also restores 10% of your maximum Mana."
+      },
+      {
+       "r": 2,
+       "spell": 18693,
+       "desc": "Increases the amount of Health restored by your Healthstone by 20%, and your Healthstone also restores 20% of your maximum Mana."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 1,
+     "id": 1222,
+     "fieldName": "imperiousFlames",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18694,
+      18695,
+      18696
+     ],
+     "maxPoints": 3,
+     "name": "Imperious Flames",
+     "icon": "spell_shadow_summonimp",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18694,
+       "desc": "Your Imp's Firebolt deals 33% additional damage to targets afflicted by your Immolate, and your Felguard learns Immolation Aura.",
+       "raw": "Your Imp's Firebolt deals $s1% additional damage to targets afflicted by your Immolate, and your Felguard learns Immolation Aura."
+      },
+      {
+       "r": 2,
+       "spell": 18695,
+       "desc": "Your Imp's Firebolt deals 67% additional damage to targets afflicted by your Immolate, and your Felguard learns Immolation Aura.",
+       "raw": "Your Imp's Firebolt deals $s1% additional damage to targets afflicted by your Immolate, and your Felguard learns Immolation Aura."
+      },
+      {
+       "r": 3,
+       "spell": 18696,
+       "desc": "Your Imp's Firebolt deals 100% additional damage to targets afflicted by your Immolate, and your Felguard learns Immolation Aura.",
+       "raw": "Your Imp's Firebolt deals $s1% additional damage to targets afflicted by your Immolate, and your Felguard learns Immolation Aura."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ],
+     "baseName": "Improved Imp"
+    },
+    {
+     "i": 2,
+     "id": 1223,
+     "fieldName": "demonicEmbrace",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18697,
+      18698,
+      18699
+     ],
+     "maxPoints": 3,
+     "name": "Demonic Embrace",
+     "icon": "spell_shadow_metamorphosis",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18697,
+       "desc": "Increases your total Stamina by 4%, and your intellect increases the chance for your Voidwalker and Felguard to dodge attacks."
+      },
+      {
+       "r": 2,
+       "spell": 18698,
+       "desc": "Increases your total Stamina by 7%, and your intellect increases the chance for your Voidwalker and Felguard to dodge attacks."
+      },
+      {
+       "r": 3,
+       "spell": 18699,
+       "desc": "Increases your total Stamina by 10%, and your intellect increases the chance for your Voidwalker and Felguard to dodge attacks."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "Effect2",
+      "EffectApplyAuraName2",
+      "EffectDieSides2"
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1883,
+     "fieldName": "felSynergy",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 3
+     },
+     "spellIds": [
+      47230,
+      47231
+     ],
+     "maxPoints": 2,
+     "name": "Fel Synergy",
+     "icon": "spell_shadow_felmending",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47230,
+       "desc": "You heal your pet for 7% of the spell damage you deal, and 20% of the damage dealt by your demon heals you.",
+       "raw": "You heal your pet for $s1% of the spell damage you deal, and $s2% of the damage dealt by your demon heals you."
+      },
+      {
+       "r": 2,
+       "spell": 47231,
+       "desc": "You heal your pet for 15% of the spell damage you deal, and 40% of the damage dealt by your demon heals you.",
+       "raw": "You heal your pet for $s1% of the spell damage you deal, and $s2% of the damage dealt by your demon heals you."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 4,
+     "id": 1224,
+     "fieldName": "sacrificeOfBlood",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18703,
+      18704
+     ],
+     "maxPoints": 2,
+     "name": "Sacrifice of Blood",
+     "icon": "spell_shadow_lifedrain",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18703,
+       "desc": "Your Health Funnel transfers 25% more health, and while you are channelling it the targeted demon takes 15% less damage and deals 25% more damage.",
+       "raw": "Your Health Funnel transfers $s1% more health, and while you are channelling it the targeted demon takes $60955s1% less damage and deals $60955s2% more damage."
+      },
+      {
+       "r": 2,
+       "spell": 18704,
+       "desc": "Your Health Funnel transfers 50% more health, and while you are channelling it the targeted demon takes 30% less damage and deals 50% more damage.",
+       "raw": "Your Health Funnel transfers $s1% more health, and while you are channelling it the targeted demon takes $60956s1% less damage and deals $60956s2% more damage."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides2",
+      "EffectDieSides3",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Health Funnel"
+    },
+    {
+     "i": 5,
+     "id": 1225,
+     "fieldName": "demonicBrutality",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18705,
+      18706,
+      18707
+     ],
+     "maxPoints": 3,
+     "name": "Demonic Brutality",
+     "icon": "spell_shadow_summonvoidwalker",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18705,
+       "desc": "Your Voidwalker's and Felguard's attacks, and your Voidwalker's Torment and Suffering, generate 67% additional threat.  The cooldown of your Voidwalker's Suffering ability is reduced by 30 sec.",
+       "raw": "Your Voidwalker's and Felguard's attacks, and your Voidwalker's Torment and Suffering, generate $s2% additional threat.  The cooldown of your Voidwalker's Suffering ability is reduced by 30 sec."
+      },
+      {
+       "r": 2,
+       "spell": 18706,
+       "desc": "Your Voidwalker's and Felguard's attacks, and your Voidwalker's Torment and Suffering, generate 133% additional threat.  The cooldown of your Voidwalker's Suffering ability is reduced by 60 sec.",
+       "raw": "Your Voidwalker's and Felguard's attacks, and your Voidwalker's Torment and Suffering, generate $s2% additional threat.  The cooldown of your Voidwalker's Suffering ability is reduced by 60 sec."
+      },
+      {
+       "r": 3,
+       "spell": 18707,
+       "desc": "Your Voidwalker's and Felguard's attacks, and your Voidwalker's Torment and Suffering, generate 200% additional threat.  The cooldown of your Voidwalker's Suffering ability is reduced by 90 sec.",
+       "raw": "Your Voidwalker's and Felguard's attacks, and your Voidwalker's Torment and Suffering, generate $s2% additional threat.  The cooldown of your Voidwalker's Suffering ability is reduced by 90 sec."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 6,
+     "id": 1242,
+     "fieldName": "felVitality",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18731,
+      18743,
+      18744
+     ],
+     "maxPoints": 3,
+     "name": "Fel Vitality",
+     "icon": "spell_holy_magicalsentry",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18731,
+       "desc": "Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 5% and increases your maximum health and mana by 1%.",
+       "raw": "Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by $s1% and increases your maximum health and mana by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 18743,
+       "desc": "Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 10% and increases your maximum health and mana by 2%.",
+       "raw": "Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by $s1% and increases your maximum health and mana by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 18744,
+       "desc": "Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 3%.",
+       "raw": "Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by $s1% and increases your maximum health and mana by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 1243,
+     "fieldName": "demonicLash",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18754,
+      18755,
+      18756
+     ],
+     "maxPoints": 3,
+     "name": "Demonic Lash",
+     "icon": "spell_shadow_summonsuccubus",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18754,
+       "desc": "Your Succubus' Lash of Pain leaves a Nether Scar, increasing your Shadow damage against that enemy by 5%.  Your Felguard's auto attacks deal an additional 5% Shadow damage."
+      },
+      {
+       "r": 2,
+       "spell": 18755,
+       "desc": "Your Succubus' Lash of Pain leaves a Nether Scar, increasing your Shadow damage against that enemy by 10%.  Your Felguard's auto attacks deal an additional 10% Shadow damage."
+      },
+      {
+       "r": 3,
+       "spell": 18756,
+       "desc": "Your Succubus' Lash of Pain leaves a Nether Scar, increasing your Shadow damage against that enemy by 15%.  Your Felguard's auto attacks deal an additional 15% Shadow damage."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Succubus"
+    },
+    {
+     "i": 8,
+     "id": 1282,
+     "fieldName": "soulLink",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      19028
+     ],
+     "maxPoints": 1,
+     "name": "Soul Link",
+     "icon": "spell_shadow_gathershadows",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19028,
+       "desc": "When active, 20% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Felhunter, Felguard, or enslaved demon instead.  That damage cannot be prevented. Lasts as long as the demon is active and controlled.",
+       "raw": "When active, $25228s1% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Felhunter, Felguard, or enslaved demon instead.  That damage cannot be prevented. Lasts as long as the demon is active and controlled."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 1226,
+     "fieldName": "felDomination",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18708
+     ],
+     "maxPoints": 1,
+     "name": "Fel Domination",
+     "icon": "spell_nature_removecurse",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18708,
+       "desc": "For 30 sec, your demons deal 10% additional damage for each of your damage-over-time effects on their target, up to a maximum of 80%."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "SpellToolTip0",
+      "ProcChance",
+      "DurationIndex",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 10,
+     "id": 1671,
+     "fieldName": "demonicAegis",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 3
+     },
+     "spellIds": [
+      30143,
+      30144,
+      30145
+     ],
+     "maxPoints": 3,
+     "name": "Demonic Aegis",
+     "icon": "spell_shadow_ragingscream",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30143,
+       "desc": "Your Demon Armor increases your armor by an additional 200% and reduces your chance to be critically hit by 2%.  Your demon's chance to be critically hit is reduced by 2% at all times.",
+       "raw": "Your Demon Armor increases your armor by an additional $s1% and reduces your chance to be critically hit by $s2%.  Your demon's chance to be critically hit is reduced by $s2% at all times."
+      },
+      {
+       "r": 2,
+       "spell": 30144,
+       "desc": "Your Demon Armor increases your armor by an additional 400% and reduces your chance to be critically hit by 4%.  Your demon's chance to be critically hit is reduced by 4% at all times.",
+       "raw": "Your Demon Armor increases your armor by an additional $s1% and reduces your chance to be critically hit by $s2%.  Your demon's chance to be critically hit is reduced by $s2% at all times."
+      },
+      {
+       "r": 3,
+       "spell": 30145,
+       "desc": "Your Demon Armor increases your armor by an additional 600% and reduces your chance to be critically hit by 6%.  Your demon's chance to be critically hit is reduced by 6% at all times.",
+       "raw": "Your Demon Armor increases your armor by an additional $s1% and reduces your chance to be critically hit by $s2%.  Your demon's chance to be critically hit is reduced by $s2% at all times."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1262,
+     "fieldName": "unholyPower",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18769,
+      18770,
+      18771,
+      18772,
+      18773
+     ],
+     "maxPoints": 5,
+     "name": "Unholy Power",
+     "icon": "spell_shadow_shadowworddominate",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18769,
+       "desc": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by 4%.",
+       "raw": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18770,
+       "desc": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by 8%.",
+       "raw": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 18771,
+       "desc": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by 12%.",
+       "raw": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 18772,
+       "desc": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by 16%.",
+       "raw": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 18773,
+       "desc": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by 20%.",
+       "raw": "Increases the damage done by your Voidwalker, Succubus, Felhunter and Felguard's melee attacks and your Imp's Firebolt by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 12,
+     "id": 1227,
+     "fieldName": "masterSummoner",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18709,
+      18710
+     ],
+     "maxPoints": 2,
+     "name": "Master Summoner",
+     "icon": "spell_shadow_impphaseshift",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18709,
+       "desc": "Reduces the casting time of your Imp, Voidwalker, Succubus, Felhunter and Felguard Summoning spells by 4 sec and their Mana cost by 40%."
+      },
+      {
+       "r": 2,
+       "spell": 18710,
+       "desc": "Reduces the casting time of your Imp, Voidwalker, Succubus, Felhunter and Felguard Summoning spells by 8 sec and their Mana cost by 80%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "prereqRank": 1,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2"
+     ]
+    },
+    {
+     "i": 13,
+     "id": 1281,
+     "fieldName": "manaFeed",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      30326
+     ],
+     "maxPoints": 1,
+     "name": "Mana Feed",
+     "icon": "spell_shadow_manafeed",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30326,
+       "desc": "When your demons deal damage they return 5% of it to you as Mana, and your Health Funnel restores 20% of your demon's maximum Mana each tick."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "prereqRank": 5,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1261,
+     "fieldName": "felAttunement",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18767,
+      18768
+     ],
+     "maxPoints": 2,
+     "name": "Fel Attunement",
+     "icon": "inv_ammo_firetar",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18767,
+       "desc": "Your demons gain 75% of your haste."
+      },
+      {
+       "r": 2,
+       "spell": 18768,
+       "desc": "Your demons gain 150% of your haste."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Master Conjuror"
+    },
+    {
+     "i": 15,
+     "id": 1244,
+     "fieldName": "masterDemonologist",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 1
+     },
+     "spellIds": [
+      23785,
+      23822,
+      23823,
+      23824,
+      23825
+     ],
+     "maxPoints": 5,
+     "name": "Master Demonologist",
+     "icon": "spell_shadow_shadowpact",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 23785,
+       "desc": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by 1%, and increases the critical effect chance of your Fire spells by 1%.\n\nVoidwalker - Reduces Physical damage taken by 2%.\n\nSuccubus - Increases your Shadow damage by 1%, and increases the critical effect chance of your Shadow spells by 1%.\n\nFelhunter - Reduces all spell damage taken by 2%.\n\nFelguard - Increases all damage done by 1%, and reduces all damage taken by 1%.",
+       "raw": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by $23759s1%, and increases the critical effect chance of your Fire spells by $23759s2%.\n\nVoidwalker - Reduces Physical damage taken by $23760s1%.\n\nSuccubus - Increases your Shadow damage by $23761s1%, and increases the critical effect chance of your Shadow spells by $23761s2%.\n\nFelhunter - Reduces all spell damage taken by $23762s1%.\n\nFelguard - Increases all damage done by $35702s1%, and reduces all damage taken by $35702s2%."
+      },
+      {
+       "r": 2,
+       "spell": 23822,
+       "desc": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by 2%, and increases the critical effect chance of your Fire spells by 2%.\n\nVoidwalker - Reduces Physical damage taken by 4%.\n\nSuccubus - Increases your Shadow damage by 2%, and increases the critical effect chance of your Shadow spells by 2%.\n\nFelhunter - Reduces all spell damage taken by 4%.\n\nFelguard - Increases all damage done by 2%, and reduces all damage taken by 2%.",
+       "raw": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by $23826s1%, and increases the critical effect chance of your Fire spells by $23826s2%.\n\nVoidwalker - Reduces Physical damage taken by $23841s1%.\n\nSuccubus - Increases your Shadow damage by $23833s1%, and increases the critical effect chance of your Shadow spells by $23833s2%.\n\nFelhunter - Reduces all spell damage taken by $23837s1%.\n\nFelguard - Increases all damage done by $35703s1%, and reduces all damage taken by $35703s2%."
+      },
+      {
+       "r": 3,
+       "spell": 23823,
+       "desc": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by 3%, and increases the critical effect chance of your Fire spells by 3%.\n\nVoidwalker - Reduces Physical damage taken by 6%.\n\nSuccubus - Increases your Shadow damage by 3%, and increases the critical effect chance of your Shadow spells by 3%.\n\nFelhunter - Reduces all spell damage taken by 6%.\n\nFelguard - Increases all damage done by 3%, and reduces all damage taken by 3%.",
+       "raw": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by $23827s1%, and increases the critical effect chance of your Fire spells by $23827s2%.\n\nVoidwalker - Reduces Physical damage taken by $23842s1%.\n\nSuccubus - Increases your Shadow damage by $23834s1%, and increases the critical effect chance of your Shadow spells by $23834s2%.\n\nFelhunter - Reduces all spell damage taken by $23838s1%.\n\nFelguard - Increases all damage done by $35704s1%, and reduces all damage taken by $35704s2%."
+      },
+      {
+       "r": 4,
+       "spell": 23824,
+       "desc": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by 4%, and increases the critical effect chance of your Fire spells by 4%.\n\nVoidwalker - Reduces Physical damage taken by 8%.\n\nSuccubus - Increases your Shadow damage by 4%, and increases the critical effect chance of your Shadow spells by 4%.\n\nFelhunter - Reduces all spell damage taken by 8%.\n\nFelguard - Increases all damage done by 4%, and reduces all damage taken by 4%.",
+       "raw": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by $23828s1%, and increases the critical effect chance of your Fire spells by $23828s2%.\n\nVoidwalker - Reduces Physical damage taken by $23843s1%.\n\nSuccubus - Increases your Shadow damage by $23835s1%, and increases the critical effect chance of your Shadow spells by $23835s2%.\n\nFelhunter - Reduces all spell damage taken by $23839s1%.\n\nFelguard - Increases all damage done by $35705s1%, and reduces all damage taken by $35705s2%."
+      },
+      {
+       "r": 5,
+       "spell": 23825,
+       "desc": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by 5%, and increases the critical effect chance of your Fire spells by 5%.\n\nVoidwalker - Reduces Physical damage taken by 10%.\n\nSuccubus - Increases your Shadow damage by 5%, and increases the critical effect chance of your Shadow spells by 5%.\n\nFelhunter - Reduces all spell damage taken by 10%.\n\nFelguard - Increases all damage done by 5%, and reduces all damage taken by 5%.",
+       "raw": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases your Fire damage by $23829s1%, and increases the critical effect chance of your Fire spells by $23829s2%.\n\nVoidwalker - Reduces Physical damage taken by $23844s1%.\n\nSuccubus - Increases your Shadow damage by $23836s1%, and increases the critical effect chance of your Shadow spells by $23836s2%.\n\nFelhunter - Reduces all spell damage taken by $23840s1%.\n\nFelguard - Increases all damage done by $35706s1%, and reduces all damage taken by $35706s2%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "prereqRank": 5,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 16,
+     "id": 1283,
+     "fieldName": "moltenCore",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47245,
+      47246,
+      47247
+     ],
+     "maxPoints": 3,
+     "name": "Molten Core",
+     "icon": "ability_warlock_moltencore",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47245,
+       "desc": "Increases the duration of your Immolate by 3 sec, and you have a 4% chance to gain the Molten Core effect when your Corruption deals damage. The Molten Core effect empowers your next 3 Incinerate, Shadow Bolt or Soul Fire spells cast within 15 sec.\n\nIncinerate - Increases damage done by 6% and reduces cast time by 10%.\n\nShadow Bolt - 3% of Shadow Bolt damage is done to your target over 15 sec.\n\nSoul Fire - Increases damage done by 6% and increases critical strike chance by 5%.",
+       "raw": "Increases the duration of your Immolate by $/1000;47245s2 sec, and you have a 4% chance to gain the Molten Core effect when your Corruption deals damage. The Molten Core effect empowers your next 3 Incinerate, Shadow Bolt or Soul Fire spells cast within $47383d.\n\nIncinerate - Increases damage done by $47383s1% and reduces cast time by $47383s3%.\n\nShadow Bolt - $s3% of Shadow Bolt damage is done to your target over $200420d.\n\nSoul Fire - Increases damage done by $47383s1% and increases critical strike chance by $47383s2%."
+      },
+      {
+       "r": 2,
+       "spell": 47246,
+       "desc": "Increases the duration of your Immolate by 6 sec, and you have a 8% chance to gain the Molten Core effect when your Corruption deals damage. The Molten Core effect empowers your next 3 Incinerate, Shadow Bolt or Soul Fire spells cast within 15 sec.\n\nIncinerate - Increases damage done by 12% and reduces cast time by 20%.\n\nShadow Bolt - 6% of Shadow Bolt damage is done to your target over 15 sec.\n\nSoul Fire - Increases damage done by 12% and increases critical strike chance by 10%.",
+       "raw": "Increases the duration of your Immolate by $/1000;47246s2 sec, and you have a 8% chance to gain the Molten Core effect when your Corruption deals damage. The Molten Core effect empowers your next 3 Incinerate, Shadow Bolt or Soul Fire spells cast within $71162d.\n\nIncinerate - Increases damage done by $71162s1% and reduces cast time by $71162s3%.\n\nShadow Bolt - $s3% of Shadow Bolt damage is done to your target over $200420d.\n\nSoul Fire - Increases damage done by $71162s1% and increases critical strike chance by $71162s2%."
+      },
+      {
+       "r": 3,
+       "spell": 47247,
+       "desc": "Increases the duration of your Immolate by 9 sec, and you have a 12% chance to gain the Molten Core effect when your Corruption deals damage. The Molten Core effect empowers your next 3 Incinerate, Shadow Bolt or Soul Fire spells cast within 15 sec.\n\nIncinerate - Increases damage done by 18% and reduces cast time by 30%.\n\nShadow Bolt - 10% of Shadow Bolt damage is done to your target over 15 sec.\n\nSoul Fire - Increases damage done by 18% and increases critical strike chance by 15%.",
+       "raw": "Increases the duration of your Immolate by $/1000;47247s2 sec, and you have a 12% chance to gain the Molten Core effect when your Corruption deals damage. The Molten Core effect empowers your next 3 Incinerate, Shadow Bolt or Soul Fire spells cast within $71165d.\n\nIncinerate - Increases damage done by $71165s1% and reduces cast time by $71165s3%.\n\nShadow Bolt - $s3% of Shadow Bolt damage is done to your target over $200420d.\n\nSoul Fire - Increases damage done by $71165s1% and increases critical strike chance by $71165s2%."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1680,
+     "fieldName": "demonicResilience",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      30319,
+      30320,
+      30321
+     ],
+     "maxPoints": 3,
+     "name": "Demonic Resilience",
+     "icon": "spell_shadow_demonicfortitude",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30319,
+       "desc": "Reduces the chance you'll be hit by melee attacks and spells by 1% and reduces all damage your summoned demon takes by 5%."
+      },
+      {
+       "r": 2,
+       "spell": 30320,
+       "desc": "Reduces the chance you'll be hit by melee attacks and spells by 2% and reduces all damage your summoned demon takes by 10%."
+      },
+      {
+       "r": 3,
+       "spell": 30321,
+       "desc": "Reduces the chance you'll be hit by melee attacks and spells by 3% and reduces all damage your summoned demon takes by 15%."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1880,
+     "fieldName": "demonicEmpowerment",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47193
+     ],
+     "maxPoints": 1,
+     "name": "Demonic Empowerment",
+     "icon": "ability_warlock_demonicempowerment",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47193,
+       "desc": "Grants the Warlock's summoned demon Empowerment.\n\nImp - Increases the Imp's spell critical strike chance by 20% for 30 sec.\n\nVoidwalker - Increases the Voidwalker's health by 20%, and its threat generated from spells and attacks by 20% for 20 sec.\n\nSuccubus - Instantly vanishes, causing the Succubus to go into an improved Invisibility state. The vanish effect removes all stuns, snares and movement impairing effects from the Succubus.\n\nFelhunter - Dispels all magical effects from the Felhunter.\n\nFelguard - Increases the Felguard's attack speed by 20% and breaks all stun, snare and movement impairing effects and makes your Felguard immune to them for 15 sec.",
+       "raw": "Grants the Warlock's summoned demon Empowerment.\n\nImp - Increases the Imp's spell critical strike chance by $54444s1% for $54444d.\n\nVoidwalker - Increases the Voidwalker's health by $54443s2%, and its threat generated from spells and attacks by $54443s2% for $54443d.\n\nSuccubus - Instantly vanishes, causing the Succubus to go into an improved Invisibility state. The vanish effect removes all stuns, snares and movement impairing effects from the Succubus.\n\nFelhunter - Dispels all magical effects from the Felhunter.\n\nFelguard - Increases the Felguard's attack speed by $54508s1% and breaks all stun, snare and movement impairing effects and makes your Felguard immune to them for $54508d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 5,
+      "colIdx": 1
+     },
+     "prereqRank": 5,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 19,
+     "id": 1263,
+     "fieldName": "demonicKnowledge",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      35691,
+      35692,
+      35693
+     ],
+     "maxPoints": 3,
+     "name": "Demonic Knowledge",
+     "icon": "spell_shadow_improvedvampiricembrace",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 35691,
+       "desc": "Increases your spell damage by an amount equal to 4% of the total of your active demon's Stamina plus Intellect.",
+       "raw": "Increases your spell damage by an amount equal to $s1% of the total of your active demon's Stamina plus Intellect."
+      },
+      {
+       "r": 2,
+       "spell": 35692,
+       "desc": "Increases your spell damage by an amount equal to 8% of the total of your active demon's Stamina plus Intellect.",
+       "raw": "Increases your spell damage by an amount equal to $s1% of the total of your active demon's Stamina plus Intellect."
+      },
+      {
+       "r": 3,
+       "spell": 35693,
+       "desc": "Increases your spell damage by an amount equal to 12% of the total of your active demon's Stamina plus Intellect.",
+       "raw": "Increases your spell damage by an amount equal to $s1% of the total of your active demon's Stamina plus Intellect."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 1673,
+     "fieldName": "demonicTactics",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30242,
+      30245,
+      30246,
+      30247,
+      30248
+     ],
+     "maxPoints": 5,
+     "name": "Demonic Tactics",
+     "icon": "spell_shadow_demonictactics",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30242,
+       "desc": "Increases melee and spell critical strike chance for you and your summoned demon by 2%.",
+       "raw": "Increases melee and spell critical strike chance for you and your summoned demon by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 30245,
+       "desc": "Increases melee and spell critical strike chance for you and your summoned demon by 4%.",
+       "raw": "Increases melee and spell critical strike chance for you and your summoned demon by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 30246,
+       "desc": "Increases melee and spell critical strike chance for you and your summoned demon by 6%.",
+       "raw": "Increases melee and spell critical strike chance for you and your summoned demon by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 30247,
+       "desc": "Increases melee and spell critical strike chance for you and your summoned demon by 8%.",
+       "raw": "Increases melee and spell critical strike chance for you and your summoned demon by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 30248,
+       "desc": "Increases melee and spell critical strike chance for you and your summoned demon by 10%.",
+       "raw": "Increases melee and spell critical strike chance for you and your summoned demon by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 2261,
+     "fieldName": "decimation",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63156,
+      63158
+     ],
+     "maxPoints": 2,
+     "name": "Decimation",
+     "icon": "spell_fire_fireball02",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63156,
+       "desc": "When you Shadowbolt, Incinerate or Soul Fire a target that is at or below 35% health, the cast time of Soul Fire spell is reduced by 20% for 10 sec. Soul Fires cast under the effect of Decimation cost no shard.",
+       "raw": "When you Shadowbolt, Incinerate or Soul Fire a target that is at or below $s2% health, the cast time of Soul Fire spell is reduced by $s1% for $63165d. Soul Fires cast under the effect of Decimation cost no shard."
+      },
+      {
+       "r": 2,
+       "spell": 63158,
+       "desc": "When you Shadowbolt, Incinerate or Soul Fire a target that is at or below 35% health, the cast time of your Soul Fire spell is reduced by 40% for 10 sec. Soul Fires cast under the effect of Decimation cost no shard.",
+       "raw": "When you Shadowbolt, Incinerate or Soul Fire a target that is at or below $63158s2% health, the cast time of your Soul Fire spell is reduced by $63158s1% for $63165d. Soul Fires cast under the effect of Decimation cost no shard."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1882,
+     "fieldName": "improvedDemonicTactics",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      54347,
+      54348,
+      54349
+     ],
+     "maxPoints": 3,
+     "name": "Improved Demonic Tactics",
+     "icon": "ability_warlock_improveddemonictactics",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 54347,
+       "desc": "Increases your summoned demon's critical strike chance equal to 10% of your critical strike chance.",
+       "raw": "Increases your summoned demon's critical strike chance equal to $s1% of your critical strike chance."
+      },
+      {
+       "r": 2,
+       "spell": 54348,
+       "desc": "Increases your summoned demon's critical strike chance equal to 20% of your critical strike chance.",
+       "raw": "Increases your summoned demon's critical strike chance equal to $s1% of your critical strike chance."
+      },
+      {
+       "r": 3,
+       "spell": 54349,
+       "desc": "Increases your summoned demon's critical strike chance equal to 30% of your critical strike chance.",
+       "raw": "Increases your summoned demon's critical strike chance equal to $s1% of your critical strike chance."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 23,
+     "id": 1672,
+     "fieldName": "summonFelguard",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30146
+     ],
+     "maxPoints": 1,
+     "name": "Summon Felguard",
+     "icon": "spell_shadow_summonfelguard",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30146,
+       "desc": "Summons a Felguard under the command of the Warlock."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1884,
+     "fieldName": "nemesis",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63117,
+      63121,
+      63123
+     ],
+     "maxPoints": 3,
+     "name": "Nemesis",
+     "icon": "spell_shadow_demonicempathy",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63117,
+       "desc": "Reduces the cooldown of your Demonic Empowerment, Metamorphosis and Fel Domination spells by 10%, and your attacks and those of your demon have a chance to generate a Soul Shard."
+      },
+      {
+       "r": 2,
+       "spell": 63121,
+       "desc": "Reduces the cooldown of your Demonic Empowerment, Metamorphosis and Fel Domination spells by 20%, and your attacks and those of your demon have a chance to generate a Soul Shard.  Effect occurs more often than Nemesis (Rank 1)."
+      },
+      {
+       "r": 3,
+       "spell": 63123,
+       "desc": "Reduces the cooldown of your Demonic Empowerment, Metamorphosis and Fel Domination spells by 30%, and your attacks and those of your demon have a chance to generate a Soul Shard.  Effect occurs more often than Nemesis (Rank 2)."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "Effect2",
+      "Effect3",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 25,
+     "id": 1885,
+     "fieldName": "demonicPact",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47236,
+      47237,
+      47238,
+      47239,
+      47240
+     ],
+     "maxPoints": 5,
+     "name": "Demonic Pact",
+     "icon": "spell_shadow_demonicpact",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47236,
+       "desc": "Increases your spell damage by 2%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2% of your Spell Damage for 45 sec. This effect has a 20 sec cooldown. Does not work on Enslaved demons.",
+       "raw": "Increases your spell damage by $s3%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by $s1% of your Spell Damage for $48090d. This effect has a $53646s2 sec cooldown. Does not work on Enslaved demons."
+      },
+      {
+       "r": 2,
+       "spell": 47237,
+       "desc": "Increases your spell damage by 4%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 4% of your Spell Damage for 45 sec. This effect has a 20 sec cooldown. Does not work on Enslaved demons.",
+       "raw": "Increases your spell damage by $s3%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by $s1% of your Spell Damage for $48090d. This effect has a $53646s2 sec cooldown. Does not work on Enslaved demons."
+      },
+      {
+       "r": 3,
+       "spell": 47238,
+       "desc": "Increases your spell damage by 6%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 6% of your Spell Damage for 45 sec. This effect has a 20 sec cooldown. Does not work on Enslaved demons.",
+       "raw": "Increases your spell damage by $s3%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by $s1% of your Spell Damage for $48090d. This effect has a $53646s2 sec cooldown. Does not work on Enslaved demons."
+      },
+      {
+       "r": 4,
+       "spell": 47239,
+       "desc": "Increases your spell damage by 8%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 8% of your Spell Damage for 45 sec. This effect has a 20 sec cooldown. Does not work on Enslaved demons.",
+       "raw": "Increases your spell damage by $s3%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by $s1% of your Spell Damage for $48090d. This effect has a $53646s2 sec cooldown. Does not work on Enslaved demons."
+      },
+      {
+       "r": 5,
+       "spell": 47240,
+       "desc": "Increases your spell damage by 10%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 10% of your Spell Damage for 45 sec. This effect has a 20 sec cooldown. Does not work on Enslaved demons.",
+       "raw": "Increases your spell damage by $s3%, and your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by $s1% of your Spell Damage for $48090d. This effect has a $53646s2 sec cooldown. Does not work on Enslaved demons."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 1886,
+     "fieldName": "metamorphosis",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      59672
+     ],
+     "maxPoints": 1,
+     "name": "Metamorphosis",
+     "icon": "spell_shadow_demonform",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 59672,
+       "desc": "Transform into a Demon, increasing your damage done by 20%.  Costs a Soul Shard to enter and another every 6 sec; the form fades when you have no Soul Shards left.  You gain some unique demon abilities in addition to your normal abilities.",
+       "raw": "Transform into a Demon, increasing your damage done by $47241s3%.  Costs a Soul Shard to enter and another every 6 sec; the form fades when you have no Soul Shards left.  You gain some unique demon abilities in addition to your normal abilities."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 301,
+   "name": "Destruction",
+   "page": 2,
+   "talents": [
+    {
+     "i": 0,
+     "id": 944,
+     "fieldName": "improvedShadowBolt",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17793,
+      17796,
+      17801,
+      17802,
+      17803
+     ],
+     "maxPoints": 5,
+     "name": "Improved Shadow Bolt",
+     "icon": "spell_shadow_shadowbolt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17793,
+       "desc": "Increases the damage done by your Shadow Bolt spell by 2%, and your Shadow Bolt has a 20% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by 5%. Effect lasts 30 sec.",
+       "raw": "Increases the damage done by your Shadow Bolt spell by $s2%, and your Shadow Bolt has a $h% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by $17800s1%. Effect lasts $17800d."
+      },
+      {
+       "r": 2,
+       "spell": 17796,
+       "desc": "Increases the damage done by your Shadow Bolt spell by 4%, and your Shadow Bolt has a 40% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by 5%. Effect lasts 30 sec.",
+       "raw": "Increases the damage done by your Shadow Bolt spell by $s2%, and your Shadow Bolt has a $h% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by $17800s1%. Effect lasts $17800d."
+      },
+      {
+       "r": 3,
+       "spell": 17801,
+       "desc": "Increases the damage done by your Shadow Bolt spell by 6%, and your Shadow Bolt has a 60% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by 5%. Effect lasts 30 sec.",
+       "raw": "Increases the damage done by your Shadow Bolt spell by $s2%, and your Shadow Bolt has a $h% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by $17800s1%. Effect lasts $17800d."
+      },
+      {
+       "r": 4,
+       "spell": 17802,
+       "desc": "Increases the damage done by your Shadow Bolt spell by 8%, and your Shadow Bolt has a 80% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by 5%. Effect lasts 30 sec.",
+       "raw": "Increases the damage done by your Shadow Bolt spell by $s2%, and your Shadow Bolt has a $h% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by $17800s1%. Effect lasts $17800d."
+      },
+      {
+       "r": 5,
+       "spell": 17803,
+       "desc": "Increases the damage done by your Shadow Bolt spell by 10%, and your Shadow Bolt has a 100% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by 5%. Effect lasts 30 sec.",
+       "raw": "Increases the damage done by your Shadow Bolt spell by $s2%, and your Shadow Bolt has a $h% chance to cause your target to be vulnerable to spell damage, increasing spell critical strike chance against that target by $17800s1%. Effect lasts $17800d."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 943,
+     "fieldName": "bane",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      17788,
+      17789,
+      17790,
+      17791,
+      17792
+     ],
+     "maxPoints": 5,
+     "name": "Bane",
+     "icon": "spell_shadow_deathpact",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17788,
+       "desc": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by 0.1 sec and your Soul Fire spell by 0.4 sec.",
+       "raw": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by $/1000;S1 sec and your Soul Fire spell by $/1000;S2 sec."
+      },
+      {
+       "r": 2,
+       "spell": 17789,
+       "desc": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by 0.2 sec and your Soul Fire spell by 0.8 sec.",
+       "raw": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by $/1000;S1 sec and your Soul Fire spell by $/1000;S2 sec."
+      },
+      {
+       "r": 3,
+       "spell": 17790,
+       "desc": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by 0.3 sec and your Soul Fire spell by 1.2 sec.",
+       "raw": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by $/1000;S1 sec and your Soul Fire spell by $/1000;S2 sec."
+      },
+      {
+       "r": 4,
+       "spell": 17791,
+       "desc": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by 0.4 sec and your Soul Fire spell by 1.6 sec.",
+       "raw": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by $/1000;S1 sec and your Soul Fire spell by $/1000;S2 sec."
+      },
+      {
+       "r": 5,
+       "spell": 17792,
+       "desc": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by 0.5 sec and your Soul Fire spell by 2 sec.",
+       "raw": "Reduces the casting time of your Shadow Bolt. Chaos Bolt and Immolate spells by $/1000;S1 sec and your Soul Fire spell by $/1000;S2 sec."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 982,
+     "fieldName": "aftermath",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18119,
+      18120
+     ],
+     "maxPoints": 2,
+     "name": "Aftermath",
+     "icon": "spell_fire_fire",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18119,
+       "desc": "Increases the periodic damage of your Immolate by 10%. Your Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard.",
+       "raw": "Increases the periodic damage of your Immolate by $s2%. Your Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard."
+      },
+      {
+       "r": 2,
+       "spell": 18120,
+       "desc": "Increases the periodic damage of your Immolate by 20%. Your Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard.",
+       "raw": "Increases the periodic damage of your Immolate by $s2%. Your Immolate periodic damage has a chance equal to your critical strike chance to generate a Soul Shard."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints2",
+      "EffectApplyAuraName1"
+     ]
+    },
+    {
+     "i": 3,
+     "id": 966,
+     "fieldName": "emberstorm",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17954,
+      17955,
+      17956,
+      17957,
+      17958
+     ],
+     "maxPoints": 5,
+     "name": "Emberstorm",
+     "icon": "spell_fire_selfdestruct",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17954,
+       "desc": "Increases the damage done by your Fire spells by 3% and reduces the cast time of your Incinerate spell by 0.05 sec.",
+       "raw": "Increases the damage done by your Fire spells by $s1% and reduces the cast time of your Incinerate spell by ${$m3/-1000}.2 sec."
+      },
+      {
+       "r": 2,
+       "spell": 17955,
+       "desc": "Increases the damage done by your Fire spells by 6% and reduces the cast time of your Incinerate spell by 0.10 sec.",
+       "raw": "Increases the damage done by your Fire spells by $s1% and reduces the cast time of your Incinerate spell by ${$m3/-1000}.2 sec."
+      },
+      {
+       "r": 3,
+       "spell": 17956,
+       "desc": "Increases the damage done by your Fire spells by 9% and reduces the cast time of your Incinerate spell by 0.15 sec.",
+       "raw": "Increases the damage done by your Fire spells by $s1% and reduces the cast time of your Incinerate spell by ${$m3/-1000}.2 sec."
+      },
+      {
+       "r": 4,
+       "spell": 17957,
+       "desc": "Increases the damage done by your Fire spells by 12% and reduces the cast time of your Incinerate spell by 0.20 sec.",
+       "raw": "Increases the damage done by your Fire spells by $s1% and reduces the cast time of your Incinerate spell by ${$m3/-1000}.2 sec."
+      },
+      {
+       "r": 5,
+       "spell": 17958,
+       "desc": "Increases the damage done by your Fire spells by 15% and reduces the cast time of your Incinerate spell by 0.25 sec.",
+       "raw": "Increases the damage done by your Fire spells by $s1% and reduces the cast time of your Incinerate spell by ${$m3/-1000}.2 sec."
+      }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex"
+     ]
+    },
+    {
+     "i": 4,
+     "id": 941,
+     "fieldName": "cataclysm",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      17778,
+      17779,
+      17780
+     ],
+     "maxPoints": 3,
+     "name": "Cataclysm",
+     "icon": "spell_fire_windsofwoe",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17778,
+       "desc": "Reduces the Mana cost of your Destruction spells by 4%.",
+       "raw": "Reduces the Mana cost of your Destruction spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 17779,
+       "desc": "Reduces the Mana cost of your Destruction spells by 7%.",
+       "raw": "Reduces the Mana cost of your Destruction spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 17780,
+       "desc": "Reduces the Mana cost of your Destruction spells by 10%.",
+       "raw": "Reduces the Mana cost of your Destruction spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 983,
+     "fieldName": "moltenRain",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18126,
+      18127
+     ],
+     "maxPoints": 2,
+     "name": "Molten Rain",
+     "icon": "spell_fire_firebolt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18126,
+       "desc": "Your Rain of Fire has a 8% chance to generate a Soul Shard from each enemy it damages.",
+       "raw": "Your Rain of Fire has a $s1% chance to generate a Soul Shard from each enemy it damages."
+      },
+      {
+       "r": 2,
+       "spell": 18127,
+       "desc": "Your Rain of Fire has a 15% chance to generate a Soul Shard from each enemy it damages.",
+       "raw": "Your Rain of Fire has a $s1% chance to generate a Soul Shard from each enemy it damages."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Demonic Power"
+    },
+    {
+     "i": 6,
+     "id": 963,
+     "fieldName": "shadowburn",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17877
+     ],
+     "maxPoints": 1,
+     "name": "Shadowburn",
+     "icon": "spell_shadow_scourgebuild",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17877,
+       "desc": "Instantly blasts the target for 99 Shadow damage and shatters a soul, granting you a Soul Shard. If the target dies within 5 sec and yields experience or honor, you gain an additional Soul Shard.",
+       "raw": "Instantly blasts the target for $s2 Shadow damage and shatters a soul, granting you a Soul Shard. If the target dies within $29341d and yields experience or honor, you gain an additional Soul Shard."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectDieSides3",
+      "Effect3"
+     ]
+    },
+    {
+     "i": 7,
+     "id": 967,
+     "fieldName": "ruin",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      17959,
+      59738,
+      59739,
+      59740,
+      59741
+     ],
+     "maxPoints": 5,
+     "name": "Ruin",
+     "icon": "spell_shadow_shadowwordpain",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17959,
+       "desc": "Increases the critical strike damage bonus of your Destruction spells by 20%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies.",
+       "raw": "Increases the critical strike damage bonus of your Destruction spells by $s1%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies."
+      },
+      {
+       "r": 2,
+       "spell": 59738,
+       "desc": "Increases the critical strike damage bonus of your Destruction spells by 40%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies.",
+       "raw": "Increases the critical strike damage bonus of your Destruction spells by $s1%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies."
+      },
+      {
+       "r": 3,
+       "spell": 59739,
+       "desc": "Increases the critical strike damage bonus of your Destruction spells by 60%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies.",
+       "raw": "Increases the critical strike damage bonus of your Destruction spells by $s1%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies."
+      },
+      {
+       "r": 4,
+       "spell": 59740,
+       "desc": "Increases the critical strike damage bonus of your Destruction spells by 80%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies.",
+       "raw": "Increases the critical strike damage bonus of your Destruction spells by $s1%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies."
+      },
+      {
+       "r": 5,
+       "spell": 59741,
+       "desc": "Increases the critical strike damage bonus of your Destruction spells by 100%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies.",
+       "raw": "Increases the critical strike damage bonus of your Destruction spells by $s1%. Your critical strikes against a target afflicted by your Immolate spread Immolate to nearby enemies."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 8,
+     "id": 985,
+     "fieldName": "burningSoul",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      18135,
+      18136
+     ],
+     "maxPoints": 2,
+     "name": "Burning Soul",
+     "icon": "spell_fire_lavaspawn",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18135,
+       "desc": "Your Fire spell critical strikes have a 15% chance to generate a Soul Shard.",
+       "raw": "Your Fire spell critical strikes have a $s1% chance to generate a Soul Shard."
+      },
+      {
+       "r": 2,
+       "spell": 18136,
+       "desc": "Your Fire spell critical strikes have a 30% chance to generate a Soul Shard.",
+       "raw": "Your Fire spell critical strikes have a $s1% chance to generate a Soul Shard."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ],
+     "baseName": "Intensity"
+    },
+    {
+     "i": 9,
+     "id": 964,
+     "fieldName": "destructiveReach",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17917,
+      17918
+     ],
+     "maxPoints": 2,
+     "name": "Destructive Reach",
+     "icon": "spell_shadow_corpseexplode",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17917,
+       "desc": "Increases the range of your Destruction spells by 10% and increases your Fire damage by 5%.",
+       "raw": "Increases the range of your Destruction spells by $s1% and increases your Fire damage by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 17918,
+       "desc": "Increases the range of your Destruction spells by 20% and increases your Fire damage by 10%.",
+       "raw": "Increases the range of your Destruction spells by $s1% and increases your Fire damage by $s2%."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 10,
+     "id": 965,
+     "fieldName": "improvedSearingPain",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      17927,
+      17929,
+      17930
+     ],
+     "maxPoints": 3,
+     "name": "Improved Searing Pain",
+     "icon": "spell_fire_soulburn",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17927,
+       "desc": "Increases the critical strike chance of your Searing Pain spell by 4%.",
+       "raw": "Increases the critical strike chance of your Searing Pain spell by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 17929,
+       "desc": "Increases the critical strike chance of your Searing Pain spell by 7%.",
+       "raw": "Increases the critical strike chance of your Searing Pain spell by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 17930,
+       "desc": "Increases the critical strike chance of your Searing Pain spell by 10%.",
+       "raw": "Increases the critical strike chance of your Searing Pain spell by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1817,
+     "fieldName": "backlash",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34935,
+      34938,
+      34939
+     ],
+     "maxPoints": 3,
+     "name": "Backlash",
+     "icon": "spell_fire_playingwithfire",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34935,
+       "desc": "Increases your critical strike chance with spells by an additional 1%. Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health.",
+       "raw": "Increases your critical strike chance with spells by an additional $s2%. Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health."
+      },
+      {
+       "r": 2,
+       "spell": 34938,
+       "desc": "Increases your critical strike chance with spells by an additional 2%. Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health.",
+       "raw": "Increases your critical strike chance with spells by an additional $s2%. Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health."
+      },
+      {
+       "r": 3,
+       "spell": 34939,
+       "desc": "Increases your critical strike chance with spells by an additional 3%. Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health.",
+       "raw": "Increases your critical strike chance with spells by an additional $s2%. Damage that would otherwise kill you instead consumes your Soulstone and heals you for 20% of your maximum health."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "prereqRank": 2,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ]
+    },
+    {
+     "i": 12,
+     "id": 961,
+     "fieldName": "improvedImmolate",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17815,
+      17833,
+      17834
+     ],
+     "maxPoints": 3,
+     "name": "Improved Immolate",
+     "icon": "spell_fire_immolation",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17815,
+       "desc": "Increases the damage done by your Immolate spell by 10%.",
+       "raw": "Increases the damage done by your Immolate spell by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 17833,
+       "desc": "Increases the damage done by your Immolate spell by 20%.",
+       "raw": "Increases the damage done by your Immolate spell by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 17834,
+       "desc": "Increases the damage done by your Immolate spell by 30%.",
+       "raw": "Increases the damage done by your Immolate spell by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 981,
+     "fieldName": "devastation",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18130
+     ],
+     "maxPoints": 1,
+     "name": "Devastation",
+     "icon": "spell_fire_flameshock",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18130,
+       "desc": "Increases the critical strike chance of your Destruction spells by 5%.",
+       "raw": "Increases the critical strike chance of your Destruction spells by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 14,
+     "id": 1679,
+     "fieldName": "wailingSouls",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      30299,
+      30301,
+      30302
+     ],
+     "maxPoints": 3,
+     "name": "Wailing Souls",
+     "icon": "spell_shadow_netherprotection",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30299,
+       "desc": "Casting Searing Pain has a 34% chance to transform a Soul Shard into a Wailing Soul, reducing damage taken by 5% for 10 sec. Stacks up to 3 times.",
+       "raw": "Casting Searing Pain has a $h% chance to transform a Soul Shard into a Wailing Soul, reducing damage taken by $200402s1% for $200402d. Stacks up to $200402u times."
+      },
+      {
+       "r": 2,
+       "spell": 30301,
+       "desc": "Casting Searing Pain has a 67% chance to transform a Soul Shard into a Wailing Soul, reducing damage taken by 5% for 10 sec. Stacks up to 3 times.",
+       "raw": "Casting Searing Pain has a $h% chance to transform a Soul Shard into a Wailing Soul, reducing damage taken by $200402s1% for $200402d. Stacks up to $200402u times."
+      },
+      {
+       "r": 3,
+       "spell": 30302,
+       "desc": "Casting Searing Pain has a 100% chance to transform a Soul Shard into a Wailing Soul, reducing damage taken by 5% for 10 sec. Stacks up to 3 times.",
+       "raw": "Casting Searing Pain has a $h% chance to transform a Soul Shard into a Wailing Soul, reducing damage taken by $200402s1% for $200402d. Stacks up to $200402u times."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "EffectDieSides1",
+      "EffectApplyAuraName1",
+      "EffectBasePoints1"
+     ],
+     "baseName": "Nether Protection"
+    },
+    {
+     "i": 15,
+     "id": 1887,
+     "fieldName": "infernalBargain",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63349
+     ],
+     "maxPoints": 1,
+     "name": "Infernal Bargain",
+     "icon": "ability_mage_moltenarmor",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63349,
+       "desc": "Channel the souls you carry into the endless void for 5 sec.  The void doubles its price each second, and the pact ends the instant you cannot pay.  Each payment leaves you with Infernal Bargain stacks equal to the Soul Shards spent.  While channeling you are immune to all damage.",
+       "raw": "Channel the souls you carry into the endless void for $d.  The void doubles its price each second, and the pact ends the instant you cannot pay.  Each payment leaves you with Infernal Bargain stacks equal to the Soul Shards spent.  While channeling you are immune to all damage."
+      }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "SpellRank_2",
+      "SpellRank_3",
+      "Flags",
+      "SpellName0",
+      "SpellRank0",
+      "SpellDescription0",
+      "SpellToolTip0",
+      "DurationIndex",
+      "EffectBasePoints1",
+      "EffectDieSides1",
+      "EffectAmplitude1",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Molten Skin"
+    },
+    {
+     "i": 16,
+     "id": 968,
+     "fieldName": "conflagrate",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      17962
+     ],
+     "maxPoints": 1,
+     "name": "Conflagrate",
+     "icon": "spell_fire_fireball",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17962,
+       "desc": "Causes an Immolate or Shadowflame effect on the enemy target to instantly deal damage equal to 60% of your Immolate or Shadowflame, and causes an additional 40% damage over 6 sec.",
+       "raw": "$?s56235[Causes][Consumes] an Immolate or Shadowflame effect on the enemy target to instantly deal damage equal to $s2% of your Immolate or Shadowflame, and causes an additional $s3% damage over $d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 17,
+     "id": 1678,
+     "fieldName": "soulLeech",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      30293,
+      30295,
+      30296
+     ],
+     "maxPoints": 3,
+     "name": "Soul Leech",
+     "icon": "spell_shadow_soulleech_3",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30293,
+       "desc": "Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 5% chance to return health equal to 200% of the damage caused.",
+       "raw": "Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a $h% chance to return health equal to $s1% of the damage caused."
+      },
+      {
+       "r": 2,
+       "spell": 30295,
+       "desc": "Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 10% chance to return health equal to 200% of the damage caused.",
+       "raw": "Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a $h% chance to return health equal to $s1% of the damage caused."
+      },
+      {
+       "r": 3,
+       "spell": 30296,
+       "desc": "Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 15% chance to return health equal to 200% of the damage caused.",
+       "raw": "Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a $h% chance to return health equal to $s1% of the damage caused."
+      }
+     ],
+     "modified": true,
+     "modKind": "values",
+     "modDetail": [
+      "ProcChance",
+      "EffectBasePoints1"
+     ]
+    },
+    {
+     "i": 18,
+     "id": 986,
+     "fieldName": "pyroclasm",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 3
+     },
+     "spellIds": [
+      18096,
+      18073,
+      63245
+     ],
+     "maxPoints": 3,
+     "name": "Pyroclasm",
+     "icon": "spell_fire_volcano",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18096,
+       "desc": "When you critically strike with Searing Pain or Conflagrate, your Fire and Shadow spell damage is increased by 2% for 10 sec.",
+       "raw": "When you critically strike with Searing Pain or Conflagrate, your Fire and Shadow spell damage is increased by $18093s1% for $18093d."
+      },
+      {
+       "r": 2,
+       "spell": 18073,
+       "desc": "When you critically strike with Searing Pain or Conflagrate, your Fire and Shadow spell damage is increased by 4% for 10 sec.",
+       "raw": "When you critically strike with Searing Pain or Conflagrate, your Fire and Shadow spell damage is increased by $63243s1% for $63243d."
+      },
+      {
+       "r": 3,
+       "spell": 63245,
+       "desc": "When you critically strike with Searing Pain or Conflagrate, your Fire and Shadow spell damage is increased by 6% for 10 sec.",
+       "raw": "When you critically strike with Searing Pain or Conflagrate, your Fire and Shadow spell damage is increased by $63244s1% for $63244d."
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "id": 1677,
+     "fieldName": "shadowAndFlame",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30288,
+      30289,
+      30290,
+      30291,
+      30292
+     ],
+     "maxPoints": 5,
+     "name": "Shadow and Flame",
+     "icon": "spell_shadow_shadowandflame",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30288,
+       "desc": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional 4% of your bonus spell damage effects.",
+       "raw": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional $s1% of your bonus spell damage effects."
+      },
+      {
+       "r": 2,
+       "spell": 30289,
+       "desc": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional 8% of your bonus spell damage effects.",
+       "raw": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional $s1% of your bonus spell damage effects."
+      },
+      {
+       "r": 3,
+       "spell": 30290,
+       "desc": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional 12% of your bonus spell damage effects.",
+       "raw": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional $s1% of your bonus spell damage effects."
+      },
+      {
+       "r": 4,
+       "spell": 30291,
+       "desc": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional 16% of your bonus spell damage effects.",
+       "raw": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional $s1% of your bonus spell damage effects."
+      },
+      {
+       "r": 5,
+       "spell": 30292,
+       "desc": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional 20% of your bonus spell damage effects.",
+       "raw": "Your Shadow Bolt, Shadowburn, Chaos Bolt and Incinerate spells gain an additional $s1% of your bonus spell damage effects."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 1889,
+     "fieldName": "improvedSoulLeech",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      54117,
+      54118
+     ],
+     "maxPoints": 2,
+     "name": "Improved Soul Leech",
+     "icon": "ability_warlock_improvedsoulleech",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 54117,
+       "desc": "Your Soul Leech effect also restores mana to you and your summoned demon equal to 1% of maximum mana, and has a 50% chance to grant up to 10 party or raid members mana regeneration equal to 1% of maximum mana per 5 sec. Lasts for 15 sec.",
+       "raw": "Your Soul Leech effect also restores mana to you and your summoned demon equal to $s1% of maximum mana, and has a $s2% chance to grant up to 10 party or raid members mana regeneration equal to 1% of maximum mana per 5 sec. Lasts for $57669d."
+      },
+      {
+       "r": 2,
+       "spell": 54118,
+       "desc": "Your Soul Leech effect also restores mana to you and your summoned demon equal to 2% of maximum mana, and has a 100% chance to grant up to 10 party or raid members mana regeneration equal to 1% of maximum mana per 5 sec. Lasts for 15 sec.",
+       "raw": "Your Soul Leech effect also restores mana to you and your summoned demon equal to $s1% of maximum mana, and has a $s2% chance to grant up to 10 party or raid members mana regeneration equal to 1% of maximum mana per 5 sec. Lasts for $57669d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 21,
+     "id": 1888,
+     "fieldName": "backdraft",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      47258,
+      47259,
+      47260
+     ],
+     "maxPoints": 3,
+     "name": "Backdraft",
+     "icon": "ability_warlock_backdraft",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47258,
+       "desc": "When you cast Conflagrate, the cast time and global cooldown of your next three Destruction spells is reduced by 10%. Lasts 15 sec.",
+       "raw": "When you cast Conflagrate, the cast time and global cooldown of your next three Destruction spells is reduced by $54274s1%. Lasts $54274d."
+      },
+      {
+       "r": 2,
+       "spell": 47259,
+       "desc": "When you cast Conflagrate, the cast time and global cooldown of your next three Destruction spells is reduced by 20%. Lasts 15 sec.",
+       "raw": "When you cast Conflagrate, the cast time and global cooldown of your next three Destruction spells is reduced by $54276s1%. Lasts $54276d."
+      },
+      {
+       "r": 3,
+       "spell": 47260,
+       "desc": "When you cast Conflagrate, the cast time and global cooldown of your next three Destruction spells is reduced by 30%. Lasts 15 sec.",
+       "raw": "When you cast Conflagrate, the cast time and global cooldown of your next three Destruction spells is reduced by $54277s1%. Lasts $54277d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 22,
+     "id": 1676,
+     "fieldName": "shadowfury",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30283
+     ],
+     "maxPoints": 1,
+     "name": "Shadowfury",
+     "icon": "spell_shadow_shadowfury",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30283,
+       "desc": "Shadowfury is unleashed, causing 407 Shadow damage and stunning all enemies within 8 yds for 3 sec.",
+       "raw": "Shadowfury is unleashed, causing $s1 Shadow damage and stunning all enemies within $a1 yds for $d."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 2045,
+     "fieldName": "sacrificeTheWeak",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47220
+     ],
+     "maxPoints": 1,
+     "name": "Sacrifice the Weak",
+     "icon": "ability_warlock_empoweredimp",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47220,
+       "desc": "Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken and increasing the critical strike damage of your spells by 1% for each Soul Shard you carry, up to 32."
+      }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "SpellRank_2",
+      "SpellRank_3",
+      "Flags",
+      "SpellName0",
+      "SpellRank0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "Effect1",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Empowered Imp"
+    },
+    {
+     "i": 24,
+     "id": 1890,
+     "fieldName": "fireAndBrimstone",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47266,
+      47267,
+      47268,
+      47269,
+      47270
+     ],
+     "maxPoints": 5,
+     "name": "Fire and Brimstone",
+     "icon": "ability_warlock_fireandbrimstone",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47266,
+       "desc": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by 2%, and the critical strike chance of your Conflagrate spell is increased by 5%.",
+       "raw": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by $s1%, and the critical strike chance of your Conflagrate spell is increased by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 47267,
+       "desc": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by 4%, and the critical strike chance of your Conflagrate spell is increased by 10%.",
+       "raw": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by $s1%, and the critical strike chance of your Conflagrate spell is increased by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 47268,
+       "desc": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by 6%, and the critical strike chance of your Conflagrate spell is increased by 15%.",
+       "raw": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by $s1%, and the critical strike chance of your Conflagrate spell is increased by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 47269,
+       "desc": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by 8%, and the critical strike chance of your Conflagrate spell is increased by 20%.",
+       "raw": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by $s1%, and the critical strike chance of your Conflagrate spell is increased by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 47270,
+       "desc": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by 10%, and the critical strike chance of your Conflagrate spell is increased by 25%.",
+       "raw": "Increases the damage done by your Incinerate and Chaos Bolt spells to targets afflicted by your Immolate by $s1%, and the critical strike chance of your Conflagrate spell is increased by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 1891,
+     "fieldName": "chaosBolt",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      50796
+     ],
+     "maxPoints": 1,
+     "name": "Chaos Bolt",
+     "icon": "ability_warlock_chaosbolt",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 50796,
+       "desc": "Sends a bolt of chaotic fire at the enemy, dealing 1061 Fire damage. Chaos Bolt cannot be resisted, and pierces through all absorption effects.",
+       "raw": "Sends a bolt of chaotic fire at the enemy, dealing $s1 Fire damage. Chaos Bolt cannot be resisted, and pierces through all absorption effects."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

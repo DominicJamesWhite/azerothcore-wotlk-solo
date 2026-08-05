@@ -1,0 +1,144 @@
+{
+ "schema": 1,
+ "generated": "2026-08-05T10:02:00Z",
+ "source": "live",
+ "fingerprint": "bb2316fb30266572",
+ "iconBase": "./assets/icons/",
+ "maxPoints": 71,
+ "classes": [
+  {
+   "key": "death-knight",
+   "name": "Death Knight",
+   "file": "death-knight.json",
+   "trees": [
+    "Blood",
+    "Frost",
+    "Unholy"
+   ],
+   "talents": 88,
+   "modified": 33
+  },
+  {
+   "key": "druid",
+   "name": "Druid",
+   "file": "druid.json",
+   "trees": [
+    "Balance",
+    "Feral",
+    "Restoration"
+   ],
+   "talents": 85,
+   "modified": 23
+  },
+  {
+   "key": "hunter",
+   "name": "Hunter",
+   "file": "hunter.json",
+   "trees": [
+    "Beast Mastery",
+    "Marksmanship",
+    "Survival"
+   ],
+   "talents": 81,
+   "modified": 3
+  },
+  {
+   "key": "mage",
+   "name": "Mage",
+   "file": "mage.json",
+   "trees": [
+    "Arcane",
+    "Fire",
+    "Frost"
+   ],
+   "talents": 86,
+   "modified": 23
+  },
+  {
+   "key": "paladin",
+   "name": "Paladin",
+   "file": "paladin.json",
+   "trees": [
+    "Holy",
+    "Protection",
+    "Retribution"
+   ],
+   "talents": 81,
+   "modified": 9
+  },
+  {
+   "key": "priest",
+   "name": "Priest",
+   "file": "priest.json",
+   "trees": [
+    "Discipline",
+    "Holy",
+    "Shadow"
+   ],
+   "talents": 83,
+   "modified": 27
+  },
+  {
+   "key": "rogue",
+   "name": "Rogue",
+   "file": "rogue.json",
+   "trees": [
+    "Assassination",
+    "Combat",
+    "Subtlety"
+   ],
+   "talents": 83,
+   "modified": 14
+  },
+  {
+   "key": "shaman",
+   "name": "Shaman",
+   "file": "shaman.json",
+   "trees": [
+    "Elemental",
+    "Enhancement",
+    "Restoration"
+   ],
+   "talents": 80,
+   "modified": 15
+  },
+  {
+   "key": "warlock",
+   "name": "Warlock",
+   "file": "warlock.json",
+   "trees": [
+    "Affliction",
+    "Demonology",
+    "Destruction"
+   ],
+   "talents": 81,
+   "modified": 30
+  },
+  {
+   "key": "warrior",
+   "name": "Warrior",
+   "file": "warrior.json",
+   "trees": [
+    "Arms",
+    "Fury",
+    "Protection"
+   ],
+   "talents": 85,
+   "modified": 0
+  }
+ ],
+ "degraded": [],
+ "stats": {
+  "talents": 833,
+  "talentsModified": 177,
+  "descriptions": 2244,
+  "descriptionsWithUnresolved": 18,
+  "modifiedKinds": {
+   "description": 108,
+   "new": 9,
+   "renamed": 45,
+   "structure": 8,
+   "values": 7
+  }
+ }
+}

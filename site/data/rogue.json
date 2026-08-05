@@ -1,0 +1,3082 @@
+{
+ "schema": 1,
+ "key": "rogue",
+ "name": "Rogue",
+ "trees": [
+  {
+   "tabId": 182,
+   "name": "Assassination",
+   "page": 0,
+   "talents": [
+    {
+     "i": 0,
+     "id": 276,
+     "fieldName": "improvedEviscerate",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14162,
+      14163,
+      14164
+     ],
+     "maxPoints": 3,
+     "name": "Improved Eviscerate",
+     "icon": "ability_rogue_eviscerate",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14162,
+       "desc": "Increases the damage done by your Eviscerate ability by 7%.",
+       "raw": "Increases the damage done by your Eviscerate ability by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14163,
+       "desc": "Increases the damage done by your Eviscerate ability by 14%.",
+       "raw": "Increases the damage done by your Eviscerate ability by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 14164,
+       "desc": "Increases the damage done by your Eviscerate ability by 20%.",
+       "raw": "Increases the damage done by your Eviscerate ability by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 272,
+     "fieldName": "remorselessAttacks",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14144,
+      14148
+     ],
+     "maxPoints": 2,
+     "name": "Remorseless Attacks",
+     "icon": "ability_fiegndead",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14144,
+       "desc": "After killing an opponent that yields experience or honor, gives you a 20% increased critical strike chance on your next Sinister Strike, Hemorrhage, Backstab, Mutilate, Ambush, or Ghostly Strike.  Lasts 20 sec.",
+       "raw": "After killing an opponent that yields experience or honor, gives you a $14143s1% increased critical strike chance on your next Sinister Strike, Hemorrhage, Backstab, Mutilate, Ambush, or Ghostly Strike.  Lasts $14143d."
+      },
+      {
+       "r": 2,
+       "spell": 14148,
+       "desc": "After killing an opponent that yields experience or honor, gives you a 40% increased critical strike chance on your next Sinister Strike, Hemorrhage, Backstab, Mutilate, Ambush, or Ghostly Strike.  Lasts 20 sec.",
+       "raw": "After killing an opponent that yields experience or honor, gives you a $14149s1% increased critical strike chance on your next Sinister Strike, Hemorrhage, Backstab, Mutilate, Ambush, or Ghostly Strike.  Lasts $14149d."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 270,
+     "fieldName": "malice",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14138,
+      14139,
+      14140,
+      14141,
+      14142
+     ],
+     "maxPoints": 5,
+     "name": "Malice",
+     "icon": "ability_racial_bloodrage",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14138,
+       "desc": "Increases your critical strike chance by 1%.",
+       "raw": "Increases your critical strike chance by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14139,
+       "desc": "Increases your critical strike chance by 2%.",
+       "raw": "Increases your critical strike chance by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 14140,
+       "desc": "Increases your critical strike chance by 3%.",
+       "raw": "Increases your critical strike chance by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 14141,
+       "desc": "Increases your critical strike chance by 4%.",
+       "raw": "Increases your critical strike chance by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 14142,
+       "desc": "Increases your critical strike chance by 5%.",
+       "raw": "Increases your critical strike chance by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 273,
+     "fieldName": "ruthlessness",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14156,
+      14160,
+      14161
+     ],
+     "maxPoints": 3,
+     "name": "Ruthlessness",
+     "icon": "ability_druid_disembowel",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14156,
+       "desc": "Gives your melee finishing moves a 20% chance to add a combo point to your target.",
+       "raw": "Gives your melee finishing moves a $h1% chance to add a combo point to your target."
+      },
+      {
+       "r": 2,
+       "spell": 14160,
+       "desc": "Gives your melee finishing moves a 40% chance to add a combo point to your target.",
+       "raw": "Gives your melee finishing moves a $h1% chance to add a combo point to your target."
+      },
+      {
+       "r": 3,
+       "spell": 14161,
+       "desc": "Gives your melee finishing moves a 60% chance to add a combo point to your target.",
+       "raw": "Gives your melee finishing moves a $h1% chance to add a combo point to your target."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 2068,
+     "fieldName": "bloodSpatter",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51632,
+      51633
+     ],
+     "maxPoints": 2,
+     "name": "Blood Spatter",
+     "icon": "ability_rogue_bloodsplatter",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51632,
+       "desc": "Increases the damage caused by your Garrote and Rupture abilities by 15%.",
+       "raw": "Increases the damage caused by your Garrote and Rupture abilities by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 51633,
+       "desc": "Increases the damage caused by your Garrote and Rupture abilities by 30%.",
+       "raw": "Increases the damage caused by your Garrote and Rupture abilities by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 277,
+     "fieldName": "puncturingWounds",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 3
+     },
+     "spellIds": [
+      13733,
+      13865,
+      13866
+     ],
+     "maxPoints": 3,
+     "name": "Puncturing Wounds",
+     "icon": "ability_backstab",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13733,
+       "desc": "Increases the critical strike chance of your Backstab ability by 10%, and the critical strike chance of your Mutilate ability by 5%.",
+       "raw": "Increases the critical strike chance of your Backstab ability by $s1%, and the critical strike chance of your Mutilate ability by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 13865,
+       "desc": "Increases the critical strike chance of your Backstab ability by 20%, and the critical strike chance of your Mutilate ability by 10%.",
+       "raw": "Increases the critical strike chance of your Backstab ability by $s1%, and the critical strike chance of your Mutilate ability by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 13866,
+       "desc": "Increases the critical strike chance of your Backstab ability by 30%, and the critical strike chance of your Mutilate ability by 15%.",
+       "raw": "Increases the critical strike chance of your Backstab ability by $s1%, and the critical strike chance of your Mutilate ability by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 382,
+     "fieldName": "vigor",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14983
+     ],
+     "maxPoints": 1,
+     "name": "Vigor",
+     "icon": "spell_nature_earthbindtotem",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14983,
+       "desc": "Increases your maximum Energy by 10.",
+       "raw": "Increases your maximum Energy by $s1."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 278,
+     "fieldName": "improvedExposeArmor",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14168,
+      14169
+     ],
+     "maxPoints": 2,
+     "name": "Improved Expose Armor",
+     "icon": "ability_warrior_riposte",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14168,
+       "desc": "Reduces the energy cost of your Expose Armor ability by 5.",
+       "raw": "Reduces the energy cost of your Expose Armor ability by $s1."
+      },
+      {
+       "r": 2,
+       "spell": 14169,
+       "desc": "Reduces the energy cost of your Expose Armor ability by 10.",
+       "raw": "Reduces the energy cost of your Expose Armor ability by $s1."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 269,
+     "fieldName": "lethality",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14128,
+      14132,
+      14135,
+      14136,
+      14137
+     ],
+     "maxPoints": 5,
+     "name": "Lethality",
+     "icon": "ability_criticalstrike",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14128,
+       "desc": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by 6%.",
+       "raw": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14132,
+       "desc": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by 12%.",
+       "raw": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 14135,
+       "desc": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by 18%.",
+       "raw": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 14136,
+       "desc": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by 24%.",
+       "raw": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 14137,
+       "desc": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by 30%.",
+       "raw": "Increases the critical strike damage bonus of all combo point-generating abilities that do not require stealth by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 9,
+     "id": 682,
+     "fieldName": "vilePoisons",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      16513,
+      16514,
+      16515
+     ],
+     "maxPoints": 3,
+     "name": "Vile Poisons",
+     "icon": "ability_rogue_feigndeath",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 16513,
+       "desc": "Increases the damage dealt by your poisons and Envenom ability by 7% and gives your damage over time poisons an additional 10% chance to resist dispel effects.",
+       "raw": "Increases the damage dealt by your poisons and Envenom ability by $s1% and gives your damage over time poisons an additional $s3% chance to resist dispel effects."
+      },
+      {
+       "r": 2,
+       "spell": 16514,
+       "desc": "Increases the damage dealt by your poisons and Envenom ability by 14% and gives your damage over time poisons an additional 20% chance to resist dispel effects.",
+       "raw": "Increases the damage dealt by your poisons and Envenom ability by $s1% and gives your damage over time poisons an additional $s3% chance to resist dispel effects."
+      },
+      {
+       "r": 3,
+       "spell": 16515,
+       "desc": "Increases the damage dealt by your poisons and Envenom ability by 20% and gives your damage over time poisons an additional 30% chance to resist dispel effects.",
+       "raw": "Increases the damage dealt by your poisons and Envenom ability by $s1% and gives your damage over time poisons an additional $s3% chance to resist dispel effects."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 268,
+     "fieldName": "improvedPoisons",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14113,
+      14114,
+      14115,
+      14116,
+      14117
+     ],
+     "maxPoints": 5,
+     "name": "Improved Poisons",
+     "icon": "ability_poisons",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14113,
+       "desc": "Increases the chance to apply Deadly Poison to your target by 4% and the frequency of applying Instant Poison to your target by 10%.",
+       "raw": "Increases the chance to apply Deadly Poison to your target by $s1% and the frequency of applying Instant Poison to your target by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 14114,
+       "desc": "Increases the chance to apply Deadly Poison to your target by 8% and the frequency of applying Instant Poison to your target by 20%.",
+       "raw": "Increases the chance to apply Deadly Poison to your target by $s1% and the frequency of applying Instant Poison to your target by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 14115,
+       "desc": "Increases the chance to apply Deadly Poison to your target by 12% and the frequency of applying Instant Poison to your target by 30%.",
+       "raw": "Increases the chance to apply Deadly Poison to your target by $s1% and the frequency of applying Instant Poison to your target by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 14116,
+       "desc": "Increases the chance to apply Deadly Poison to your target by 16% and the frequency of applying Instant Poison to your target by 40%.",
+       "raw": "Increases the chance to apply Deadly Poison to your target by $s1% and the frequency of applying Instant Poison to your target by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 14117,
+       "desc": "Increases the chance to apply Deadly Poison to your target by 20% and the frequency of applying Instant Poison to your target by 50%.",
+       "raw": "Increases the chance to apply Deadly Poison to your target by $s1% and the frequency of applying Instant Poison to your target by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1721,
+     "fieldName": "fleetFooted",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      31208,
+      31209
+     ],
+     "maxPoints": 2,
+     "name": "Fleet Footed",
+     "icon": "ability_rogue_fleetfooted",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31208,
+       "desc": "Reduces the duration of all movement impairing effects by 15% and increases your movement speed by 8%.  This does not stack with other movement speed increasing effects.",
+       "raw": "Reduces the duration of all movement impairing effects by $s1% and increases your movement speed by $s3%.  This does not stack with other movement speed increasing effects."
+      },
+      {
+       "r": 2,
+       "spell": 31209,
+       "desc": "Reduces the duration of all movement impairing effects by 30% and increases your movement speed by 15%.  This does not stack with other movement speed increasing effects.",
+       "raw": "Reduces the duration of all movement impairing effects by $s1% and increases your movement speed by $s3%.  This does not stack with other movement speed increasing effects."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 280,
+     "fieldName": "coldBlood",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14177
+     ],
+     "maxPoints": 1,
+     "name": "Cold Blood",
+     "icon": "spell_ice_lament",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14177,
+       "desc": "When activated, increases the critical strike chance of your next offensive ability by 100%.",
+       "raw": "When activated, increases the critical strike chance of your next offensive ability by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 279,
+     "fieldName": "improvedKidneyShot",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14174,
+      14175,
+      14176
+     ],
+     "maxPoints": 3,
+     "name": "Improved Kidney Shot",
+     "icon": "ability_rogue_kidneyshot",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14174,
+       "desc": "While affected by your Kidney Shot ability, the target receives an additional 3% damage from all sources.",
+       "raw": "While affected by your Kidney Shot ability, the target receives an additional $s1% damage from all sources."
+      },
+      {
+       "r": 2,
+       "spell": 14175,
+       "desc": "While affected by your Kidney Shot ability, the target receives an additional 6% damage from all sources.",
+       "raw": "While affected by your Kidney Shot ability, the target receives an additional $s1% damage from all sources."
+      },
+      {
+       "r": 3,
+       "spell": 14176,
+       "desc": "While affected by your Kidney Shot ability, the target receives an additional 9% damage from all sources.",
+       "raw": "While affected by your Kidney Shot ability, the target receives an additional $s1% damage from all sources."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1762,
+     "fieldName": "quickRecovery",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 3
+     },
+     "spellIds": [
+      31244,
+      31245
+     ],
+     "maxPoints": 2,
+     "name": "Quick Recovery",
+     "icon": "ability_rogue_quickrecovery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31244,
+       "desc": "All healing effects on you are increased by 10%.  In addition, your finishing moves refund 40% of their Energy cost when they fail to hit.",
+       "raw": "All healing effects on you are increased by $s2%.  In addition, your finishing moves refund $s1% of their Energy cost when they fail to hit."
+      },
+      {
+       "r": 2,
+       "spell": 31245,
+       "desc": "All healing effects on you are increased by 20%.  In addition, your finishing moves refund 80% of their Energy cost when they fail to hit.",
+       "raw": "All healing effects on you are increased by $s2%.  In addition, your finishing moves refund $s1% of their Energy cost when they fail to hit."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 283,
+     "fieldName": "sealFate",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14186,
+      14190,
+      14193,
+      14194,
+      14195
+     ],
+     "maxPoints": 5,
+     "name": "Seal Fate",
+     "icon": "spell_shadow_chilltouch",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14186,
+       "desc": "Your critical strikes from abilities that add combo points have a 20% chance to add an additional combo point.",
+       "raw": "Your critical strikes from abilities that add combo points have a $h% chance to add an additional combo point."
+      },
+      {
+       "r": 2,
+       "spell": 14190,
+       "desc": "Your critical strikes from abilities that add combo points have a 40% chance to add an additional combo point.",
+       "raw": "Your critical strikes from abilities that add combo points have a $h% chance to add an additional combo point."
+      },
+      {
+       "r": 3,
+       "spell": 14193,
+       "desc": "Your critical strikes from abilities that add combo points have a 60% chance to add an additional combo point.",
+       "raw": "Your critical strikes from abilities that add combo points have a $h% chance to add an additional combo point."
+      },
+      {
+       "r": 4,
+       "spell": 14194,
+       "desc": "Your critical strikes from abilities that add combo points have a 80% chance to add an additional combo point.",
+       "raw": "Your critical strikes from abilities that add combo points have a $h% chance to add an additional combo point."
+      },
+      {
+       "r": 5,
+       "spell": 14195,
+       "desc": "Your critical strikes from abilities that add combo points have a 100% chance to add an additional combo point.",
+       "raw": "Your critical strikes from abilities that add combo points have a $h% chance to add an additional combo point."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 16,
+     "id": 274,
+     "fieldName": "murder",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14158,
+      14159
+     ],
+     "maxPoints": 2,
+     "name": "Murder",
+     "icon": "spell_shadow_deathscream",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14158,
+       "desc": "Increases all damage caused by 2%.",
+       "raw": "Increases all damage caused by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14159,
+       "desc": "Increases all damage caused by 4%.",
+       "raw": "Increases all damage caused by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 2065,
+     "fieldName": "deadlyBrew",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      51625,
+      51626
+     ],
+     "maxPoints": 2,
+     "name": "Deadly Brew",
+     "icon": "ability_rogue_deadlybrew",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51625,
+       "desc": "When you apply Instant, Wound or Mind-Numbing poison to a target, you have a 50% chance to apply Crippling poison.",
+       "raw": "When you apply Instant, Wound or Mind-Numbing poison to a target, you have a $h% chance to apply Crippling poison."
+      },
+      {
+       "r": 2,
+       "spell": 51626,
+       "desc": "When you apply Instant, Wound or Mind-Numbing poison to a target, you have a 100% chance to apply Crippling poison.",
+       "raw": "When you apply Instant, Wound or Mind-Numbing poison to a target, you have a $h% chance to apply Crippling poison."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 281,
+     "fieldName": "overkill",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      58426
+     ],
+     "maxPoints": 1,
+     "name": "Overkill",
+     "icon": "ability_hunter_rapidkilling",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 58426,
+       "desc": "While stealthed, and for 20 seconds after breaking stealth, you regenerate 30% additional energy.",
+       "raw": "While stealthed, and for 20 seconds after breaking stealth, you regenerate $58427s1% additional energy."
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "id": 1723,
+     "fieldName": "deadenedNerves",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31380,
+      31382,
+      31383
+     ],
+     "maxPoints": 3,
+     "name": "Deadened Nerves",
+     "icon": "ability_rogue_deadenednerves",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31380,
+       "desc": "Reduces all damage taken by 2%.",
+       "raw": "Reduces all damage taken by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 31382,
+       "desc": "Reduces all damage taken by 4%.",
+       "raw": "Reduces all damage taken by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 31383,
+       "desc": "Reduces all damage taken by 6%.",
+       "raw": "Reduces all damage taken by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 2069,
+     "fieldName": "focusedAttacks",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      51634,
+      51635,
+      51636
+     ],
+     "maxPoints": 3,
+     "name": "Focused Attacks",
+     "icon": "ability_rogue_focusedattacks",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51634,
+       "desc": "Your melee critical strikes have a 33% chance to give you 2 energy.",
+       "raw": "Your melee critical strikes have a $h% chance to give you $s1 energy."
+      },
+      {
+       "r": 2,
+       "spell": 51635,
+       "desc": "Your melee critical strikes have a 66% chance to give you 2 energy.",
+       "raw": "Your melee critical strikes have a $h% chance to give you $s1 energy."
+      },
+      {
+       "r": 3,
+       "spell": 51636,
+       "desc": "Your melee critical strikes have a 100% chance to give you 2 energy.",
+       "raw": "Your melee critical strikes have a $h% chance to give you $s1 energy."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 1718,
+     "fieldName": "findWeakness",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31234,
+      31235,
+      31236
+     ],
+     "maxPoints": 3,
+     "name": "Find Weakness",
+     "icon": "ability_rogue_findweakness",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31234,
+       "desc": "Offensive ability damage increased by 2%.",
+       "raw": "Offensive ability damage increased by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 31235,
+       "desc": "Offensive ability damage increased by 4%.",
+       "raw": "Offensive ability damage increased by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 31236,
+       "desc": "Offensive ability damage increased by 6%.",
+       "raw": "Offensive ability damage increased by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1715,
+     "fieldName": "masterPoisoner",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      31226,
+      31227,
+      58410
+     ],
+     "maxPoints": 3,
+     "name": "Master Poisoner",
+     "icon": "ability_creature_poison_06",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31226,
+       "desc": "Increases the critical hit chance of all attacks made against any target you have poisoned by 1%, reduces the duration of all Poison effects applied to you by 17%, and gives Envenom a 33% chance not to consume Deadly Poison.",
+       "raw": "Increases the critical hit chance of all attacks made against any target you have poisoned by $s1%, reduces the duration of all Poison effects applied to you by $s2%, and gives Envenom a $s3% chance not to consume Deadly Poison."
+      },
+      {
+       "r": 2,
+       "spell": 31227,
+       "desc": "Increases the critical hit chance of all attacks made against any target you have poisoned by 2%, reduces the duration of all Poison effects applied to you by 34%, and gives Envenom a 66% chance not to consume Deadly Poison.",
+       "raw": "Increases the critical hit chance of all attacks made against any target you have poisoned by $s1%, reduces the duration of all Poison effects applied to you by $s2%, and gives Envenom a $s3% chance not to consume Deadly Poison."
+      },
+      {
+       "r": 3,
+       "spell": 58410,
+       "desc": "Increases the critical hit chance of all attacks made against any target you have poisoned by 3%, reduces the duration of all Poison effects applied to you by 50%, and gives Envenom a 100% chance not to consume Deadly Poison.",
+       "raw": "Increases the critical hit chance of all attacks made against any target you have poisoned by $s1%, reduces the duration of all Poison effects applied to you by $s2%, and gives Envenom a $s3% chance not to consume Deadly Poison."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 1719,
+     "fieldName": "mutilate",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      1329
+     ],
+     "maxPoints": 1,
+     "name": "Mutilate",
+     "icon": "ability_rogue_shadowstrikes",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 1329,
+       "desc": "Instantly attacks with both weapons for $<percent>% weapon damage plus an additional 44 with each weapon.  Damage is increased by 20% against Poisoned targets.  Awards 2 combo points.",
+       "raw": "Instantly attacks with both weapons for $<percent>% weapon damage plus an additional $5374s1 with each weapon.  Damage is increased by 20% against Poisoned targets.  Awards 2 combo points.",
+       "unresolved": [
+        "$<percent>"
+       ]
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 24,
+     "id": 2066,
+     "fieldName": "turnTheTables",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      51627,
+      51628,
+      51629
+     ],
+     "maxPoints": 3,
+     "name": "Turn the Tables",
+     "icon": "ability_rogue_turnthetables",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51627,
+       "desc": "Whenever anyone in your party or raid blocks, dodges, or parries an attack your chance to critically hit with all combo moves is increased by 2% for 8 sec.",
+       "raw": "Whenever anyone in your party or raid blocks, dodges, or parries an attack your chance to critically hit with all combo moves is increased by $52914s1% for $52914d."
+      },
+      {
+       "r": 2,
+       "spell": 51628,
+       "desc": "Whenever anyone in your party or raid blocks, dodges, or parries an attack your chance to critically hit with all combo moves is increased by 4% for 8 sec.",
+       "raw": "Whenever anyone in your party or raid blocks, dodges, or parries an attack your chance to critically hit with all combo moves is increased by $52915s1% for $52915d."
+      },
+      {
+       "r": 3,
+       "spell": 51629,
+       "desc": "Whenever anyone in your party or raid blocks, dodges, or parries an attack your chance to critically hit with all combo moves is increased by 6% for 8 sec.",
+       "raw": "Whenever anyone in your party or raid blocks, dodges, or parries an attack your chance to critically hit with all combo moves is increased by $52910s1% for $52910d."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 2070,
+     "fieldName": "cutToTheChase",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51664,
+      51665,
+      51667,
+      51668,
+      51669
+     ],
+     "maxPoints": 5,
+     "name": "Cut to the Chase",
+     "icon": "ability_rogue_cuttothechase",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51664,
+       "desc": "Your Eviscerate and Envenom abilities have a 20% chance to refresh your Slice and Dice duration to its 5 combo point maximum.",
+       "raw": "Your Eviscerate and Envenom abilities have a $h% chance to refresh your Slice and Dice duration to its 5 combo point maximum."
+      },
+      {
+       "r": 2,
+       "spell": 51665,
+       "desc": "Your Eviscerate and Envenom abilities have a 40% chance to refresh your Slice and Dice duration to its 5 combo point maximum.",
+       "raw": "Your Eviscerate and Envenom abilities have a $h% chance to refresh your Slice and Dice duration to its 5 combo point maximum."
+      },
+      {
+       "r": 3,
+       "spell": 51667,
+       "desc": "Your Eviscerate and Envenom abilities have a 60% chance to refresh your Slice and Dice duration to its 5 combo point maximum.",
+       "raw": "Your Eviscerate and Envenom abilities have a $h% chance to refresh your Slice and Dice duration to its 5 combo point maximum."
+      },
+      {
+       "r": 4,
+       "spell": 51668,
+       "desc": "Your Eviscerate and Envenom abilities have a 80% chance to refresh your Slice and Dice duration to its 5 combo point maximum.",
+       "raw": "Your Eviscerate and Envenom abilities have a $h% chance to refresh your Slice and Dice duration to its 5 combo point maximum."
+      },
+      {
+       "r": 5,
+       "spell": 51669,
+       "desc": "Your Eviscerate and Envenom abilities have a 100% chance to refresh your Slice and Dice duration to its 5 combo point maximum.",
+       "raw": "Your Eviscerate and Envenom abilities have a $h% chance to refresh your Slice and Dice duration to its 5 combo point maximum."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 2071,
+     "fieldName": "hungerForBlood",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51662
+     ],
+     "maxPoints": 1,
+     "name": "Hunger For Blood",
+     "icon": "ability_rogue_hungerforblood",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51662,
+       "desc": "Enrages you, increasing all damage caused by 5%.  Requires a bleed effect to be active on the target.  Lasts 1 min.",
+       "raw": "Enrages you, increasing all damage caused by $63848s1%.  Requires a bleed effect to be active on the target.  Lasts $63848d."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 181,
+   "name": "Combat",
+   "page": 1,
+   "talents": [
+    {
+     "i": 0,
+     "id": 203,
+     "fieldName": "improvedGouge",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      13741,
+      13793,
+      13792
+     ],
+     "maxPoints": 3,
+     "name": "Improved Gouge",
+     "icon": "ability_gouge",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13741,
+       "desc": "Increases the effect duration of your Gouge ability by 0.5 sec.",
+       "raw": "Increases the effect duration of your Gouge ability by $/1000;S1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 13793,
+       "desc": "Increases the effect duration of your Gouge ability by 1 sec.",
+       "raw": "Increases the effect duration of your Gouge ability by $/1000;S1 sec."
+      },
+      {
+       "r": 3,
+       "spell": 13792,
+       "desc": "Increases the effect duration of your Gouge ability by 1.5 sec.",
+       "raw": "Increases the effect duration of your Gouge ability by $/1000;S1 sec."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 201,
+     "fieldName": "improvedSinisterStrike",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13732,
+      13863
+     ],
+     "maxPoints": 2,
+     "name": "Improved Sinister Strike",
+     "icon": "spell_shadow_ritualofsacrifice",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13732,
+       "desc": "Reduces the Energy cost of your Sinister Strike ability by 3.",
+       "raw": "Reduces the Energy cost of your Sinister Strike ability by $s1."
+      },
+      {
+       "r": 2,
+       "spell": 13863,
+       "desc": "Reduces the Energy cost of your Sinister Strike ability by 5.",
+       "raw": "Reduces the Energy cost of your Sinister Strike ability by $s1."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 221,
+     "fieldName": "dualWieldSpecialization",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      13715,
+      13848,
+      13849,
+      13851,
+      13852
+     ],
+     "maxPoints": 5,
+     "name": "Dual Wield Specialization",
+     "icon": "ability_dualwield",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13715,
+       "desc": "Increases the damage done by your offhand weapon by 10%.",
+       "raw": "Increases the damage done by your offhand weapon by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 13848,
+       "desc": "Increases the damage done by your offhand weapon by 20%.",
+       "raw": "Increases the damage done by your offhand weapon by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 13849,
+       "desc": "Increases the damage done by your offhand weapon by 30%.",
+       "raw": "Increases the damage done by your offhand weapon by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 13851,
+       "desc": "Increases the damage done by your offhand weapon by 40%.",
+       "raw": "Increases the damage done by your offhand weapon by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 13852,
+       "desc": "Increases the damage done by your offhand weapon by 50%.",
+       "raw": "Increases the damage done by your offhand weapon by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1827,
+     "fieldName": "improvedSliceAndDice",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14165,
+      14166
+     ],
+     "maxPoints": 2,
+     "name": "Improved Slice and Dice",
+     "icon": "ability_rogue_slicedice",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14165,
+       "desc": "Increases the duration of your Slice and Dice ability by 25%.",
+       "raw": "Increases the duration of your Slice and Dice ability by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14166,
+       "desc": "Increases the duration of your Slice and Dice ability by 50%.",
+       "raw": "Increases the duration of your Slice and Dice ability by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 187,
+     "fieldName": "deflection",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13713,
+      13853,
+      13854
+     ],
+     "maxPoints": 3,
+     "name": "Deflection",
+     "icon": "ability_parry",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13713,
+       "desc": "Increases your Parry chance by 2%.",
+       "raw": "Increases your Parry chance by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 13853,
+       "desc": "Increases your Parry chance by 4%.",
+       "raw": "Increases your Parry chance by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 13854,
+       "desc": "Increases your Parry chance by 6%.",
+       "raw": "Increases your Parry chance by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 181,
+     "fieldName": "precision",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 3
+     },
+     "spellIds": [
+      13705,
+      13832,
+      13843,
+      13844,
+      13845
+     ],
+     "maxPoints": 5,
+     "name": "Precision",
+     "icon": "ability_marksmanship",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13705,
+       "desc": "Increases your chance to hit with weapon and poison attacks by 1%.",
+       "raw": "Increases your chance to hit with weapon and poison attacks by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 13832,
+       "desc": "Increases your chance to hit with weapon and poison attacks by 2%.",
+       "raw": "Increases your chance to hit with weapon and poison attacks by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 13843,
+       "desc": "Increases your chance to hit with weapon and poison attacks by 3%.",
+       "raw": "Increases your chance to hit with weapon and poison attacks by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 13844,
+       "desc": "Increases your chance to hit with weapon and poison attacks by 4%.",
+       "raw": "Increases your chance to hit with weapon and poison attacks by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 13845,
+       "desc": "Increases your chance to hit with weapon and poison attacks by 5%.",
+       "raw": "Increases your chance to hit with weapon and poison attacks by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 204,
+     "fieldName": "endurance",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      13742,
+      13872
+     ],
+     "maxPoints": 2,
+     "name": "Endurance",
+     "icon": "spell_shadow_shadowward",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13742,
+       "desc": "Reduces the cooldown of your Sprint and Evasion abilities by 30 sec and increases your total Stamina by 2%.",
+       "raw": "Reduces the cooldown of your Sprint and Evasion abilities by $/1000;s1 sec and increases your total Stamina by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 13872,
+       "desc": "Reduces the cooldown of your Sprint and Evasion abilities by 60 sec and increases your total Stamina by 4%.",
+       "raw": "Reduces the cooldown of your Sprint and Evasion abilities by $/1000;s1 sec and increases your total Stamina by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 301,
+     "fieldName": "riposte",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14251
+     ],
+     "maxPoints": 1,
+     "name": "Riposte",
+     "icon": "ability_warrior_challange",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14251,
+       "desc": "A strike that becomes active after parrying an opponent's attack.  This attack deals 150% weapon damage and slows their melee attack speed by 20% for 30 sec.  Awards 1 combo point.",
+       "raw": "A strike that becomes active after parrying an opponent's attack.  This attack deals $s1% weapon damage and slows their melee attack speed by $s2% for $d.  Awards $s3 combo point."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 8,
+     "id": 182,
+     "fieldName": "closeQuartersCombat",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      13706,
+      13804,
+      13805,
+      13806,
+      13807
+     ],
+     "maxPoints": 5,
+     "name": "Close Quarters Combat",
+     "icon": "inv_weapon_shortblade_05",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13706,
+       "desc": "Increases your chance to get a critical strike with Daggers and Fist Weapons by 1%.",
+       "raw": "Increases your chance to get a critical strike with Daggers and Fist Weapons by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 13804,
+       "desc": "Increases your chance to get a critical strike with Daggers and Fist Weapons by 2%.",
+       "raw": "Increases your chance to get a critical strike with Daggers and Fist Weapons by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 13805,
+       "desc": "Increases your chance to get a critical strike with Daggers and Fist Weapons by 3%.",
+       "raw": "Increases your chance to get a critical strike with Daggers and Fist Weapons by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 13806,
+       "desc": "Increases your chance to get a critical strike with Daggers and Fist Weapons by 4%.",
+       "raw": "Increases your chance to get a critical strike with Daggers and Fist Weapons by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 13807,
+       "desc": "Increases your chance to get a critical strike with Daggers and Fist Weapons by 5%.",
+       "raw": "Increases your chance to get a critical strike with Daggers and Fist Weapons by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 9,
+     "id": 206,
+     "fieldName": "improvedKick",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      13754,
+      13867
+     ],
+     "maxPoints": 2,
+     "name": "Improved Kick",
+     "icon": "ability_kick",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13754,
+       "desc": "Gives your Kick ability a 50% chance to silence the target for 2 sec.",
+       "raw": "Gives your Kick ability a $h% chance to silence the target for $18425d."
+      },
+      {
+       "r": 2,
+       "spell": 13867,
+       "desc": "Gives your Kick ability a 100% chance to silence the target for 2 sec.",
+       "raw": "Gives your Kick ability a $h% chance to silence the target for $18425d."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 222,
+     "fieldName": "improvedSprint",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13743,
+      13875
+     ],
+     "maxPoints": 2,
+     "name": "Improved Sprint",
+     "icon": "ability_rogue_sprint",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13743,
+       "desc": "Gives a 50% chance to remove all Movement Impairing effects when you activate your Sprint ability.",
+       "raw": "Gives a $s1% chance to remove all Movement Impairing effects when you activate your Sprint ability."
+      },
+      {
+       "r": 2,
+       "spell": 13875,
+       "desc": "Gives a 100% chance to remove all Movement Impairing effects when you activate your Sprint ability.",
+       "raw": "Gives a $s1% chance to remove all Movement Impairing effects when you activate your Sprint ability."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 186,
+     "fieldName": "lightningReflexes",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      13712,
+      13788,
+      13789
+     ],
+     "maxPoints": 3,
+     "name": "Lightning Reflexes",
+     "icon": "spell_nature_invisibilty",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13712,
+       "desc": "Increases your Dodge chance by 2% and gives you 4% melee haste.",
+       "raw": "Increases your Dodge chance by $s1% and gives you $s2% melee haste."
+      },
+      {
+       "r": 2,
+       "spell": 13788,
+       "desc": "Increases your Dodge chance by 4% and gives you 7% melee haste.",
+       "raw": "Increases your Dodge chance by $s1% and gives you $s2% melee haste."
+      },
+      {
+       "r": 3,
+       "spell": 13789,
+       "desc": "Increases your Dodge chance by 6% and gives you 10% melee haste.",
+       "raw": "Increases your Dodge chance by $s1% and gives you $s2% melee haste."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1122,
+     "fieldName": "aggression",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      18427,
+      18428,
+      18429,
+      61330,
+      61331
+     ],
+     "maxPoints": 5,
+     "name": "Aggression",
+     "icon": "ability_racial_avatar",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18427,
+       "desc": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 3%.",
+       "raw": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18428,
+       "desc": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 6%.",
+       "raw": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 18429,
+       "desc": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 9%.",
+       "raw": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 61330,
+       "desc": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 12%.",
+       "raw": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 61331,
+       "desc": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 15%.",
+       "raw": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 184,
+     "fieldName": "maceSpecialization",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      13709,
+      13800,
+      13801,
+      13802,
+      13803
+     ],
+     "maxPoints": 5,
+     "name": "Mace Specialization",
+     "icon": "inv_mace_01",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13709,
+       "desc": "Your attacks with maces ignore up to 3% of your opponent's armor.",
+       "raw": "Your attacks with maces ignore up to $s1% of your opponent's armor."
+      },
+      {
+       "r": 2,
+       "spell": 13800,
+       "desc": "Your attacks with maces ignore up to 6% of your opponent's armor.",
+       "raw": "Your attacks with maces ignore up to $s1% of your opponent's armor."
+      },
+      {
+       "r": 3,
+       "spell": 13801,
+       "desc": "Your attacks with maces ignore up to 9% of your opponent's armor.",
+       "raw": "Your attacks with maces ignore up to $s1% of your opponent's armor."
+      },
+      {
+       "r": 4,
+       "spell": 13802,
+       "desc": "Your attacks with maces ignore up to 12% of your opponent's armor.",
+       "raw": "Your attacks with maces ignore up to $s1% of your opponent's armor."
+      },
+      {
+       "r": 5,
+       "spell": 13803,
+       "desc": "Your attacks with maces ignore up to 15% of your opponent's armor.",
+       "raw": "Your attacks with maces ignore up to $s1% of your opponent's armor."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 223,
+     "fieldName": "bladeFlurry",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13877
+     ],
+     "maxPoints": 1,
+     "name": "Blade Flurry",
+     "icon": "ability_warrior_punishingblow",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13877,
+       "desc": "Increases your attack speed by 20%.  In addition, attacks strike an additional nearby opponent.  Lasts 15 sec.",
+       "raw": "Increases your attack speed by $s1%.  In addition, attacks strike an additional nearby opponent.  Lasts $d."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 242,
+     "fieldName": "hackAndSlash",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      13960,
+      13961,
+      13962,
+      13963,
+      13964
+     ],
+     "maxPoints": 5,
+     "name": "Hack and Slash",
+     "icon": "inv_sword_27",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13960,
+       "desc": "Gives you a 1% chance to get an extra attack on the same target after hitting your target with your Sword or Axe.",
+       "raw": "Gives you a $h% chance to get an extra attack on the same target after hitting your target with your Sword or Axe."
+      },
+      {
+       "r": 2,
+       "spell": 13961,
+       "desc": "Gives you a 2% chance to get an extra attack on the same target after hitting your target with your Sword or Axe.",
+       "raw": "Gives you a $h% chance to get an extra attack on the same target after hitting your target with your Sword or Axe."
+      },
+      {
+       "r": 3,
+       "spell": 13962,
+       "desc": "Gives you a 3% chance to get an extra attack on the same target after hitting your target with your Sword or Axe.",
+       "raw": "Gives you a $h% chance to get an extra attack on the same target after hitting your target with your Sword or Axe."
+      },
+      {
+       "r": 4,
+       "spell": 13963,
+       "desc": "Gives you a 4% chance to get an extra attack on the same target after hitting your target with your Sword or Axe.",
+       "raw": "Gives you a $h% chance to get an extra attack on the same target after hitting your target with your Sword or Axe."
+      },
+      {
+       "r": 5,
+       "spell": 13964,
+       "desc": "Gives you a 5% chance to get an extra attack on the same target after hitting your target with your Sword or Axe.",
+       "raw": "Gives you a $h% chance to get an extra attack on the same target after hitting your target with your Sword or Axe."
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "id": 1703,
+     "fieldName": "weaponExpertise",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 1
+     },
+     "spellIds": [
+      30919,
+      30920
+     ],
+     "maxPoints": 2,
+     "name": "Weapon Expertise",
+     "icon": "spell_holy_blessingofstrength",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30919,
+       "desc": "Increases your expertise by 5.",
+       "raw": "Increases your expertise by $s1."
+      },
+      {
+       "r": 2,
+       "spell": 30920,
+       "desc": "Increases your expertise by 10.",
+       "raw": "Increases your expertise by $s1."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 17,
+     "id": 1706,
+     "fieldName": "bladeTwisting",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31124,
+      31126
+     ],
+     "maxPoints": 2,
+     "name": "Blade Twisting",
+     "icon": "ability_rogue_bladetwisting",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31124,
+       "desc": "Increases the damage dealt by Sinister Strike and Backstab by 5%, and your damaging melee attacks have a 10% chance to Daze the target for 4 sec.",
+       "raw": "Increases the damage dealt by Sinister Strike and Backstab by $s2%, and your damaging melee attacks have a $h% chance to Daze the target for $31125d."
+      },
+      {
+       "r": 2,
+       "spell": 31126,
+       "desc": "Increases the damage dealt by Sinister Strike and Backstab by 10%, and your damaging melee attacks have a 10% chance to Daze the target for 8 sec.",
+       "raw": "Increases the damage dealt by Sinister Strike and Backstab by $s2%, and your damaging melee attacks have a $h% chance to Daze the target for $51585d."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1705,
+     "fieldName": "vitality",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      31122,
+      31123,
+      61329
+     ],
+     "maxPoints": 3,
+     "name": "Vitality",
+     "icon": "ability_warrior_revenge",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31122,
+       "desc": "Increases your Energy regeneration rate by 8%.",
+       "raw": "Increases your Energy regeneration rate by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 31123,
+       "desc": "Increases your Energy regeneration rate by 16%.",
+       "raw": "Increases your Energy regeneration rate by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 61329,
+       "desc": "Increases your Energy regeneration rate by 25%.",
+       "raw": "Increases your Energy regeneration rate by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "id": 205,
+     "fieldName": "adrenalineRush",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13750
+     ],
+     "maxPoints": 1,
+     "name": "Adrenaline Rush",
+     "icon": "spell_shadow_shadowworddominate",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13750,
+       "desc": "Increases your Energy regeneration rate by 100% for 15 sec.",
+       "raw": "Increases your Energy regeneration rate by $s1% for $d."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 1707,
+     "fieldName": "nervesOfSteel",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31130,
+      31131
+     ],
+     "maxPoints": 2,
+     "name": "Nerves of Steel",
+     "icon": "ability_rogue_nervesofsteel",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31130,
+       "desc": "Reduces damage taken while affected by Stun and Fear effects by 15%.",
+       "raw": "Reduces damage taken while affected by Stun and Fear effects by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 31131,
+       "desc": "Reduces damage taken while affected by Stun and Fear effects by 30%.",
+       "raw": "Reduces damage taken while affected by Stun and Fear effects by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 2072,
+     "fieldName": "throwingSpecialization",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      5952,
+      51679
+     ],
+     "maxPoints": 2,
+     "name": "Throwing Specialization",
+     "icon": "ability_rogue_throwingspecialization",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 5952,
+       "desc": "Increases the range of Throw and Deadly Throw by 2 yards and gives your Deadly Throw a 50% chance to interrupt the target for 3 sec.",
+       "raw": "Increases the range of Throw and Deadly Throw by $s1 yards and gives your Deadly Throw a $h% chance to interrupt the target for $51680d."
+      },
+      {
+       "r": 2,
+       "spell": 51679,
+       "desc": "Increases the range of Throw and Deadly Throw by 4 yards and gives your Deadly Throw a 100% chance to interrupt the target for 3 sec.",
+       "raw": "Increases the range of Throw and Deadly Throw by $s1 yards and gives your Deadly Throw a $h% chance to interrupt the target for $51680d."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1825,
+     "fieldName": "combatPotency",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      35541,
+      35550,
+      35551,
+      35552,
+      35553
+     ],
+     "maxPoints": 5,
+     "name": "Combat Potency",
+     "icon": "inv_weapon_shortblade_38",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 35541,
+       "desc": "Gives your successful off-hand melee attacks a 20% chance to generate 3 Energy.",
+       "raw": "Gives your successful off-hand melee attacks a $h% chance to generate $35542s1 Energy."
+      },
+      {
+       "r": 2,
+       "spell": 35550,
+       "desc": "Gives your successful off-hand melee attacks a 20% chance to generate 6 Energy.",
+       "raw": "Gives your successful off-hand melee attacks a $h% chance to generate $35545s1 Energy."
+      },
+      {
+       "r": 3,
+       "spell": 35551,
+       "desc": "Gives your successful off-hand melee attacks a 20% chance to generate 9 Energy.",
+       "raw": "Gives your successful off-hand melee attacks a $h% chance to generate $35546s1 Energy."
+      },
+      {
+       "r": 4,
+       "spell": 35552,
+       "desc": "Gives your successful off-hand melee attacks a 20% chance to generate 12 Energy.",
+       "raw": "Gives your successful off-hand melee attacks a $h% chance to generate $35547s1 Energy."
+      },
+      {
+       "r": 5,
+       "spell": 35553,
+       "desc": "Gives your successful off-hand melee attacks a 20% chance to generate 15 Energy.",
+       "raw": "Gives your successful off-hand melee attacks a $h% chance to generate $35548s1 Energy."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 2073,
+     "fieldName": "unfairAdvantage",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      51672,
+      51674
+     ],
+     "maxPoints": 2,
+     "name": "Unfair Advantage",
+     "icon": "ability_rogue_unfairadvantage",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51672,
+       "desc": "Whenever you dodge an attack you gain an Unfair Advantage, striking back for 50% of your main hand weapon's damage.  This cannot occur more than once per second.",
+       "raw": "Whenever you dodge an attack you gain an Unfair Advantage, striking back for $51675s2% of your main hand weapon's damage.  This cannot occur more than once per second."
+      },
+      {
+       "r": 2,
+       "spell": 51674,
+       "desc": "Whenever you dodge an attack you gain an Unfair Advantage, striking back for 100% of your main hand weapon's damage.  This cannot occur more than once per second.",
+       "raw": "Whenever you dodge an attack you gain an Unfair Advantage, striking back for $51677s2% of your main hand weapon's damage.  This cannot occur more than once per second."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1709,
+     "fieldName": "surpriseAttacks",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      32601
+     ],
+     "maxPoints": 1,
+     "name": "Surprise Attacks",
+     "icon": "ability_rogue_surpriseattack",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 32601,
+       "desc": "Your finishing moves can no longer be dodged, and the damage dealt by your Sinister Strike, Backstab, Shiv, Hemorrhage and Gouge abilities is increased by 10%.",
+       "raw": "Your finishing moves can no longer be dodged, and the damage dealt by your Sinister Strike, Backstab, Shiv, Hemorrhage and Gouge abilities is increased by $s2%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 25,
+     "id": 2074,
+     "fieldName": "savageCombat",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      51682,
+      58413
+     ],
+     "maxPoints": 2,
+     "name": "Savage Combat",
+     "icon": "ability_creature_disease_03",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51682,
+       "desc": "Increases your total attack power by 2% and all physical damage caused to enemies you have poisoned is increased by 2%.",
+       "raw": "Increases your total attack power by $s2% and all physical damage caused to enemies you have poisoned is increased by $58684s1%."
+      },
+      {
+       "r": 2,
+       "spell": 58413,
+       "desc": "Increases your total attack power by 4% and all physical damage caused to enemies you have poisoned is increased by 4%.",
+       "raw": "Increases your total attack power by $s2% and all physical damage caused to enemies you have poisoned is increased by $58683s1%."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 2075,
+     "fieldName": "preyOnTheWeak",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51685,
+      51686,
+      51687,
+      51688,
+      51689
+     ],
+     "maxPoints": 5,
+     "name": "Prey on the Weak",
+     "icon": "ability_rogue_preyontheweak",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51685,
+       "desc": "Your critical strike damage is increased by 4% when the target has less health than you (as a percentage of total health).",
+       "raw": "Your critical strike damage is increased by $s1% when the target has less health than you (as a percentage of total health)."
+      },
+      {
+       "r": 2,
+       "spell": 51686,
+       "desc": "Your critical strike damage is increased by 8% when the target has less health than you (as a percentage of total health).",
+       "raw": "Your critical strike damage is increased by $s1% when the target has less health than you (as a percentage of total health)."
+      },
+      {
+       "r": 3,
+       "spell": 51687,
+       "desc": "Your critical strike damage is increased by 12% when the target has less health than you (as a percentage of total health).",
+       "raw": "Your critical strike damage is increased by $s1% when the target has less health than you (as a percentage of total health)."
+      },
+      {
+       "r": 4,
+       "spell": 51688,
+       "desc": "Your critical strike damage is increased by 16% when the target has less health than you (as a percentage of total health).",
+       "raw": "Your critical strike damage is increased by $s1% when the target has less health than you (as a percentage of total health)."
+      },
+      {
+       "r": 5,
+       "spell": 51689,
+       "desc": "Your critical strike damage is increased by 20% when the target has less health than you (as a percentage of total health).",
+       "raw": "Your critical strike damage is increased by $s1% when the target has less health than you (as a percentage of total health)."
+      }
+     ]
+    },
+    {
+     "i": 27,
+     "id": 2076,
+     "fieldName": "killingSpree",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51690
+     ],
+     "maxPoints": 1,
+     "name": "Killing Spree",
+     "icon": "ability_rogue_murderspree",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51690,
+       "desc": "Step through the shadows from enemy to enemy within 10 yards, attacking an enemy every .5 secs with both weapons until 5 assaults are made, and increasing all damage done by 20% for the duration.  Can hit the same target multiple times.  Cannot hit invisible or stealthed targets.",
+       "raw": "Step through the shadows from enemy to enemy within 10 yards, attacking an enemy every .5 secs with both weapons until 5 assaults are made, and increasing all damage done by $61851s3% for the duration.  Can hit the same target multiple times.  Cannot hit invisible or stealthed targets."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellToolTip0"
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 183,
+   "name": "Subtlety",
+   "page": 2,
+   "talents": [
+    {
+     "i": 0,
+     "id": 2244,
+     "fieldName": "relentlessStrikes",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14179,
+      58422,
+      58423,
+      58424,
+      58425
+     ],
+     "maxPoints": 5,
+     "name": "Relentless Strikes",
+     "icon": "ability_warrior_decisivestrike",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14179,
+       "desc": "Your finishing moves have a $b1% chance per combo point to restore 25 energy.",
+       "raw": "Your finishing moves have a $b1% chance per combo point to restore $14181s1 energy."
+      },
+      {
+       "r": 2,
+       "spell": 58422,
+       "desc": "Your finishing moves have a $b1% chance per combo point to restore 25 energy.",
+       "raw": "Your finishing moves have a $b1% chance per combo point to restore $14181s1 energy."
+      },
+      {
+       "r": 3,
+       "spell": 58423,
+       "desc": "Your finishing moves have a $b1% chance per combo point to restore 25 energy.",
+       "raw": "Your finishing moves have a $b1% chance per combo point to restore $14181s1 energy."
+      },
+      {
+       "r": 4,
+       "spell": 58424,
+       "desc": "Your finishing moves have a $b1% chance per combo point to restore 25 energy.",
+       "raw": "Your finishing moves have a $b1% chance per combo point to restore $14181s1 energy."
+      },
+      {
+       "r": 5,
+       "spell": 58425,
+       "desc": "Your finishing moves have a $b1% chance per combo point to restore 25 energy.",
+       "raw": "Your finishing moves have a $b1% chance per combo point to restore $14181s1 energy."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 241,
+     "fieldName": "masterOfDeception",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13958,
+      13970,
+      13971
+     ],
+     "maxPoints": 3,
+     "name": "Master of Deception",
+     "icon": "spell_shadow_charm",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13958,
+       "desc": "Reduces the chance enemies have to detect you while in Stealth mode, and your Agility is 33% more effective at increasing your chance to dodge.",
+       "raw": "Reduces the chance enemies have to detect you while in Stealth mode, and your Agility is $s2% more effective at increasing your chance to dodge."
+      },
+      {
+       "r": 2,
+       "spell": 13970,
+       "desc": "Reduces the chance enemies have to detect you while in Stealth mode, and your Agility is 66% more effective at increasing your chance to dodge.",
+       "raw": "Reduces the chance enemies have to detect you while in Stealth mode, and your Agility is $s2% more effective at increasing your chance to dodge."
+      },
+      {
+       "r": 3,
+       "spell": 13971,
+       "desc": "Reduces the chance enemies have to detect you while in Stealth mode, and your Agility is 100% more effective at increasing your chance to dodge.",
+       "raw": "Reduces the chance enemies have to detect you while in Stealth mode, and your Agility is $s2% more effective at increasing your chance to dodge."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 2,
+     "id": 261,
+     "fieldName": "opportunity",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14057,
+      14072
+     ],
+     "maxPoints": 2,
+     "name": "Opportunity",
+     "icon": "ability_warrior_warcry",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14057,
+       "desc": "Increases the damage dealt with your Backstab, Mutilate, Garrote and Ambush abilities by 10%.",
+       "raw": "Increases the damage dealt with your Backstab, Mutilate, Garrote and Ambush abilities by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14072,
+       "desc": "Increases the damage dealt with your Backstab, Mutilate, Garrote and Ambush abilities by 20%.",
+       "raw": "Increases the damage dealt with your Backstab, Mutilate, Garrote and Ambush abilities by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1700,
+     "fieldName": "sleightOfHand",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      30892,
+      30893
+     ],
+     "maxPoints": 2,
+     "name": "Sleight of Hand",
+     "icon": "ability_rogue_feint",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30892,
+       "desc": "Reduces your chance to be hit by melee and ranged attacks by 3% and increases the parry chance of your Feint ability by 20%.",
+       "raw": "Reduces your chance to be hit by melee and ranged attacks by $s2% and increases the parry chance of your Feint ability by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 30893,
+       "desc": "Reduces your chance to be hit by melee and ranged attacks by 6% and increases the parry chance of your Feint ability by 40%.",
+       "raw": "Reduces your chance to be hit by melee and ranged attacks by $s2% and increases the parry chance of your Feint ability by $s1%."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 4,
+     "id": 262,
+     "fieldName": "dirtyTricks",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14076
+     ],
+     "maxPoints": 1,
+     "name": "Dirty Tricks",
+     "icon": "ability_sap",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14076,
+       "desc": "Your Ambush and Backstab no longer require you to be behind the target."
+      }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "SpellRank_2",
+      "SpellRank0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ]
+    },
+    {
+     "i": 5,
+     "id": 244,
+     "fieldName": "camouflage",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      13975,
+      14062,
+      14063
+     ],
+     "maxPoints": 3,
+     "name": "Camouflage",
+     "icon": "ability_stealth",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13975,
+       "desc": "Increases your speed while stealthed by 5% and reduces the cooldown of your Stealth ability by 2 sec and of your Shadowstep and Shadow Dance abilities by 4 sec.",
+       "raw": "Increases your speed while stealthed by $s1% and reduces the cooldown of your Stealth ability by $/1000;s2 sec and of your Shadowstep and Shadow Dance abilities by $/1000;s3 sec."
+      },
+      {
+       "r": 2,
+       "spell": 14062,
+       "desc": "Increases your speed while stealthed by 10% and reduces the cooldown of your Stealth ability by 4 sec and of your Shadowstep and Shadow Dance abilities by 7 sec.",
+       "raw": "Increases your speed while stealthed by $s1% and reduces the cooldown of your Stealth ability by $/1000;s2 sec and of your Shadowstep and Shadow Dance abilities by $/1000;s3 sec."
+      },
+      {
+       "r": 3,
+       "spell": 14063,
+       "desc": "Increases your speed while stealthed by 15% and reduces the cooldown of your Stealth ability by 6 sec and of your Shadowstep and Shadow Dance abilities by 10 sec.",
+       "raw": "Increases your speed while stealthed by $s1% and reduces the cooldown of your Stealth ability by $/1000;s2 sec and of your Shadowstep and Shadow Dance abilities by $/1000;s3 sec."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 6,
+     "id": 247,
+     "fieldName": "elusiveness",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      13981,
+      14066
+     ],
+     "maxPoints": 2,
+     "name": "Elusiveness",
+     "icon": "spell_magic_lesserinvisibilty",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13981,
+       "desc": "Reduces the cooldown of your Vanish and Blind abilities by 30 sec, your Cloak of Shadows and Evasion abilities by 15 sec, and your Shadow Dance ability by 5 sec.",
+       "raw": "Reduces the cooldown of your Vanish and Blind abilities by $/1000;S1 sec, your Cloak of Shadows and Evasion abilities by $/1000;S2 sec, and your Shadow Dance ability by $/1000;S3 sec."
+      },
+      {
+       "r": 2,
+       "spell": 14066,
+       "desc": "Reduces the cooldown of your Vanish and Blind abilities by 60 sec, your Cloak of Shadows and Evasion abilities by 30 sec, and your Shadow Dance ability by 10 sec.",
+       "raw": "Reduces the cooldown of your Vanish and Blind abilities by $/1000;S1 sec, your Cloak of Shadows and Evasion abilities by $/1000;S2 sec, and your Shadow Dance ability by $/1000;S3 sec."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 7,
+     "id": 303,
+     "fieldName": "ghostlyStrike",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14278
+     ],
+     "maxPoints": 1,
+     "name": "Ghostly Strike",
+     "icon": "spell_shadow_curse",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14278,
+       "desc": "A strike that deals 125% weapon damage, or 50% more if a dagger is equipped, and increases your chance to dodge by 15% for 20 sec.  Awards 1 combo point.",
+       "raw": "A strike that deals $s1% weapon damage, or 50% more if a dagger is equipped, and increases your chance to dodge by $s2% for $d.  Awards 1 combo point."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "DurationIndex"
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1123,
+     "fieldName": "serratedBlades",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14171,
+      14172,
+      14173
+     ],
+     "maxPoints": 3,
+     "name": "Serrated Blades",
+     "icon": "inv_sword_17",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14171,
+       "desc": "Causes your attacks to ignore up to 3% of your target's Armor and increases the damage dealt by your Rupture ability by 10%.",
+       "raw": "Causes your attacks to ignore up to $s2% of your target's Armor and increases the damage dealt by your Rupture ability by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14172,
+       "desc": "Causes your attacks to ignore up to 6% of your target's Armor and increases the damage dealt by your Rupture ability by 20%.",
+       "raw": "Causes your attacks to ignore up to $s2% of your target's Armor and increases the damage dealt by your Rupture ability by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 14173,
+       "desc": "Causes your attacks to ignore up to 9% of your target's Armor and increases the damage dealt by your Rupture ability by 30%.",
+       "raw": "Causes your attacks to ignore up to $s2% of your target's Armor and increases the damage dealt by your Rupture ability by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 246,
+     "fieldName": "setup",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      13983,
+      14070,
+      14071
+     ],
+     "maxPoints": 3,
+     "name": "Setup",
+     "icon": "spell_nature_mirrorimage",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13983,
+       "desc": "Gives you a 33% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.  This cannot happen more than once per second.",
+       "raw": "Gives you a $h1% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.  This cannot happen more than once per second."
+      },
+      {
+       "r": 2,
+       "spell": 14070,
+       "desc": "Gives you a 66% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.  This cannot happen more than once per second.",
+       "raw": "Gives you a $h1% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.  This cannot happen more than once per second."
+      },
+      {
+       "r": 3,
+       "spell": 14071,
+       "desc": "Gives you a 100% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.  This cannot happen more than once per second.",
+       "raw": "Gives you a $h1% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.  This cannot happen more than once per second."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 245,
+     "fieldName": "initiative",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      13976,
+      13979,
+      13980
+     ],
+     "maxPoints": 3,
+     "name": "Initiative",
+     "icon": "spell_shadow_fumble",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 13976,
+       "desc": "Gives you a 33% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability.",
+       "raw": "Gives you a $s1% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability."
+      },
+      {
+       "r": 2,
+       "spell": 13979,
+       "desc": "Gives you a 66% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability.",
+       "raw": "Gives you a $s1% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability."
+      },
+      {
+       "r": 3,
+       "spell": 13980,
+       "desc": "Gives you a 100% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability.",
+       "raw": "Gives you a $s1% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 263,
+     "fieldName": "improvedAmbush",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14079,
+      14080
+     ],
+     "maxPoints": 2,
+     "name": "Improved Ambush",
+     "icon": "ability_rogue_ambush",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14079,
+       "desc": "Increases the critical strike chance of your Ambush ability by 25%.",
+       "raw": "Increases the critical strike chance of your Ambush ability by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14080,
+       "desc": "Increases the critical strike chance of your Ambush ability by 50%.",
+       "raw": "Increases the critical strike chance of your Ambush ability by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1701,
+     "fieldName": "heightenedSenses",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      30894,
+      30895
+     ],
+     "maxPoints": 2,
+     "name": "Heightened Senses",
+     "icon": "ability_ambush",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30894,
+       "desc": "When you dodge an attack, you restore 2% of your maximum health.",
+       "raw": "When you dodge an attack, you restore $s1% of your maximum health."
+      },
+      {
+       "r": 2,
+       "spell": 30895,
+       "desc": "When you dodge an attack, you restore 4% of your maximum health.",
+       "raw": "When you dodge an attack, you restore $s1% of your maximum health."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides2",
+      "EffectDieSides3",
+      "Effect2",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 13,
+     "id": 284,
+     "fieldName": "bladework",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14185
+     ],
+     "maxPoints": 1,
+     "name": "Bladework",
+     "icon": "spell_shadow_antishadow",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14185,
+       "desc": "Mark all enemies within 10 yards for rapid counterattack.  Their next attacks on you, one per combo point spent, are immediately countered for 125% weapon damage, or 180% if a dagger is equipped.  Attacks you dodge or parry are countered as well.  Lasts 30 sec.",
+       "raw": "Mark all enemies within 10 yards for rapid counterattack.  Their next attacks on you, one per combo point spent, are immediately countered for $200505s1% weapon damage, or 180% if a dagger is equipped.  Attacks you dodge or parry are countered as well.  Lasts $200504d."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0"
+     ],
+     "baseName": "Preparation"
+    },
+    {
+     "i": 14,
+     "id": 265,
+     "fieldName": "dirtyDeeds",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14082,
+      14083
+     ],
+     "maxPoints": 2,
+     "name": "Dirty Deeds",
+     "icon": "spell_shadow_summonsuccubus",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14082,
+       "desc": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 10.  Additionally, your special abilities cause 10% more damage against targets below 35% health.",
+       "raw": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by $s1.  Additionally, your special abilities cause 10% more damage against targets below 35% health."
+      },
+      {
+       "r": 2,
+       "spell": 14083,
+       "desc": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 20.  Additionally, your special abilities cause 20% more damage against targets below 35% health.",
+       "raw": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by $s1.  Additionally, your special abilities cause 20% more damage against targets below 35% health."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 681,
+     "fieldName": "hemorrhage",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 3
+     },
+     "spellIds": [
+      16511
+     ],
+     "maxPoints": 1,
+     "name": "Hemorrhage",
+     "icon": "spell_shadow_lifedrain",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 16511,
+       "desc": "An instant strike that deals 110% weapon damage (160% if a dagger is equipped) and causes the target to hemorrhage, increasing all Physical damage dealt to the target for 15 sec.  The amount increases with your attack power.  Awards 1 combo point.",
+       "raw": "An instant strike that deals $s2% weapon damage (${$m2*1.45}% if a dagger is equipped) and causes the target to hemorrhage, increasing all Physical damage dealt to the target for $d.  The amount increases with your attack power.  Awards 1 combo point."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "prereqRank": 3,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 16,
+     "id": 1713,
+     "fieldName": "masterOfSubtlety",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      31221,
+      31222,
+      31223
+     ],
+     "maxPoints": 3,
+     "name": "Master of Subtlety",
+     "icon": "ability_rogue_masterofsubtlety",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31221,
+       "desc": "Attacks made while stealthed and for 6 seconds after breaking stealth cause an additional 4% damage.",
+       "raw": "Attacks made while stealthed and for 6 seconds after breaking stealth cause an additional $s1% damage."
+      },
+      {
+       "r": 2,
+       "spell": 31222,
+       "desc": "Attacks made while stealthed and for 6 seconds after breaking stealth cause an additional 7% damage.",
+       "raw": "Attacks made while stealthed and for 6 seconds after breaking stealth cause an additional $s1% damage."
+      },
+      {
+       "r": 3,
+       "spell": 31223,
+       "desc": "Attacks made while stealthed and for 6 seconds after breaking stealth cause an additional 10% damage.",
+       "raw": "Attacks made while stealthed and for 6 seconds after breaking stealth cause an additional $s1% damage."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1702,
+     "fieldName": "deadliness",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      30902,
+      30903,
+      30904,
+      30905,
+      30906
+     ],
+     "maxPoints": 5,
+     "name": "Deadliness",
+     "icon": "inv_weapon_crossbow_11",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30902,
+       "desc": "Increases your attack power by 2%.",
+       "raw": "Increases your attack power by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 30903,
+       "desc": "Increases your attack power by 4%.",
+       "raw": "Increases your attack power by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 30904,
+       "desc": "Increases your attack power by 6%.",
+       "raw": "Increases your attack power by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 30905,
+       "desc": "Increases your attack power by 8%.",
+       "raw": "Increases your attack power by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 30906,
+       "desc": "Increases your attack power by 10%.",
+       "raw": "Increases your attack power by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1711,
+     "fieldName": "envelopingShadows",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      31211,
+      31212,
+      31213
+     ],
+     "maxPoints": 3,
+     "name": "Enveloping Shadows",
+     "icon": "ability_rogue_envelopingshadows",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31211,
+       "desc": "Your finishing moves have a 6% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies.",
+       "raw": "Your finishing moves have a $s1% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies."
+      },
+      {
+       "r": 2,
+       "spell": 31212,
+       "desc": "Your finishing moves have a 12% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies.",
+       "raw": "Your finishing moves have a $s1% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies."
+      },
+      {
+       "r": 3,
+       "spell": 31213,
+       "desc": "Your finishing moves have a 20% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies.",
+       "raw": "Your finishing moves have a $s1% chance per combo point spent to also cast Slice and Dice on yourself and Expose Armor on nearby enemies."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ]
+    },
+    {
+     "i": 19,
+     "id": 381,
+     "fieldName": "premeditation",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14183
+     ],
+     "maxPoints": 1,
+     "name": "Premeditation",
+     "icon": "spell_shadow_possession",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14183,
+       "desc": "When used, adds 2 combo points to your target.  You must add to or use those combo points within 20 sec or the combo points are lost.",
+       "raw": "When used, adds $s1 combo points to your target.  You must add to or use those combo points within $d or the combo points are lost."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 20,
+     "id": 1722,
+     "fieldName": "cheatDeath",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31228,
+      31229,
+      31230
+     ],
+     "maxPoints": 3,
+     "name": "Cheat Death",
+     "icon": "ability_rogue_cheatdeath",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31228,
+       "desc": "You have a 33% chance that an attack which would otherwise kill you will instead reduce you to 10% of your maximum health. In addition, all damage taken will be reduced by up to 90% for 3 sec (modified by resilience).  This effect cannot occur more than once per minute.",
+       "raw": "You have a $s1% chance that an attack which would otherwise kill you will instead reduce you to 10% of your maximum health. In addition, all damage taken will be reduced by up to 90% for $45182d (modified by resilience).  This effect cannot occur more than once per minute."
+      },
+      {
+       "r": 2,
+       "spell": 31229,
+       "desc": "You have a 66% chance that an attack which would otherwise kill you will instead reduce you to 10% of your maximum health. In addition, all damage taken will be reduced by up to 90% for 3 sec (modified by resilience).  This effect cannot occur more than once per minute.",
+       "raw": "You have a $s1% chance that an attack which would otherwise kill you will instead reduce you to 10% of your maximum health. In addition, all damage taken will be reduced by up to 90% for $45182d (modified by resilience).  This effect cannot occur more than once per minute."
+      },
+      {
+       "r": 3,
+       "spell": 31230,
+       "desc": "You have a 100% chance that an attack which would otherwise kill you will instead reduce you to 10% of your maximum health. In addition, all damage taken will be reduced by up to 90% for 3 sec (modified by resilience).  This effect cannot occur more than once per minute.",
+       "raw": "You have a $s1% chance that an attack which would otherwise kill you will instead reduce you to 10% of your maximum health. In addition, all damage taken will be reduced by up to 90% for $45182d (modified by resilience).  This effect cannot occur more than once per minute."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 1712,
+     "fieldName": "sinisterCalling",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      31216,
+      31217,
+      31218,
+      31219,
+      31220
+     ],
+     "maxPoints": 5,
+     "name": "Sinister Calling",
+     "icon": "ability_rogue_sinistercalling",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31216,
+       "desc": "Increases your total Agility by 3% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 2%.",
+       "raw": "Increases your total Agility by $s1% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 31217,
+       "desc": "Increases your total Agility by 6% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 4%.",
+       "raw": "Increases your total Agility by $s1% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 31218,
+       "desc": "Increases your total Agility by 9% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 6%.",
+       "raw": "Increases your total Agility by $s1% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 31219,
+       "desc": "Increases your total Agility by 12% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 8%.",
+       "raw": "Increases your total Agility by $s1% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 31220,
+       "desc": "Increases your total Agility by 15% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 10%.",
+       "raw": "Increases your total Agility by $s1% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional $s2%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 22,
+     "id": 2077,
+     "fieldName": "waylay",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      51692,
+      51696
+     ],
+     "maxPoints": 2,
+     "name": "Waylay",
+     "icon": "ability_rogue_waylay",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51692,
+       "desc": "Your Ambush and Backstab hits unbalance your target, reducing their chance to hit you by 2% and increasing your chance to critically strike against them by 2% for 8 sec.",
+       "raw": "Your Ambush and Backstab hits unbalance your target, reducing their chance to hit you by $200502s1% and increasing your chance to critically strike against them by $200502s2% for $200502d."
+      },
+      {
+       "r": 2,
+       "spell": 51696,
+       "desc": "Your Ambush and Backstab hits unbalance your target, reducing their chance to hit you by 4% and increasing your chance to critically strike against them by 4% for 8 sec.",
+       "raw": "Your Ambush and Backstab hits unbalance your target, reducing their chance to hit you by $200503s1% and increasing your chance to critically strike against them by $200503s2% for $200503d."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance"
+     ]
+    },
+    {
+     "i": 23,
+     "id": 2078,
+     "fieldName": "honorAmongThieves",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      51698,
+      51700,
+      51701
+     ],
+     "maxPoints": 3,
+     "name": "Honor Among Thieves",
+     "icon": "ability_rogue_honoramongstthieves",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51698,
+       "desc": "When anyone in your group critically hits with a damage or healing spell or ability, you have a 33% chance to gain a combo point on your current target.  This effect cannot occur more than once every second.",
+       "raw": "When anyone in your group critically hits with a damage or healing spell or ability, you have a $s1% chance to gain a combo point on your current target.  This effect cannot occur more than once every second."
+      },
+      {
+       "r": 2,
+       "spell": 51700,
+       "desc": "When anyone in your group critically hits with a damage or healing spell or ability, you have a 66% chance to gain a combo point on your current target.  This effect cannot occur more than once every second.",
+       "raw": "When anyone in your group critically hits with a damage or healing spell or ability, you have a $s1% chance to gain a combo point on your current target.  This effect cannot occur more than once every second."
+      },
+      {
+       "r": 3,
+       "spell": 51701,
+       "desc": "When anyone in your group critically hits with a damage or healing spell or ability, you have a 100% chance to gain a combo point on your current target.  This effect cannot occur more than once every second.",
+       "raw": "When anyone in your group critically hits with a damage or healing spell or ability, you have a $s1% chance to gain a combo point on your current target.  This effect cannot occur more than once every second."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1714,
+     "fieldName": "shadowstep",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      36554
+     ],
+     "maxPoints": 1,
+     "name": "Shadowstep",
+     "icon": "ability_rogue_shadowstep",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 36554,
+       "desc": "Attempts to step through the shadows and reappear behind your enemy and increases movement speed by 70% for 3 sec.  The damage of your next ability is increased by 20% and your chance to be hit by melee and ranged attacks is reduced by 10% for 15 sec.",
+       "raw": "Attempts to step through the shadows and reappear behind your enemy and increases movement speed by $36554s3% for $36554d.  The damage of your next ability is increased by $36563s2% and your chance to be hit by melee and ranged attacks is reduced by $44373s1% for $44373d."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 25,
+     "id": 2079,
+     "fieldName": "filthyTricks",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      58414,
+      58415
+     ],
+     "maxPoints": 2,
+     "name": "Filthy Tricks",
+     "icon": "ability_rogue_wrongfullyaccused",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 58414,
+       "desc": "Reduces the cooldown by 5 sec and energy cost by 5 of your Tricks of the Trade, Distract and Shadowstep abilities and reduces the cooldown of your Evasion and Feint abilities by 30 sec.",
+       "raw": "Reduces the cooldown by $/1000;s1 sec and energy cost by $s3 of your Tricks of the Trade, Distract and Shadowstep abilities and reduces the cooldown of your Evasion and Feint abilities by $/1000;S2 sec."
+      },
+      {
+       "r": 2,
+       "spell": 58415,
+       "desc": "Reduces the cooldown by 10 sec and energy cost by 10 of your Tricks of the Trade, Distract and Shadowstep abilities and reduces the cooldown of your Evasion and Feint abilities by 60 sec.",
+       "raw": "Reduces the cooldown by $/1000;s1 sec and energy cost by $s3 of your Tricks of the Trade, Distract and Shadowstep abilities and reduces the cooldown of your Evasion and Feint abilities by $/1000;S2 sec."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2"
+     ]
+    },
+    {
+     "i": 26,
+     "id": 2080,
+     "fieldName": "slaughterFromTheShadows",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51708,
+      51709,
+      51710,
+      51711,
+      51712
+     ],
+     "maxPoints": 5,
+     "name": "Slaughter from the Shadows",
+     "icon": "ability_rogue_slaughterfromtheshadows",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51708,
+       "desc": "Reduces the energy cost of your Backstab and Ambush abilities by 4 and the energy cost of your Hemorrhage by 1, and increases all damage done by 1%.",
+       "raw": "Reduces the energy cost of your Backstab and Ambush abilities by $s1 and the energy cost of your Hemorrhage by $s2, and increases all damage done by $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 51709,
+       "desc": "Reduces the energy cost of your Backstab and Ambush abilities by 8 and the energy cost of your Hemorrhage by 2, and increases all damage done by 2%.",
+       "raw": "Reduces the energy cost of your Backstab and Ambush abilities by $s1 and the energy cost of your Hemorrhage by $s2, and increases all damage done by $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 51710,
+       "desc": "Reduces the energy cost of your Backstab and Ambush abilities by 12 and the energy cost of your Hemorrhage by 3, and increases all damage done by 3%.",
+       "raw": "Reduces the energy cost of your Backstab and Ambush abilities by $s1 and the energy cost of your Hemorrhage by $s2, and increases all damage done by $s3%."
+      },
+      {
+       "r": 4,
+       "spell": 51711,
+       "desc": "Reduces the energy cost of your Backstab and Ambush abilities by 16 and the energy cost of your Hemorrhage by 4, and increases all damage done by 4%.",
+       "raw": "Reduces the energy cost of your Backstab and Ambush abilities by $s1 and the energy cost of your Hemorrhage by $s2, and increases all damage done by $s3%."
+      },
+      {
+       "r": 5,
+       "spell": 51712,
+       "desc": "Reduces the energy cost of your Backstab and Ambush abilities by 20 and the energy cost of your Hemorrhage by 5, and increases all damage done by 5%.",
+       "raw": "Reduces the energy cost of your Backstab and Ambush abilities by $s1 and the energy cost of your Hemorrhage by $s2, and increases all damage done by $s3%."
+      }
+     ]
+    },
+    {
+     "i": 27,
+     "id": 2081,
+     "fieldName": "shadowDance",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      51713
+     ],
+     "maxPoints": 1,
+     "name": "Shadow Dance",
+     "icon": "ability_rogue_shadowdance",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 51713,
+       "desc": "Enter the Shadow Dance for 6 sec, allowing the use of Sap, Garrote, Ambush, Cheap Shot, Premeditation, Pickpocket and Disarm Trap regardless of being stealthed.",
+       "raw": "Enter the Shadow Dance for $d, allowing the use of Sap, Garrote, Ambush, Cheap Shot, Premeditation, Pickpocket and Disarm Trap regardless of being stealthed."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

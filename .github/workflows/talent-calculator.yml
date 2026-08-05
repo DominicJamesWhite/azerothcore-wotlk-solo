@@ -1,0 +1,62 @@
+name: Talent Calculator
+
+# Publishes site/ (the Alonecraft talent calculator) to GitHub Pages.
+#
+# DELIBERATELY NOT guarded by `if: github.repository == 'azerothcore/...'`.
+# Every other workflow here carries that guard so forks do not burn minutes
+# running upstream CI.  This one is the inverse: it only makes sense on this
+# fork, and adding the guard would silently stop all deploys.  Do not "fix"
+# it during an upstream sync, and exclude this file from any PR upstream.
+#
+# The talent JSON under site/data/ is generated locally by
+# tools/export_talents.py and committed, because the post-override DBCs live
+# in the server's build directory and the base DBCs are in a submodule --
+# CI can reach neither.  So there is nothing to build here, only to publish.
+
+on:
+  push:
+    branches: [master]
+    # Scoped, or every core commit merged from upstream/master redeploys.
+    paths:
+      - 'site/**'
+      - '.github/workflows/talent-calculator.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Canonical Pages setting: queue deploys rather than cancelling, since
+# cancelling mid-deploy can leave the Pages environment in a bad state.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          # No submodules: the 49 MB Spell.dbc in world_of_alonecraft is not
+          # needed, because the exported JSON is committed.
+          submodules: false
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

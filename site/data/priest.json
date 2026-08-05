@@ -1,0 +1,3177 @@
+{
+ "schema": 1,
+ "key": "priest",
+ "name": "Priest",
+ "trees": [
+  {
+   "tabId": 201,
+   "name": "Discipline",
+   "page": 0,
+   "talents": [
+    {
+     "i": 0,
+     "id": 342,
+     "fieldName": "unbreakableWill",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14522,
+      14788,
+      14789,
+      14790,
+      14791
+     ],
+     "maxPoints": 5,
+     "name": "Unbreakable Will",
+     "icon": "spell_magic_magearmor",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14522,
+       "desc": "Taking damage reduces the duration of Weakened Soul by 1 sec. This effect can only occur once per second."
+      },
+      {
+       "r": 2,
+       "spell": 14788,
+       "desc": "Taking damage reduces the duration of Weakened Soul by 2 sec. This effect can only occur once per second."
+      },
+      {
+       "r": 3,
+       "spell": 14789,
+       "desc": "Taking damage reduces the duration of Weakened Soul by 3 sec. This effect can only occur once per second."
+      },
+      {
+       "r": 4,
+       "spell": 14790,
+       "desc": "Taking damage reduces the duration of Weakened Soul by 4 sec. This effect can only occur once per second."
+      },
+      {
+       "r": 5,
+       "spell": 14791,
+       "desc": "Taking damage reduces the duration of Weakened Soul by 5 sec. This effect can only occur once per second."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 1,
+     "id": 1898,
+     "fieldName": "twinDisciplines",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47586,
+      47587,
+      47588,
+      52802,
+      52803
+     ],
+     "maxPoints": 5,
+     "name": "Twin Disciplines",
+     "icon": "spell_holy_sealofvengeance",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47586,
+       "desc": "Increases the damage and healing done by your instant spells by 1%.",
+       "raw": "Increases the damage and healing done by your instant spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 47587,
+       "desc": "Increases the damage and healing done by your instant spells by 2%.",
+       "raw": "Increases the damage and healing done by your instant spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 47588,
+       "desc": "Increases the damage and healing done by your instant spells by 3%.",
+       "raw": "Increases the damage and healing done by your instant spells by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 52802,
+       "desc": "Increases the damage and healing done by your instant spells by 4%.",
+       "raw": "Increases the damage and healing done by your instant spells by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 52803,
+       "desc": "Increases the damage and healing done by your instant spells by 5%.",
+       "raw": "Increases the damage and healing done by your instant spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 352,
+     "fieldName": "killingWord",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14523,
+      14784,
+      14785
+     ],
+     "maxPoints": 3,
+     "name": "Killing Word",
+     "icon": "spell_shadow_shadowandflame",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14523,
+       "desc": "Shadow Word: Death does 33% more damage for each of your periodic damage effects on the target."
+      },
+      {
+       "r": 2,
+       "spell": 14784,
+       "desc": "Shadow Word: Death does 66% more damage for each of your periodic damage effects on the target."
+      },
+      {
+       "r": 3,
+       "spell": 14785,
+       "desc": "Shadow Word: Death does 100% more damage for each of your periodic damage effects on the target."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides2",
+      "EffectDieSides3",
+      "Effect2",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ],
+     "baseName": "Silent Resolve"
+    },
+    {
+     "i": 3,
+     "id": 346,
+     "fieldName": "improvedInnerFire",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14747,
+      14770,
+      14771
+     ],
+     "maxPoints": 3,
+     "name": "Improved Inner Fire",
+     "icon": "spell_holy_innerfire",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14747,
+       "desc": "Increases the effect of your Inner Fire spell by 15%, and increases the total number of charges by 4.",
+       "raw": "Increases the effect of your Inner Fire spell by $s1%, and increases the total number of charges by $s3."
+      },
+      {
+       "r": 2,
+       "spell": 14770,
+       "desc": "Increases the effect of your Inner Fire spell by 30%, and increases the total number of charges by 8.",
+       "raw": "Increases the effect of your Inner Fire spell by $s1%, and increases the total number of charges by $s3."
+      },
+      {
+       "r": 3,
+       "spell": 14771,
+       "desc": "Increases the effect of your Inner Fire spell by 45%, and increases the total number of charges by 12.",
+       "raw": "Increases the effect of your Inner Fire spell by $s1%, and increases the total number of charges by $s3."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 344,
+     "fieldName": "improvedPowerWordFortitude",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14749,
+      14767
+     ],
+     "maxPoints": 2,
+     "name": "Improved Power Word: Fortitude",
+     "icon": "spell_holy_wordfortitude",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14749,
+       "desc": "Increases the effect of your Power Word: Fortitude and Prayer of Fortitude spells by 15%, and increases your total Stamina by 2%.",
+       "raw": "Increases the effect of your Power Word: Fortitude and Prayer of Fortitude spells by $s1%, and increases your total Stamina by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 14767,
+       "desc": "Increases the effect of your Power Word: Fortitude and Prayer of Fortitude spells by 30%, and increases your total Stamina by 4%.",
+       "raw": "Increases the effect of your Power Word: Fortitude and Prayer of Fortitude spells by $s1%, and increases your total Stamina by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 321,
+     "fieldName": "martyrdom",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 3
+     },
+     "spellIds": [
+      14531,
+      14774
+     ],
+     "maxPoints": 2,
+     "name": "Martyrdom",
+     "icon": "spell_nature_tranquility",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14531,
+       "desc": "When your Power Word: Shield on yourself ends, your damage taken is reduced by 40% for 5 seconds."
+      },
+      {
+       "r": 2,
+       "spell": 14774,
+       "desc": "When your Power Word: Shield on yourself ends, your damage taken is reduced by 40% for 5 seconds."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectApplyAuraName1"
+     ]
+    },
+    {
+     "i": 6,
+     "id": 347,
+     "fieldName": "meditation",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14521,
+      14776,
+      14777
+     ],
+     "maxPoints": 3,
+     "name": "Meditation",
+     "icon": "spell_nature_sleep",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14521,
+       "desc": "Allows 17% of your mana regeneration to continue while casting.",
+       "raw": "Allows $s1% of your mana regeneration to continue while casting."
+      },
+      {
+       "r": 2,
+       "spell": 14776,
+       "desc": "Allows 33% of your mana regeneration to continue while casting.",
+       "raw": "Allows $s1% of your mana regeneration to continue while casting."
+      },
+      {
+       "r": 3,
+       "spell": 14777,
+       "desc": "Allows 50% of your mana regeneration to continue while casting.",
+       "raw": "Allows $s1% of your mana regeneration to continue while casting."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 348,
+     "fieldName": "innerFocus",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14751
+     ],
+     "maxPoints": 1,
+     "name": "Inner Focus",
+     "icon": "spell_frost_windwalkon",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14751,
+       "desc": "When activated, reduces the mana cost of your next spell by 100% and increases its critical effect chance by 25% if it is capable of a critical effect.",
+       "raw": "When activated, reduces the mana cost of your next spell by $s1% and increases its critical effect chance by $s2% if it is capable of a critical effect."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 343,
+     "fieldName": "soulWarding",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14748,
+      14768,
+      14769
+     ],
+     "maxPoints": 3,
+     "name": "Soul Warding",
+     "icon": "spell_holy_pureofheart",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14748,
+       "desc": "When protected by Power Word: Shield, you take 33% less damage from your own Shadow Word: Death. ",
+       "raw": "When protected by Power Word: Shield, you take $s1% less damage from your own Shadow Word: Death. "
+      },
+      {
+       "r": 2,
+       "spell": 14768,
+       "desc": "When protected by Power Word: Shield, you take 66% less damage from your own Shadow Word: Death. ",
+       "raw": "When protected by Power Word: Shield, you take $s1% less damage from your own Shadow Word: Death. "
+      },
+      {
+       "r": 3,
+       "spell": 14769,
+       "desc": "When protected by Power Word: Shield, you take 100% less damage from your own Shadow Word: Death. ",
+       "raw": "When protected by Power Word: Shield, you take $s1% less damage from your own Shadow Word: Death. "
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ],
+     "baseName": "Improved Power Word: Shield"
+    },
+    {
+     "i": 9,
+     "id": 1769,
+     "fieldName": "absolution",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      33167,
+      33171,
+      33172
+     ],
+     "maxPoints": 3,
+     "name": "Absolution",
+     "icon": "spell_holy_absolution",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33167,
+       "desc": "Casting a Shadow spell has a 33% chance to increase the damage of your next Holy Fire or Smite spell by 20%.",
+       "raw": "Casting a Shadow spell has a 33% chance to increase the damage of your next Holy Fire or Smite spell by $200076s1%."
+      },
+      {
+       "r": 2,
+       "spell": 33171,
+       "desc": "Casting a Shadow spell has a 66% chance to increase the damage of your next Holy Fire or Smite spell by 20%.",
+       "raw": "Casting a Shadow spell has a 66% chance to increase the damage of your next Holy Fire or Smite spell by $200076s1%."
+      },
+      {
+       "r": 3,
+       "spell": 33172,
+       "desc": "Casting a Shadow spell has a 100% chance to increase the damage of your next Holy Fire or Smite spell by 20%.",
+       "raw": "Casting a Shadow spell has a 100% chance to increase the damage of your next Holy Fire or Smite spell by $200076s1%."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "DurationIndex",
+      "EffectBasePoints1",
+      "Effect1",
+      "EffectApplyAuraName1"
+     ]
+    },
+    {
+     "i": 10,
+     "id": 341,
+     "fieldName": "mentalAgility",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14520,
+      14780,
+      14781
+     ],
+     "maxPoints": 3,
+     "name": "Mental Agility",
+     "icon": "ability_hibernation",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14520,
+       "desc": "Reduces the mana cost of your instant cast spells by 4%.",
+       "raw": "Reduces the mana cost of your instant cast spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 14780,
+       "desc": "Reduces the mana cost of your instant cast spells by 7%.",
+       "raw": "Reduces the mana cost of your instant cast spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 14781,
+       "desc": "Reduces the mana cost of your instant cast spells by 10%.",
+       "raw": "Reduces the mana cost of your instant cast spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 350,
+     "fieldName": "gnosticism",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      14750,
+      14772
+     ],
+     "maxPoints": 2,
+     "name": "Gnosticism",
+     "icon": "spell_shadow_manaburn",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14750,
+       "desc": "You are healed for 5% of holy damage dealt. Shadow damage restores mana equal to 5% of damage dealt."
+      },
+      {
+       "r": 2,
+       "spell": 14772,
+       "desc": "You are healed for 10% of holy damage dealt. Shadow damage restores mana equal to 10% of damage dealt."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ],
+     "baseName": "Improved Mana Burn"
+    },
+    {
+     "i": 12,
+     "id": 2268,
+     "fieldName": "reflectiveShield",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      33201,
+      33202
+     ],
+     "maxPoints": 2,
+     "name": "Reflective Shield",
+     "icon": "spell_holy_powerwordshield",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33201,
+       "desc": "Causes 22% of the damage you absorb with Power Word: Shield to reflect back at the attacker.  This damage causes no threat.",
+       "raw": "Causes $s1% of the damage you absorb with Power Word: Shield to reflect back at the attacker.  This damage causes no threat."
+      },
+      {
+       "r": 2,
+       "spell": 33202,
+       "desc": "Causes 45% of the damage you absorb with Power Word: Shield to reflect back at the attacker.  This damage causes no threat.",
+       "raw": "Causes $s1% of the damage you absorb with Power Word: Shield to reflect back at the attacker.  This damage causes no threat."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 1201,
+     "fieldName": "mentalStrength",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      18551,
+      18552,
+      18553,
+      18554,
+      18555
+     ],
+     "maxPoints": 5,
+     "name": "Mental Strength",
+     "icon": "spell_nature_enchantarmor",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18551,
+       "desc": "Increases your total Intellect by 3%.",
+       "raw": "Increases your total Intellect by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 18552,
+       "desc": "Increases your total Intellect by 6%.",
+       "raw": "Increases your total Intellect by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 18553,
+       "desc": "Increases your total Intellect by 9%.",
+       "raw": "Increases your total Intellect by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 18554,
+       "desc": "Increases your total Intellect by 12%.",
+       "raw": "Increases your total Intellect by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 18555,
+       "desc": "Increases your total Intellect by 15%.",
+       "raw": "Increases your total Intellect by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 351,
+     "fieldName": "improvedPowerWordShield",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63574
+     ],
+     "maxPoints": 1,
+     "name": "Improved Power Word: Shield",
+     "icon": "spell_holy_powerwordshield",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63574,
+       "desc": "Reduces the cooldown of your Power Word: Shield ability by 4 sec, reduces the mana cost of your Power Word: Shield by 15%, and increases the damage absorbed by your Power Word: Shield by 15%.",
+       "raw": "Reduces the cooldown of your Power Word: Shield ability by $/1000;s1 sec, reduces the mana cost of your Power Word: Shield by $s2%, and increases the damage absorbed by your Power Word: Shield by $s3%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "prereqRank": 3,
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellRank0",
+      "SpellDescription0",
+      "SpellIconID",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
+     ],
+     "baseName": "Soul Warding"
+    },
+    {
+     "i": 15,
+     "id": 1771,
+     "fieldName": "focusedPower",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      33186,
+      33190
+     ],
+     "maxPoints": 2,
+     "name": "Focused Power",
+     "icon": "spell_shadow_focusedpower",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33186,
+       "desc": "Casting Mind Sear on an enemy with Shadow Word: Pain applies it to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies it to all nearby enemies."
+      },
+      {
+       "r": 2,
+       "spell": 33190,
+       "desc": "Casting Mind Sear on an enemy with Shadow Word: Pain applies it to all nearby enemies. Casting Holy Nova on an enemy with Mark of Penitence applies it to all nearby enemies."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides2",
+      "EffectDieSides3",
+      "Effect2",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 16,
+     "id": 1772,
+     "fieldName": "enlightenment",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      34908,
+      34909,
+      34910
+     ],
+     "maxPoints": 3,
+     "name": "Enlightenment",
+     "icon": "spell_arcane_mindmastery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34908,
+       "desc": "Increases your total Spirit by 2% and increases your spell haste by 2%.",
+       "raw": "Increases your total Spirit by $s1% and increases your spell haste by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 34909,
+       "desc": "Increases your total Spirit by 4% and increases your spell haste by 4%.",
+       "raw": "Increases your total Spirit by $s1% and increases your spell haste by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 34910,
+       "desc": "Increases your total Spirit by 6% and increases your spell haste by 6%.",
+       "raw": "Increases your total Spirit by $s1% and increases your spell haste by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 3003,
+     "fieldName": "syncretism",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 3
+     },
+     "spellIds": [
+      200094
+     ],
+     "maxPoints": 1,
+     "name": "Syncretism",
+     "icon": "spell_fire_elementaldevastation",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 200094,
+       "desc": "After dealing Shadow damage, your next Holy spell deals bonus Shadow damage equal to 50% of your spell power. After dealing Holy damage, your next Shadow spell deals bonus Holy damage equal to 50% of your spell power."
+      }
+     ],
+     "modified": true,
+     "modKind": "new",
+     "modDetail": [
+      "talent"
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1858,
+     "fieldName": "focusedWill",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      200083,
+      200088,
+      200091
+     ],
+     "maxPoints": 3,
+     "name": "Focused Will",
+     "icon": "spell_arcane_focusedpower",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 200083,
+       "desc": "Increases your spell critical effect chance by 2%. Your Smite has a 33% chance to refresh the duration of Mark of Penitence, and your Mind Blast has a 33% chance to refresh the duration of your Devouring Plague. ",
+       "raw": "Increases your spell critical effect chance by $s1%. Your Smite has a 33% chance to refresh the duration of Mark of Penitence, and your Mind Blast has a 33% chance to refresh the duration of your Devouring Plague. "
+      },
+      {
+       "r": 2,
+       "spell": 200088,
+       "desc": "Increases your spell critical effect chance by 2%. Your Smite has a 66% chance to refresh the duration of Mark of Penitence, and your Mind Blast has a 33% chance to refresh the duration of your Devouring Plague. ",
+       "raw": "Increases your spell critical effect chance by $s1%. Your Smite has a 66% chance to refresh the duration of Mark of Penitence, and your Mind Blast has a 33% chance to refresh the duration of your Devouring Plague. "
+      },
+      {
+       "r": 3,
+       "spell": 200091,
+       "desc": "Increases your spell critical effect chance by 2%. Your Smite has a 100% chance to refresh the duration of Mark of Penitence, and your Mind Blast has a 33% chance to refresh the duration of your Devouring Plague. ",
+       "raw": "Increases your spell critical effect chance by $s1%. Your Smite has a 100% chance to refresh the duration of Mark of Penitence, and your Mind Blast has a 33% chance to refresh the duration of your Devouring Plague. "
+      }
+     ],
+     "modified": true,
+     "modKind": "new",
+     "modDetail": [
+      "SpellRank_1",
+      "SpellRank_2",
+      "SpellRank_3"
+     ]
+    },
+    {
+     "i": 19,
+     "id": 322,
+     "fieldName": "powerInfusion",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      10060
+     ],
+     "maxPoints": 1,
+     "name": "Power Infusion",
+     "icon": "spell_holy_powerinfusion",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 10060,
+       "desc": "Infuses the target with power, increasing spell casting speed by 20% and reducing the mana cost of all spells by 20%.  Lasts 15 sec.",
+       "raw": "Infuses the target with power, increasing spell casting speed by $s1% and reducing the mana cost of all spells by $s2%.  Lasts $d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 20,
+     "id": 1773,
+     "fieldName": "improvedFlashHeal",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63504,
+      63505,
+      63506
+     ],
+     "maxPoints": 3,
+     "name": "Improved Flash Heal",
+     "icon": "spell_holy_chastise",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63504,
+       "desc": "Reduces the mana cost of your Flash Heal by 5%, and increases the critical effect chance of your Flash Heal by 4% on friendly targets at or below 50% health.",
+       "raw": "Reduces the mana cost of your Flash Heal by $s2%, and increases the critical effect chance of your Flash Heal by $s1% on friendly targets at or below 50% health."
+      },
+      {
+       "r": 2,
+       "spell": 63505,
+       "desc": "Reduces the mana cost of your Flash Heal by 10%, and increases the critical effect chance of your Flash Heal by 7% on friendly targets at or below 50% health.",
+       "raw": "Reduces the mana cost of your Flash Heal by $s2%, and increases the critical effect chance of your Flash Heal by $s1% on friendly targets at or below 50% health."
+      },
+      {
+       "r": 3,
+       "spell": 63506,
+       "desc": "Reduces the mana cost of your Flash Heal by 15%, and increases the critical effect chance of your Flash Heal by 10% on friendly targets at or below 50% health.",
+       "raw": "Reduces the mana cost of your Flash Heal by $s2%, and increases the critical effect chance of your Flash Heal by $s1% on friendly targets at or below 50% health."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 2235,
+     "fieldName": "renewedHope",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      57470,
+      57472
+     ],
+     "maxPoints": 2,
+     "name": "Renewed Hope",
+     "icon": "spell_holy_holyprotection",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 57470,
+       "desc": "Increases the critical effect chance of your Flash Heal, Greater Heal and Penance (Heal) spells by 2% on targets afflicted by the Weakened Soul effect, and you have a 50% chance to reduce all damage taken by 3% for 1 min to all friendly party and raid targets when you cast Power Word: Shield. This effect has a 15 sec cooldown.",
+       "raw": "Increases the critical effect chance of your Flash Heal, Greater Heal and Penance (Heal) spells by $s1% on targets afflicted by the Weakened Soul effect, and you have a $h% chance to reduce all damage taken by $63944s1% for $63944d to all friendly party and raid targets when you cast Power Word: Shield. This effect has a $57470s3 sec cooldown."
+      },
+      {
+       "r": 2,
+       "spell": 57472,
+       "desc": "Increases the critical effect chance of your Flash Heal, Greater Heal and Penance (Heal) spells by 4% on targets afflicted by the Weakened Soul effect, and you have a 100% chance to reduce all damage taken by 3% for 1 min to all friendly party and raid targets when you cast Power Word: Shield. This effect has a 15 sec cooldown.",
+       "raw": "Increases the critical effect chance of your Flash Heal, Greater Heal and Penance (Heal) spells by $s1% on targets afflicted by the Weakened Soul effect, and you have a $h% chance to reduce all damage taken by $63944s1% for $63944d to all friendly party and raid targets when you cast Power Word: Shield. This effect has a $57470s3 sec cooldown."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1896,
+     "fieldName": "rapture",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47535,
+      47536,
+      47537
+     ],
+     "maxPoints": 3,
+     "name": "Rapture",
+     "icon": "spell_holy_rapture",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47535,
+       "desc": "When your Power Word: Shield is completely absorbed or dispelled you are instantly energized with 1.5% of your total mana, and you have a 33% chance to energize your shielded target with 2% total mana, 8 rage, 16 energy or 32 runic power. This effect can only occur once every 12 sec.",
+       "raw": "When your Power Word: Shield is completely absorbed or dispelled you are instantly energized with 1.5% of your total mana, and you have a $s2% chance to energize your shielded target with $s1% total mana, $/10;63653s1 rage, $63655s1 energy or $/10;63652s1 runic power. This effect can only occur once every $63853d."
+      },
+      {
+       "r": 2,
+       "spell": 47536,
+       "desc": "When your Power Word: Shield is completely absorbed or dispelled you are instantly energized with 2% of your total mana, and you have a 66% chance to energize your shielded target with 2% total mana, 8 rage, 16 energy or 32 runic power. This effect can only occur once every 12 sec.",
+       "raw": "When your Power Word: Shield is completely absorbed or dispelled you are instantly energized with 2% of your total mana, and you have a $s2% chance to energize your shielded target with $s1% total mana, $/10;63653s1 rage, $63655s1 energy or $/10;63652s1 runic power. This effect can only occur once every $63853d."
+      },
+      {
+       "r": 3,
+       "spell": 47537,
+       "desc": "When your Power Word: Shield is completely absorbed or dispelled you are instantly energized with 2.5% of your total mana, and you have a 100% chance to energize your shielded target with 2% total mana, 8 rage, 16 energy or 32 runic power. This effect can only occur once every 12 sec.",
+       "raw": "When your Power Word: Shield is completely absorbed or dispelled you are instantly energized with 2.5% of your total mana, and you have a $s2% chance to energize your shielded target with $s1% total mana, $/10;63653s1 rage, $63655s1 energy or $/10;63652s1 runic power. This effect can only occur once every $63853d."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 1894,
+     "fieldName": "aspiration",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47507,
+      47508
+     ],
+     "maxPoints": 2,
+     "name": "Aspiration",
+     "icon": "spell_holy_aspiration",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47507,
+       "desc": "Reduces the cooldown of your Inner Focus, Power Infusion, Pain Suppression and Penance spells by 10%.",
+       "raw": "Reduces the cooldown of your Inner Focus, Power Infusion, Pain Suppression and Penance spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 47508,
+       "desc": "Reduces the cooldown of your Inner Focus, Power Infusion, Pain Suppression and Penance spells by 20%.",
+       "raw": "Reduces the cooldown of your Inner Focus, Power Infusion, Pain Suppression and Penance spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1895,
+     "fieldName": "divineAegis",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      47509,
+      47511,
+      47515
+     ],
+     "maxPoints": 3,
+     "name": "Divine Aegis",
+     "icon": "spell_holy_devineaegis",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47509,
+       "desc": "Critical heals create a protective shield on the target, absorbing 10% of the amount healed. When your damaging Holy spells critically hit an enemy, you gain a shield equal to 10% of the damage done. Lasts 12 sec.",
+       "raw": "Critical heals create a protective shield on the target, absorbing $s1% of the amount healed. When your damaging Holy spells critically hit an enemy, you gain a shield equal to $s1% of the damage done. Lasts $47753d."
+      },
+      {
+       "r": 2,
+       "spell": 47511,
+       "desc": "Critical heals create a protective shield on the target, absorbing 20% of the amount healed. When your damaging Holy spells critically hit an enemy, you gain a shield equal to 20% of the damage done. Lasts 12 sec.",
+       "raw": "Critical heals create a protective shield on the target, absorbing $s1% of the amount healed. When your damaging Holy spells critically hit an enemy, you gain a shield equal to $s1% of the damage done. Lasts $47753d."
+      },
+      {
+       "r": 3,
+       "spell": 47515,
+       "desc": "Critical heals create a protective shield on the target, absorbing 30% of the amount healed. When your damaging Holy spells critically hit an enemy, you gain a shield equal to 30% of the damage done. Lasts 12 sec.",
+       "raw": "Critical heals create a protective shield on the target, absorbing $s1% of the amount healed. When your damaging Holy spells critically hit an enemy, you gain a shield equal to $s1% of the damage done. Lasts $47753d."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectDieSides2",
+      "Effect2"
+     ]
+    },
+    {
+     "i": 25,
+     "id": 1774,
+     "fieldName": "painSuppression",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      33206
+     ],
+     "maxPoints": 1,
+     "name": "Pain Suppression",
+     "icon": "spell_holy_painsupression",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33206,
+       "desc": "Instantly reduces a friendly target's threat by 5%, reduces all damage taken by 40% and increases resistance to Dispel mechanics by 65% for 8 sec.",
+       "raw": "Instantly reduces a friendly target's threat by $44416s1%, reduces all damage taken by $s1% and increases resistance to Dispel mechanics by $s2% for $d."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 1901,
+     "fieldName": "grace",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47516,
+      47517
+     ],
+     "maxPoints": 2,
+     "name": "Grace",
+     "icon": "spell_holy_hopeandgrace",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47516,
+       "desc": "Your Flash Heal, Greater Heal, and Penance spells have a 50% chance to bless the target with Grace, increasing all healing received from the Priest by 3%. This effect will stack up to 3 times. Effect lasts 15 sec. Grace can only be active on one target at a time.",
+       "raw": "Your Flash Heal, Greater Heal, and Penance spells have a $h% chance to bless the target with Grace, increasing all healing received from the Priest by $47930s2%. This effect will stack up to 3 times. Effect lasts $47930d. Grace can only be active on one target at a time."
+      },
+      {
+       "r": 2,
+       "spell": 47517,
+       "desc": "Your Flash Heal, Greater Heal, and Penance spells have a 100% chance to bless the target with Grace, increasing all healing received from the Priest by 3%. This effect will stack up to 3 times. Effect lasts 15 sec. Grace can only be active on one target at a time.",
+       "raw": "Your Flash Heal, Greater Heal, and Penance spells have a $h% chance to bless the target with Grace, increasing all healing received from the Priest by $47930s2%. This effect will stack up to 3 times. Effect lasts $47930d. Grace can only be active on one target at a time."
+      }
+     ]
+    },
+    {
+     "i": 27,
+     "id": 1202,
+     "fieldName": "borrowedTime",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      52795,
+      52797,
+      52798,
+      52799,
+      52800
+     ],
+     "maxPoints": 5,
+     "name": "Borrowed Time",
+     "icon": "spell_holy_borrowedtime",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 52795,
+       "desc": "Grants 5% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to 8% of your spell power.",
+       "raw": "Grants $s1% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to $s2% of your spell power."
+      },
+      {
+       "r": 2,
+       "spell": 52797,
+       "desc": "Grants 10% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to 16% of your spell power.",
+       "raw": "Grants $s1% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to $s2% of your spell power."
+      },
+      {
+       "r": 3,
+       "spell": 52798,
+       "desc": "Grants 15% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to 24% of your spell power.",
+       "raw": "Grants $s1% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to $s2% of your spell power."
+      },
+      {
+       "r": 4,
+       "spell": 52799,
+       "desc": "Grants 20% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to 32% of your spell power.",
+       "raw": "Grants $s1% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to $s2% of your spell power."
+      },
+      {
+       "r": 5,
+       "spell": 52800,
+       "desc": "Grants 25% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to 40% of your spell power.",
+       "raw": "Grants $s1% spell haste for your next spell after casting Power Word: Shield or Smite, and increases the amount absorbed by your Power Word: Shield and the damage of your Mark of Penitence equal to $s2% of your spell power."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
+     ]
+    },
+    {
+     "i": 28,
+     "id": 1897,
+     "fieldName": "penance",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47540
+     ],
+     "maxPoints": 1,
+     "name": "Penance",
+     "icon": "spell_holy_penance",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47540,
+       "desc": "Launches a volley of holy light at the target, causing 240 Holy damage to an enemy, or 756 healing to an ally instantly and every 1 sec for 2 sec.",
+       "raw": "Launches a volley of holy light at the target, causing $47666s1 Holy damage to an enemy, or $47750s1 healing to an ally instantly and every $47758t2 sec for $47758d."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 202,
+   "name": "Holy",
+   "page": 1,
+   "talents": [
+    {
+     "i": 0,
+     "id": 410,
+     "fieldName": "monasticism",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14913,
+      15012
+     ],
+     "maxPoints": 2,
+     "name": "Monasticism",
+     "icon": "spell_holy_healingfocus",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14913,
+       "desc": "Your damaging Holy spells cost 10% less mana. ",
+       "raw": "Your damaging Holy spells cost $s1% less mana. "
+      },
+      {
+       "r": 2,
+       "spell": 15012,
+       "desc": "Your damaging Holy spells cost 20% less mana. ",
+       "raw": "Your damaging Holy spells cost $s1% less mana. "
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1"
+     ],
+     "baseName": "Healing Focus"
+    },
+    {
+     "i": 1,
+     "id": 406,
+     "fieldName": "lightOfProphecy",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14908,
+      15020,
+      17191
+     ],
+     "maxPoints": 3,
+     "name": "Light of Prophecy",
+     "icon": "inv_elemental_primal_nether",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14908,
+       "desc": "Increases the amount healed by your Renew spell by 5% and the damage done by Mark of Penitence by 3%. ",
+       "raw": "Increases the amount healed by your Renew spell by $s1% and the damage done by Mark of Penitence by $s2%. "
+      },
+      {
+       "r": 2,
+       "spell": 15020,
+       "desc": "Increases the amount healed by your Renew spell by 10% and the damage done by Mark of Penitence by 6%. ",
+       "raw": "Increases the amount healed by your Renew spell by $s1% and the damage done by Mark of Penitence by $s2%. "
+      },
+      {
+       "r": 3,
+       "spell": 17191,
+       "desc": "Increases the amount healed by your Renew spell by 15% and the damage done by Mark of Penitence by 10%. ",
+       "raw": "Increases the amount healed by your Renew spell by $s1% and the damage done by Mark of Penitence by $s2%. "
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "SpellIconID",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Renew"
+    },
+    {
+     "i": 2,
+     "id": 401,
+     "fieldName": "holySpecialization",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14889,
+      15008,
+      15009,
+      15010,
+      15011
+     ],
+     "maxPoints": 5,
+     "name": "Holy Specialization",
+     "icon": "spell_holy_sealofsalvation",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14889,
+       "desc": "Increases the critical effect chance of your Holy spells by 1%.",
+       "raw": "Increases the critical effect chance of your Holy spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 15008,
+       "desc": "Increases the critical effect chance of your Holy spells by 2%.",
+       "raw": "Increases the critical effect chance of your Holy spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 15009,
+       "desc": "Increases the critical effect chance of your Holy spells by 3%.",
+       "raw": "Increases the critical effect chance of your Holy spells by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 15010,
+       "desc": "Increases the critical effect chance of your Holy spells by 4%.",
+       "raw": "Increases the critical effect chance of your Holy spells by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 15011,
+       "desc": "Increases the critical effect chance of your Holy spells by 5%.",
+       "raw": "Increases the critical effect chance of your Holy spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 411,
+     "fieldName": "theophanicLight",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      27900,
+      27901,
+      27902,
+      27903,
+      27904
+     ],
+     "maxPoints": 5,
+     "name": "Theophanic Light",
+     "icon": "spell_holy_spellwarding",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 27900,
+       "desc": "Reduces all spell damage taken by 2% and increases Holy damage done by 3%. ",
+       "raw": "Reduces all spell damage taken by $s1% and increases Holy damage done by $s2%. "
+      },
+      {
+       "r": 2,
+       "spell": 27901,
+       "desc": "Reduces all spell damage taken by 4% and increases Holy damage done by 6%. ",
+       "raw": "Reduces all spell damage taken by $s1% and increases Holy damage done by $s2%. "
+      },
+      {
+       "r": 3,
+       "spell": 27902,
+       "desc": "Reduces all spell damage taken by 6% and increases Holy damage done by 9%. ",
+       "raw": "Reduces all spell damage taken by $s1% and increases Holy damage done by $s2%. "
+      },
+      {
+       "r": 4,
+       "spell": 27903,
+       "desc": "Reduces all spell damage taken by 8% and increases Holy damage done by 12%. ",
+       "raw": "Reduces all spell damage taken by $s1% and increases Holy damage done by $s2%. "
+      },
+      {
+       "r": 5,
+       "spell": 27904,
+       "desc": "Reduces all spell damage taken by 10% and increases Holy damage done by 15%. ",
+       "raw": "Reduces all spell damage taken by $s1% and increases Holy damage done by $s2%. "
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Spell Warding"
+    },
+    {
+     "i": 4,
+     "id": 1181,
+     "fieldName": "divineFury",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      18530,
+      18531,
+      18533,
+      18534,
+      18535
+     ],
+     "maxPoints": 5,
+     "name": "Divine Fury",
+     "icon": "spell_holy_sealofwrath",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 18530,
+       "desc": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.1 sec.",
+       "raw": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by $/1000;S1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 18531,
+       "desc": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.2 sec.",
+       "raw": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by $/1000;S1 sec."
+      },
+      {
+       "r": 3,
+       "spell": 18533,
+       "desc": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.3 sec.",
+       "raw": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by $/1000;S1 sec."
+      },
+      {
+       "r": 4,
+       "spell": 18534,
+       "desc": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.4 sec.",
+       "raw": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by $/1000;S1 sec."
+      },
+      {
+       "r": 5,
+       "spell": 18535,
+       "desc": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.5 sec.",
+       "raw": "Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by $/1000;S1 sec."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 442,
+     "fieldName": "holyBolt",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      19236
+     ],
+     "maxPoints": 1,
+     "name": "Holy Bolt",
+     "icon": "spell_holy_purifyingpower",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 19236,
+       "desc": "Instantly deals 325 holy damage. ",
+       "raw": "Instantly deals $s1 holy damage. "
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "RangeIndex",
+      "SpellIconID",
+      "Effect1"
+     ],
+     "baseName": "Desperate Prayer"
+    },
+    {
+     "i": 6,
+     "id": 1636,
+     "fieldName": "blessedRecovery",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      27811,
+      27815,
+      27816
+     ],
+     "maxPoints": 3,
+     "name": "Blessed Recovery",
+     "icon": "spell_holy_blessedrecovery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 27811,
+       "desc": "After being struck by a melee or ranged attack, Blessed Recovery heals you for 5% of the damage taken over 6 sec.  Additional critical hits taken during the effect increase the healing received.",
+       "raw": "After being struck by a melee or ranged attack, Blessed Recovery heals you for $s1% of the damage taken over $27818d.  Additional critical hits taken during the effect increase the healing received."
+      },
+      {
+       "r": 2,
+       "spell": 27815,
+       "desc": "After being struck by a melee or ranged attack, Blessed Recovery heals you for 10% of the damage taken over 6 sec.  Additional critical hits taken during the effect increase the healing received.",
+       "raw": "After being struck by a melee or ranged attack, Blessed Recovery heals you for $s1% of the damage taken over $27818d.  Additional critical hits taken during the effect increase the healing received."
+      },
+      {
+       "r": 3,
+       "spell": 27816,
+       "desc": "After being struck by a melee or ranged attack, Blessed Recovery heals you for 15% of the damage taken over 6 sec.  Additional critical hits taken during the effect increase the healing received.",
+       "raw": "After being struck by a melee or ranged attack, Blessed Recovery heals you for $s1% of the damage taken over $27818d.  Additional critical hits taken during the effect increase the healing received."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 7,
+     "id": 361,
+     "fieldName": "inspiration",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 3
+     },
+     "spellIds": [
+      14892,
+      15362,
+      15363
+     ],
+     "maxPoints": 3,
+     "name": "Inspiration",
+     "icon": "spell_holy_layonhands",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14892,
+       "desc": "Reduces your target's physical damage taken by 3% for 15 sec after getting a critical effect from your Flash Heal, Heal, Greater Heal, Binding Heal, Penance, Prayer of Mending, Prayer of Healing, or Circle of Healing spell.",
+       "raw": "Reduces your target's physical damage taken by $14893s1% for $14893d after getting a critical effect from your Flash Heal, Heal, Greater Heal, Binding Heal, Penance, Prayer of Mending, Prayer of Healing, or Circle of Healing spell."
+      },
+      {
+       "r": 2,
+       "spell": 15362,
+       "desc": "Reduces your target's physical damage taken by 7% for 15 sec after getting a critical effect from your Flash Heal, Heal, Greater Heal, Binding Heal, Penance, Prayer of Mending, Prayer of Healing, or Circle of Healing spell.",
+       "raw": "Reduces your target's physical damage taken by $15357s1% for $15357d after getting a critical effect from your Flash Heal, Heal, Greater Heal, Binding Heal, Penance, Prayer of Mending, Prayer of Healing, or Circle of Healing spell."
+      },
+      {
+       "r": 3,
+       "spell": 15363,
+       "desc": "Reduces your target's physical damage taken by 10% for 15 sec after getting a critical effect from your Flash Heal, Heal, Greater Heal, Binding Heal, Penance, Prayer of Mending, Prayer of Healing, or Circle of Healing spell.",
+       "raw": "Reduces your target's physical damage taken by $15359s1% for $15359d after getting a critical effect from your Flash Heal, Heal, Greater Heal, Binding Heal, Penance, Prayer of Mending, Prayer of Healing, or Circle of Healing spell."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1635,
+     "fieldName": "holyReach",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      27789,
+      27790
+     ],
+     "maxPoints": 2,
+     "name": "Holy Reach",
+     "icon": "spell_holy_purify",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 27789,
+       "desc": "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing, Holy Nova, Divine Hymn and Circle of Healing spells by 10%.",
+       "raw": "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing, Holy Nova, Divine Hymn and Circle of Healing spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 27790,
+       "desc": "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing, Holy Nova, Divine Hymn and Circle of Healing spells by 20%.",
+       "raw": "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing, Holy Nova, Divine Hymn and Circle of Healing spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 408,
+     "fieldName": "exegesis",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      14912,
+      15013,
+      15014
+     ],
+     "maxPoints": 3,
+     "name": "Exegesis",
+     "icon": "spell_holy_heal02",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14912,
+       "desc": "Reduces the mana cost of your Lesser Heal, Heal, Greater Heal, Divine Hymn, Smite, Holy Fire, Mark of Penitence, Holy Bolt and Penance spells by 5%.",
+       "raw": "Reduces the mana cost of your Lesser Heal, Heal, Greater Heal, Divine Hymn, Smite, Holy Fire, Mark of Penitence, Holy Bolt and Penance spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 15013,
+       "desc": "Reduces the mana cost of your Lesser Heal, Heal, Greater Heal, Divine Hymn, Smite, Holy Fire, Mark of Penitence, Holy Bolt and Penance spells by 10%.",
+       "raw": "Reduces the mana cost of your Lesser Heal, Heal, Greater Heal, Divine Hymn, Smite, Holy Fire, Mark of Penitence, Holy Bolt and Penance spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 15014,
+       "desc": "Reduces the mana cost of your Lesser Heal, Heal, Greater Heal, Divine Hymn, Smite, Holy Fire, Mark of Penitence, Holy Bolt and Penance spells by 15%.",
+       "raw": "Reduces the mana cost of your Lesser Heal, Heal, Greater Heal, Divine Hymn, Smite, Holy Fire, Mark of Penitence, Holy Bolt and Penance spells by $s1%."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0"
+     ],
+     "baseName": "Improved Healing"
+    },
+    {
+     "i": 10,
+     "id": 403,
+     "fieldName": "searingLight",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14909,
+      15017
+     ],
+     "maxPoints": 2,
+     "name": "Searing Light",
+     "icon": "spell_holy_searinglightpriest",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14909,
+       "desc": "Increases the damage of your Smite, Holy Fire, Holy Nova and Penance spells by 5%.",
+       "raw": "Increases the damage of your Smite, Holy Fire, Holy Nova and Penance spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 15017,
+       "desc": "Increases the damage of your Smite, Holy Fire, Holy Nova and Penance spells by 10%.",
+       "raw": "Increases the damage of your Smite, Holy Fire, Holy Nova and Penance spells by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 11,
+     "id": 413,
+     "fieldName": "liturgy",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14911,
+      15018
+     ],
+     "maxPoints": 2,
+     "name": "Liturgy",
+     "icon": "spell_holy_prayerofhealing02",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14911,
+       "desc": "Healing with Prayer of Healing has a 50% chance to restore 20% of your maximum mana over 10 seconds. This effect has a 30 second cooldown. Additionally the mana cost of your Prayer of Healing and Prayer of Mending spells is reduced by 10% at all times. ",
+       "raw": "Healing with Prayer of Healing has a 50% chance to restore 20% of your maximum mana over 10 seconds. This effect has a 30 second cooldown. Additionally the mana cost of your Prayer of Healing and Prayer of Mending spells is reduced by $s1% at all times. "
+      },
+      {
+       "r": 2,
+       "spell": 15018,
+       "desc": "Healing with Prayer of Healing has a 100% chance to restore 20% of your maximum mana over 10 seconds. This effect has a 30 second cooldown. Additionally the mana cost of your Prayer of Healing and Prayer of Mending spells is reduced by 20% at all times. ",
+       "raw": "Healing with Prayer of Healing has a 100% chance to restore 20% of your maximum mana over 10 seconds. This effect has a 30 second cooldown. Additionally the mana cost of your Prayer of Healing and Prayer of Mending spells is reduced by $s1% at all times. "
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Healing Prayers"
+    },
+    {
+     "i": 12,
+     "id": 1561,
+     "fieldName": "spiritOfRedemption",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      20711
+     ],
+     "maxPoints": 1,
+     "name": "Spirit of Redemption",
+     "icon": "inv_enchant_essenceeternallarge",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20711,
+       "desc": "Increases total Spirit by 5% and upon death, the priest becomes the Spirit of Redemption for 15 sec.  The Spirit of Redemption cannot move, attack, be attacked or targeted by any spells or effects.  While in this form the priest can cast any healing spell free of cost.  When the effect ends, the priest dies.",
+       "raw": "Increases total Spirit by $s2% and upon death, the priest becomes the Spirit of Redemption for $27827d.  The Spirit of Redemption cannot move, attack, be attacked or targeted by any spells or effects.  While in this form the priest can cast any healing spell free of cost.  When the effect ends, the priest dies."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 402,
+     "fieldName": "spiritualGuidance",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14901,
+      15028,
+      15029,
+      15030,
+      15031
+     ],
+     "maxPoints": 5,
+     "name": "Spiritual Guidance",
+     "icon": "spell_holy_spiritualguidence",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14901,
+       "desc": "Increases spell power by 5% of your total Spirit.",
+       "raw": "Increases spell power by $s1% of your total Spirit."
+      },
+      {
+       "r": 2,
+       "spell": 15028,
+       "desc": "Increases spell power by 10% of your total Spirit.",
+       "raw": "Increases spell power by $s1% of your total Spirit."
+      },
+      {
+       "r": 3,
+       "spell": 15029,
+       "desc": "Increases spell power by 15% of your total Spirit.",
+       "raw": "Increases spell power by $s1% of your total Spirit."
+      },
+      {
+       "r": 4,
+       "spell": 15030,
+       "desc": "Increases spell power by 20% of your total Spirit.",
+       "raw": "Increases spell power by $s1% of your total Spirit."
+      },
+      {
+       "r": 5,
+       "spell": 15031,
+       "desc": "Increases spell power by 25% of your total Spirit.",
+       "raw": "Increases spell power by $s1% of your total Spirit."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1766,
+     "fieldName": "surgeOfLight",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      33150,
+      33154
+     ],
+     "maxPoints": 2,
+     "name": "Surge of Light",
+     "icon": "spell_holy_surgeoflight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33150,
+       "desc": "Your spell criticals have a 25% chance to cause your next Smite or Flash Heal spell to be instant cast, cost no mana but be incapable of a critical hit.  This effect lasts 10 sec.",
+       "raw": "Your spell criticals have a $h% chance to cause your next Smite or Flash Heal spell to be instant cast, cost no mana but be incapable of a critical hit.  This effect lasts $33151d."
+      },
+      {
+       "r": 2,
+       "spell": 33154,
+       "desc": "Your spell criticals have a 50% chance to cause your next Smite or Flash Heal spell to be instant cast, cost no mana but be incapable of a critical hit.  This effect lasts 10 sec.",
+       "raw": "Your spell criticals have a $h% chance to cause your next Smite or Flash Heal spell to be instant cast, cost no mana but be incapable of a critical hit.  This effect lasts $33151d."
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "id": 404,
+     "fieldName": "sacraments",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      14898,
+      15349,
+      15354,
+      15355,
+      15356
+     ],
+     "maxPoints": 5,
+     "name": "Sacraments",
+     "icon": "spell_nature_moonglow",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14898,
+       "desc": "Increases the amount healed by your healing spells and the damage of your Holy spells by 2%.",
+       "raw": "Increases the amount healed by your healing spells and the damage of your Holy spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 15349,
+       "desc": "Increases the amount healed by your healing spells and the damage of your Holy spells by 4%.",
+       "raw": "Increases the amount healed by your healing spells and the damage of your Holy spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 15354,
+       "desc": "Increases the amount healed by your healing spells and the damage of your Holy spells by 6%.",
+       "raw": "Increases the amount healed by your healing spells and the damage of your Holy spells by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 15355,
+       "desc": "Increases the amount healed by your healing spells and the damage of your Holy spells by 8%.",
+       "raw": "Increases the amount healed by your healing spells and the damage of your Holy spells by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 15356,
+       "desc": "Increases the amount healed by your healing spells and the damage of your Holy spells by 10%.",
+       "raw": "Increases the amount healed by your healing spells and the damage of your Holy spells by $s1%."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
+     ],
+     "baseName": "Spiritual Healing"
+    },
+    {
+     "i": 16,
+     "id": 1768,
+     "fieldName": "holyConcentration",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      34753,
+      34859,
+      34860
+     ],
+     "maxPoints": 3,
+     "name": "Holy Concentration",
+     "icon": "spell_holy_fanaticism",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34753,
+       "desc": "Your mana regeneration from spirit is increased by 16% for 8 sec after you critically heal with Flash Heal, Greater Heal, Binding Heal or Empowered Renew, or critically hit with Holy damage spells.",
+       "raw": "Your mana regeneration from spirit is increased by $34754s1% for $34754d after you critically heal with Flash Heal, Greater Heal, Binding Heal or Empowered Renew, or critically hit with Holy damage spells."
+      },
+      {
+       "r": 2,
+       "spell": 34859,
+       "desc": "Your mana regeneration from spirit is increased by 16% for 8 sec after you critically heal with Flash Heal, Greater Heal, Binding Heal or Empowered Renew, or critically hit with Holy damage spells.",
+       "raw": "Your mana regeneration from spirit is increased by $34754s1% for $34754d after you critically heal with Flash Heal, Greater Heal, Binding Heal or Empowered Renew, or critically hit with Holy damage spells."
+      },
+      {
+       "r": 3,
+       "spell": 34860,
+       "desc": "Your mana regeneration from spirit is increased by 16% for 8 sec after you critically heal with Flash Heal, Greater Heal, Binding Heal or Empowered Renew, or critically hit with Holy damage spells.",
+       "raw": "Your mana regeneration from spirit is increased by $34754s1% for $34754d after you critically heal with Flash Heal, Greater Heal, Binding Heal or Empowered Renew, or critically hit with Holy damage spells."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "Effect2"
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1637,
+     "fieldName": "lightform",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      200060
+     ],
+     "maxPoints": 1,
+     "name": "Lightform",
+     "icon": "inv_elemental_mote_nether",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 200060,
+       "desc": "Assume a blessed form merged with the Light, increasing your Holy damage by 15% and reducing all damage done to you by 30%.  However, your Shadow damage is reduced by 95%.  Grants the periodic damage from your Mark of Penitence the ability to critically hit for 100% increased damage and the ability to benefit from haste.",
+       "raw": "Assume a blessed form merged with the Light, increasing your Holy damage by $s2% and reducing all damage done to you by $s3%.  However, your Shadow damage is reduced by $200061s3%.  Grants the periodic damage from your Mark of Penitence the ability to critically hit for $49868s2% increased damage and the ability to benefit from haste."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1,
+     "modified": true,
+     "modKind": "new",
+     "modDetail": [
+      "SpellRank_1"
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1765,
+     "fieldName": "blessedResilience",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      33142,
+      33145,
+      33146
+     ],
+     "maxPoints": 3,
+     "name": "Blessed Resilience",
+     "icon": "spell_holy_blessedresillience",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33142,
+       "desc": "Increases the effectiveness of your healing spells by 1%, and melee attacks made against you have a 20% chance to prevent you from being hit again for 5 sec.",
+       "raw": "Increases the effectiveness of your healing spells by $s2%, and melee attacks made against you have a $h% chance to prevent you from being hit again for $33143d."
+      },
+      {
+       "r": 2,
+       "spell": 33145,
+       "desc": "Increases the effectiveness of your healing spells by 2%, and melee attacks made against you have a 40% chance to prevent you from being hit again for 5 sec.",
+       "raw": "Increases the effectiveness of your healing spells by $s2%, and melee attacks made against you have a $h% chance to prevent you from being hit again for $33143d."
+      },
+      {
+       "r": 3,
+       "spell": 33146,
+       "desc": "Increases the effectiveness of your healing spells by 3%, and melee attacks made against you have a 60% chance to prevent you from being hit again for 5 sec.",
+       "raw": "Increases the effectiveness of your healing spells by $s2%, and melee attacks made against you have a $h% chance to prevent you from being hit again for $33143d."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 19,
+     "id": 2279,
+     "fieldName": "bodyAndSoul",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      64127,
+      64129
+     ],
+     "maxPoints": 2,
+     "name": "Body and Soul",
+     "icon": "spell_holy_symbolofhope",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 64127,
+       "desc": "When you cast Power Word: Shield, you increase the target's movement speed by 30% for 4 sec, and you have a 50% chance when you cast Abolish Disease on yourself to also cleanse 1 poison effect in addition to diseases.",
+       "raw": "When you cast Power Word: Shield, you increase the target's movement speed by $s1% for $64128d, and you have a $s2% chance when you cast Abolish Disease on yourself to also cleanse 1 poison effect in addition to diseases."
+      },
+      {
+       "r": 2,
+       "spell": 64129,
+       "desc": "When you cast Power Word: Shield, you increase the target's movement speed by 60% for 4 sec, and you have a 100% chance when you cast Abolish Disease on yourself to also cleanse 1 poison effect in addition to diseases.",
+       "raw": "When you cast Power Word: Shield, you increase the target's movement speed by $s1% for $64128d, and you have a $s2% chance when you cast Abolish Disease on yourself to also cleanse 1 poison effect in addition to diseases."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 1767,
+     "fieldName": "lightsHope",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      33158,
+      33159,
+      33160,
+      33161,
+      33162
+     ],
+     "maxPoints": 5,
+     "name": "Light's Hope",
+     "icon": "spell_holy_greaterheal",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33158,
+       "desc": "Your Greater Heal and Holy Fire spells gains an additional 8% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional 4% of your bonus healing effects.",
+       "raw": "Your Greater Heal and Holy Fire spells gains an additional $s1% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional $s2% of your bonus healing effects."
+      },
+      {
+       "r": 2,
+       "spell": 33159,
+       "desc": "Your Greater Heal and Holy Fire spells gains an additional 16% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional 8% of your bonus healing effects.",
+       "raw": "Your Greater Heal and Holy Fire spells gains an additional $s1% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional $s2% of your bonus healing effects."
+      },
+      {
+       "r": 3,
+       "spell": 33160,
+       "desc": "Your Greater Heal and Holy Fire spells gains an additional 24% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional 12% of your bonus healing effects.",
+       "raw": "Your Greater Heal and Holy Fire spells gains an additional $s1% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional $s2% of your bonus healing effects."
+      },
+      {
+       "r": 4,
+       "spell": 33161,
+       "desc": "Your Greater Heal and Holy Fire spells gains an additional 32% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional 16% of your bonus healing effects.",
+       "raw": "Your Greater Heal and Holy Fire spells gains an additional $s1% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional $s2% of your bonus healing effects."
+      },
+      {
+       "r": 5,
+       "spell": 33162,
+       "desc": "Your Greater Heal and Holy Fire spells gains an additional 40% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional 20% of your bonus healing effects.",
+       "raw": "Your Greater Heal and Holy Fire spells gains an additional $s1% and your Flash Heal, Binding Heal, Mark of Penitence and Smite gain an additional $s2% of your bonus healing effects."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0"
+     ],
+     "baseName": "Empowered Healing"
+    },
+    {
+     "i": 21,
+     "id": 1904,
+     "fieldName": "serendipity",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63730,
+      63733,
+      63737
+     ],
+     "maxPoints": 3,
+     "name": "Serendipity",
+     "icon": "spell_holy_serendipity",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63730,
+       "desc": "When you heal with Binding Heal or Flash Heal, or deal damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire spell is reduced by 4%. Stacks up to 3 times. Lasts 20 sec.",
+       "raw": "When you heal with Binding Heal or Flash Heal, or deal damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire spell is reduced by $63731s1%. Stacks up to 3 times. Lasts $63731d."
+      },
+      {
+       "r": 2,
+       "spell": 63733,
+       "desc": "When you heal with Binding Heal or Flash Heal, or deal damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire spell is reduced by 8%. Stacks up to 3 times. Lasts 20 sec.",
+       "raw": "When you heal with Binding Heal or Flash Heal, or deal damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire spell is reduced by $63735s1%. Stacks up to 3 times. Lasts $63734d."
+      },
+      {
+       "r": 3,
+       "spell": 63737,
+       "desc": "When you heal with Binding Heal or Flash Heal, or deal damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire spell is reduced by 12%. Stacks up to 3 times. Lasts 20 sec.",
+       "raw": "When you heal with Binding Heal or Flash Heal, or deal damage with Smite, the cast time of your next Greater Heal, Prayer of Healing or Holy Fire spell is reduced by $63734s1%. Stacks up to 3 times. Lasts $63731d."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "Effect2"
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1902,
+     "fieldName": "impactOfFaith",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      63534,
+      63542,
+      63543
+     ],
+     "maxPoints": 3,
+     "name": "Impact of Faith",
+     "icon": "ability_paladin_infusionoflight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63534,
+       "desc": "Your Renew and Mark of Penitence spells gains an additional 5% of your bonus damage and healing effects, and will instantly heal or damage the target for 5% of the total periodic effect.",
+       "raw": "Your Renew and Mark of Penitence spells gains an additional $s1% of your bonus damage and healing effects, and will instantly heal or damage the target for $s2% of the total periodic effect."
+      },
+      {
+       "r": 2,
+       "spell": 63542,
+       "desc": "Your Renew and Mark of Penitence spells gains an additional 10% of your bonus damage and healing effects, and will instantly heal or damage the target for 10% of the total periodic effect.",
+       "raw": "Your Renew and Mark of Penitence spells gains an additional $s1% of your bonus damage and healing effects, and will instantly heal or damage the target for $s2% of the total periodic effect."
+      },
+      {
+       "r": 3,
+       "spell": 63543,
+       "desc": "Your Renew and Mark of Penitence spells gains an additional 15% of your bonus damage and healing effects, and will instantly heal or damage the target for 15% of the total periodic effect.",
+       "raw": "Your Renew and Mark of Penitence spells gains an additional $s1% of your bonus damage and healing effects, and will instantly heal or damage the target for $s2% of the total periodic effect."
+      }
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0"
+     ],
+     "baseName": "Empowered Renew"
+    },
+    {
+     "i": 23,
+     "id": 1815,
+     "fieldName": "circleOfHealing",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      34861
+     ],
+     "maxPoints": 1,
+     "name": "Circle of Healing",
+     "icon": "spell_holy_circleofrenewal",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34861,
+       "desc": "Heals up to 6 friendly party or raid members within 15 yards of the target for 379.",
+       "raw": "Heals up to $?s55675[6][5] friendly party or raid members within $a1 yards of the target for $s1."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 1903,
+     "fieldName": "testOfFaith",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47558,
+      47559,
+      47560
+     ],
+     "maxPoints": 3,
+     "name": "Test of Faith",
+     "icon": "spell_holy_testoffaith",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47558,
+       "desc": "Increases healing by 4% on friendly targets at or below 50% health.",
+       "raw": "Increases healing by $s1% on friendly targets at or below 50% health."
+      },
+      {
+       "r": 2,
+       "spell": 47559,
+       "desc": "Increases healing by 8% on friendly targets at or below 50% health.",
+       "raw": "Increases healing by $s1% on friendly targets at or below 50% health."
+      },
+      {
+       "r": 3,
+       "spell": 47560,
+       "desc": "Increases healing by 12% on friendly targets at or below 50% health.",
+       "raw": "Increases healing by $s1% on friendly targets at or below 50% health."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 1905,
+     "fieldName": "divineProvidence",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47562,
+      47564,
+      47565,
+      47566,
+      47567
+     ],
+     "maxPoints": 5,
+     "name": "Divine Providence",
+     "icon": "spell_holy_divineprovidence",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47562,
+       "desc": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by 2%, and reduces the cooldown of your Prayer of Mending by 6%.",
+       "raw": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by $s1%, and reduces the cooldown of your Prayer of Mending by $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 47564,
+       "desc": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by 4%, and reduces the cooldown of your Prayer of Mending by 12%.",
+       "raw": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by $s1%, and reduces the cooldown of your Prayer of Mending by $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 47565,
+       "desc": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by 6%, and reduces the cooldown of your Prayer of Mending by 18%.",
+       "raw": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by $s1%, and reduces the cooldown of your Prayer of Mending by $s3%."
+      },
+      {
+       "r": 4,
+       "spell": 47566,
+       "desc": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by 8%, and reduces the cooldown of your Prayer of Mending by 24%.",
+       "raw": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by $s1%, and reduces the cooldown of your Prayer of Mending by $s3%."
+      },
+      {
+       "r": 5,
+       "spell": 47567,
+       "desc": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by 10%, and reduces the cooldown of your Prayer of Mending by 30%.",
+       "raw": "Increases the amount healed by Circle of Healing, Binding Heal, Holy Nova, Prayer of Healing, Divine Hymn and Prayer of Mending by $s1%, and reduces the cooldown of your Prayer of Mending by $s3%."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 1911,
+     "fieldName": "guardianSpirit",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47788
+     ],
+     "maxPoints": 1,
+     "name": "Guardian Spirit",
+     "icon": "spell_holy_guardianspirit",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47788,
+       "desc": "Calls upon a guardian spirit to watch over the friendly target. The spirit increases the healing received by the target by 40%, and also prevents the target from dying by sacrificing itself.  This sacrifice terminates the effect but heals the target of 50% of their maximum health. Lasts 10 sec.",
+       "raw": "Calls upon a guardian spirit to watch over the friendly target. The spirit increases the healing received by the target by $s1%, and also prevents the target from dying by sacrificing itself.  This sacrifice terminates the effect but heals the target of $s2% of their maximum health. Lasts $d."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 203,
+   "name": "Shadow",
+   "page": 2,
+   "talents": [
+    {
+     "i": 0,
+     "id": 465,
+     "fieldName": "spiritTap",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "spellIds": [
+      15270,
+      15335,
+      15336
+     ],
+     "maxPoints": 3,
+     "name": "Spirit Tap",
+     "icon": "spell_shadow_requiem",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15270,
+       "desc": "Gives you a 33% chance to gain a 100% bonus to your Spirit after killing a target that yields experience or honor.  For the duration, your mana will regenerate at a 83% rate while casting.  Lasts 15 sec.",
+       "raw": "Gives you a $h% chance to gain a $15271s1% bonus to your Spirit after killing a target that yields experience or honor.  For the duration, your mana will regenerate at a $15271s2% rate while casting.  Lasts $15271d."
+      },
+      {
+       "r": 2,
+       "spell": 15335,
+       "desc": "Gives you a 66% chance to gain a 100% bonus to your Spirit after killing a target that yields experience or honor.  For the duration, your mana will regenerate at a 83% rate while casting.  Lasts 15 sec.",
+       "raw": "Gives you a $h% chance to gain a $15271s1% bonus to your Spirit after killing a target that yields experience or honor.  For the duration, your mana will regenerate at a $15271s2% rate while casting.  Lasts $15271d."
+      },
+      {
+       "r": 3,
+       "spell": 15336,
+       "desc": "Gives you a 100% chance to gain a 100% bonus to your Spirit after killing a target that yields experience or honor.  For the duration, your mana will regenerate at a 83% rate while casting.  Lasts 15 sec.",
+       "raw": "Gives you a $h% chance to gain a $15271s1% bonus to your Spirit after killing a target that yields experience or honor.  For the duration, your mana will regenerate at a $15271s2% rate while casting.  Lasts $15271d."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 2027,
+     "fieldName": "improvedSpiritTap",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      15337,
+      15338
+     ],
+     "maxPoints": 2,
+     "name": "Improved Spirit Tap",
+     "icon": "spell_shadow_requiem",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15337,
+       "desc": "Your Mind Blast and Shadow Word: Death critical strikes have a 100% chance and your Mind Flay critical strikes have a 50% chance to increase your total Spirit by 5%. For the duration, your mana will regenerate at a 17% rate while casting. Lasts 8 sec.",
+       "raw": "Your Mind Blast and Shadow Word: Death critical strikes have a 100% chance and your Mind Flay critical strikes have a 50% chance to increase your total Spirit by $49694s1%. For the duration, your mana will regenerate at a $49694s2% rate while casting. Lasts $49694d."
+      },
+      {
+       "r": 2,
+       "spell": 15338,
+       "desc": "Your Mind Blast and Shadow Word: Death critical strikes have a 100% chance and your Mind Flay critical strikes have a 50% chance to increase your total Spirit by 10%. For the duration, your mana will regenerate at a 33% rate while casting. Lasts 8 sec.",
+       "raw": "Your Mind Blast and Shadow Word: Death critical strikes have a 100% chance and your Mind Flay critical strikes have a 50% chance to increase your total Spirit by $59000s1%. For the duration, your mana will regenerate at a $59000s2% rate while casting. Lasts $49694d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 0,
+      "colIdx": 0
+     },
+     "prereqRank": 3
+    },
+    {
+     "i": 2,
+     "id": 462,
+     "fieldName": "darkness",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      15259,
+      15307,
+      15308,
+      15309,
+      15310
+     ],
+     "maxPoints": 5,
+     "name": "Darkness",
+     "icon": "spell_shadow_twilight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15259,
+       "desc": "Increases your Shadow spell damage by 2%.",
+       "raw": "Increases your Shadow spell damage by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 15307,
+       "desc": "Increases your Shadow spell damage by 4%.",
+       "raw": "Increases your Shadow spell damage by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 15308,
+       "desc": "Increases your Shadow spell damage by 6%.",
+       "raw": "Increases your Shadow spell damage by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 15309,
+       "desc": "Increases your Shadow spell damage by 8%.",
+       "raw": "Increases your Shadow spell damage by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 15310,
+       "desc": "Increases your Shadow spell damage by 10%.",
+       "raw": "Increases your Shadow spell damage by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 466,
+     "fieldName": "shadowAffinity",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      15318,
+      15272,
+      15320
+     ],
+     "maxPoints": 3,
+     "name": "Shadow Affinity",
+     "icon": "spell_shadow_shadowward",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15318,
+       "desc": "Increases healing done by 5% and your Shadow damage restores mana equal to 5% of damage dealt.",
+       "raw": "Increases healing done by $s1% and your Shadow damage restores mana equal to $s2% of damage dealt."
+      },
+      {
+       "r": 2,
+       "spell": 15272,
+       "desc": "Increases healing done by 10% and your Shadow damage restores mana equal to 10% of damage dealt.",
+       "raw": "Increases healing done by $s1% and your Shadow damage restores mana equal to $s2% of damage dealt."
+      },
+      {
+       "r": 3,
+       "spell": 15320,
+       "desc": "Increases healing done by 15% and your Shadow damage restores mana equal to 15% of damage dealt.",
+       "raw": "Increases healing done by $s1% and your Shadow damage restores mana equal to $s2% of damage dealt."
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ]
+    },
+    {
+     "i": 4,
+     "id": 482,
+     "fieldName": "improvedShadowWordPain",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      15275,
+      15317
+     ],
+     "maxPoints": 2,
+     "name": "Improved Shadow Word: Pain",
+     "icon": "spell_shadow_shadowwordpain",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15275,
+       "desc": "Increases the damage of your Shadow Word: Pain spell by 3%.",
+       "raw": "Increases the damage of your Shadow Word: Pain spell by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 15317,
+       "desc": "Increases the damage of your Shadow Word: Pain spell by 6%.",
+       "raw": "Increases the damage of your Shadow Word: Pain spell by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 463,
+     "fieldName": "shadowFocus",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      15260,
+      15327,
+      15328
+     ],
+     "maxPoints": 3,
+     "name": "Shadow Focus",
+     "icon": "spell_shadow_burningspirit",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15260,
+       "desc": "Increases your chance to hit with your Shadow spells by 1%, and reduces the mana cost of your Shadow spells by 2%.",
+       "raw": "Increases your chance to hit with your Shadow spells by $s1%, and reduces the mana cost of your Shadow spells by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 15327,
+       "desc": "Increases your chance to hit with your Shadow spells by 2%, and reduces the mana cost of your Shadow spells by 4%.",
+       "raw": "Increases your chance to hit with your Shadow spells by $s1%, and reduces the mana cost of your Shadow spells by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 15328,
+       "desc": "Increases your chance to hit with your Shadow spells by 3%, and reduces the mana cost of your Shadow spells by 6%.",
+       "raw": "Increases your chance to hit with your Shadow spells by $s1%, and reduces the mana cost of your Shadow spells by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 542,
+     "fieldName": "improvedPsychicScream",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      15392,
+      15448
+     ],
+     "maxPoints": 2,
+     "name": "Improved Psychic Scream",
+     "icon": "spell_shadow_psychicscream",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15392,
+       "desc": "Reduces the cooldown of your Psychic Scream spell by 2 sec.",
+       "raw": "Reduces the cooldown of your Psychic Scream spell by $/1000;s1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 15448,
+       "desc": "Reduces the cooldown of your Psychic Scream spell by 4 sec.",
+       "raw": "Reduces the cooldown of your Psychic Scream spell by $/1000;s1 sec."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 481,
+     "fieldName": "improvedMindBlast",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      15273,
+      15312,
+      15313,
+      15314,
+      15316
+     ],
+     "maxPoints": 5,
+     "name": "Improved Mind Blast",
+     "icon": "spell_shadow_unholyfrenzy",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15273,
+       "desc": "Reduces the cooldown of your Mind Blast spell by 0.5 sec., and while in Shadowform your Mind Blast also has a 20% chance to reduce all healing done to the target by 20% for 10 sec.",
+       "raw": "Reduces the cooldown of your Mind Blast spell by $/1000;S1 sec., and while in Shadowform your Mind Blast also has a $s2% chance to reduce all healing done to the target by $48301s1% for $48301d."
+      },
+      {
+       "r": 2,
+       "spell": 15312,
+       "desc": "Reduces the cooldown of your Mind Blast spell by 1 sec., and while in Shadowform your Mind Blast also has a 40% chance to reduce all healing done to the target by 20% for 10 sec.",
+       "raw": "Reduces the cooldown of your Mind Blast spell by $/1000;S1 sec., and while in Shadowform your Mind Blast also has a $s2% chance to reduce all healing done to the target by $48301s1% for $48301d."
+      },
+      {
+       "r": 3,
+       "spell": 15313,
+       "desc": "Reduces the cooldown of your Mind Blast spell by 1.5 sec., and while in Shadowform your Mind Blast also has a 60% chance to reduce all healing done to the target by 20% for 10 sec.",
+       "raw": "Reduces the cooldown of your Mind Blast spell by $/1000;S1 sec., and while in Shadowform your Mind Blast also has a $s2% chance to reduce all healing done to the target by $48301s1% for $48301d."
+      },
+      {
+       "r": 4,
+       "spell": 15314,
+       "desc": "Reduces the cooldown of your Mind Blast spell by 2 sec., and while in Shadowform your Mind Blast also has a 80% chance to reduce all healing done to the target by 20% for 10 sec.",
+       "raw": "Reduces the cooldown of your Mind Blast spell by $/1000;S1 sec., and while in Shadowform your Mind Blast also has a $s2% chance to reduce all healing done to the target by $48301s1% for $48301d."
+      },
+      {
+       "r": 5,
+       "spell": 15316,
+       "desc": "Reduces the cooldown of your Mind Blast spell by 2.5 sec., and while in Shadowform your Mind Blast also has a 100% chance to reduce all healing done to the target by 20% for 10 sec.",
+       "raw": "Reduces the cooldown of your Mind Blast spell by $/1000;S1 sec., and while in Shadowform your Mind Blast also has a $s2% chance to reduce all healing done to the target by $48301s1% for $48301d."
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "id": 501,
+     "fieldName": "mindFlay",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      15407
+     ],
+     "maxPoints": 1,
+     "name": "Mind Flay",
+     "icon": "spell_shadow_siphonmana",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15407,
+       "desc": "Assault the target's mind with Shadow energy, causing 45 Shadow damage over 3 sec and slowing their movement speed by 50%.",
+       "raw": "Assault the target's mind with Shadow energy, causing ${$m3*3} Shadow damage over $d and slowing their movement speed by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 483,
+     "fieldName": "veiledShadows",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 1
+     },
+     "spellIds": [
+      15274,
+      15311
+     ],
+     "maxPoints": 2,
+     "name": "Veiled Shadows",
+     "icon": "spell_magic_lesserinvisibilty",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15274,
+       "desc": "Decreases the cooldown of your Fade ability by 3 sec, and reduces the cooldown of your Shadowfiend ability by 1 minute.",
+       "raw": "Decreases the cooldown of your Fade ability by $/1000;s1 sec, and reduces the cooldown of your Shadowfiend ability by 1 minute."
+      },
+      {
+       "r": 2,
+       "spell": 15311,
+       "desc": "Decreases the cooldown of your Fade ability by 6 sec, and reduces the cooldown of your Shadowfiend ability by 2 minutes.",
+       "raw": "Decreases the cooldown of your Fade ability by $/1000;s1 sec, and reduces the cooldown of your Shadowfiend ability by 2 minutes."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 881,
+     "fieldName": "shadowReach",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      17322,
+      17323
+     ],
+     "maxPoints": 2,
+     "name": "Shadow Reach",
+     "icon": "spell_shadow_chilltouch",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 17322,
+       "desc": "Increases the range of your offensive Shadow spells by 10%.",
+       "raw": "Increases the range of your offensive Shadow spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 17323,
+       "desc": "Increases the range of your offensive Shadow spells by 20%.",
+       "raw": "Increases the range of your offensive Shadow spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 461,
+     "fieldName": "shadowWeaving",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      15257,
+      15331,
+      15332
+     ],
+     "maxPoints": 3,
+     "name": "Shadow Weaving",
+     "icon": "spell_shadow_blackplague",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15257,
+       "desc": "Your Shadow damage spells have a 33% chance to increase the Shadow damage you deal by 2% for 15 sec.  Stacks up to 5 times.",
+       "raw": "Your Shadow damage spells have a $s1% chance to increase the Shadow damage you deal by $15258s1% for $15258d.  Stacks up to $15258u times."
+      },
+      {
+       "r": 2,
+       "spell": 15331,
+       "desc": "Your Shadow damage spells have a 66% chance to increase the Shadow damage you deal by 2% for 15 sec.  Stacks up to 5 times.",
+       "raw": "Your Shadow damage spells have a $s1% chance to increase the Shadow damage you deal by $15258s1% for $15258d.  Stacks up to $15258u times."
+      },
+      {
+       "r": 3,
+       "spell": 15332,
+       "desc": "Your Shadow damage spells have a 100% chance to increase the Shadow damage you deal by 2% for 15 sec.  Stacks up to 5 times.",
+       "raw": "Your Shadow damage spells have a $s1% chance to increase the Shadow damage you deal by $15258s1% for $15258d.  Stacks up to $15258u times."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 541,
+     "fieldName": "silence",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      15487
+     ],
+     "maxPoints": 1,
+     "name": "Silence",
+     "icon": "spell_shadow_impphaseshift",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15487,
+       "desc": "Silences the target, preventing them from casting spells for 5 sec.  Non-player victim spellcasting is also interrupted for 3 sec.",
+       "raw": "Silences the target, preventing them from casting spells for $d.  Non-player victim spellcasting is also interrupted for $32747d."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "prereqRank": 2
+    },
+    {
+     "i": 13,
+     "id": 484,
+     "fieldName": "vampiricEmbrace",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "spellIds": [
+      15286
+     ],
+     "maxPoints": 1,
+     "name": "Vampiric Embrace",
+     "icon": "spell_shadow_unsummonbuilding",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15286,
+       "desc": "Fills you with the embrace of Shadow energy, causing you to be healed for 15% and other party members to be healed for 3% of any single-target Shadow spell damage you deal for 30 min.",
+       "raw": "Fills you with the embrace of Shadow energy, causing you to be healed for $15286s1% and other party members to be healed for $/5;15286s1% of any single-target Shadow spell damage you deal for $15286d."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1638,
+     "fieldName": "improvedVampiricEmbrace",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      27839,
+      27840
+     ],
+     "maxPoints": 2,
+     "name": "Improved Vampiric Embrace",
+     "icon": "spell_shadow_improvedvampiricembrace",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 27839,
+       "desc": "Increases the healing received from Vampiric Embrace by 33%.",
+       "raw": "Increases the healing received from Vampiric Embrace by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 27840,
+       "desc": "Increases the healing received from Vampiric Embrace by 67%.",
+       "raw": "Increases the healing received from Vampiric Embrace by $s1%."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 15,
+     "id": 1777,
+     "fieldName": "focusedMind",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 3
+     },
+     "spellIds": [
+      33213,
+      33214,
+      33215
+     ],
+     "maxPoints": 3,
+     "name": "Focused Mind",
+     "icon": "spell_nature_focusedmind",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33213,
+       "desc": "Reduces the mana cost of your Mind Blast, Mind Control, Mind Flay and Mind Sear spells by 5%.",
+       "raw": "Reduces the mana cost of your Mind Blast, Mind Control, Mind Flay and Mind Sear spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 33214,
+       "desc": "Reduces the mana cost of your Mind Blast, Mind Control, Mind Flay and Mind Sear spells by 10%.",
+       "raw": "Reduces the mana cost of your Mind Blast, Mind Control, Mind Flay and Mind Sear spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 33215,
+       "desc": "Reduces the mana cost of your Mind Blast, Mind Control, Mind Flay and Mind Sear spells by 15%.",
+       "raw": "Reduces the mana cost of your Mind Blast, Mind Control, Mind Flay and Mind Sear spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "id": 1781,
+     "fieldName": "mindMelt",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 0
+     },
+     "spellIds": [
+      14910,
+      33371
+     ],
+     "maxPoints": 2,
+     "name": "Mind Melt",
+     "icon": "spell_shadow_skull",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 14910,
+       "desc": "Increases the critical strike chance of your Mind Blast, Mind Flay and Mind Sear spells by 2%, and increases the periodic critical strike chance of your Vampiric Touch, Devouring Plague and Shadow Word: Pain spells by 3%.",
+       "raw": "Increases the critical strike chance of your Mind Blast, Mind Flay and Mind Sear spells by $s1%, and increases the periodic critical strike chance of your Vampiric Touch, Devouring Plague and Shadow Word: Pain spells by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 33371,
+       "desc": "Increases the critical strike chance of your Mind Blast, Mind Flay and Mind Sear spells by 4%, and increases the periodic critical strike chance of your Vampiric Touch, Devouring Plague and Shadow Word: Pain spells by 6%.",
+       "raw": "Increases the critical strike chance of your Mind Blast, Mind Flay and Mind Sear spells by $s1%, and increases the periodic critical strike chance of your Vampiric Touch, Devouring Plague and Shadow Word: Pain spells by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 2267,
+     "fieldName": "improvedDevouringPlague",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      63625,
+      63626,
+      63627
+     ],
+     "maxPoints": 3,
+     "name": "Improved Devouring Plague",
+     "icon": "spell_shadow_devouringplague.",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 63625,
+       "desc": "Increases the periodic damage done by your Devouring Plague by 5%, and when you cast Devouring Plague you instantly deal damage equal to 10% of its total periodic effect.",
+       "raw": "Increases the periodic damage done by your Devouring Plague by $s1%, and when you cast Devouring Plague you instantly deal damage equal to $s2% of its total periodic effect."
+      },
+      {
+       "r": 2,
+       "spell": 63626,
+       "desc": "Increases the periodic damage done by your Devouring Plague by 10%, and when you cast Devouring Plague you instantly deal damage equal to 20% of its total periodic effect.",
+       "raw": "Increases the periodic damage done by your Devouring Plague by $s1%, and when you cast Devouring Plague you instantly deal damage equal to $s2% of its total periodic effect."
+      },
+      {
+       "r": 3,
+       "spell": 63627,
+       "desc": "Increases the periodic damage done by your Devouring Plague by 15%, and when you cast Devouring Plague you instantly deal damage equal to 30% of its total periodic effect.",
+       "raw": "Increases the periodic damage done by your Devouring Plague by $s1%, and when you cast Devouring Plague you instantly deal damage equal to $s2% of its total periodic effect."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 521,
+     "fieldName": "shadowform",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      15473
+     ],
+     "maxPoints": 1,
+     "name": "Shadowform",
+     "icon": "spell_shadow_shadowform",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 15473,
+       "desc": "Assume a Shadowform, increasing your Shadow damage by 15%, reducing all damage done to you by 15% and threat generated by 30%.  However, you may not cast Holy spells while in this form except Cure Disease and Abolish Disease.  Grants the periodic damage from your Shadow Word: Pain, Devouring Plague, and Vampiric Touch spells the ability to critically hit for 100% increased damage and grants Devouring Plague and Vampiric Touch the ability to benefit from haste.",
+       "raw": "Assume a Shadowform, increasing your Shadow damage by $s2%, reducing all damage done to you by $s3% and threat generated by $49868s1%.  However, you may not cast Holy spells while in this form except Cure Disease and Abolish Disease.  Grants the periodic damage from your Shadow Word: Pain, Devouring Plague, and Vampiric Touch spells the ability to critically hit for $49868s2% increased damage and grants Devouring Plague and Vampiric Touch the ability to benefit from haste."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 4,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 19,
+     "id": 1778,
+     "fieldName": "shadowPower",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      33221,
+      33222,
+      33223,
+      33224,
+      33225
+     ],
+     "maxPoints": 5,
+     "name": "Shadow Power",
+     "icon": "spell_shadow_shadowpower",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33221,
+       "desc": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by 20%.",
+       "raw": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 33222,
+       "desc": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by 40%.",
+       "raw": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 33223,
+       "desc": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by 60%.",
+       "raw": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by $s2%."
+      },
+      {
+       "r": 4,
+       "spell": 33224,
+       "desc": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by 80%.",
+       "raw": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by $s2%."
+      },
+      {
+       "r": 5,
+       "spell": 33225,
+       "desc": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by 100%.",
+       "raw": "Increases the critical strike damage bonus of your Mind Blast, Mind Flay, and Shadow Word: Death spells by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "id": 1906,
+     "fieldName": "improvedShadowform",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 0
+     },
+     "spellIds": [
+      47569,
+      47570
+     ],
+     "maxPoints": 2,
+     "name": "Improved Shadowform",
+     "icon": "spell_shadow_summonvoidwalker",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47569,
+       "desc": "Your Fade ability now has a 50% chance to remove all movement impairing effects when used while in Shadowform, and reduces casting or channeling time lost when damaged by 35% when casting any Shadow spell while in Shadowform.",
+       "raw": "Your Fade ability now has a $s1% chance to remove all movement impairing effects when used while in Shadowform, and reduces casting or channeling time lost when damaged by $s2% when casting any Shadow spell while in Shadowform."
+      },
+      {
+       "r": 2,
+       "spell": 47570,
+       "desc": "Your Fade ability now has a 100% chance to remove all movement impairing effects when used while in Shadowform, and reduces casting or channeling time lost when damaged by 70% when casting any Shadow spell while in Shadowform.",
+       "raw": "Your Fade ability now has a $s1% chance to remove all movement impairing effects when used while in Shadowform, and reduces casting or channeling time lost when damaged by $s2% when casting any Shadow spell while in Shadowform."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 21,
+     "id": 1816,
+     "fieldName": "misery",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      33191,
+      33192,
+      33193
+     ],
+     "maxPoints": 3,
+     "name": "Misery",
+     "icon": "spell_shadow_misery",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 33191,
+       "desc": "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also increase the chance for harmful spells to hit by 1% lasting 24 sec, and increases the benefit from spell power gained by your Mind Blast, Mind Flay and Mind Sear spells by 5%.",
+       "raw": "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also increase the chance for harmful spells to hit by $33196s1% lasting $33196d, and increases the benefit from spell power gained by your Mind Blast, Mind Flay and Mind Sear spells by $s3%."
+      },
+      {
+       "r": 2,
+       "spell": 33192,
+       "desc": "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also increase the chance for harmful spells to hit by 2% lasting 24 sec, and increases the benefit from spell power gained by your Mind Blast, Mind Flay and Mind Sear spells by 10%.",
+       "raw": "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also increase the chance for harmful spells to hit by $33197s1% lasting $33197d, and increases the benefit from spell power gained by your Mind Blast, Mind Flay and Mind Sear spells by $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 33193,
+       "desc": "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also increase the chance for harmful spells to hit by 3% lasting 24 sec, and increases the benefit from spell power gained by your Mind Blast, Mind Flay and Mind Sear spells by 15%.",
+       "raw": "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also increase the chance for harmful spells to hit by $33198s1% lasting $33198d, and increases the benefit from spell power gained by your Mind Blast, Mind Flay and Mind Sear spells by $s3%."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1908,
+     "fieldName": "psychicHorror",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      64044
+     ],
+     "maxPoints": 1,
+     "name": "Psychic Horror",
+     "icon": "spell_shadow_psychichorrors",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 64044,
+       "desc": "You terrify the target, causing them to tremble in horror for 3 sec and drop their main hand and ranged weapons for 10 sec.",
+       "raw": "You terrify the target, causing them to tremble in horror for $d and drop their main hand and ranged weapons for $64058d."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 1779,
+     "fieldName": "vampiricTouch",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      34914
+     ],
+     "maxPoints": 1,
+     "name": "Vampiric Touch",
+     "icon": "spell_holy_stoicism",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 34914,
+       "desc": "Causes 450 Shadow damage over 15 sec to your target and causes up to 10 party or raid members to gain 1% of their maximum mana per 5 sec when you deal damage from Mind Blast. In addition, if the Vampiric Touch is dispelled it will cause 720 damage to the afflicted target.",
+       "raw": "Causes $o2 Shadow damage over $d to your target and causes up to 10 party or raid members to gain 1% of their maximum mana per 5 sec when you deal damage from Mind Blast. In addition, if the Vampiric Touch is dispelled it will cause $*8;s2 damage to the afflicted target."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 24,
+     "id": 1909,
+     "fieldName": "painAndSuffering",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47580,
+      47581,
+      47582
+     ],
+     "maxPoints": 3,
+     "name": "Pain and Suffering",
+     "icon": "spell_shadow_painandsuffering",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47580,
+       "desc": "Your Mind Flay has a 33% chance to refresh the duration of your Shadow Word: Pain on the target, and reduces the damage you take from your own Shadow Word: Death by 10%.",
+       "raw": "Your Mind Flay has a $h% chance to refresh the duration of your Shadow Word: Pain on the target, and reduces the damage you take from your own Shadow Word: Death by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 47581,
+       "desc": "Your Mind Flay has a 66% chance to refresh the duration of your Shadow Word: Pain on the target, and reduces the damage you take from your own Shadow Word: Death by 20%.",
+       "raw": "Your Mind Flay has a $h% chance to refresh the duration of your Shadow Word: Pain on the target, and reduces the damage you take from your own Shadow Word: Death by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 47582,
+       "desc": "Your Mind Flay has a 100% chance to refresh the duration of your Shadow Word: Pain on the target, and reduces the damage you take from your own Shadow Word: Death by 30%.",
+       "raw": "Your Mind Flay has a $h% chance to refresh the duration of your Shadow Word: Pain on the target, and reduces the damage you take from your own Shadow Word: Death by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 1907,
+     "fieldName": "twistedFaith",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 2
+     },
+     "spellIds": [
+      47573,
+      47577,
+      47578,
+      51166,
+      51167
+     ],
+     "maxPoints": 5,
+     "name": "Twisted Faith",
+     "icon": "spell_shadow_mindtwisting",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47573,
+       "desc": "Increases your spell power by 4% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by 2% if your target is afflicted by your Shadow Word: Pain.",
+       "raw": "Increases your spell power by $s1% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by $s2% if your target is afflicted by your Shadow Word: Pain."
+      },
+      {
+       "r": 2,
+       "spell": 47577,
+       "desc": "Increases your spell power by 8% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by 4% if your target is afflicted by your Shadow Word: Pain.",
+       "raw": "Increases your spell power by $s1% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by $s2% if your target is afflicted by your Shadow Word: Pain."
+      },
+      {
+       "r": 3,
+       "spell": 47578,
+       "desc": "Increases your spell power by 12% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by 6% if your target is afflicted by your Shadow Word: Pain.",
+       "raw": "Increases your spell power by $s1% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by $s2% if your target is afflicted by your Shadow Word: Pain."
+      },
+      {
+       "r": 4,
+       "spell": 51166,
+       "desc": "Increases your spell power by 16% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by 8% if your target is afflicted by your Shadow Word: Pain.",
+       "raw": "Increases your spell power by $s1% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by $s2% if your target is afflicted by your Shadow Word: Pain."
+      },
+      {
+       "r": 5,
+       "spell": 51167,
+       "desc": "Increases your spell power by 20% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by 10% if your target is afflicted by your Shadow Word: Pain.",
+       "raw": "Increases your spell power by $s1% of your total Spirit, and your damage done by your Mind Flay and Mind Blast is increased by $s2% if your target is afflicted by your Shadow Word: Pain."
+      }
+     ]
+    },
+    {
+     "i": 26,
+     "id": 1910,
+     "fieldName": "dispersion",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      47585
+     ],
+     "maxPoints": 1,
+     "name": "Dispersion",
+     "icon": "spell_shadow_dispersion",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 47585,
+       "desc": "You disperse into pure Shadow energy, reducing all damage taken by 90%.  You are unable to attack or cast spells, but you regenerate 6% mana every 1 sec for 6 sec. Dispersion can be cast while stunned, feared or silenced and clears all snare and movement impairing effects when cast, and makes you immune to them while dispersed.",
+       "raw": "You disperse into pure Shadow energy, reducing all damage taken by $47585s1%.  You are unable to attack or cast spells, but you regenerate $49766s1% mana every $60069t1 sec for $d. Dispersion can be cast while stunned, feared or silenced and clears all snare and movement impairing effects when cast, and makes you immune to them while dispersed."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    }
+   ]
+  }
+ ]
+}

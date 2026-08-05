@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alonecraft Talent Calculator</title>
+<meta name="description" content="Talent calculator for the Alonecraft WoW 3.3.5a server, showing its custom talent redesigns.">
+<!-- Paths are relative on purpose: GitHub Pages serves this from a
+     /<repo>/ subpath, not the domain root. -->
+<link rel="stylesheet" href="./css/style.css">
+<link rel="icon" href="./assets/icon-fallback.svg">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <h1>Alonecraft Talents</h1>
+    <p class="tagline">Talent trees as this server actually runs them &mdash; not retail 3.3.5a.</p>
+  </div>
+  <nav id="class-picker" class="class-picker" aria-label="Class"></nav>
+</header>
+
+<section class="controls">
+  <div class="points">
+    <span id="points-spent">0</span> / <span id="points-max">71</span> points
+    <span id="points-left" class="muted"></span>
+  </div>
+  <label class="toggle">
+    <input type="checkbox" id="toggle-highlight" checked>
+    Highlight custom talents
+  </label>
+  <label class="toggle">
+    <input type="checkbox" id="toggle-only-modified">
+    Show only custom
+  </label>
+  <label class="toggle">
+    <input type="checkbox" id="toggle-raw">
+    Show raw tooltip markup
+  </label>
+  <button type="button" id="btn-copy">Copy link</button>
+  <button type="button" id="btn-reset">Reset all</button>
+</section>
+
+<p id="link-warning" class="warning" hidden></p>
+
+<main id="trees" class="trees" aria-live="polite"></main>
+
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+<footer class="footer">
+  <p>
+    <span id="stats"></span>
+  </p>
+  <p class="muted">
+    Talent point rules and prerequisite-arrow geometry adapted from
+    <a href="https://github.com/wowsims/wotlk">wowsims/wotlk</a> (MIT).
+    Tooltips are resolved from this server's own DBCs, because Wowhead has no
+    knowledge of custom talents.
+  </p>
+  <p class="muted">
+    Two tooltip constructs are choices rather than resolutions:
+    conditional text (<code>$?s</code>) always shows its first branch, and
+    gendered text always shows the male form. Values that depend on your
+    character (attack power, spell power, weapon damage) are left as raw
+    markup.
+  </p>
+</footer>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
