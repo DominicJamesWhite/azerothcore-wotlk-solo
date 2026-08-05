@@ -1,0 +1,86 @@
+{
+  "_comment": [
+    "Accepted worldserver log noise. Every entry is a deliberate decision with a",
+    "reason -- either the volume is expected, or it is known debt with a plan.",
+    "`python tools/audit_logs.py --check` reports anything above its max, plus any",
+    "new signature at or above new_signature_threshold.",
+    "",
+    "The point of this file is the ratchet: when a fix lands, drop the number to 0",
+    "so the problem cannot quietly come back. Raising a number is allowed, but only",
+    "with a note saying why the new volume is acceptable.",
+    "",
+    "`signatures` is empty until the first run with the file appenders on flags 7",
+    "(timestamp|loglevel|logfiltertype). Before that the logs carry no category, so",
+    "any signature key baselined from them would be stale the moment the prefix",
+    "appears. Populate it with `--baseline`, then replace the placeholder notes.",
+    "The named_checks below are prefix-independent and so are valid already."
+  ],
+
+  "new_signature_threshold": 25,
+
+  "named_checks": {
+    "config-missing-property": 0,
+    "config-duplicate-key": 0,
+    "sql-duplicate-entry": 0,
+    "sql-transaction-aborted": 0,
+    "creature-invalid-unit-class": 0,
+    "playerbot-no-ai": 0,
+    "teleport-invalid-map": 0,
+    "leftover-debug-gossip": 0,
+    "leftover-debug-razorscale": 0
+  },
+
+  "_named_check_notes": {
+    "config-missing-property": [
+      "Was 23/run: the deployed configs/worldserver.conf was older than the binary",
+      "and lacked 23 keys the core asks for. Fixed by regenerating every deployed",
+      "config from its .dist template via tools/sync_configs.py, with Alonecraft's",
+      "deviations kept in a tracked override layer. Run `python tools/sync_configs.py`",
+      "to see drift before it becomes warnings again. Must stay 0."
+    ],
+    "config-duplicate-key": [
+      "Was 1: LLMChatter.PrioritySystem.SafetyEnable appeared twice in the deployed",
+      "mod_llm_chatter.conf (hand-edited; the .dist has it once). Gone after",
+      "regeneration; sync_configs.py --check now fails on any duplicate key."
+    ],
+    "sql-duplicate-entry": [
+      "Was 1192/run (1177 character_spell, 15 character_talent), one per bot.",
+      "NOT cosmetic: each duplicate rolled back the whole Player::SaveToDB",
+      "transaction, silently discarding inventory, quests, skills and achievements.",
+      "Fixed by making CHAR_INS_CHAR_SPELL / CHAR_INS_CHAR_TALENT use ON DUPLICATE",
+      "KEY UPDATE, plus the missing CHAR_DEL_CHAR_SPELL_BY_SPELL in",
+      "Player::removeSpell for PLAYERSPELL_TEMPORARY entries. Must stay 0."
+    ],
+    "sql-transaction-aborted": [
+      "0 and must stay 0. This is the symptom that matters most -- it means a",
+      "character save was thrown away. It was previously invisible because it logs",
+      "at WARN and Logger.root was set to 2 (Error); root is now 3 (Warning)."
+    ],
+    "creature-invalid-unit-class": [
+      "Was 2/run: custom creature_template entries 200008 and 200009 have",
+      "unit_class = 0. Fixed by module SQL woa_2026_08_05_00.sql."
+    ],
+    "playerbot-no-ai": [
+      "0 in the sampled run, but the call site is inside the per-update bot loop",
+      "with no dedupe, so one desynced bot produces an error every cycle forever.",
+      "Budgeted at 0 so the spam loop is caught the first time it fires."
+    ],
+    "teleport-invalid-map": [
+      "1 occurrence (map 530, Z = -200000) -- a failed ground-height lookup,",
+      "probably a missing or mismatched vmap tile. Deliberately not investigated:",
+      "one instance is not worth chasing. Budgeted at 0 so a recurrence surfaces."
+    ],
+    "leftover-debug-gossip": [
+      "Was 9/run and scales with play: LOG_ERROR debug instrumentation in",
+      "MiscHandler.cpp firing on every gossip click, by every player and bot.",
+      "Committed by mistake in bb88cdaca. Removed. Must stay 0."
+    ],
+    "leftover-debug-razorscale": [
+      "Was 24/run: LOG_ERROR debug instrumentation in boss_razorscale.cpp, also",
+      "from bb88cdaca. Removed (the behavioural fixes in that commit were kept).",
+      "Must stay 0."
+    ]
+  },
+
+  "signatures": {}
+}

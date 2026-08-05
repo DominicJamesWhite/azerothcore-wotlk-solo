@@ -20,6 +20,8 @@ SET "WOW_DATA=C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Data"
 SET "PYTHON=python"
 SET "VERIFY_SCRIPT=%~dp0tools\verify_scripts.py"
 SET "VERIFY_DB_SCRIPT=%~dp0tools\verify_db.py"
+SET "AUDIT_LOGS_SCRIPT=%~dp0tools\audit_logs.py"
+SET "SYNC_CONFIGS_SCRIPT=%~dp0tools\sync_configs.py"
 SET "WOW_CACHE=C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Cache"
 SET "LLM_BRIDGE_SCRIPT=%~dp0modules\mod-llm-chatter\tools\llm_chatter_bridge.py"
 SET "LLM_BRIDGE_CONF=%BUILD_DIR%\bin\%BUILD_CONFIG%\configs\modules\mod_llm_chatter.conf"
@@ -33,6 +35,9 @@ SET "SKIP_COPY=0"
 SET "SKIP_SERVER=0"
 SET "SKIP_VERIFY=0"
 SET "SKIP_BRIDGE=0"
+SET "SKIP_AUDIT=0"
+SET "SKIP_CONFIG_CHECK=0"
+SET "SKIP_TALENT_EXPORT=0"
 
 :PARSE_ARGS
 IF "%~1"=="" GOTO ARGS_DONE
@@ -44,6 +49,9 @@ IF /I "%~1"=="--skip-copy"   SET "SKIP_COPY=1"   & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-server" SET "SKIP_SERVER=1"  & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-verify" SET "SKIP_VERIFY=1" & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--skip-bridge" SET "SKIP_BRIDGE=1" & SHIFT & GOTO PARSE_ARGS
+IF /I "%~1"=="--skip-audit"  SET "SKIP_AUDIT=1"  & SHIFT & GOTO PARSE_ARGS
+IF /I "%~1"=="--skip-config-check" SET "SKIP_CONFIG_CHECK=1" & SHIFT & GOTO PARSE_ARGS
+IF /I "%~1"=="--skip-talent-export" SET "SKIP_TALENT_EXPORT=1" & SHIFT & GOTO PARSE_ARGS
 IF /I "%~1"=="--help" GOTO SHOW_HELP
 ECHO Unknown flag: %~1
 GOTO SHOW_HELP
@@ -67,16 +75,32 @@ FOR /F "usebackq tokens=*" %%p IN (`powershell -NoProfile -Command "Get-CimInsta
     SET "KILLED=1"
 )
 IF "!BRIDGE_KILLED!"=="1" ECHO       LLM chatter bridge stopped.
-FOR %%s IN (worldserver.exe authserver.exe) DO (
-    tasklist /FI "IMAGENAME eq %%s" 2>NUL | %SystemRoot%\System32\find.exe /I "%%s" >NUL
-    IF !ERRORLEVEL!==0 (
-        taskkill /IM %%s /F >NUL 2>&1
-        ECHO       %%s stopped.
-        SET "KILLED=1"
+REM Stop the servers gracefully so World::StopNow runs: it flushes the log
+REM appenders and saves every online player and bot. taskkill /F skipped both,
+REM which is why a crash used to leave nothing readable behind. The script falls
+REM back to a force kill after 20s. See tools\stop_server.ps1 for why plain
+REM `taskkill` (no /F) is not good enough on Windows.
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0tools\stop_server.ps1"
+IF !ERRORLEVEL!==1 SET "KILLED=1"
+IF "!KILLED!"=="1" timeout /t 2 /nobreak >NUL
+
+REM -- Rotate logs -------------------------------------------
+REM The appenders run in append mode (,a) so a crash loop keeps its history.
+REM Rotating here gives per-run isolation without that trade-off. Keep 30.
+SET "LOG_ARCHIVE=%SERVER_DIR%\logs\archive"
+IF NOT EXIST "%LOG_ARCHIVE%" MKDIR "%LOG_ARCHIVE%" >NUL 2>&1
+FOR /F "usebackq tokens=*" %%t IN (`powershell -NoProfile -Command "Get-Date -Format yyyyMMdd_HHmmss"`) DO SET "LOG_STAMP=%%t"
+SET "ROTATED=0"
+FOR %%l IN (Server Errors Playerbots Auth) DO (
+    IF EXIST "%SERVER_DIR%\%%l.log" (
+        MOVE /Y "%SERVER_DIR%\%%l.log" "%LOG_ARCHIVE%\%%l_!LOG_STAMP!.log" >NUL 2>&1
+        IF !ERRORLEVEL!==0 SET "ROTATED=1"
     )
 )
-IF "%KILLED%"=="0" ECHO       No servers were running.
-IF "%KILLED%"=="1" timeout /t 2 /nobreak >NUL
+IF "!ROTATED!"=="1" (
+    ECHO       Logs rotated to logs\archive\*_!LOG_STAMP!.log
+    powershell -NoProfile -Command "Get-ChildItem '%LOG_ARCHIVE%\*.log' | Sort-Object LastWriteTime -Descending | Select-Object -Skip 30 | Remove-Item -Force" >NUL 2>&1
+)
 
 REM -- Clear WoW client cache so changed data is picked up -----
 IF EXIST "%WOW_CACHE%" (
@@ -114,6 +138,31 @@ IF EXIST "%VERIFY_SCRIPT%" (
     ECHO [1.5/5] verify_scripts.py not found, skipping consistency check.
 )
 :AFTER_VERIFY
+
+REM ============================================================
+REM  STEP 1.6: Config drift check
+REM ============================================================
+REM Reports only. Deployed configs drift silently from the .dist templates as
+REM modules gain settings; missing keys fall back to compiled-in defaults, and
+REM mod-llm-chatter suppresses its own missing-property warnings entirely.
+IF "%SKIP_CONFIG_CHECK%"=="1" (
+    ECHO.
+    ECHO [1.6/5] Config drift check SKIPPED ^(--skip-config-check^)
+    GOTO AFTER_CONFIG_CHECK
+)
+
+IF EXIST "%SYNC_CONFIGS_SCRIPT%" (
+    ECHO.
+    ECHO [1.6/5] Checking config drift...
+    %PYTHON% "%SYNC_CONFIGS_SCRIPT%"
+    IF !ERRORLEVEL! NEQ 0 (
+        ECHO       Fix with: python tools\sync_configs.py --write --accept-changes
+    )
+) ELSE (
+    ECHO.
+    ECHO [1.6/5] sync_configs.py not found, skipping config drift check.
+)
+:AFTER_CONFIG_CHECK
 
 REM ============================================================
 REM  STEP 1.8: CMake configure/generate
@@ -305,6 +354,37 @@ ECHO       Interface build step done.
 :AFTER_UI
 
 REM ============================================================
+REM  STEP 3.6: Export talent data for the web calculator (site/)
+REM ============================================================
+REM  The DBC build above is what makes the live DBCs current, so this has to
+REM  run after it.  The JSON is committed and GitHub Actions only publishes
+REM  it, so forgetting this step means the site silently serves stale
+REM  talents -- which is why it is wired in here rather than left manual.
+IF "%SKIP_TALENT_EXPORT%"=="1" (
+    ECHO.
+    ECHO [3.6/5] Talent export SKIPPED ^(--skip-talent-export^)
+    GOTO AFTER_TALENT_EXPORT
+)
+
+IF NOT EXIST "%~dp0tools\export_talents.py" (
+    ECHO.
+    ECHO [3.6/5] export_talents.py not found, skipping talent export.
+    GOTO AFTER_TALENT_EXPORT
+)
+
+ECHO.
+ECHO [3.6/5] Exporting talent data for the web calculator...
+
+%PYTHON% "%~dp0tools\export_talents.py"
+IF %ERRORLEVEL% NEQ 0 (
+    ECHO.
+    ECHO       WARNING: Talent export reported problems. Continuing anyway.
+)
+
+ECHO       Talent export done. Commit site/data if it changed.
+:AFTER_TALENT_EXPORT
+
+REM ============================================================
 REM  STEP 4: Copy patch-4.mpq to WoW client
 REM ============================================================
 IF "%SKIP_COPY%"=="1" (
@@ -379,7 +459,11 @@ IF "%SKIP_BRIDGE%"=="1" (
     ECHO       LLM chatter bridge SKIPPED ^(--skip-bridge^)
 ) ELSE IF EXIST "%LLM_BRIDGE_SCRIPT%" (
     IF EXIST "%LLM_BRIDGE_CONF%" (
-        START "LLM Chatter Bridge" cmd /k %PYTHON% "%LLM_BRIDGE_SCRIPT%" --config "%LLM_BRIDGE_CONF%"
+        REM --log-file so the bridge's output survives the window closing and
+        REM tools\audit_logs.py has something to bucket. cmd /c, not /k: the
+        REM window used to linger after python exited, and the stale shell then
+        REM had to be hunted down by command line at the next restart.
+        START "LLM Chatter Bridge" cmd /c %PYTHON% "%LLM_BRIDGE_SCRIPT%" --config "%LLM_BRIDGE_CONF%" --log-file "%SERVER_DIR%\logs\llm_chatter_bridge.log"
         ECHO       LLM chatter bridge launched in new window.
     ) ELSE (
         ECHO       LLM chatter bridge config not found, skipping.
@@ -405,6 +489,28 @@ IF EXIST "%VERIFY_DB_SCRIPT%" (
 )
 
 REM ============================================================
+REM  STEP 5.6: Log noise audit
+REM ============================================================
+REM Reports loudly but never fails the build (no --strict). A gate you learn to
+REM ignore is worse than no gate; run --check --strict by hand when tightening.
+IF "%SKIP_AUDIT%"=="1" (
+    ECHO.
+    ECHO [5.6/5] Log audit SKIPPED ^(--skip-audit^)
+    GOTO DONE
+)
+
+IF EXIST "%AUDIT_LOGS_SCRIPT%" (
+    ECHO.
+    ECHO [5.6/5] Letting the server settle, then auditing log noise...
+    timeout /t 45 /nobreak >NUL
+    %PYTHON% "%AUDIT_LOGS_SCRIPT%" --check --quiet --json-history "%BUILD_DIR%\logs\log_audit_history.jsonl"
+    ECHO       Full breakdown: python tools\audit_logs.py
+) ELSE (
+    ECHO.
+    ECHO [5.6/5] audit_logs.py not found, skipping log audit.
+)
+
+REM ============================================================
 :DONE
 ECHO.
 ECHO ============================================================
@@ -427,6 +533,9 @@ ECHO   --skip-copy     Skip copying patch-4.mpq to WoW client
 ECHO   --skip-server   Skip launching worldserver
 ECHO   --skip-verify   Skip pre-build consistency check and post-start DB verify
 ECHO   --skip-bridge   Skip launching LLM chatter bridge
+ECHO   --skip-audit    Skip the post-start log noise audit
+ECHO   --skip-config-check  Skip the pre-build config drift check
+ECHO   --skip-talent-export Skip the web talent calculator data export
 ECHO   --help          Show this help message
 ECHO.
 ECHO Examples:

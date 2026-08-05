@@ -28,6 +28,42 @@ CORE_SCRIPT_WHITELIST = {
     "spell_mage_burning_determination",
 }
 
+# Temporary diagnostics: LOG_*("alonecraft.debug", ...). Listing them on every
+# build is the point — debug logging that nobody is reminded about is how ~21
+# LOG_ERROR calls ended up committed in MiscHandler.cpp and boss_razorscale.cpp
+# and then fired for every player on every gossip click.
+DEBUG_LOG_CATEGORY = "alonecraft.debug"
+DEBUG_LOG_RE = re.compile(r'LOG_(?:TRACE|DEBUG|INFO|WARN|ERROR|FATAL)\(\s*"alonecraft\.debug"')
+
+# Directories scanned for stray diagnostics. Core is included deliberately: that
+# is where the debt landed last time.
+DEBUG_SCAN_DIRS = [
+    os.path.join(REPO_ROOT, "src", "server"),
+    os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "src"),
+]
+
+
+def find_debug_log_sites():
+    """Return [(relpath, lineno, stripped_line)] for every alonecraft.debug call."""
+    sites = []
+    for root_dir in DEBUG_SCAN_DIRS:
+        if not os.path.isdir(root_dir):
+            continue
+        for dirpath, _dirnames, filenames in os.walk(root_dir):
+            for fn in filenames:
+                if not fn.endswith((".cpp", ".h")):
+                    continue
+                path = os.path.join(dirpath, fn)
+                try:
+                    with open(path, "r", encoding="utf-8", errors="replace") as fh:
+                        for lineno, line in enumerate(fh, 1):
+                            if DEBUG_LOG_RE.search(line):
+                                rel = os.path.relpath(path, REPO_ROOT)
+                                sites.append((rel, lineno, line.strip()[:110]))
+                except OSError:
+                    continue
+    return sites
+
 
 def extract_cpp_script_names(src_dir):
     """Extract script names from all .cpp files (excluding MP_loader.cpp).
@@ -300,6 +336,20 @@ def main():
                         f"[C++ -> DB] Script '{name}' not found in live database "
                         f"-- SQL may not have been applied yet"
                     )
+
+    # Check 7: temporary diagnostics still in the tree
+    debug_sites = find_debug_log_sites()
+    if debug_sites:
+        print("-" * 60)
+        print(f"  TEMPORARY DIAGNOSTICS ({len(debug_sites)}) -- '{DEBUG_LOG_CATEGORY}'")
+        print("-" * 60)
+        for rel, lineno, text in debug_sites:
+            print(f"  * {rel}:{lineno}")
+            print(f"      {text}")
+        print()
+        print("  Remove these once the investigation is done. They are listed, not")
+        print("  blocked, so debugging is never gated on cleaning up first.")
+        print()
 
     # Report results
     if issues:
