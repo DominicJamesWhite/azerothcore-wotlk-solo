@@ -7,6 +7,7 @@
    "tabId": 201,
    "name": "Discipline",
    "page": 0,
+   "background": "priestdiscipline",
    "talents": [
     {
      "i": 0,
@@ -1114,6 +1115,7 @@
    "tabId": 202,
    "name": "Holy",
    "page": 1,
+   "background": "priestholy",
    "talents": [
     {
      "i": 0,
@@ -2226,6 +2228,7 @@
    "tabId": 203,
    "name": "Shadow",
    "page": 2,
+   "background": "priestshadow",
    "talents": [
     {
      "i": 0,

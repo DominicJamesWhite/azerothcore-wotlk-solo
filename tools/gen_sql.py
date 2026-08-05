@@ -780,12 +780,16 @@ def cmd_talent(args):
 TALENT_TAB_INFO = {
     # Warrior
     161: ("Warrior", "Arms", 0),
-    163: ("Warrior", "Fury", 1),
-    164: ("Warrior", "Protection", 2),
-    # Paladin
-    381: ("Paladin", "Holy", 0),
-    382: ("Paladin", "Protection", 1),
-    383: ("Paladin", "Retribution", 2),
+    # Also verified against TalentTab.dbc: 163 holds Shield Specialization
+    # (Protection) and 164 holds Cruelty and Blood Craze (Fury) -- swapped here.
+    163: ("Warrior", "Protection", 2),
+    164: ("Warrior", "Fury", 1),
+    # Paladin -- verified against TalentTab.dbc: tab 381 holds Benediction and
+    # Conviction (Retribution), 382 holds Healing Light and Aura Mastery (Holy).
+    # This table had all three Paladin tabs wrong, names and order both.
+    381: ("Paladin", "Retribution", 2),
+    382: ("Paladin", "Holy", 0),
+    383: ("Paladin", "Protection", 1),
     # Hunter
     361: ("Hunter", "Beast Mastery", 0),
     363: ("Hunter", "Marksmanship", 1),
@@ -816,7 +820,7 @@ TALENT_TAB_INFO = {
     301: ("Warlock", "Destruction", 2),
     # Druid
     283: ("Druid", "Balance", 0),
-    281: ("Druid", "Feral", 1),
+    281: ("Druid", "Feral Combat", 1),
     282: ("Druid", "Restoration", 2),
 }
 

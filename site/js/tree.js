@@ -14,6 +14,8 @@ import {
 const COLS = 4;
 export const CELL = 56;
 export const GAP = 18;
+// Inset so the frame art shows around the outermost talents.
+export const PAD = 10;
 
 function cellCentre(location) {
   return {
@@ -45,8 +47,19 @@ export function renderTree(tree, ctx) {
   const grid = document.createElement('div');
   grid.className = 'grid';
   const rows = maxRow(tree) + 1;
-  grid.style.width = `${COLS * CELL + (COLS - 1) * GAP}px`;
-  grid.style.height = `${rows * CELL + (rows - 1) * GAP}px`;
+  // The grid is padded, so the drawable area is inset by PAD on every side.
+  grid.style.width = `${COLS * CELL + (COLS - 1) * GAP + PAD * 2}px`;
+  grid.style.height = `${rows * CELL + (rows - 1) * GAP + PAD * 2}px`;
+  // Each tree's own TalentFrame art, named by TalentTab.dbc's BackgroundFile.
+  // Resolved to an absolute URL first: a relative url() inside a custom
+  // property is resolved against the stylesheet that substitutes it, so
+  // './assets/...' would be looked up under /css/ and 404. Going through
+  // document.baseURI also keeps this correct on GitHub Pages, which serves
+  // the site from a /<repo>/ subpath rather than the domain root.
+  if (tree.background) {
+    const url = new URL(`assets/trees/${tree.background}.png`, document.baseURI).href;
+    grid.style.setProperty('--tree-bg', `url("${url}")`);
+  }
 
   grid.appendChild(renderArrows(tree, state, rows));
 
@@ -63,8 +76,10 @@ export function renderTree(tree, ctx) {
     cell.className = `talent status-${status}`;
     if (talent.modified && highlight) cell.classList.add('modified');
     if (onlyModified && !talent.modified) cell.classList.add('dimmed');
-    cell.style.left = `${talent.location.colIdx * (CELL + GAP)}px`;
-    cell.style.top = `${talent.location.rowIdx * (CELL + GAP)}px`;
+    // + PAD because an absolutely positioned child is placed against the
+    // padding box, so the grid's own padding does not shift it.
+    cell.style.left = `${talent.location.colIdx * (CELL + GAP) + PAD}px`;
+    cell.style.top = `${talent.location.rowIdx * (CELL + GAP) + PAD}px`;
     cell.dataset.talentId = talent.id;
     cell.dataset.tabId = tree.tabId;
     cell.setAttribute('aria-label',

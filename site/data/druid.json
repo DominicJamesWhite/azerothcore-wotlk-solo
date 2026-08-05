@@ -7,6 +7,7 @@
    "tabId": 283,
    "name": "Balance",
    "page": 0,
+   "background": "druidbalance",
    "talents": [
     {
      "i": 0,
@@ -1028,8 +1029,9 @@
   },
   {
    "tabId": 281,
-   "name": "Feral",
+   "name": "Feral Combat",
    "page": 1,
+   "background": "druidferalcombat",
    "talents": [
     {
      "i": 0,
@@ -2112,6 +2114,7 @@
    "tabId": 282,
    "name": "Restoration",
    "page": 2,
+   "background": "druidrestoration",
    "talents": [
     {
      "i": 0,

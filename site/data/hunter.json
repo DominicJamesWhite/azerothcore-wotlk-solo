@@ -7,6 +7,7 @@
    "tabId": 361,
    "name": "Beast Mastery",
    "page": 0,
+   "background": "hunterbeastmastery",
    "talents": [
     {
      "i": 0,
@@ -978,6 +979,7 @@
    "tabId": 363,
    "name": "Marksmanship",
    "page": 1,
+   "background": "huntermarksmanship",
    "talents": [
     {
      "i": 0,
@@ -1966,6 +1968,7 @@
    "tabId": 362,
    "name": "Survival",
    "page": 2,
+   "background": "huntersurvival",
    "talents": [
     {
      "i": 0,

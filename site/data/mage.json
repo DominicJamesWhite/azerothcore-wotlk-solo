@@ -7,6 +7,7 @@
    "tabId": 81,
    "name": "Arcane",
    "page": 0,
+   "background": "magearcane",
    "talents": [
     {
      "i": 0,
@@ -1150,6 +1151,7 @@
    "tabId": 41,
    "name": "Fire",
    "page": 1,
+   "background": "magefire",
    "talents": [
     {
      "i": 0,
@@ -2186,6 +2188,7 @@
    "tabId": 61,
    "name": "Frost",
    "page": 2,
+   "background": "magefrost",
    "talents": [
     {
      "i": 0,

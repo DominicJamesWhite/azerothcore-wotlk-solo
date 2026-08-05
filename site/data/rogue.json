@@ -7,6 +7,7 @@
    "tabId": 182,
    "name": "Assassination",
    "page": 0,
+   "background": "rogueassassination",
    "talents": [
     {
      "i": 0,
@@ -982,6 +983,7 @@
    "tabId": 181,
    "name": "Combat",
    "page": 1,
+   "background": "roguecombat",
    "talents": [
     {
      "i": 0,
@@ -2015,6 +2017,7 @@
    "tabId": 183,
    "name": "Subtlety",
    "page": 2,
+   "background": "roguesubtlety",
    "talents": [
     {
      "i": 0,

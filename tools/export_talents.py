@@ -116,6 +116,51 @@ def load_aux(spells):
     )
 
 
+CLASS_BY_MASK = {
+    1: "Warrior", 2: "Paladin", 4: "Hunter", 8: "Rogue", 16: "Priest",
+    32: "Death Knight", 64: "Shaman", 128: "Mage", 256: "Warlock",
+    1024: "Druid",
+}
+
+
+def load_tabs():
+    """Talent tabs from TalentTab.dbc: (tab_id, class, name, order, background).
+
+    Preferred over gen_sql.TALENT_TAB_INFO, whose hardcoded names and page
+    order are wrong for five trees -- it has Paladin 381 as Holy when the tab
+    actually holds Benediction and Conviction (Retribution), and swaps
+    Warrior's Fury and Protection. Reading the DBC is both correct and
+    self-maintaining.
+
+    Pet talent tabs (Ferocity/Cunning/Tenacity) have ClassMask 0 and are
+    excluded, which is why 33 rows yield 30 trees.
+    """
+    path = getattr(config, "BASE_TALENTTAB_DBC_PATH", None)
+    if not path or not os.path.exists(path):
+        print("  WARNING: TalentTab.dbc not found; falling back to "
+              "gen_sql.TALENT_TAB_INFO, which mislabels Paladin and Warrior "
+              "and has no tree background art.")
+        return [
+            {"tabId": t, "class": c, "name": s, "order": p, "background": None}
+            for t, (c, s, p) in gen_sql.TALENT_TAB_INFO.items()
+        ]
+
+    rows = S.read_dbc(path, S.TALENTTAB_COLUMNS, S.TALENTTAB_FMT, quiet=True)
+    tabs = []
+    for tab_id, row in rows.items():
+        cls = CLASS_BY_MASK.get(row["ClassMask"])
+        if not cls:
+            continue
+        tabs.append({
+            "tabId": tab_id,
+            "class": cls,
+            "name": row["Name0"],
+            "order": row["OrderIndex"],
+            "background": (row["BackgroundFile"] or "").lower() or None,
+        })
+    return tabs
+
+
 def load_icons():
     path = config.BASE_SPELLICON_DBC_PATH
     if not os.path.exists(path):
@@ -217,8 +262,9 @@ def diff_talent(talent_row, base_talent, live_spells, base_spells):
 # ── Export ─────────────────────────────────────────────────────────────────
 
 
-def build_tree(tab_id, tree_name, page, talent_records, live_spells,
+def build_tree(tab, talent_records, live_spells,
                base_spells, base_talents, icons, aux, stats):
+    tab_id, tree_name, page = tab["tabId"], tab["name"], tab["order"]
     # _build_talent_tree defines the canonical (tier, col) ordering, and that
     # ordering IS the talent-link wire format -- digit i of a build string
     # addresses talents[i].  Anything that reorders it silently invalidates
@@ -303,6 +349,7 @@ def build_tree(tab_id, tree_name, page, talent_records, live_spells,
         "tabId": tab_id,
         "name": tree_name,
         "page": page,
+        "background": tab.get("background"),
         "talents": talents,
     }
 
@@ -330,19 +377,18 @@ def export(args):
         "bad_prereqs": [],
     }
 
-    # Group the 30 tabs by class, in tabpage order.
+    # Group the 30 tabs by class, in the DBC's own tab order.
     by_class = collections.OrderedDict()
-    for tab_id, (cls, spec, page) in sorted(
-            gen_sql.TALENT_TAB_INFO.items(), key=lambda kv: (kv[1][0], kv[1][2])):
-        by_class.setdefault(cls, []).append((tab_id, spec, page))
+    for tab in sorted(load_tabs(), key=lambda t: (t["class"], t["order"])):
+        by_class.setdefault(tab["class"], []).append(tab)
 
     files = {}
     class_index = []
     for cls, tabs in by_class.items():
         trees = [
-            build_tree(tab_id, spec, page, live_talents, live_spells,
-                       base_spells, base_talents, icons, aux, stats)
-            for tab_id, spec, page in sorted(tabs, key=lambda t: t[2])
+            build_tree(tab, live_talents, live_spells, base_spells,
+                       base_talents, icons, aux, stats)
+            for tab in sorted(tabs, key=lambda t: t["order"])
         ]
         key = class_key(cls)
         modified = sum(1 for tree in trees for t in tree["talents"]
@@ -357,7 +403,7 @@ def export(args):
             "key": key,
             "name": cls,
             "file": f"{key}.json",
-            "trees": [spec for _, spec, _ in sorted(tabs, key=lambda t: t[2])],
+            "trees": [t["name"] for t in sorted(tabs, key=lambda t: t["order"])],
             "talents": sum(len(tree["talents"]) for tree in trees),
             "modified": modified,
         })

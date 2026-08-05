@@ -7,6 +7,7 @@
    "tabId": 398,
    "name": "Blood",
    "page": 0,
+   "background": "deathknightblood",
    "talents": [
     {
      "i": 0,
@@ -1041,6 +1042,7 @@
    "tabId": 399,
    "name": "Frost",
    "page": 1,
+   "background": "deathknightfrost",
    "talents": [
     {
      "i": 0,
@@ -2093,6 +2095,7 @@
    "tabId": 400,
    "name": "Unholy",
    "page": 2,
+   "background": "deathknightunholy",
    "talents": [
     {
      "i": 0,

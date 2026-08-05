@@ -110,6 +110,95 @@ def convert(blp_bytes):
     return buf.getvalue()
 
 
+# ── Talent tree backgrounds ────────────────────────────────────────────────
+# Each tree's art is four unevenly-sized quadrants that tile into one 320x384
+# image. The base name comes from TalentTab.dbc's BackgroundFile and is not
+# guessable: Warlock Demonology is "WarlockSummoning", Warrior Arms is
+# "WarriorArms", and Paladin Retribution is "PaladinCombat".
+QUADRANTS = [
+    ("TopLeft", (0, 0)),
+    ("TopRight", (256, 0)),
+    ("BottomLeft", (0, 256)),
+    ("BottomRight", (256, 256)),
+]
+BACKGROUND_SIZE = (320, 384)
+
+FONTS = ["FRIZQT__.TTF", "MORPHEUS.TTF"]
+
+
+def wanted_backgrounds():
+    """Background base names referenced by the exported tree data."""
+    names = set()
+    for fn in sorted(os.listdir(SITE_DATA)):
+        if not fn.endswith(".json") or fn == "index.json":
+            continue
+        with open(os.path.join(SITE_DATA, fn), encoding="utf-8") as f:
+            data = json.load(f)
+        for tree in data.get("trees", []):
+            if tree.get("background"):
+                names.add(tree["background"])
+    return names
+
+
+def extract_backgrounds(archives, out_dir, force):
+    from PIL import Image
+
+    os.makedirs(out_dir, exist_ok=True)
+    names = wanted_backgrounds()
+    have = {f[:-4] for f in os.listdir(out_dir) if f.endswith(".png")}
+    todo = sorted(names if force else names - have)
+    print(f"  Tree backgrounds referenced: {len(names)}, to extract: {len(todo)}")
+
+    written = failed = 0
+    for name in todo:
+        canvas = Image.new("RGBA", BACKGROUND_SIZE, (0, 0, 0, 0))
+        ok = True
+        for quadrant, position in QUADRANTS:
+            member = f"Interface\\TalentFrame\\{name}-{quadrant}.blp"
+            blob = None
+            for archive in archives:
+                blob = read_from_mpq(archive, member)
+                if blob:
+                    break
+            if not blob:
+                print(f"    ! {name}-{quadrant}: not found")
+                ok = False
+                break
+            piece = Image.open(io.BytesIO(blob))
+            piece.load()
+            canvas.paste(piece.convert("RGBA"), position)
+        if not ok:
+            failed += 1
+            continue
+        canvas.save(os.path.join(out_dir, name + ".png"), "PNG", optimize=True)
+        written += 1
+
+    print(f"  Wrote {written} tree background(s)"
+          + (f", {failed} failed" if failed else ""))
+
+
+def extract_fonts(archives, out_dir, force):
+    """FRIZQT__ is WoW's UI face; MORPHEUS is the quest/heading face."""
+    os.makedirs(out_dir, exist_ok=True)
+    written = 0
+    for font in FONTS:
+        target = os.path.join(out_dir, font)
+        if os.path.exists(target) and not force:
+            continue
+        blob = None
+        for archive in archives:
+            blob = read_from_mpq(archive, f"Fonts\\{font}")
+            if blob:
+                break
+        if not blob:
+            print(f"    ! {font}: not found in any client archive")
+            continue
+        with open(target, "wb") as f:
+            f.write(blob)
+        written += 1
+    print(f"  Wrote {written} font(s)")
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -143,18 +232,24 @@ def main():
         return 1 if missing else 0
 
     todo = sorted(names if args.force else names - have)
-    if not todo:
-        print("  Nothing to do -- all icons already extracted.")
-        return 0
 
     if not os.path.exists(MPQCLI):
         sys.exit(f"ERROR: mpqcli not found at {MPQCLI}")
 
-    paths = icon_paths()
     archives = [os.path.join(args.client_data, a) for a in ARCHIVES]
     archives = [a for a in archives if os.path.exists(a)]
     if not archives:
         sys.exit(f"ERROR: no client MPQs found under {args.client_data}")
+
+    site_assets = os.path.dirname(args.out)
+    extract_backgrounds(archives, os.path.join(site_assets, "trees"), args.force)
+    extract_fonts(archives, os.path.join(site_assets, "fonts"), args.force)
+
+    if not todo:
+        print("  Nothing to do -- all icons already extracted.")
+        return 0
+
+    paths = icon_paths()
 
     os.makedirs(args.out, exist_ok=True)
     written = failed = 0

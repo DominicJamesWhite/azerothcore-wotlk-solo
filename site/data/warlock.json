@@ -7,6 +7,7 @@
    "tabId": 302,
    "name": "Affliction",
    "page": 0,
+   "background": "warlockcurses",
    "talents": [
     {
      "i": 0,
@@ -975,6 +976,7 @@
    "tabId": 303,
    "name": "Demonology",
    "page": 1,
+   "background": "warlocksummoning",
    "talents": [
     {
      "i": 0,
@@ -2085,6 +2087,7 @@
    "tabId": 301,
    "name": "Destruction",
    "page": 2,
+   "background": "warlockdestruction",
    "talents": [
     {
      "i": 0,

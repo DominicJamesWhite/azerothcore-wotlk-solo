@@ -7,6 +7,7 @@
    "tabId": 261,
    "name": "Elemental",
    "page": 0,
+   "background": "shamanelementalcombat",
    "talents": [
     {
      "i": 0,
@@ -952,6 +953,7 @@
    "tabId": 263,
    "name": "Enhancement",
    "page": 1,
+   "background": "shamanenhancement",
    "talents": [
     {
      "i": 0,
@@ -1983,6 +1985,7 @@
    "tabId": 262,
    "name": "Restoration",
    "page": 2,
+   "background": "shamanrestoration",
    "talents": [
     {
      "i": 0,

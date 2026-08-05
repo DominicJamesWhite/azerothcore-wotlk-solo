@@ -4,918 +4,10 @@
  "name": "Paladin",
  "trees": [
   {
-   "tabId": 381,
+   "tabId": 382,
    "name": "Holy",
    "page": 0,
-   "talents": [
-    {
-     "i": 0,
-     "id": 1403,
-     "fieldName": "deflection",
-     "location": {
-      "rowIdx": 0,
-      "colIdx": 1
-     },
-     "spellIds": [
-      20060,
-      20061,
-      20062,
-      20063,
-      20064
-     ],
-     "maxPoints": 5,
-     "name": "Deflection",
-     "icon": "ability_parry",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20060,
-       "desc": "Increases your Parry chance by 1%.",
-       "raw": "Increases your Parry chance by $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 20061,
-       "desc": "Increases your Parry chance by 2%.",
-       "raw": "Increases your Parry chance by $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 20062,
-       "desc": "Increases your Parry chance by 3%.",
-       "raw": "Increases your Parry chance by $s1%."
-      },
-      {
-       "r": 4,
-       "spell": 20063,
-       "desc": "Increases your Parry chance by 4%.",
-       "raw": "Increases your Parry chance by $s1%."
-      },
-      {
-       "r": 5,
-       "spell": 20064,
-       "desc": "Increases your Parry chance by 5%.",
-       "raw": "Increases your Parry chance by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 1,
-     "id": 1407,
-     "fieldName": "benediction",
-     "location": {
-      "rowIdx": 0,
-      "colIdx": 2
-     },
-     "spellIds": [
-      20101,
-      20102,
-      20103,
-      20104,
-      20105
-     ],
-     "maxPoints": 5,
-     "name": "Benediction",
-     "icon": "spell_frost_windwalkon",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20101,
-       "desc": "Reduces the mana cost of all instant cast spells by 2%.",
-       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 20102,
-       "desc": "Reduces the mana cost of all instant cast spells by 4%.",
-       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 20103,
-       "desc": "Reduces the mana cost of all instant cast spells by 6%.",
-       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
-      },
-      {
-       "r": 4,
-       "spell": 20104,
-       "desc": "Reduces the mana cost of all instant cast spells by 8%.",
-       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
-      },
-      {
-       "r": 5,
-       "spell": 20105,
-       "desc": "Reduces the mana cost of all instant cast spells by 10%.",
-       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 2,
-     "id": 1631,
-     "fieldName": "improvedJudgements",
-     "location": {
-      "rowIdx": 1,
-      "colIdx": 0
-     },
-     "spellIds": [
-      25956,
-      25957
-     ],
-     "maxPoints": 2,
-     "name": "Improved Judgements",
-     "icon": "spell_holy_righteousfury",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 25956,
-       "desc": "Decreases the cooldown of your Judgement spells by 1 sec.",
-       "raw": "Decreases the cooldown of your Judgement spells by $/1000;s1 sec."
-      },
-      {
-       "r": 2,
-       "spell": 25957,
-       "desc": "Decreases the cooldown of your Judgement spells by 2 sec.",
-       "raw": "Decreases the cooldown of your Judgement spells by $/1000;s1 sec."
-      }
-     ]
-    },
-    {
-     "i": 3,
-     "id": 1464,
-     "fieldName": "heartOfTheCrusader",
-     "location": {
-      "rowIdx": 1,
-      "colIdx": 1
-     },
-     "spellIds": [
-      20335,
-      20336,
-      20337
-     ],
-     "maxPoints": 3,
-     "name": "Heart of the Crusader",
-     "icon": "spell_holy_holysmite",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20335,
-       "desc": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional 1%.",
-       "raw": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 20336,
-       "desc": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional 2%.",
-       "raw": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 20337,
-       "desc": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional 3%.",
-       "raw": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional $s1%."
-      }
-     ]
-    },
-    {
-     "i": 4,
-     "id": 1401,
-     "fieldName": "improvedBlessingOfMight",
-     "location": {
-      "rowIdx": 1,
-      "colIdx": 2
-     },
-     "spellIds": [
-      20042,
-      20045
-     ],
-     "maxPoints": 2,
-     "name": "Improved Blessing of Might",
-     "icon": "spell_holy_fistofjustice",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20042,
-       "desc": "Increases the attack power bonus of your Blessing of Might by 12%.",
-       "raw": "Increases the attack power bonus of your Blessing of Might by $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 20045,
-       "desc": "Increases the attack power bonus of your Blessing of Might by 25%.",
-       "raw": "Increases the attack power bonus of your Blessing of Might by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 5,
-     "id": 1633,
-     "fieldName": "vindication",
-     "location": {
-      "rowIdx": 2,
-      "colIdx": 0
-     },
-     "spellIds": [
-      9452,
-      26016
-     ],
-     "maxPoints": 2,
-     "name": "Vindication",
-     "icon": "spell_holy_vindication",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 9452,
-       "desc": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by 23 for 10 sec.",
-       "raw": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by $67s1 for $67d."
-      },
-      {
-       "r": 2,
-       "spell": 26016,
-       "desc": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by 46 for 10 sec.",
-       "raw": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by $26017s1 for $26017d."
-      }
-     ]
-    },
-    {
-     "i": 6,
-     "id": 1411,
-     "fieldName": "conviction",
-     "location": {
-      "rowIdx": 2,
-      "colIdx": 1
-     },
-     "spellIds": [
-      20117,
-      20118,
-      20119,
-      20120,
-      20121
-     ],
-     "maxPoints": 5,
-     "name": "Conviction",
-     "icon": "spell_holy_retributionaura",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20117,
-       "desc": "Increases your chance to get a critical strike with all spells and attacks by 1%.",
-       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 20118,
-       "desc": "Increases your chance to get a critical strike with all spells and attacks by 2%.",
-       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 20119,
-       "desc": "Increases your chance to get a critical strike with all spells and attacks by 3%.",
-       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
-      },
-      {
-       "r": 4,
-       "spell": 20120,
-       "desc": "Increases your chance to get a critical strike with all spells and attacks by 4%.",
-       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
-      },
-      {
-       "r": 5,
-       "spell": 20121,
-       "desc": "Increases your chance to get a critical strike with all spells and attacks by 5%.",
-       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 7,
-     "id": 1481,
-     "fieldName": "sealOfCommand",
-     "location": {
-      "rowIdx": 2,
-      "colIdx": 2
-     },
-     "spellIds": [
-      20375
-     ],
-     "maxPoints": 1,
-     "name": "Seal of Command",
-     "icon": "ability_warrior_innerrage",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20375,
-       "desc": "All melee attacks deal ${0.36*$mw} to ${0.36*$MW} additional Holy damage.  When used with attacks or abilities that strike a single target, this additional Holy damage will strike up to 2 additional targets.  Lasts 30 min.\n\nUnleashing this Seal's energy will judge an enemy, instantly causing ${0.19*$mw+0.08*$AP+0.13*$SPH} to ${0.19*$MW+0.08*$AP+0.13*$SPH} Holy damage.",
-       "raw": "All melee attacks deal ${0.36*$mw} to ${0.36*$MW} additional Holy damage.  When used with attacks or abilities that strike a single target, this additional Holy damage will strike up to 2 additional targets.  Lasts $d.\n\nUnleashing this Seal's energy will judge an enemy, instantly causing ${0.19*$mw+0.08*$AP+0.13*$SPH} to ${0.19*$MW+0.08*$AP+0.13*$SPH} Holy damage.",
-       "unresolved": [
-        "${0.19*$MW+0.08*$AP+0.13*$SPH}",
-        "${0.19*$mw+0.08*$AP+0.13*$SPH}",
-        "${0.36*$MW}",
-        "${0.36*$mw}"
-       ]
-      }
-     ],
-     "modified": true,
-     "modKind": "description",
-     "modDetail": [
-      "SpellDescription0"
-     ]
-    },
-    {
-     "i": 8,
-     "id": 1634,
-     "fieldName": "pursuitOfJustice",
-     "location": {
-      "rowIdx": 2,
-      "colIdx": 3
-     },
-     "spellIds": [
-      26022,
-      26023
-     ],
-     "maxPoints": 2,
-     "name": "Pursuit of Justice",
-     "icon": "spell_holy_persuitofjustice",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 26022,
-       "desc": "Reduces the duration of all Disarm effects by 25% and increases movement and mounted movement speed by 8%.  This does not stack with other movement speed increasing effects.",
-       "raw": "Reduces the duration of all Disarm effects by $s3% and increases movement and mounted movement speed by $s1%.  This does not stack with other movement speed increasing effects."
-      },
-      {
-       "r": 2,
-       "spell": 26023,
-       "desc": "Reduces the duration of all Disarm effects by 50% and increases movement and mounted movement speed by 15%.  This does not stack with other movement speed increasing effects.",
-       "raw": "Reduces the duration of all Disarm effects by $s3% and increases movement and mounted movement speed by $s1%.  This does not stack with other movement speed increasing effects."
-      }
-     ]
-    },
-    {
-     "i": 9,
-     "id": 1632,
-     "fieldName": "eyeForAnEye",
-     "location": {
-      "rowIdx": 3,
-      "colIdx": 0
-     },
-     "spellIds": [
-      9799,
-      25988
-     ],
-     "maxPoints": 2,
-     "name": "Eye for an Eye",
-     "icon": "spell_holy_eyeforaneye",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 9799,
-       "desc": "All criticals against you cause 5% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health.",
-       "raw": "All criticals against you cause $s1% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health."
-      },
-      {
-       "r": 2,
-       "spell": 25988,
-       "desc": "All criticals against you cause 10% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health.",
-       "raw": "All criticals against you cause $s1% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health."
-      }
-     ]
-    },
-    {
-     "i": 10,
-     "id": 1761,
-     "fieldName": "sanctityOfBattle",
-     "location": {
-      "rowIdx": 3,
-      "colIdx": 2
-     },
-     "spellIds": [
-      32043,
-      35396,
-      35397
-     ],
-     "maxPoints": 3,
-     "name": "Sanctity of Battle",
-     "icon": "spell_holy_holysmite",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 32043,
-       "desc": "Increases your chance to critically hit with all spells and attacks by 1% and increases the damage caused by Exorcism and Crusader Strike by 5%.",
-       "raw": "Increases your chance to critically hit with all spells and attacks by $s1% and increases the damage caused by Exorcism and Crusader Strike by $s2%."
-      },
-      {
-       "r": 2,
-       "spell": 35396,
-       "desc": "Increases your chance to critically hit with all spells and attacks by 2% and increases the damage caused by Exorcism and Crusader Strike by 10%.",
-       "raw": "Increases your chance to critically hit with all spells and attacks by $s1% and increases the damage caused by Exorcism and Crusader Strike by $s2%."
-      },
-      {
-       "r": 3,
-       "spell": 35397,
-       "desc": "Increases your chance to critically hit with all spells and attacks by 3% and increases the damage caused by Exorcism and Crusader Strike by 15%.",
-       "raw": "Increases your chance to critically hit with all spells and attacks by $s1% and increases the damage caused by Exorcism and Crusader Strike by $s2%."
-      }
-     ]
-    },
-    {
-     "i": 11,
-     "id": 1755,
-     "fieldName": "crusade",
-     "location": {
-      "rowIdx": 3,
-      "colIdx": 3
-     },
-     "spellIds": [
-      31866,
-      31867,
-      31868
-     ],
-     "maxPoints": 3,
-     "name": "Crusade",
-     "icon": "spell_holy_crusade",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 31866,
-       "desc": "Increases all damage caused by 1% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional 1%.",
-       "raw": "Increases all damage caused by $s2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 31867,
-       "desc": "Increases all damage caused by 2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional 2%.",
-       "raw": "Increases all damage caused by $s2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 31868,
-       "desc": "Increases all damage caused by 3% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional 3%.",
-       "raw": "Increases all damage caused by $s2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional $s1%."
-      }
-     ]
-    },
-    {
-     "i": 12,
-     "id": 1410,
-     "fieldName": "twohandedWeaponSpecialization",
-     "location": {
-      "rowIdx": 4,
-      "colIdx": 0
-     },
-     "spellIds": [
-      20111,
-      20112,
-      20113
-     ],
-     "maxPoints": 3,
-     "name": "Two-Handed Weapon Specialization",
-     "icon": "inv_hammer_04",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20111,
-       "desc": "Increases the damage you deal with two-handed melee weapons by 2%.",
-       "raw": "Increases the damage you deal with two-handed melee weapons by $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 20112,
-       "desc": "Increases the damage you deal with two-handed melee weapons by 4%.",
-       "raw": "Increases the damage you deal with two-handed melee weapons by $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 20113,
-       "desc": "Increases the damage you deal with two-handed melee weapons by 6%.",
-       "raw": "Increases the damage you deal with two-handed melee weapons by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 13,
-     "id": 1756,
-     "fieldName": "sanctifiedRetribution",
-     "location": {
-      "rowIdx": 4,
-      "colIdx": 2
-     },
-     "spellIds": [
-      31869
-     ],
-     "maxPoints": 1,
-     "name": "Sanctified Retribution",
-     "icon": "spell_holy_mindvision",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 31869,
-       "desc": "Increases the damage caused by Retribution Aura by 50% and all damage caused by friendly targets affected by any of your Auras is increased by 3%.",
-       "raw": "Increases the damage caused by Retribution Aura by $s2% and all damage caused by friendly targets affected by any of your Auras is increased by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 14,
-     "id": 1402,
-     "fieldName": "vengeance",
-     "location": {
-      "rowIdx": 5,
-      "colIdx": 1
-     },
-     "spellIds": [
-      20049,
-      20056,
-      20057
-     ],
-     "maxPoints": 3,
-     "name": "Vengeance",
-     "icon": "ability_racial_avatar",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20049,
-       "desc": "Gives you a 1% bonus to Physical and Holy damage you deal for 30 sec after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to 3 times.",
-       "raw": "Gives you a $20050s1% bonus to Physical and Holy damage you deal for $20050d after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to $20050u times."
-      },
-      {
-       "r": 2,
-       "spell": 20056,
-       "desc": "Gives you a 2% bonus to Physical and Holy damage you deal for 30 sec after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to 3 times.",
-       "raw": "Gives you a $20052s1% bonus to Physical and Holy damage you deal for $20052d after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to $20052u times."
-      },
-      {
-       "r": 3,
-       "spell": 20057,
-       "desc": "Gives you a 3% bonus to Physical and Holy damage you deal for 30 sec after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to 3 times.",
-       "raw": "Gives you a $20053s1% bonus to Physical and Holy damage you deal for $20053d after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to $20053u times."
-      }
-     ],
-     "prereqLocation": {
-      "rowIdx": 2,
-      "colIdx": 1
-     },
-     "prereqRank": 5
-    },
-    {
-     "i": 15,
-     "id": 1757,
-     "fieldName": "divinePurpose",
-     "location": {
-      "rowIdx": 5,
-      "colIdx": 2
-     },
-     "spellIds": [
-      31871,
-      31872
-     ],
-     "maxPoints": 2,
-     "name": "Divine Purpose",
-     "icon": "spell_holy_divinepurpose",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 31871,
-       "desc": "Reduces your chance to be hit by spells and ranged attacks by 2% and gives your Hand of Freedom spell a 50% chance to remove any Stun effects on the target.",
-       "raw": "Reduces your chance to be hit by spells and ranged attacks by $s1% and gives your Hand of Freedom spell a $s3% chance to remove any Stun effects on the target."
-      },
-      {
-       "r": 2,
-       "spell": 31872,
-       "desc": "Reduces your chance to be hit by spells and ranged attacks by 4% and gives your Hand of Freedom spell a 100% chance to remove any Stun effects on the target.",
-       "raw": "Reduces your chance to be hit by spells and ranged attacks by $s1% and gives your Hand of Freedom spell a $s3% chance to remove any Stun effects on the target."
-      }
-     ]
-    },
-    {
-     "i": 16,
-     "id": 2176,
-     "fieldName": "theArtOfWar",
-     "location": {
-      "rowIdx": 6,
-      "colIdx": 0
-     },
-     "spellIds": [
-      53486,
-      53488
-     ],
-     "maxPoints": 2,
-     "name": "The Art of War",
-     "icon": "ability_paladin_artofwar",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 53486,
-       "desc": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by 5% and when your melee attacks critically hit the cast time of your next Flash of Light or Exorcism is reduced by 0.75 sec.",
-       "raw": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by $s1% and when your melee attacks critically hit the cast time of your next Flash of Light or Exorcism is reduced by ${$53489m1/-1000}.2 sec."
-      },
-      {
-       "r": 2,
-       "spell": 53488,
-       "desc": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by 10% and when your melee attacks critically hit your next Flash of Light  or Exorcism spell becomes instant cast.",
-       "raw": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by $s1% and when your melee attacks critically hit your next Flash of Light  or Exorcism spell becomes instant cast."
-      }
-     ]
-    },
-    {
-     "i": 17,
-     "id": 1441,
-     "fieldName": "repentance",
-     "location": {
-      "rowIdx": 6,
-      "colIdx": 1
-     },
-     "spellIds": [
-      20066
-     ],
-     "maxPoints": 1,
-     "name": "Repentance",
-     "icon": "spell_holy_prayerofhealing",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 20066,
-       "desc": "Puts the enemy target in a state of meditation, incapacitating them for up to 1 min, and removing the effect of Righteous Vengeance.  Any damage caused will awaken the target.  Usable against Demons, Dragonkin, Giants, Humanoids and Undead.",
-       "raw": "Puts the enemy target in a state of meditation, incapacitating them for up to $d, and removing the effect of Righteous Vengeance.  Any damage caused will awaken the target.  Usable against Demons, Dragonkin, Giants, Humanoids and Undead."
-      }
-     ]
-    },
-    {
-     "i": 18,
-     "id": 1758,
-     "fieldName": "judgementsOfTheWise",
-     "location": {
-      "rowIdx": 6,
-      "colIdx": 2
-     },
-     "spellIds": [
-      31876,
-      31877,
-      31878
-     ],
-     "maxPoints": 3,
-     "name": "Judgements of the Wise",
-     "icon": "ability_paladin_judgementofthewise",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 31876,
-       "desc": "Your damaging Judgement spells have a 33% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec, and to immediately grant you 25% of your base mana.",
-       "raw": "Your damaging Judgement spells have a $h% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for $57669d, and to immediately grant you $31930s1% of your base mana."
-      },
-      {
-       "r": 2,
-       "spell": 31877,
-       "desc": "Your damaging Judgement spells have a 66% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec, and to immediately grant you 25% of your base mana.",
-       "raw": "Your damaging Judgement spells have a $h% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for $57669d, and to immediately grant you $31930s1% of your base mana."
-      },
-      {
-       "r": 3,
-       "spell": 31878,
-       "desc": "Your damaging Judgement spells have a 100% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec, and to immediately grant you 25% of your base mana.",
-       "raw": "Your damaging Judgement spells have a $h% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for $57669d, and to immediately grant you $31930s1% of your base mana."
-      }
-     ]
-    },
-    {
-     "i": 19,
-     "id": 1759,
-     "fieldName": "fanaticism",
-     "location": {
-      "rowIdx": 7,
-      "colIdx": 1
-     },
-     "spellIds": [
-      31879,
-      31880,
-      31881
-     ],
-     "maxPoints": 3,
-     "name": "Fanaticism",
-     "icon": "spell_holy_fanaticism",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 31879,
-       "desc": "Increases the critical strike chance of all Judgements capable of a critical hit by 6% and reduces threat caused by all actions by 10% except when under the effects of Righteous Fury.",
-       "raw": "Increases the critical strike chance of all Judgements capable of a critical hit by $s1% and reduces threat caused by all actions by $s2% except when under the effects of Righteous Fury."
-      },
-      {
-       "r": 2,
-       "spell": 31880,
-       "desc": "Increases the critical strike chance of all Judgements capable of a critical hit by 12% and reduces threat caused by all actions by 20% except when under the effects of Righteous Fury.",
-       "raw": "Increases the critical strike chance of all Judgements capable of a critical hit by $s1% and reduces threat caused by all actions by $s2% except when under the effects of Righteous Fury."
-      },
-      {
-       "r": 3,
-       "spell": 31881,
-       "desc": "Increases the critical strike chance of all Judgements capable of a critical hit by 18% and reduces threat caused by all actions by 30% except when under the effects of Righteous Fury.",
-       "raw": "Increases the critical strike chance of all Judgements capable of a critical hit by $s1% and reduces threat caused by all actions by $s2% except when under the effects of Righteous Fury."
-      }
-     ],
-     "prereqLocation": {
-      "rowIdx": 6,
-      "colIdx": 1
-     },
-     "prereqRank": 1
-    },
-    {
-     "i": 20,
-     "id": 2147,
-     "fieldName": "sanctifiedWrath",
-     "location": {
-      "rowIdx": 7,
-      "colIdx": 2
-     },
-     "spellIds": [
-      53375,
-      53376
-     ],
-     "maxPoints": 2,
-     "name": "Sanctified Wrath",
-     "icon": "ability_paladin_sanctifiedwrath",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 53375,
-       "desc": "Increases the critical strike chance of Hammer of Wrath by 25%, reduces the cooldown of Avenging Wrath by 30 secs and while affected by Avenging Wrath 25% of all damage caused bypasses damage reduction effects.",
-       "raw": "Increases the critical strike chance of Hammer of Wrath by $s2%, reduces the cooldown of Avenging Wrath by $/1000;s1 secs and while affected by Avenging Wrath $s3% of all damage caused bypasses damage reduction effects."
-      },
-      {
-       "r": 2,
-       "spell": 53376,
-       "desc": "Increases the critical strike chance of Hammer of Wrath by 50%, reduces the cooldown of Avenging Wrath by 60 secs and while affected by Avenging Wrath 50% of all damage caused bypasses damage reduction effects.",
-       "raw": "Increases the critical strike chance of Hammer of Wrath by $s2%, reduces the cooldown of Avenging Wrath by $/1000;s1 secs and while affected by Avenging Wrath $s3% of all damage caused bypasses damage reduction effects."
-      }
-     ]
-    },
-    {
-     "i": 21,
-     "id": 2148,
-     "fieldName": "swiftRetribution",
-     "location": {
-      "rowIdx": 8,
-      "colIdx": 0
-     },
-     "spellIds": [
-      53379,
-      53484,
-      53648
-     ],
-     "maxPoints": 3,
-     "name": "Swift Retribution",
-     "icon": "ability_paladin_swiftretribution",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 53379,
-       "desc": "Your auras also increase casting, ranged and melee attack speeds by 1%.",
-       "raw": "Your auras also increase casting, ranged and melee attack speeds by $s1%."
-      },
-      {
-       "r": 2,
-       "spell": 53484,
-       "desc": "Your auras also increase casting, ranged and melee attack speeds by 2%.",
-       "raw": "Your auras also increase casting, ranged and melee attack speeds by $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 53648,
-       "desc": "Your auras also increase casting, ranged and melee attack speeds by 3%.",
-       "raw": "Your auras also increase casting, ranged and melee attack speeds by $s1%."
-      }
-     ]
-    },
-    {
-     "i": 22,
-     "id": 1823,
-     "fieldName": "crusaderStrike",
-     "location": {
-      "rowIdx": 8,
-      "colIdx": 1
-     },
-     "spellIds": [
-      35395
-     ],
-     "maxPoints": 1,
-     "name": "Crusader Strike",
-     "icon": "spell_holy_crusaderstrike",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 35395,
-       "desc": "An instant strike that causes 75% weapon damage.",
-       "raw": "An instant strike that causes $m2% weapon damage."
-      }
-     ]
-    },
-    {
-     "i": 23,
-     "id": 2179,
-     "fieldName": "sheathOfLight",
-     "location": {
-      "rowIdx": 8,
-      "colIdx": 2
-     },
-     "spellIds": [
-      53501,
-      53502,
-      53503
-     ],
-     "maxPoints": 3,
-     "name": "Sheath of Light",
-     "icon": "ability_paladin_sheathoflight",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 53501,
-       "desc": "Increases your spell power by an amount equal to 10% of your attack power and your critical healing spells heal the target for 20% of the healed amount over 12 seconds.",
-       "raw": "Increases your spell power by an amount equal to $s1% of your attack power and your critical healing spells heal the target for $s2% of the healed amount over 12 seconds."
-      },
-      {
-       "r": 2,
-       "spell": 53502,
-       "desc": "Increases your spell power by an amount equal to 20% of your attack power and your critical healing spells heal the target for 40% of the healed amount over 12 seconds.",
-       "raw": "Increases your spell power by an amount equal to $s1% of your attack power and your critical healing spells heal the target for $s2% of the healed amount over 12 seconds."
-      },
-      {
-       "r": 3,
-       "spell": 53503,
-       "desc": "Increases your spell power by an amount equal to 30% of your attack power and your critical healing spells heal the target for 60% of the healed amount over 12 seconds.",
-       "raw": "Increases your spell power by an amount equal to $s1% of your attack power and your critical healing spells heal the target for $s2% of the healed amount over 12 seconds."
-      }
-     ]
-    },
-    {
-     "i": 24,
-     "id": 2149,
-     "fieldName": "righteousVengeance",
-     "location": {
-      "rowIdx": 9,
-      "colIdx": 1
-     },
-     "spellIds": [
-      53380,
-      53381,
-      53382
-     ],
-     "maxPoints": 3,
-     "name": "Righteous Vengeance",
-     "icon": "ability_paladin_righteousvengeance",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 53380,
-       "desc": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take 10% additional damage over 8 sec.",
-       "raw": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take $s1% additional damage over $61840d."
-      },
-      {
-       "r": 2,
-       "spell": 53381,
-       "desc": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take 20% additional damage over 8 sec.",
-       "raw": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take $s1% additional damage over $61840d."
-      },
-      {
-       "r": 3,
-       "spell": 53382,
-       "desc": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take 30% additional damage over 8 sec.",
-       "raw": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take $s1% additional damage over $61840d."
-      }
-     ]
-    },
-    {
-     "i": 25,
-     "id": 2150,
-     "fieldName": "divineStorm",
-     "location": {
-      "rowIdx": 10,
-      "colIdx": 1
-     },
-     "spellIds": [
-      53385
-     ],
-     "maxPoints": 1,
-     "name": "Divine Storm",
-     "icon": "ability_paladin_divinestorm",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 53385,
-       "desc": "An instant weapon attack that causes 110% of weapon damage to up to ${$i-1} enemies within 8 yards.  The Divine Storm heals up to 3 party or raid members totaling 25% of the damage caused.",
-       "raw": "An instant weapon attack that causes $s1% of weapon damage to up to ${$i-1} enemies within $a3 yards.  The Divine Storm heals up to 3 party or raid members totaling $s2% of the damage caused.",
-       "unresolved": [
-        "${$i-1}"
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "tabId": 382,
-   "name": "Protection",
-   "page": 1,
+   "background": "paladinholy",
    "talents": [
     {
      "i": 0,
@@ -2026,8 +1118,9 @@
   },
   {
    "tabId": 383,
-   "name": "Retribution",
-   "page": 2,
+   "name": "Protection",
+   "page": 1,
+   "background": "paladinprotection",
    "talents": [
     {
      "i": 0,
@@ -2964,6 +2057,916 @@
        "raw": "Hammer the current target and up to ${$x1-1} additional nearby targets, causing $s3 times your main hand damage per second as Holy damage.",
        "unresolved": [
         "${$x1-1}"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tabId": 381,
+   "name": "Retribution",
+   "page": 2,
+   "background": "paladincombat",
+   "talents": [
+    {
+     "i": 0,
+     "id": 1403,
+     "fieldName": "deflection",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 1
+     },
+     "spellIds": [
+      20060,
+      20061,
+      20062,
+      20063,
+      20064
+     ],
+     "maxPoints": 5,
+     "name": "Deflection",
+     "icon": "ability_parry",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20060,
+       "desc": "Increases your Parry chance by 1%.",
+       "raw": "Increases your Parry chance by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 20061,
+       "desc": "Increases your Parry chance by 2%.",
+       "raw": "Increases your Parry chance by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 20062,
+       "desc": "Increases your Parry chance by 3%.",
+       "raw": "Increases your Parry chance by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 20063,
+       "desc": "Increases your Parry chance by 4%.",
+       "raw": "Increases your Parry chance by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 20064,
+       "desc": "Increases your Parry chance by 5%.",
+       "raw": "Increases your Parry chance by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "id": 1407,
+     "fieldName": "benediction",
+     "location": {
+      "rowIdx": 0,
+      "colIdx": 2
+     },
+     "spellIds": [
+      20101,
+      20102,
+      20103,
+      20104,
+      20105
+     ],
+     "maxPoints": 5,
+     "name": "Benediction",
+     "icon": "spell_frost_windwalkon",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20101,
+       "desc": "Reduces the mana cost of all instant cast spells by 2%.",
+       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 20102,
+       "desc": "Reduces the mana cost of all instant cast spells by 4%.",
+       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 20103,
+       "desc": "Reduces the mana cost of all instant cast spells by 6%.",
+       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 20104,
+       "desc": "Reduces the mana cost of all instant cast spells by 8%.",
+       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 20105,
+       "desc": "Reduces the mana cost of all instant cast spells by 10%.",
+       "raw": "Reduces the mana cost of all instant cast spells by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "id": 1631,
+     "fieldName": "improvedJudgements",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 0
+     },
+     "spellIds": [
+      25956,
+      25957
+     ],
+     "maxPoints": 2,
+     "name": "Improved Judgements",
+     "icon": "spell_holy_righteousfury",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 25956,
+       "desc": "Decreases the cooldown of your Judgement spells by 1 sec.",
+       "raw": "Decreases the cooldown of your Judgement spells by $/1000;s1 sec."
+      },
+      {
+       "r": 2,
+       "spell": 25957,
+       "desc": "Decreases the cooldown of your Judgement spells by 2 sec.",
+       "raw": "Decreases the cooldown of your Judgement spells by $/1000;s1 sec."
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "id": 1464,
+     "fieldName": "heartOfTheCrusader",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 1
+     },
+     "spellIds": [
+      20335,
+      20336,
+      20337
+     ],
+     "maxPoints": 3,
+     "name": "Heart of the Crusader",
+     "icon": "spell_holy_holysmite",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20335,
+       "desc": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional 1%.",
+       "raw": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 20336,
+       "desc": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional 2%.",
+       "raw": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 20337,
+       "desc": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional 3%.",
+       "raw": "In addition to the normal effect, your Judgement spells will also increase the critical strike chance of all attacks made against that target by an additional $s1%."
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "id": 1401,
+     "fieldName": "improvedBlessingOfMight",
+     "location": {
+      "rowIdx": 1,
+      "colIdx": 2
+     },
+     "spellIds": [
+      20042,
+      20045
+     ],
+     "maxPoints": 2,
+     "name": "Improved Blessing of Might",
+     "icon": "spell_holy_fistofjustice",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20042,
+       "desc": "Increases the attack power bonus of your Blessing of Might by 12%.",
+       "raw": "Increases the attack power bonus of your Blessing of Might by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 20045,
+       "desc": "Increases the attack power bonus of your Blessing of Might by 25%.",
+       "raw": "Increases the attack power bonus of your Blessing of Might by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "id": 1633,
+     "fieldName": "vindication",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 0
+     },
+     "spellIds": [
+      9452,
+      26016
+     ],
+     "maxPoints": 2,
+     "name": "Vindication",
+     "icon": "spell_holy_vindication",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 9452,
+       "desc": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by 23 for 10 sec.",
+       "raw": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by $67s1 for $67d."
+      },
+      {
+       "r": 2,
+       "spell": 26016,
+       "desc": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by 46 for 10 sec.",
+       "raw": "Gives the Paladin's damaging attacks a chance to reduce the target's attack power by $26017s1 for $26017d."
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "id": 1411,
+     "fieldName": "conviction",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "spellIds": [
+      20117,
+      20118,
+      20119,
+      20120,
+      20121
+     ],
+     "maxPoints": 5,
+     "name": "Conviction",
+     "icon": "spell_holy_retributionaura",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20117,
+       "desc": "Increases your chance to get a critical strike with all spells and attacks by 1%.",
+       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 20118,
+       "desc": "Increases your chance to get a critical strike with all spells and attacks by 2%.",
+       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 20119,
+       "desc": "Increases your chance to get a critical strike with all spells and attacks by 3%.",
+       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
+      },
+      {
+       "r": 4,
+       "spell": 20120,
+       "desc": "Increases your chance to get a critical strike with all spells and attacks by 4%.",
+       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
+      },
+      {
+       "r": 5,
+       "spell": 20121,
+       "desc": "Increases your chance to get a critical strike with all spells and attacks by 5%.",
+       "raw": "Increases your chance to get a critical strike with all spells and attacks by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "id": 1481,
+     "fieldName": "sealOfCommand",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 2
+     },
+     "spellIds": [
+      20375
+     ],
+     "maxPoints": 1,
+     "name": "Seal of Command",
+     "icon": "ability_warrior_innerrage",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20375,
+       "desc": "All melee attacks deal ${0.36*$mw} to ${0.36*$MW} additional Holy damage.  When used with attacks or abilities that strike a single target, this additional Holy damage will strike up to 2 additional targets.  Lasts 30 min.\n\nUnleashing this Seal's energy will judge an enemy, instantly causing ${0.19*$mw+0.08*$AP+0.13*$SPH} to ${0.19*$MW+0.08*$AP+0.13*$SPH} Holy damage.",
+       "raw": "All melee attacks deal ${0.36*$mw} to ${0.36*$MW} additional Holy damage.  When used with attacks or abilities that strike a single target, this additional Holy damage will strike up to 2 additional targets.  Lasts $d.\n\nUnleashing this Seal's energy will judge an enemy, instantly causing ${0.19*$mw+0.08*$AP+0.13*$SPH} to ${0.19*$MW+0.08*$AP+0.13*$SPH} Holy damage.",
+       "unresolved": [
+        "${0.19*$MW+0.08*$AP+0.13*$SPH}",
+        "${0.19*$mw+0.08*$AP+0.13*$SPH}",
+        "${0.36*$MW}",
+        "${0.36*$mw}"
+       ]
+      }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
+    },
+    {
+     "i": 8,
+     "id": 1634,
+     "fieldName": "pursuitOfJustice",
+     "location": {
+      "rowIdx": 2,
+      "colIdx": 3
+     },
+     "spellIds": [
+      26022,
+      26023
+     ],
+     "maxPoints": 2,
+     "name": "Pursuit of Justice",
+     "icon": "spell_holy_persuitofjustice",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 26022,
+       "desc": "Reduces the duration of all Disarm effects by 25% and increases movement and mounted movement speed by 8%.  This does not stack with other movement speed increasing effects.",
+       "raw": "Reduces the duration of all Disarm effects by $s3% and increases movement and mounted movement speed by $s1%.  This does not stack with other movement speed increasing effects."
+      },
+      {
+       "r": 2,
+       "spell": 26023,
+       "desc": "Reduces the duration of all Disarm effects by 50% and increases movement and mounted movement speed by 15%.  This does not stack with other movement speed increasing effects.",
+       "raw": "Reduces the duration of all Disarm effects by $s3% and increases movement and mounted movement speed by $s1%.  This does not stack with other movement speed increasing effects."
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "id": 1632,
+     "fieldName": "eyeForAnEye",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 0
+     },
+     "spellIds": [
+      9799,
+      25988
+     ],
+     "maxPoints": 2,
+     "name": "Eye for an Eye",
+     "icon": "spell_holy_eyeforaneye",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 9799,
+       "desc": "All criticals against you cause 5% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health.",
+       "raw": "All criticals against you cause $s1% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health."
+      },
+      {
+       "r": 2,
+       "spell": 25988,
+       "desc": "All criticals against you cause 10% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health.",
+       "raw": "All criticals against you cause $s1% of the damage taken to the attacker as well.  The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health."
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "id": 1761,
+     "fieldName": "sanctityOfBattle",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 2
+     },
+     "spellIds": [
+      32043,
+      35396,
+      35397
+     ],
+     "maxPoints": 3,
+     "name": "Sanctity of Battle",
+     "icon": "spell_holy_holysmite",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 32043,
+       "desc": "Increases your chance to critically hit with all spells and attacks by 1% and increases the damage caused by Exorcism and Crusader Strike by 5%.",
+       "raw": "Increases your chance to critically hit with all spells and attacks by $s1% and increases the damage caused by Exorcism and Crusader Strike by $s2%."
+      },
+      {
+       "r": 2,
+       "spell": 35396,
+       "desc": "Increases your chance to critically hit with all spells and attacks by 2% and increases the damage caused by Exorcism and Crusader Strike by 10%.",
+       "raw": "Increases your chance to critically hit with all spells and attacks by $s1% and increases the damage caused by Exorcism and Crusader Strike by $s2%."
+      },
+      {
+       "r": 3,
+       "spell": 35397,
+       "desc": "Increases your chance to critically hit with all spells and attacks by 3% and increases the damage caused by Exorcism and Crusader Strike by 15%.",
+       "raw": "Increases your chance to critically hit with all spells and attacks by $s1% and increases the damage caused by Exorcism and Crusader Strike by $s2%."
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "id": 1755,
+     "fieldName": "crusade",
+     "location": {
+      "rowIdx": 3,
+      "colIdx": 3
+     },
+     "spellIds": [
+      31866,
+      31867,
+      31868
+     ],
+     "maxPoints": 3,
+     "name": "Crusade",
+     "icon": "spell_holy_crusade",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31866,
+       "desc": "Increases all damage caused by 1% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional 1%.",
+       "raw": "Increases all damage caused by $s2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 31867,
+       "desc": "Increases all damage caused by 2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional 2%.",
+       "raw": "Increases all damage caused by $s2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 31868,
+       "desc": "Increases all damage caused by 3% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional 3%.",
+       "raw": "Increases all damage caused by $s2% and all damage caused against Humanoids, Demons, Undead and Elementals by an additional $s1%."
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "id": 1410,
+     "fieldName": "twohandedWeaponSpecialization",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 0
+     },
+     "spellIds": [
+      20111,
+      20112,
+      20113
+     ],
+     "maxPoints": 3,
+     "name": "Two-Handed Weapon Specialization",
+     "icon": "inv_hammer_04",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20111,
+       "desc": "Increases the damage you deal with two-handed melee weapons by 2%.",
+       "raw": "Increases the damage you deal with two-handed melee weapons by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 20112,
+       "desc": "Increases the damage you deal with two-handed melee weapons by 4%.",
+       "raw": "Increases the damage you deal with two-handed melee weapons by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 20113,
+       "desc": "Increases the damage you deal with two-handed melee weapons by 6%.",
+       "raw": "Increases the damage you deal with two-handed melee weapons by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "id": 1756,
+     "fieldName": "sanctifiedRetribution",
+     "location": {
+      "rowIdx": 4,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31869
+     ],
+     "maxPoints": 1,
+     "name": "Sanctified Retribution",
+     "icon": "spell_holy_mindvision",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31869,
+       "desc": "Increases the damage caused by Retribution Aura by 50% and all damage caused by friendly targets affected by any of your Auras is increased by 3%.",
+       "raw": "Increases the damage caused by Retribution Aura by $s2% and all damage caused by friendly targets affected by any of your Auras is increased by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "id": 1402,
+     "fieldName": "vengeance",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 1
+     },
+     "spellIds": [
+      20049,
+      20056,
+      20057
+     ],
+     "maxPoints": 3,
+     "name": "Vengeance",
+     "icon": "ability_racial_avatar",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20049,
+       "desc": "Gives you a 1% bonus to Physical and Holy damage you deal for 30 sec after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to 3 times.",
+       "raw": "Gives you a $20050s1% bonus to Physical and Holy damage you deal for $20050d after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to $20050u times."
+      },
+      {
+       "r": 2,
+       "spell": 20056,
+       "desc": "Gives you a 2% bonus to Physical and Holy damage you deal for 30 sec after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to 3 times.",
+       "raw": "Gives you a $20052s1% bonus to Physical and Holy damage you deal for $20052d after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to $20052u times."
+      },
+      {
+       "r": 3,
+       "spell": 20057,
+       "desc": "Gives you a 3% bonus to Physical and Holy damage you deal for 30 sec after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to 3 times.",
+       "raw": "Gives you a $20053s1% bonus to Physical and Holy damage you deal for $20053d after dealing a critical strike from a weapon swing, spell, or ability.  This effect stacks up to $20053u times."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 2,
+      "colIdx": 1
+     },
+     "prereqRank": 5
+    },
+    {
+     "i": 15,
+     "id": 1757,
+     "fieldName": "divinePurpose",
+     "location": {
+      "rowIdx": 5,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31871,
+      31872
+     ],
+     "maxPoints": 2,
+     "name": "Divine Purpose",
+     "icon": "spell_holy_divinepurpose",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31871,
+       "desc": "Reduces your chance to be hit by spells and ranged attacks by 2% and gives your Hand of Freedom spell a 50% chance to remove any Stun effects on the target.",
+       "raw": "Reduces your chance to be hit by spells and ranged attacks by $s1% and gives your Hand of Freedom spell a $s3% chance to remove any Stun effects on the target."
+      },
+      {
+       "r": 2,
+       "spell": 31872,
+       "desc": "Reduces your chance to be hit by spells and ranged attacks by 4% and gives your Hand of Freedom spell a 100% chance to remove any Stun effects on the target.",
+       "raw": "Reduces your chance to be hit by spells and ranged attacks by $s1% and gives your Hand of Freedom spell a $s3% chance to remove any Stun effects on the target."
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "id": 2176,
+     "fieldName": "theArtOfWar",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53486,
+      53488
+     ],
+     "maxPoints": 2,
+     "name": "The Art of War",
+     "icon": "ability_paladin_artofwar",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53486,
+       "desc": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by 5% and when your melee attacks critically hit the cast time of your next Flash of Light or Exorcism is reduced by 0.75 sec.",
+       "raw": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by $s1% and when your melee attacks critically hit the cast time of your next Flash of Light or Exorcism is reduced by ${$53489m1/-1000}.2 sec."
+      },
+      {
+       "r": 2,
+       "spell": 53488,
+       "desc": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by 10% and when your melee attacks critically hit your next Flash of Light  or Exorcism spell becomes instant cast.",
+       "raw": "Increases the damage of your Judgement, Crusader Strike and Divine Storm abilities by $s1% and when your melee attacks critically hit your next Flash of Light  or Exorcism spell becomes instant cast."
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "id": 1441,
+     "fieldName": "repentance",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "spellIds": [
+      20066
+     ],
+     "maxPoints": 1,
+     "name": "Repentance",
+     "icon": "spell_holy_prayerofhealing",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 20066,
+       "desc": "Puts the enemy target in a state of meditation, incapacitating them for up to 1 min, and removing the effect of Righteous Vengeance.  Any damage caused will awaken the target.  Usable against Demons, Dragonkin, Giants, Humanoids and Undead.",
+       "raw": "Puts the enemy target in a state of meditation, incapacitating them for up to $d, and removing the effect of Righteous Vengeance.  Any damage caused will awaken the target.  Usable against Demons, Dragonkin, Giants, Humanoids and Undead."
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "id": 1758,
+     "fieldName": "judgementsOfTheWise",
+     "location": {
+      "rowIdx": 6,
+      "colIdx": 2
+     },
+     "spellIds": [
+      31876,
+      31877,
+      31878
+     ],
+     "maxPoints": 3,
+     "name": "Judgements of the Wise",
+     "icon": "ability_paladin_judgementofthewise",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31876,
+       "desc": "Your damaging Judgement spells have a 33% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec, and to immediately grant you 25% of your base mana.",
+       "raw": "Your damaging Judgement spells have a $h% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for $57669d, and to immediately grant you $31930s1% of your base mana."
+      },
+      {
+       "r": 2,
+       "spell": 31877,
+       "desc": "Your damaging Judgement spells have a 66% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec, and to immediately grant you 25% of your base mana.",
+       "raw": "Your damaging Judgement spells have a $h% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for $57669d, and to immediately grant you $31930s1% of your base mana."
+      },
+      {
+       "r": 3,
+       "spell": 31878,
+       "desc": "Your damaging Judgement spells have a 100% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec, and to immediately grant you 25% of your base mana.",
+       "raw": "Your damaging Judgement spells have a $h% chance to grant the Replenishment effect to up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for $57669d, and to immediately grant you $31930s1% of your base mana."
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "id": 1759,
+     "fieldName": "fanaticism",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 1
+     },
+     "spellIds": [
+      31879,
+      31880,
+      31881
+     ],
+     "maxPoints": 3,
+     "name": "Fanaticism",
+     "icon": "spell_holy_fanaticism",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 31879,
+       "desc": "Increases the critical strike chance of all Judgements capable of a critical hit by 6% and reduces threat caused by all actions by 10% except when under the effects of Righteous Fury.",
+       "raw": "Increases the critical strike chance of all Judgements capable of a critical hit by $s1% and reduces threat caused by all actions by $s2% except when under the effects of Righteous Fury."
+      },
+      {
+       "r": 2,
+       "spell": 31880,
+       "desc": "Increases the critical strike chance of all Judgements capable of a critical hit by 12% and reduces threat caused by all actions by 20% except when under the effects of Righteous Fury.",
+       "raw": "Increases the critical strike chance of all Judgements capable of a critical hit by $s1% and reduces threat caused by all actions by $s2% except when under the effects of Righteous Fury."
+      },
+      {
+       "r": 3,
+       "spell": 31881,
+       "desc": "Increases the critical strike chance of all Judgements capable of a critical hit by 18% and reduces threat caused by all actions by 30% except when under the effects of Righteous Fury.",
+       "raw": "Increases the critical strike chance of all Judgements capable of a critical hit by $s1% and reduces threat caused by all actions by $s2% except when under the effects of Righteous Fury."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1
+    },
+    {
+     "i": 20,
+     "id": 2147,
+     "fieldName": "sanctifiedWrath",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 2
+     },
+     "spellIds": [
+      53375,
+      53376
+     ],
+     "maxPoints": 2,
+     "name": "Sanctified Wrath",
+     "icon": "ability_paladin_sanctifiedwrath",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53375,
+       "desc": "Increases the critical strike chance of Hammer of Wrath by 25%, reduces the cooldown of Avenging Wrath by 30 secs and while affected by Avenging Wrath 25% of all damage caused bypasses damage reduction effects.",
+       "raw": "Increases the critical strike chance of Hammer of Wrath by $s2%, reduces the cooldown of Avenging Wrath by $/1000;s1 secs and while affected by Avenging Wrath $s3% of all damage caused bypasses damage reduction effects."
+      },
+      {
+       "r": 2,
+       "spell": 53376,
+       "desc": "Increases the critical strike chance of Hammer of Wrath by 50%, reduces the cooldown of Avenging Wrath by 60 secs and while affected by Avenging Wrath 50% of all damage caused bypasses damage reduction effects.",
+       "raw": "Increases the critical strike chance of Hammer of Wrath by $s2%, reduces the cooldown of Avenging Wrath by $/1000;s1 secs and while affected by Avenging Wrath $s3% of all damage caused bypasses damage reduction effects."
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "id": 2148,
+     "fieldName": "swiftRetribution",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 0
+     },
+     "spellIds": [
+      53379,
+      53484,
+      53648
+     ],
+     "maxPoints": 3,
+     "name": "Swift Retribution",
+     "icon": "ability_paladin_swiftretribution",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53379,
+       "desc": "Your auras also increase casting, ranged and melee attack speeds by 1%.",
+       "raw": "Your auras also increase casting, ranged and melee attack speeds by $s1%."
+      },
+      {
+       "r": 2,
+       "spell": 53484,
+       "desc": "Your auras also increase casting, ranged and melee attack speeds by 2%.",
+       "raw": "Your auras also increase casting, ranged and melee attack speeds by $s1%."
+      },
+      {
+       "r": 3,
+       "spell": 53648,
+       "desc": "Your auras also increase casting, ranged and melee attack speeds by 3%.",
+       "raw": "Your auras also increase casting, ranged and melee attack speeds by $s1%."
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "id": 1823,
+     "fieldName": "crusaderStrike",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 1
+     },
+     "spellIds": [
+      35395
+     ],
+     "maxPoints": 1,
+     "name": "Crusader Strike",
+     "icon": "spell_holy_crusaderstrike",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 35395,
+       "desc": "An instant strike that causes 75% weapon damage.",
+       "raw": "An instant strike that causes $m2% weapon damage."
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "id": 2179,
+     "fieldName": "sheathOfLight",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 2
+     },
+     "spellIds": [
+      53501,
+      53502,
+      53503
+     ],
+     "maxPoints": 3,
+     "name": "Sheath of Light",
+     "icon": "ability_paladin_sheathoflight",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53501,
+       "desc": "Increases your spell power by an amount equal to 10% of your attack power and your critical healing spells heal the target for 20% of the healed amount over 12 seconds.",
+       "raw": "Increases your spell power by an amount equal to $s1% of your attack power and your critical healing spells heal the target for $s2% of the healed amount over 12 seconds."
+      },
+      {
+       "r": 2,
+       "spell": 53502,
+       "desc": "Increases your spell power by an amount equal to 20% of your attack power and your critical healing spells heal the target for 40% of the healed amount over 12 seconds.",
+       "raw": "Increases your spell power by an amount equal to $s1% of your attack power and your critical healing spells heal the target for $s2% of the healed amount over 12 seconds."
+      },
+      {
+       "r": 3,
+       "spell": 53503,
+       "desc": "Increases your spell power by an amount equal to 30% of your attack power and your critical healing spells heal the target for 60% of the healed amount over 12 seconds.",
+       "raw": "Increases your spell power by an amount equal to $s1% of your attack power and your critical healing spells heal the target for $s2% of the healed amount over 12 seconds."
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "id": 2149,
+     "fieldName": "righteousVengeance",
+     "location": {
+      "rowIdx": 9,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53380,
+      53381,
+      53382
+     ],
+     "maxPoints": 3,
+     "name": "Righteous Vengeance",
+     "icon": "ability_paladin_righteousvengeance",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53380,
+       "desc": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take 10% additional damage over 8 sec.",
+       "raw": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take $s1% additional damage over $61840d."
+      },
+      {
+       "r": 2,
+       "spell": 53381,
+       "desc": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take 20% additional damage over 8 sec.",
+       "raw": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take $s1% additional damage over $61840d."
+      },
+      {
+       "r": 3,
+       "spell": 53382,
+       "desc": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take 30% additional damage over 8 sec.",
+       "raw": "When your Judgement, Crusader Strike and Divine Storm spells deal a critical strike, your target will take $s1% additional damage over $61840d."
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "id": 2150,
+     "fieldName": "divineStorm",
+     "location": {
+      "rowIdx": 10,
+      "colIdx": 1
+     },
+     "spellIds": [
+      53385
+     ],
+     "maxPoints": 1,
+     "name": "Divine Storm",
+     "icon": "ability_paladin_divinestorm",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 53385,
+       "desc": "An instant weapon attack that causes 110% of weapon damage to up to ${$i-1} enemies within 8 yards.  The Divine Storm heals up to 3 party or raid members totaling 25% of the damage caused.",
+       "raw": "An instant weapon attack that causes $s1% of weapon damage to up to ${$i-1} enemies within $a3 yards.  The Divine Storm heals up to 3 party or raid members totaling $s2% of the damage caused.",
+       "unresolved": [
+        "${$i-1}"
        ]
       }
      ]

@@ -32,4 +32,6 @@ data/sql/*    linguist-documentation
 # Talent calculator icon art. The blanket `* text eol=lf` above applies the
 # text attribute unconditionally (not text=auto), so without this git rewrites
 # CRLF byte sequences inside these PNGs and corrupts them.
-site/assets/icons/*.png binary
+site/assets/** binary
+# ...except the one asset that really is text.
+site/assets/icon-fallback.svg text eol=lf
