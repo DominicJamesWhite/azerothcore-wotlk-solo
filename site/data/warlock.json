@@ -176,15 +176,22 @@
       {
        "r": 1,
        "spell": 18213,
-       "desc": "Returns 7% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate 10% less threat.",
-       "raw": "Returns $s3% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate $s2% less threat."
+       "desc": "Returns 7% of your maximum mana if the target is killed by you while you drain its soul.  In addition, Drain Soul generates Soul Shards 50% faster.",
+       "raw": "Returns $s3% of your maximum mana if the target is killed by you while you drain its soul.  In addition, Drain Soul generates Soul Shards $s2% faster."
       },
       {
        "r": 2,
        "spell": 18372,
-       "desc": "Returns 15% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate 20% less threat.",
-       "raw": "Returns $s3% of your maximum mana if the target is killed by you while you drain its soul.  In addition, your Affliction spells generate $s2% less threat."
+       "desc": "Returns 15% of your maximum mana if the target is killed by you while you drain its soul.  In addition, Drain Soul generates Soul Shards 100% faster.",
+       "raw": "Returns $s3% of your maximum mana if the target is killed by you while you drain its soul.  In addition, Drain Soul generates Soul Shards $s2% faster."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -297,21 +304,28 @@
       {
        "r": 1,
        "spell": 17783,
-       "desc": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt by 23%.",
-       "raw": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt by $s1%."
+       "desc": "Reduces damage taken by 10% while channeling Drain Soul or Drain Life.",
+       "raw": "Reduces damage taken by $s1% while channeling Drain Soul or Drain Life."
       },
       {
        "r": 2,
        "spell": 17784,
-       "desc": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt spells by 46%.",
-       "raw": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul, Unstable Affliction, and Haunt spells by $s1%."
+       "desc": "Reduces damage taken by 20% while channeling Drain Soul or Drain Life.",
+       "raw": "Reduces damage taken by $s1% while channeling Drain Soul or Drain Life."
       },
       {
        "r": 3,
        "spell": 17785,
-       "desc": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul,  Unstable Affliction, and Haunt spells by 70%.",
-       "raw": "Reduces the pushback suffered from damaging attacks  while casting Drain Life, Drain Mana, Drain Soul,  Unstable Affliction, and Haunt spells by $s1%."
+       "desc": "Reduces damage taken by 30% while channeling Drain Soul or Drain Life.",
+       "raw": "Reduces damage taken by $s1% while channeling Drain Soul or Drain Life."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
      ]
     },
     {
@@ -503,12 +517,15 @@
       {
        "r": 1,
        "spell": 63108,
-       "desc": "When you deal damage with your Corruption spell, you are instantly healed for $<percent>% of the damage done. In addition, the damage done by your Corruption, Seed of Corruption and Unstable Affliction damage over time effects is increased by 5%.",
-       "raw": "When you deal damage with your Corruption spell, you are instantly healed for $<percent>% of the damage done. In addition, the damage done by your Corruption, Seed of Corruption and Unstable Affliction damage over time effects is increased by $s2%.",
-       "unresolved": [
-        "$<percent>"
-       ]
+       "desc": "When you deal Shadow damage, you are instantly healed for 15% of the damage done. In addition, the damage done by your Corruption, Seed of Corruption and Unstable Affliction damage over time effects is increased by 5%.",
+       "raw": "When you deal Shadow damage, you are instantly healed for $s1% of the damage done. In addition, the damage done by your Corruption, Seed of Corruption and Unstable Affliction damage over time effects is increased by $s2%."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1"
      ]
     },
     {
@@ -738,36 +755,6 @@
     },
     {
      "i": 21,
-     "id": 1668,
-     "fieldName": "improvedHowlOfTerror",
-     "location": {
-      "rowIdx": 7,
-      "colIdx": 0
-     },
-     "spellIds": [
-      30054,
-      30057
-     ],
-     "maxPoints": 2,
-     "name": "Improved Howl of Terror",
-     "icon": "spell_shadow_deathscream",
-     "ranks": [
-      {
-       "r": 1,
-       "spell": 30054,
-       "desc": "Reduces the casting time of your Howl of Terror spell by 0.8 sec.",
-       "raw": "Reduces the casting time of your Howl of Terror spell by $/1000;S1 sec."
-      },
-      {
-       "r": 2,
-       "spell": 30057,
-       "desc": "Reduces the casting time of your Howl of Terror spell by 1.5 sec.",
-       "raw": "Reduces the casting time of your Howl of Terror spell by $/1000;S1 sec."
-      }
-     ]
-    },
-    {
-     "i": 22,
      "id": 1667,
      "fieldName": "malediction",
      "location": {
@@ -802,6 +789,48 @@
        "raw": "Increases your spell damage by $s2%, and increases the periodic critical strike chance of your Corruption and Unstable Affliction spells by $s1%."
       }
      ]
+    },
+    {
+     "i": 22,
+     "id": 1668,
+     "fieldName": "felInterdiction",
+     "location": {
+      "rowIdx": 7,
+      "colIdx": 3
+     },
+     "spellIds": [
+      30054
+     ],
+     "maxPoints": 1,
+     "name": "Fel Interdiction",
+     "icon": "spell_shadow_felarmour",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 30054,
+       "desc": "When using Fel Armor, 50% of damage taken is converted to a Mark of Gul'dan, dealing damage periodically. Dealing damage with Drain Soul, Drain Life or Haunt removes a stack, and casting Soulshatter removes 2 stacks.",
+       "raw": "When using Fel Armor, $s1% of damage taken is converted to a Mark of Gul'dan, dealing damage periodically. Dealing damage with Drain Soul, Drain Life or Haunt removes a stack, and casting Soulshatter removes $s2 stacks."
+      }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "ColumnIndex",
+      "SpellRank_2",
+      "SpellName0",
+      "SpellRank0",
+      "SpellDescription0",
+      "SpellToolTip0",
+      "ProcChance",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Howl of Terror"
     },
     {
      "i": 23,
@@ -898,6 +927,46 @@
     },
     {
      "i": 26,
+     "id": 3004,
+     "fieldName": "malfeasance",
+     "location": {
+      "rowIdx": 8,
+      "colIdx": 3
+     },
+     "spellIds": [
+      200521,
+      200522
+     ],
+     "maxPoints": 2,
+     "name": "Malfeasance",
+     "icon": "spell_shadow_haunting",
+     "ranks": [
+      {
+       "r": 1,
+       "spell": 200521,
+       "desc": "Your periodic damage has a 20% chance to clear a stack of Mark of Gul'dan. Your Soulshatter clears 4 stacks instead of 2, and its cooldown is reduced by 60 sec.",
+       "raw": "Your periodic damage has a $s1% chance to clear a stack of Mark of Gul'dan. Your Soulshatter clears $s2 stacks instead of 2, and its cooldown is reduced by $s3 sec."
+      },
+      {
+       "r": 2,
+       "spell": 200522,
+       "desc": "Your periodic damage has a 40% chance to clear a stack of Mark of Gul'dan. Your Soulshatter clears 4 stacks instead of 2, and its cooldown is reduced by 120 sec.",
+       "raw": "Your periodic damage has a $s1% chance to clear a stack of Mark of Gul'dan. Your Soulshatter clears $s2 stacks instead of 2, and its cooldown is reduced by $s3 sec."
+      }
+     ],
+     "prereqLocation": {
+      "rowIdx": 7,
+      "colIdx": 3
+     },
+     "prereqRank": 1,
+     "modified": true,
+     "modKind": "new",
+     "modDetail": [
+      "talent"
+     ]
+    },
+    {
+     "i": 27,
      "id": 1876,
      "fieldName": "everlastingAffliction",
      "location": {
@@ -948,7 +1017,7 @@
      ]
     },
     {
-     "i": 27,
+     "i": 28,
      "id": 2041,
      "fieldName": "haunt",
      "location": {

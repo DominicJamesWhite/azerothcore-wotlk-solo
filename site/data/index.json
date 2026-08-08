@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "generated": "2026-08-05T12:23:49Z",
+ "generated": "2026-08-07T22:28:12Z",
  "source": "live",
- "fingerprint": "a9e82b2b432fc2c5",
+ "fingerprint": "b830924be29500be",
  "iconBase": "./assets/icons/",
  "maxPoints": 71,
  "classes": [
@@ -111,8 +111,8 @@
     "Demonology",
     "Destruction"
    ],
-   "talents": 81,
-   "modified": 30
+   "talents": 82,
+   "modified": 35
   },
   {
    "key": "warrior",
@@ -124,21 +124,21 @@
     "Protection"
    ],
    "talents": 85,
-   "modified": 0
+   "modified": 12
   }
  ],
  "degraded": [],
  "stats": {
-  "talents": 833,
-  "talentsModified": 177,
-  "descriptions": 2244,
-  "descriptionsWithUnresolved": 18,
+  "talents": 834,
+  "talentsModified": 194,
+  "descriptions": 2245,
+  "descriptionsWithUnresolved": 17,
   "modifiedKinds": {
-   "description": 108,
-   "new": 9,
-   "renamed": 45,
-   "structure": 8,
-   "values": 7
+   "description": 119,
+   "new": 10,
+   "renamed": 47,
+   "structure": 10,
+   "values": 8
   }
  }
 }
