@@ -26,6 +26,7 @@ LOADER_FILE = os.path.join(MODULE_SRC, "MP_loader.cpp")
 # These are intentional cross-boundary registrations — not typos.
 CORE_SCRIPT_WHITELIST = {
     "spell_mage_burning_determination",
+    "spell_dk_death_strike",  # restored core script, 2026_04_01_00.sql
 }
 
 # Temporary diagnostics: LOG_*("alonecraft.debug", ...). Listing them on every
@@ -194,6 +195,20 @@ def extract_sql_script_names(sql_dir):
             name = m.group(1)
             if not name.replace(".", "").isdigit():
                 file_deletes.add(name)
+
+        # Match: DELETE FROM spell_script_names WHERE ... ScriptName IN ('a', 'b')
+        # This is how a script is retired in favour of a renamed one, e.g.
+        # 2026_04_02_12.sql (magic_attunement ranks -> _proc) and
+        # woa_2026_08_04_07.sql (sacrifice_of_blood -> health_funnel_mana_feed).
+        # DOTALL because both wrap the AND onto a second line.
+        delete_by_name_list = re.compile(
+            r"DELETE\s+FROM\s+`?spell_script_names`?\s+WHERE\s+.*?`?ScriptName`?\s+IN\s*\(([^)]*)\)",
+            re.IGNORECASE | re.DOTALL
+        )
+        for m in delete_by_name_list.finditer(content):
+            for name in re.findall(r"'([^']+)'", m.group(1)):
+                if not name.replace(".", "").isdigit():
+                    file_deletes.add(name)
 
         # Also catch deletes in IN-list format (spell_id, ScriptName) tuples
         # These appear as DELETE WHERE (spell_id, ScriptName) IN ((..., 'name'), ...)
