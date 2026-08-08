@@ -16,6 +16,43 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] More NPCs in major cities and towns, and between them doing courier or transport work.
 - [ ] Each tree now has changed talents relating to holy trinity specs’ inherent weaknesses while retaining class character.
 - [ ] Retuned and redesigned dungeon and raid encounters with lots of new difficulty settings to allow solo progression.
+- [x] A living auction house — `mod-ah-bot-plus` both stocks it and buys from it, so loot is worth something and professions have a supply chain without other players.
+- [x] 10x levelling XP, with the low-level XP *range* widened to match so a zone keeps paying while you finish it.
+- [x] Gear upgrades — any uncommon+ item can be reforged to your level, so a piece you like is never outlevelled.
+- [x] A Quartermaster who mails you spec-appropriate gear each level, and 8x quest gold, so income keeps pace with 10x XP.
+
+## Levelling XP
+
+Quests grant 10x XP and 8x gold for markedly quicker leveling.
+
+## Item Upgrades
+
+Solo, you cannot farm a drop on demand, so an item you like is outlevelled and gone.
+Any uncommon-or-better equippable item can instead be **reforged to your level**.
+
+**Artificer Volen** (creature 200011) sells 16 consumable upgrade tools, one per
+target level (5, 10 … 80) — items 200100–200115, spells 201000+. Using one gives the
+item-targeting cursor (the sharpening-stone interaction) and clicking an item
+upgrades it.
+
+## The Quartermaster
+
+10x XP without 10x loot means you level roughly ten times faster than equipment
+and money arrive, so you outrun your gear and cannot afford what the game still
+charges. Two separate fixes.
+
+**Gear.** On each level-up **The Quartermaster** (creature 200012, a mail sender
+with no spawn) mails **3 items, each in a different equipment slot**, chosen for
+your class and your *active* spec. Items come from the upgrade variants that
+already exist for the reforge system, so nothing new is generated.
+
+## Economy
+
+Solo play breaks the auction house: nobody is selling, so nothing you need is ever
+listed, and nobody is buying, so your loot is vendor-trash. `mod-ah-bot-plus`
+supplies both sides. Its money is fiat — gold spent on a bot listing is destroyed,
+gold the buyer bot pays you is created — so the two halves are a sink and a faucet
+rather than a closed economy.
 
 ## Class Changes
 - [x] Resto druid 
@@ -42,7 +79,7 @@ An attempt to make WOW better to play alone or in very small groups.
     - [ ]  Tuning
 - [ ] Retri paladin
     - [ ]  Tuning
-- [ ] Affli lock 
+- [x] Affli lock 
     - [ ]  Tuning
 - [ ] Demo lock
     - [ ]  Tuning
@@ -329,3 +366,28 @@ An attempt to make WOW better to play alone or in very small groups.
 - [x] **Nether Protection:** Casting Searing Pain transforms a Soul Shard into a Wailing Soul. Wailing Souls reduce damage taken by 15% for 10 seconds. Max 3 stacks. 
 - [x] **Soul Leech:** Gives your Shadow Bolt, Shadowburn, Chaos Bolt, Soul Fire, Incinerate, Searing Pain and Conflagrate spells a 15% chance to return health equal to 200% of the damage caused. 
 - [x] **Empowered Imp (Renamed to Sacrifice the Weak):** Redesigned. Sacrifice your demon to a new master in the Twisting Nether. In return they grant you Nathrezim Foresight, reducing damage taken and increasing the critical effect damage bonus of your spells by 1% for each Soul Shard in your possession. 
+
+- [x] **Siphon Life:** Heals for a percentage of *all* Shadow damage done, not just Corruption. The rate drops from 40% to 15% to pay for the wider trigger — 40% of Corruption alone is a fraction of Affliction's output, 40% of all Shadow damage would be most of it. The +5% Corruption/Seed/Unstable Affliction DoT bonus is unchanged. Pure DBC + `spell_proc`: core's `spell_warl_siphon_life` is already generic, the Corruption restriction lived entirely in the proc row's family mask. (4.62)
+- [x] **Improved Howl of Terror (Renamed to Fel Interdiction):** Redesigned, and moved to the slot right of Malediction. While Fel Armor is up, 50% of damage taken is converted to a Mark of Gul'dan, dealing the deferred damage over 10 seconds. Each hit adds a stack, up to 10; dealing damage with Drain Soul, Drain Life or Haunt clears one, and casting Soulshatter clears 2. (The Ember Scars mechanic for Fire Mages, with Fel Armor as the gate, the drains and Haunt as the steady bleed and Soulshatter as the panic dump. Collapsed to 1 point — the ability has no per-rank scaling.) (4.62)
+- [x] **Malfeasance (NEW):** Your periodic damage has a 20/40% chance to clear a stack of Mark of Gul'dan, and your Soulshatter clears 4 stacks instead of 2 and has its cooldown reduced by 60/120 sec — 3 minutes base down to 1 minute at full rank, so the panic dump comes back about as often as the pool becomes dangerous. (4.62)
+- [x] **Improved Drain Soul:** No longer affects threat. In its place, Drain Soul's Soul Shard generation rate increases by 50/100% — core's flat 20% per-tick roll becomes an effective 30/40%. (4.62)
+- [x] **Fel Concentration:** Redesigned. Reduces damage taken by 10/20/30% while channelling Drain Soul or Drain Life. (All three ranks were pure pushback resistance, which Alonecraft removed outright, so the talent did literally nothing. The new version pays out exactly when the warlock is standing still and least able to react. "While channelling" has no DBC representation, so the script hangs off the drain aura itself — that aura lives on the target, so interrupt, target death and range break all drop the buff for free.) (4.62)
+
+### Warrior
+
+**Spell Changes:**
+- [x] **Victory Rush:** Restore the healing component (missing in 3.3.5, added in Cataclysm). Now heals for 20% of maximum health. (Pure DBC -- effects 2 and 3 were empty. `SPELL_EFFECT_HEAL_PCT` (136), the Rune Tap 48982 shape.) (4.63)
+
+**Talents:**
+- [x] **Deflection (Renamed to Small Victories) (1, 0):** Increases your Parry chance by 1/2/3/4/5%, and each parry has a 20/40/60/80/100% chance to grant you Victorious, allowing you to use Victory Rush. (5 ranks) (Pure DBC + `spell_proc`, the Glyph of Overpower 58386 shape. The per-rank chance lives in DBC `ProcChance` so `$h` renders it. Victorious 32216 also had `DO_NOT_DISPLAY` cleared -- stock hides it because it fired once per kill; driven by parry it is a window worth seeing.) (4.63)
+- [x] **Improved Charge (0, 1):** Increases the amount of rage generated by your Charge ability by 10. Killing an enemy has a 50/100% chance to reset the cooldown on Charge. (2 ranks) (`PROC_FLAG_KILL` is stock; the reset is not -- `SPELL_EFFECT_RESET_COOLDOWN` does not exist in 3.3.5. Charge's 15s is entirely a *category* cooldown, so `RemoveCategoryCooldown` is the load-bearing call.) (4.63)
+- [x] **Iron Will (Renamed to Riposte):** Redesigned. Parrying an attack immediately counter-attacks every enemy within 8 yards for 40/70/100% weapon damage. Cannot occur more than once every second. Requires 5 points in Deflection. (Only affects enemies where CC wouldn't be broken) (**Shipped with a 2 sec ICD, not 1** -- with this tree's parry rates a 1 sec uncapped 8-yard counter is close to a free weapon swing per second per target. DBC + `spell_proc`; the script only filters CC. Cloned from Whirlwind off-hand 44949, whose `REQUIRES_OFF_HAND_WEAPON` attribute and 4-target cap both had to be undone.) (4.63)
+- [x] **Tactical Mastery (2, 1):** Redesigned. Parrying an attack grants you 3/6/10% critical strike chance for 10 seconds. Landing a critical strike grants you 3/6/10% parry chance for 10 seconds. (3 ranks) (Needs C++ only for routing: `spell_proc` is per-spell, not per-effect, so one row cannot say "effect 0 on parry, effect 1 on crit". The script also checks *direction* -- being crit **by** an enemy carries the same hit mask as your own crit. Costs Arms its stance-change rage retention and Defensive Stance threat bonus, which needed all three effect slots.) (4.63)
+- [x] **Two-Handed Weapon Specialization (1, 3):** Increases the damage you deal with two-handed melee weapons by 6%, and while using a 2h weapon your chance to parry is increased by 33/66/100% of your critical strike chance. (3 ranks) (**The one mechanic in the batch with no prior art anywhere in 3.3.5** -- aura 220 `MOD_RATING_FROM_STAT` reads base stats only, and no aura scales one rating off another. Script modelled on the module's own agility->dodge conversion in `RogueMasterOfDeception.cpp`. Shipped at the full value by decision; this is the dominant term in the tree's parry total and compounds with Tactical Mastery.) (4.63)
+- [x] **Sword Specialization (3, 4):** Remove the "This effect cannot occur more than once every 6 seconds." bit, it should be able to proc whenever it procs. (**Shipped at 1 sec, not 0** -- the trigger is `ADD_EXTRA_ATTACKS`, and extra attacks are auto-attacks that can re-proc it, so a true 0 chains into itself. One integer in one `spell_proc` row.) (4.63)
+- [x] **Weapon Mastery (0, 5):** Reduces the chance for your attacks to be dodged by 2/4% and while using a two-handed weapon your parry chance is increased by your strength. (2 ranks) (Same effect as DK strength -> parry conversion) (**12/25% of Strength per rank**, matching the DK's 25% at full rank rather than a literal 100%, which would have been ~+36% parry alone. Effect 1 is aura 248 `MOD_COMBAT_RESULT_CHANCE`, added flat -- not aura 251, and not a multiplier. The 2H gate is in C++ because `EquippedItemClass` is a whole-spell gate and the dodge reduction must stay unconditional; `spell_linked_spell` cannot substitute, as core never re-adds a linked passive after a weapon swap.) (4.63)
+- [x] **Improved Hamstring (Renamed to Hobble) (2, 5):** Using Hamstring with a two-handed weapon equipped increases your chance to parry by 3/6/10% for 10s. (3 ranks) (Pure DBC -- core already ships the right `spell_proc` row, and `EquippedItemClass` on a *passive* is re-checked at proc time, so the 2H gate needs no code and re-arms on weapon swap.) (4.63)
+- [x] **Second Wind (0, 6):** Being hit by while you are below 35% health generates 20 rage and 10% of your total health over 10 sec. (2 ranks) (Rank 1 is half -- which is exactly stock 29841 vs 29842, so both payloads are reused untouched. Pure DBC: `CasterAuraState = 13` genuinely gates the *proc*, because `ModifyAuraState` unapplies the aura's effects above 35% health. Core's `spell_warr_second_wind` registration is deleted, as it owned the stun/root gate.) (4.63)
+- [x] **Improved Slam (3, 6):** Decreases the swing time of your Slam ability by 0.75/1.5 sec. (2 ranks) (Base points only. Stock's `$/1000;S1` renders the new values with no text edit. Rank 2 makes Slam instant.) (4.63)
+- [x] **Juggernaut (0, 7):** Your Charge ability is now usable while in combat. Following a Charge, your next Slam or Mortal Strike has an additional 25% chance to critically hit if used within 10 sec. (1 rank) (This is stock Juggernaut *minus* the +5 sec Charge cooldown, so the change is one effect zeroed -- and the `${$m3/1000}` clause removed with it, or it would render as "0 sec".) (4.63)
+- [x] **Bladestorm (1, 10):** Instantly Whirlwind up to $50622i nearby targets and for the next 6 sec you will perform a whirlwind attack every 1 sec. While under the effects of Bladestorm, you can move but cannot perform any other abilities, but you do not feel pity or remorse or fear, your parry chance is increased by 50% and you cannot be stopped unless killed. (1 rank) (Everything but the parry was already stock, flavour text included. All three effect slots on 46924 are load-bearing, so the parry rides along via `spell_linked_spell` type 2. The trigger id is written plain -- the loader applies the type multiplier itself.) (4.63)

@@ -114,6 +114,29 @@ Scripts follow a registration pattern:
 
 External modules are loaded from the `modules/` directory. Each module is a subdirectory with its own `CMakeLists.txt`. Disable specific modules with `-DDISABLED_AC_MODULES="mod1;mod2"`. Module skeleton: https://github.com/azerothcore/skeleton-module/
 
+Discovery is automatic: `GetModuleSourceList()` (`src/cmake/macros/ConfigureModules.cmake:32`) globs any `modules/*` containing a `src/` directory, and `modules/CMakeLists.txt` copies each module's `conf/*.conf.dist` into the build's `configs/modules/`. Because that glob runs at *configure* time, the first build after adding a module must not use `--skip-cmake`.
+
+#### mod-ah-bot-plus (auction house)
+
+Populates the auction house and buys player listings, which is the only way the
+AH means anything with no other players online. Zero SQL — everything is in
+`conf/mod_ahbot.conf.dist`, layered by
+`modules/world_of_alonecraft/deploy/configs/modules/mod_ahbot.overrides.conf`.
+
+Its money is **fiat in both directions**: gold spent on a bot listing mails to
+the bot character and is discarded by its `OnBeforeMailDraftSendMailTo` hook (a
+sink), and gold the buyer bot pays you is conjured (a faucet). It is not a
+closed economy, and `AuctionHouseBot.Buyer.AcceptablePriceModifier` is the dial
+if inflation runs hot.
+
+Listings are owned by the character `Auctioneer` (GUID 2013, account `AHBOT`).
+**Never put a playerbot GUID in `AuctionHouseBot.GUIDs`** — the module's own docs
+say it will likely crash the server. The `rndbot` account prefix is what keeps
+this character out of the random bot pool.
+
+GM commands: `.ahbot update` (force a cycle), `.ahbot reload` (re-read config —
+no rebuild needed for tuning), `.ahbot empty` (clear all bot auctions).
+
 ### Dependencies
 
 Bundled in `deps/`: boost, MySQL client, OpenSSL, zlib, recastnavigation (pathfinding), g3dlite (geometry), fmt, argon2, jemalloc, and others.
@@ -155,9 +178,20 @@ Instead, use the dedicated category:
 LOG_DEBUG("alonecraft.debug", "Razorscale: evade reason={}", (int)why);
 ```
 
-`worldserver.conf` defines `Logger.alonecraft.debug=4,Console Server`, so these appear
+`worldserver.conf` defines `Logger.alonecraft.debug = 5,Console Server`, so these appear
 without being promoted to ERROR. `tools/verify_scripts.py` lists every
 `alonecraft.debug` call site on each build — a visible reminder, not a blocker.
+
+**The 5 is load-bearing, and it has to be 5 in two places.** `Log::ShouldLog`
+keeps a message only when the logger's level `>=` the message's level, and
+`Appender::write` drops one when the appender's level `<` the message's level.
+`LOG_LEVEL_DEBUG` is **5**, `LOG_LEVEL_INFO` is **4** — so the logger *and*
+`Appender.Console` both need 5, or `LOG_DEBUG` is discarded with no warning.
+This category was configured at 4 until 2026-08-06, which meant every
+`LOG_DEBUG("alonecraft.debug", ...)` call was silently thrown away — the exact
+failure the category exists to prevent, and the reason the old LOG_ERROR habit
+looked necessary. Raising `Appender.Console` to 5 is safe because `alonecraft*`
+are the only loggers configured above 4.
 
 Remove them when the investigation ends. Anything in a per-tick, per-bot, or
 per-packet path must be gated by a config option, not left on.
@@ -586,6 +620,32 @@ python tools/verify_db.py --sql-files 2026_03_29_04.sql # check if SQL was appli
 ```
 
 Integrated into `build_and_run.bat` as a post-start step (runs after 8s delay for SQL auto-apply).
+
+### Player Account Portal (`tools/portal/`)
+
+A LAN-only web page for player self-service: register, change password, change
+email. Run on demand — `build_and_run.bat` does not start or stop it.
+
+```bash
+tools\run_portal.bat                          # LAN, port 8090; Ctrl-C to stop
+python tools/portal/server.py                 # 127.0.0.1 only
+python tools/portal/test_srp6.py              # verify the crypto still matches the core
+```
+
+It writes `acore_auth.account` rows directly, mirroring
+`AccountMgr::CreateAccount`. `tools/portal/srp6.py` is a Python port of
+`src/common/Cryptography/Authentication/SRP6.cpp` — **every** big-integer↔bytes
+conversion there is little-endian, and every way of getting it wrong fails
+silently (the account is created; the client just says the password is wrong).
+
+`test_srp6.py` is the guard: mod-playerbots creates `RNDBOT*` accounts with
+`password == account name` when `AiPlayerbot.RandomBotRandomPassword = 0`, so
+those rows are known-plaintext vectors written by the *compiled* SRP6. Re-run it
+after any upstream sync — nothing else catches a KDF change.
+
+See [tools/portal/README.md](tools/portal/README.md), which also covers the
+realmlist gotcha: `realmlist.address` ships as `127.0.0.1`, so a LAN player
+authenticates fine and then connects to their own machine.
 
 ## Web Talent Calculator (`site/`)
 
