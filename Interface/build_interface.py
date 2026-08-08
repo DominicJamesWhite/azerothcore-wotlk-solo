@@ -33,7 +33,11 @@ MPQCLI = os.path.join(MPQCLI_DIR, "mpqcli.exe")
 
 def find_custom_files():
     """Find all packable files in custom/, return list of relative paths."""
-    extensions = {".lua", ".xml", ".toc", ".xsd"}
+    # .blp so custom art can ship too -- custom/Icons/foo.blp lands at
+    # Interface\Icons\foo.blp, which is where the client resolves an
+    # ItemDisplayInfo InventoryIcon name.  Nothing in base/ is a .blp, so
+    # is_modified() always says yes for these.
+    extensions = {".lua", ".xml", ".toc", ".xsd", ".blp"}
     files = []
     for root, _dirs, filenames in os.walk(CUSTOM_DIR):
         for fname in filenames:
