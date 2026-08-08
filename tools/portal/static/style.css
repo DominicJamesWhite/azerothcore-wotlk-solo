@@ -1,0 +1,238 @@
+/* Alonecraft account portal
+ *
+ * Styled to match site/css/style.css (the talent calculator) -- same palette,
+ * same client fonts, same frame idioms: the hairline gold rule under each bar,
+ * the double-inset bevel on panels, the gold-glow Morpheus heading.
+ *
+ * The rules are copied rather than the stylesheet linked, because that file is
+ * written against talent-tree markup, @font-faces paths relative to
+ * site/assets/, and is deployed to public GitHub Pages while this is LAN-only.
+ * A calculator restyle must not be able to break the signup page.
+ *
+ * server.py serves the two fonts from site/assets/fonts/ at /fonts/.
+ */
+
+@font-face {
+  font-family: "FrizQuadrata";
+  src: url("fonts/FRIZQT__.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morpheus";
+  src: url("fonts/MORPHEUS.TTF") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --gold: #ffd100;          /* WoW's UI gold: headings, primary actions */
+  --gold-dim: #b8912f;
+  --parchment: #f8e6c0;
+  --green: #1eff00;         /* item-quality green; success */
+  --red: #fe2e2e;           /* errors */
+  --border: #4a3a22;
+  --text: #f0e6d2;
+  --muted: #9d8e75;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  font: 14px/1.5 "FrizQuadrata", "Segoe UI", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 50% -10%, #2a2115 0%, transparent 60%),
+    linear-gradient(#100c08, #0a0705 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+a { color: var(--gold); }
+.muted { color: var(--muted); }
+
+/* A hairline gold rule under each bar: the frame motif of the WoW UI. */
+.topbar {
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(255, 209, 0, .07);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+.topbar {
+  padding: 18px 24px 0;
+  background: linear-gradient(#1c1610, #120e09);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: "Morpheus", serif;
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255, 209, 0, .25), 0 2px 3px #000;
+}
+
+.tagline { margin: 3px 0 14px; color: var(--muted); font-size: 13px; }
+
+/* ── Tabs ───────────────────────────────────────────────────────────── */
+
+/* The calculator's class picker: tabs that sit on the header rule, their
+   bottom border cut away so the active one reads as part of the panel. */
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.tab {
+  padding: 7px 13px 9px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(#221b13, #16110b);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tab:hover { color: var(--parchment); border-color: var(--gold-dim); }
+
+.tab.is-active {
+  background: linear-gradient(#332818, #1d1710);
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  box-shadow: inset 0 2px 0 var(--gold);
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* ── Panel ──────────────────────────────────────────────────────────── */
+
+/* Left-aligned, like every band on the calculator: the brand, the class tabs
+   and the tree panels all start at the same 24px gutter. Centering the card
+   would leave the active tab pointing at nothing. */
+main {
+  max-width: 528px;   /* 480px panel + the 24px gutter either side */
+  padding: 26px 24px 0;
+}
+
+/* Panel body copy is 13px, matching the tooltip -- the site's dense UI text
+   sits at 12-13px and only the Morpheus headings go large. A 14px form reads
+   as a web page wearing WoW colours. */
+.card {
+  padding: 12px 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: linear-gradient(#1a150e, #100c08);
+  font-size: 13px;
+  /* Double inset: the beveled metal edge the WoW frames use. */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 209, 0, .10),
+    0 6px 24px rgba(0, 0, 0, .7);
+}
+
+/* The .tree-header idiom: Morpheus, normal weight, over a divider rule. */
+.card h2 {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  font-family: "Morpheus", serif;
+  font-weight: normal;
+  font-size: 17px;
+  letter-spacing: .5px;
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(255, 255, 255, .18), 0 2px 2px #000;
+}
+
+/* Field labels take the .toggle treatment: 12px, muted, never bold. */
+label {
+  display: block;
+  margin-bottom: 11px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 5px 8px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background: #0b0806;
+  color: var(--parchment);
+  font-family: inherit;
+  font-size: 13px;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, .85);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, .85), 0 0 6px rgba(255, 209, 0, .18);
+}
+
+/* Verbatim from the calculator's button rule, minus the width. */
+button[type=submit] {
+  width: 100%;
+  margin-top: 3px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: linear-gradient(#2b2216, #1a140d);
+  color: var(--parchment);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+button[type=submit]:active:not(:disabled) { background: #14100a; }
+button[type=submit]:disabled { opacity: .5; cursor: default; }
+
+.status { min-height: 1.3em; margin: 10px 0 0; font-size: 12px; }
+.status.is-ok { color: var(--green); }
+.status.is-error { color: var(--red); }
+
+.note {
+  margin: 14px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* The site reserves bold for numbers (points, rank counters). Emphasis in
+   prose is carried by colour instead. */
+.note em { font-style: normal; color: var(--parchment); }
+
+/* The calculator's warning band: gold-tinted, thick left edge. */
+.warning {
+  max-width: 480px;
+  margin: 16px 24px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--gold-dim);
+  border-left-width: 3px;
+  background: rgba(255, 209, 0, .07);
+  color: var(--parchment);
+  font-size: 13px;
+}
+
+.warning code { color: var(--gold); }
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+
+.footer {
+  max-width: 528px;
+  margin-top: 26px;
+  padding: 18px 24px 40px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer p { margin: 0 0 7px; }
+
+@media (max-width: 720px) {
+  .topbar { padding-left: 14px; padding-right: 14px; }
+  main, .footer, .warning { padding-left: 14px; padding-right: 14px; }
+  .topbar h1 { font-size: 24px; }
+}

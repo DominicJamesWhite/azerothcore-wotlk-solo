@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alonecraft Accounts</title>
+<meta name="description" content="Create and manage your account on the Alonecraft WoW 3.3.5a server.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <h1>Alonecraft Accounts</h1>
+    <p class="tagline">Make yourself a game account, or change the one you have.</p>
+  </div>
+  <nav class="tabs" aria-label="Action">
+    <button class="tab is-active" data-panel="register" type="button">Register</button>
+    <button class="tab" data-panel="password" type="button">Change password</button>
+    <button class="tab" data-panel="email" type="button">Change email</button>
+  </nav>
+</header>
+
+<p id="realm-hint" class="warning" hidden></p>
+
+<main>
+
+  <section class="card" id="panel-register">
+    <h2>Create an account</h2>
+    <form id="form-register" autocomplete="off">
+      <label>Username
+        <input name="username" maxlength="17" required
+               pattern="[A-Za-z0-9_]+" autocapitalize="off" spellcheck="false">
+      </label>
+      <label>Password
+        <input name="password" type="password" maxlength="16" required>
+      </label>
+      <label>Email <span class="muted">(optional)</span>
+        <input name="email" type="email" maxlength="255" autocapitalize="off" spellcheck="false">
+      </label>
+      <button type="submit">Create account</button>
+      <p class="status" role="status"></p>
+    </form>
+    <p class="note">
+      Letters, numbers and underscores only, up to 17 characters. Passwords are
+      at most 16 characters and <em>not case sensitive</em> &mdash; the game
+      client uppercases them before they are ever sent.
+    </p>
+  </section>
+
+  <section class="card" id="panel-password" hidden>
+    <h2>Change your password</h2>
+    <form id="form-password" autocomplete="off">
+      <label>Username
+        <input name="username" maxlength="17" required autocapitalize="off" spellcheck="false">
+      </label>
+      <label>Current password
+        <input name="current_password" type="password" maxlength="16" required>
+      </label>
+      <label>New password
+        <input name="new_password" type="password" maxlength="16" required>
+      </label>
+      <button type="submit">Change password</button>
+      <p class="status" role="status"></p>
+    </form>
+  </section>
+
+  <section class="card" id="panel-email" hidden>
+    <h2>Change your email</h2>
+    <form id="form-email" autocomplete="off">
+      <label>Username
+        <input name="username" maxlength="17" required autocapitalize="off" spellcheck="false">
+      </label>
+      <label>Password
+        <input name="password" type="password" maxlength="16" required>
+      </label>
+      <label>New email
+        <input name="new_email" type="email" maxlength="255" required
+               autocapitalize="off" spellcheck="false">
+      </label>
+      <button type="submit">Change email</button>
+      <p class="status" role="status"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>
+    Need an account deleted, or a character restored? Ask the server admin
+    &mdash; those are not self-service.
+  </p>
+  <p>
+    Wondering what the talents do here? See the
+    <a href="https://dominicjameswhite.github.io/azerothcore-wotlk-solo/">talent calculator</a>
+    &mdash; this server's trees are not retail 3.3.5a.
+  </p>
+</footer>
+
+<script src="portal.js"></script>
+</body>
+</html>
