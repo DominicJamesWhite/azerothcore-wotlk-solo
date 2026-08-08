@@ -20,6 +20,7 @@
 #include "Opcodes.h"
 #include "Player.h"
 #include "World.h"
+#include <algorithm>
 
 Quest::Quest(Field* questRecord)
 {
@@ -205,7 +206,20 @@ uint32 Quest::XPValue(uint8 playerLevel) const
         return 0;
     }
 
-    int32 diffFactor = 2 * (quest_level - playerLevel) + 20;
+    // diffFactor is a 1..10 tenths-of-full-XP scale: 10 while the quest is at
+    // most 5 levels under the player, then falling by 2 per level to the 10%
+    // floor at 10 under. XP.LowLevelRangeMultiplier flattens that slope so the
+    // window stretches with the creature XP window -- at 1.5 a quest pays full
+    // XP down to 7 levels under and hits the floor at 15.
+    //
+    // Only the below-level side is scaled. Quests above the player's level
+    // already cap at 10 after 3 levels, and stretching that side would take
+    // XP away from over-level quests, which is the opposite of the intent.
+    float levelDiff = float(quest_level) - float(playerLevel);
+    if (levelDiff < 0.0f)
+        levelDiff /= std::max(1.0f, sWorld->getFloatConfig(RATE_XP_LOW_LEVEL_RANGE));
+
+    int32 diffFactor = int32(2.0f * levelDiff) + 20;
     if (diffFactor < 1)
     {
         diffFactor = 1;

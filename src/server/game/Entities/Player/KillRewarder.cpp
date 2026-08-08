@@ -104,7 +104,7 @@ void KillRewarder::_InitGroupData()
                         }
                         // 2.4. _maxNotGrayMember - maximum level of alive group member within reward distance,
                         //      for whom victim is not gray;
-                        uint32 grayLevel = Acore::XP::GetGrayLevel(lvl);
+                        uint32 grayLevel = Acore::XP::GetXPGrayLevel(lvl);
                         if (_victim->GetLevel() > grayLevel && (!_maxNotGrayMember || _maxNotGrayMemberLevel < lvl))
                         {
                             _maxNotGrayMember = member;
@@ -171,7 +171,7 @@ void KillRewarder::_RewardXP(Player* player, float rate)
         {
             uint8 const referenceLevel = _group ? _maxLevel : player->GetLevel();
             uint8 const highestLevel = creature->GetHighestPlayerAttackerLevel();
-            if (highestLevel > referenceLevel && creature->GetLevel() <= Acore::XP::GetGrayLevel(highestLevel))
+            if (highestLevel > referenceLevel && creature->GetLevel() <= Acore::XP::GetXPGrayLevel(highestLevel))
                 xp = xp / 2 + 1;
         }
 

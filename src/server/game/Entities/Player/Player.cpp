@@ -5930,7 +5930,9 @@ float Player::CalculateReputationGain(ReputationSource source, uint32 creatureOr
             break;
     }
 
-    if (rate != 1.0f && creatureOrQuestLevel <= Acore::XP::GetGrayLevel(GetLevel()))
+    // Follows the XP window: the low-level reputation penalty should kick in
+    // where the content stops being worth XP, not before it.
+    if (rate != 1.0f && creatureOrQuestLevel <= Acore::XP::GetXPGrayLevel(GetLevel()))
         percent *= rate;
 
     if (percent <= 0.0f)
@@ -12791,7 +12793,7 @@ uint32 Player::GetResurrectionSpellId()
 bool Player::isHonorOrXPTarget(Unit* victim) const
 {
     uint8 v_level = victim->GetLevel();
-    uint8 k_grey  = Acore::XP::GetGrayLevel(GetLevel());
+    uint8 k_grey  = Acore::XP::GetXPGrayLevel(GetLevel());
 
     // Victim level less gray level
     if (v_level <= k_grey)

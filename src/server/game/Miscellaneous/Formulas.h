@@ -112,6 +112,22 @@ namespace Acore::XP
         return diff;
     }
 
+    // XP-facing variants of the two functions above, widened by the
+    // XP.LowLevelRangeMultiplier config. At the default 1.0 they return exactly
+    // what GetGrayLevel/GetZeroDifference return.
+    //
+    // These exist as separate functions rather than as a change to the retail
+    // formulas because the gray level also gates honor and weapon skill gain,
+    // and widening the XP window is not a reason to hand out honor for killing
+    // players 20 levels down. Only the XP and low-level reputation paths call
+    // these; everything else keeps the retail curve.
+    //
+    // Out of line because they read sWorld, and Formulas.h is a widely included
+    // header that deliberately does not pull in World.h.
+    uint8 GetXPGrayLevel(uint8 pl_level);
+
+    uint8 GetXPZeroDifference(uint8 pl_level);
+
     uint32 BaseGain(uint8 pl_level, uint8 mob_level, ContentLevels content);
 
     uint32 Gain(Player* player, Unit* unit, bool isBattleGround = false);

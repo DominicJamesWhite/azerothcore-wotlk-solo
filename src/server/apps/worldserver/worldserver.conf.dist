@@ -2525,6 +2525,40 @@ Rate.XP.BattlegroundKillIC   = 1
 Rate.XP.BattlegroundBonus = 1
 
 #
+#    XP.LowLevelRangeMultiplier
+#        Description: Widens the level range below the player over which creatures and
+#                     quests still award experience. This changes the *range*, not the
+#                     amount: it does not multiply XP, it moves the point at which
+#                     content goes gray and flattens the falloff leading up to it.
+#
+#                     Three things scale together:
+#                       - the gray band (how far under the player a creature must be
+#                         to award nothing at all),
+#                       - the zero-difference falloff that scales creature XP inside
+#                         that band,
+#                       - the quest reward slope, which normally pays full XP down to
+#                         5 levels under and floors at 10% by 10 levels under.
+#
+#                     Intended for realms running raised XP rates, where players
+#                     outlevel a zone long before finishing its quest chains and the
+#                     content they are standing in stops paying.
+#
+#                     Honor and weapon skill gain also key off the gray level; those
+#                     deliberately keep the unmodified range and are not affected.
+#
+#                     Note that Quests.LowLevelHideDiff still hides the exclamation
+#                     mark on low-level quests independently of this setting - raise
+#                     it too, or widened quests will pay XP without being findable.
+#
+#        Default:     1   - (Disabled, retail behaviour)
+#                     1.5 - full creature XP range roughly 50% wider; at level 40 the
+#                           gray cutoff moves from 31 to 27 and quests pay full XP
+#                           down to 7 levels under
+#                     Values below 1 are rejected.
+
+XP.LowLevelRangeMultiplier = 1
+
+#
 #    Rate.Pet.LevelXP
 #        Description: Modifies the amount of experience required to level up a pet.
 #                     The lower the rate the less experience is required.

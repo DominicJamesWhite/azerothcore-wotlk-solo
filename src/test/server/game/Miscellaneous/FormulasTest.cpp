@@ -88,7 +88,34 @@ TEST(FormulasTest, GetZeroDifference)
     EXPECT_EQ(GetZeroDifference(80), 17);
 }
 
-TEST(FormulasTest, BaseGain)
+// GetXPGrayLevel, GetXPZeroDifference and BaseGain read
+// XP.LowLevelRangeMultiplier, so they need a world to read it from.
+class XPRangeTest : public ::testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        _previousWorld = std::move(sWorld);
+        _worldMock = new ::testing::NiceMock<WorldMock>();
+        SetMultiplier(1.0f);
+        sWorld.reset(_worldMock);
+    }
+
+    void TearDown() override
+    {
+        sWorld = std::move(_previousWorld);
+    }
+
+    void SetMultiplier(float value)
+    {
+        ON_CALL(*_worldMock, getFloatConfig(RATE_XP_LOW_LEVEL_RANGE)).WillByDefault(::testing::Return(value));
+    }
+
+    std::unique_ptr<IWorld> _previousWorld;
+    ::testing::NiceMock<WorldMock>* _worldMock = nullptr;
+};
+
+TEST_F(XPRangeTest, BaseGain)
 {
     EXPECT_EQ(BaseGain(60, 40, CONTENT_1_60), 0);
     EXPECT_EQ(BaseGain(60, 60, CONTENT_1_60), 345);
@@ -98,6 +125,81 @@ TEST(FormulasTest, BaseGain)
 
     // check outError() has been called after passing an invalid ContentLevels content
     EXPECT_EQ(BaseGain(79, 1, ContentLevels(999)), 0);
+}
+
+// At the default multiplier the XP variants must reproduce the retail formulas
+// exactly, or every unmodified realm silently changes behaviour.
+TEST_F(XPRangeTest, XPVariantsMatchRetailAtDefault)
+{
+    for (uint8 level = 0; level <= 80; ++level)
+    {
+        EXPECT_EQ(GetXPGrayLevel(level), GetGrayLevel(level)) << "level " << uint32(level);
+        EXPECT_EQ(GetXPZeroDifference(level), GetZeroDifference(level)) << "level " << uint32(level);
+    }
+}
+
+TEST_F(XPRangeTest, GetXPGrayLevelWidens)
+{
+    SetMultiplier(1.5f);
+
+    // Band widens, cutoff moves down: level 40 has a 9 level band (40 -> 31),
+    // floored to 13 at 1.5x.
+    EXPECT_EQ(GetXPGrayLevel(40), 27);
+    EXPECT_EQ(GetXPGrayLevel(60), 47);
+    EXPECT_EQ(GetXPGrayLevel(80), 67);
+
+    // Levels with no gray band at all keep none.
+    EXPECT_EQ(GetXPGrayLevel(0), 0);
+    EXPECT_EQ(GetXPGrayLevel(5), 0);
+
+    // A band wider than the player's level saturates at 0 rather than wrapping.
+    SetMultiplier(20.0f);
+    EXPECT_EQ(GetXPGrayLevel(6), 0);
+    EXPECT_EQ(GetXPGrayLevel(80), 0);
+}
+
+TEST_F(XPRangeTest, GetXPZeroDifferenceWidens)
+{
+    SetMultiplier(1.5f);
+
+    EXPECT_EQ(GetXPZeroDifference(40), 19);
+    EXPECT_EQ(GetXPZeroDifference(80), 25);
+
+    // uint8 return, so a large multiplier must clamp rather than wrap.
+    SetMultiplier(100.0f);
+    EXPECT_EQ(GetXPZeroDifference(80), 255);
+}
+
+// The old BaseGain assigned a signed falloff to a uint32. With a gray band wide
+// enough to admit mobs further down than the zero difference, that underflowed
+// to an enormous XP award instead of zero.
+TEST_F(XPRangeTest, BaseGainNeverUnderflowsBelowZeroDifference)
+{
+    SetMultiplier(20.0f);
+
+    // Gray band is saturated at 0, so every mob level is "eligible", but any
+    // mob further than the zero difference below the player must still pay 0.
+    EXPECT_EQ(GetXPGrayLevel(80), 0);
+    for (uint8 mobLevel = 1; mobLevel <= 80 - GetXPZeroDifference(80); ++mobLevel)
+        EXPECT_EQ(BaseGain(80, mobLevel, CONTENT_71_80), 0u) << "mob level " << uint32(mobLevel);
+}
+
+TEST_F(XPRangeTest, BaseGainWidensRatherThanInflates)
+{
+    uint32 const onLevel = BaseGain(40, 40, CONTENT_1_60);
+
+    // A mob past the retail gray cutoff pays nothing by default...
+    EXPECT_EQ(BaseGain(40, 30, CONTENT_1_60), 0u);
+
+    SetMultiplier(1.5f);
+
+    // ...and pays a reduced amount once the range widens...
+    uint32 const widened = BaseGain(40, 30, CONTENT_1_60);
+    EXPECT_GT(widened, 0u);
+    EXPECT_LT(widened, onLevel);
+
+    // ...without changing what an on-level kill is worth.
+    EXPECT_EQ(BaseGain(40, 40, CONTENT_1_60), onLevel);
 }
 
 TEST(FormulasTest, Gain)

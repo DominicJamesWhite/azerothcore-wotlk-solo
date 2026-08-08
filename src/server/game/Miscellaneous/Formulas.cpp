@@ -23,6 +23,45 @@
 #include "Player.h"
 #include "ScriptMgr.h"
 #include "World.h"
+#include <algorithm>
+
+namespace
+{
+    float GetXPLowLevelRangeMultiplier()
+    {
+        // The config validator enforces >= 1, but a reload racing a read is
+        // cheap to guard against and a multiplier below 1 would narrow the
+        // window rather than widen it.
+        return std::max(1.0f, sWorld->getFloatConfig(RATE_XP_LOW_LEVEL_RANGE));
+    }
+}
+
+uint8 Acore::XP::GetXPGrayLevel(uint8 pl_level)
+{
+    uint8 const grayLevel = GetGrayLevel(pl_level);
+
+    // Below level 6 there is no gray band at all; scaling zero stays zero.
+    if (!grayLevel)
+        return 0;
+
+    // Widen the band, not the cutoff, and floor it: the band is a whole number
+    // of levels, and rounding it up would cost a level of eligible content at
+    // every half-step multiplier.
+    uint32 const band = static_cast<uint32>(std::floor((pl_level - grayLevel) * GetXPLowLevelRangeMultiplier()));
+    if (band >= pl_level)
+        return 0;
+
+    return static_cast<uint8>(pl_level - band);
+}
+
+uint8 Acore::XP::GetXPZeroDifference(uint8 pl_level)
+{
+    // Widened in step with the gray band. If it were not, a gray band wider
+    // than the zero difference would make BaseGain's falloff factor negative
+    // for the mobs the wider band just made eligible.
+    float const zeroDiff = GetZeroDifference(pl_level) * GetXPLowLevelRangeMultiplier();
+    return static_cast<uint8>(std::min(zeroDiff, 255.0f));
+}
 
 uint32 Acore::XP::BaseGain(uint8 pl_level, uint8 mob_level, ContentLevels content)
 {
@@ -56,11 +95,16 @@ uint32 Acore::XP::BaseGain(uint8 pl_level, uint8 mob_level, ContentLevels conten
     }
     else
     {
-        uint8 gray_level = GetGrayLevel(pl_level);
+        uint8 gray_level = GetXPGrayLevel(pl_level);
         if (mob_level > gray_level)
         {
-            uint8 ZD = GetZeroDifference(pl_level);
-            baseGain = (pl_level * 5 + nBaseExp) * (ZD + mob_level - pl_level) / ZD;
+            uint8 ZD = GetXPZeroDifference(pl_level);
+
+            // Signed on purpose: ZD + mob_level - pl_level goes negative once
+            // the mob is more than ZD levels down, and the old expression
+            // assigned that straight to a uint32.
+            int32 falloff = int32(ZD) + int32(mob_level) - int32(pl_level);
+            baseGain = falloff > 0 ? uint32(int32(pl_level * 5 + nBaseExp) * falloff / ZD) : 0;
         }
         else
             baseGain = 0;
