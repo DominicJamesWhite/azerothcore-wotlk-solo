@@ -19,3 +19,6 @@
 [submodule "modules/mod-playerbots"]
 	path = modules/mod-playerbots
 	url = https://github.com/DominicJamesWhite/mod-playerbots.git
+[submodule "modules/mod-ah-bot-plus"]
+	path = modules/mod-ah-bot-plus
+	url = https://github.com/DominicJamesWhite/mod-ah-bot-plus.git
