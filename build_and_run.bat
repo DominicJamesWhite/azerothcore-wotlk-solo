@@ -22,6 +22,8 @@ SET "VERIFY_SCRIPT=%~dp0tools\verify_scripts.py"
 SET "VERIFY_DB_SCRIPT=%~dp0tools\verify_db.py"
 SET "AUDIT_LOGS_SCRIPT=%~dp0tools\audit_logs.py"
 SET "SYNC_CONFIGS_SCRIPT=%~dp0tools\sync_configs.py"
+SET "BOT_SPELLS_SCRIPT=%~dp0tools\verify_bot_spells.py"
+SET "BOT_TALENTS_SCRIPT=%~dp0tools\bot_talents.py"
 SET "WOW_CACHE=C:\Users\Shadow\Desktop\WoW Solo\WoW Solo\Cache"
 SET "LLM_BRIDGE_SCRIPT=%~dp0modules\mod-llm-chatter\tools\llm_chatter_bridge.py"
 SET "LLM_BRIDGE_CONF=%BUILD_DIR%\bin\%BUILD_CONFIG%\configs\modules\mod_llm_chatter.conf"
@@ -163,6 +165,42 @@ IF EXIST "%SYNC_CONFIGS_SCRIPT%" (
     ECHO [1.6/5] sync_configs.py not found, skipping config drift check.
 )
 :AFTER_CONFIG_CHECK
+
+REM ============================================================
+REM  STEP 1.7: Playerbot spell-name and talent-build check
+REM ============================================================
+REM Reports only, same posture as 1.5/1.6. mod-playerbots resolves spells by
+REM NAME, so an Alonecraft rename turns a bot action into a silent no-op: the
+REM bot just never casts it. Premade talent links are positional, so inserting
+REM a talent mid-tree silently re-points every digit after it. Neither failure
+REM produces a log line at runtime, which is exactly why they get checked here.
+IF "%SKIP_VERIFY%"=="1" (
+    ECHO.
+    ECHO [1.7/5] Playerbot checks SKIPPED ^(--skip-verify^)
+    GOTO AFTER_BOT_CHECK
+)
+
+IF EXIST "%BOT_SPELLS_SCRIPT%" (
+    ECHO.
+    ECHO [1.7/5] Checking playerbot spell names...
+    %PYTHON% "%BOT_SPELLS_SCRIPT%"
+) ELSE (
+    ECHO.
+    ECHO [1.7/5] verify_bot_spells.py not found, skipping playerbot spell check.
+)
+
+IF EXIST "%BOT_TALENTS_SCRIPT%" (
+    ECHO.
+    ECHO [1.7/5] Checking playerbot talent builds...
+    %PYTHON% "%BOT_TALENTS_SCRIPT%" audit
+    IF !ERRORLEVEL! NEQ 0 (
+        ECHO       Re-author a broken build by name: python tools\bot_talents.py encode --build ^<file^>
+    )
+) ELSE (
+    ECHO.
+    ECHO [1.7/5] bot_talents.py not found, skipping playerbot talent check.
+)
+:AFTER_BOT_CHECK
 
 REM ============================================================
 REM  STEP 1.8: CMake configure/generate
@@ -531,7 +569,7 @@ ECHO   --skip-dbc      Skip DBC build (build_dbc.py)
 ECHO   --skip-ui       Skip Interface UI build (build_interface.py)
 ECHO   --skip-copy     Skip copying patch-4.mpq to WoW client
 ECHO   --skip-server   Skip launching worldserver
-ECHO   --skip-verify   Skip pre-build consistency check and post-start DB verify
+ECHO   --skip-verify   Skip pre-build consistency, playerbot checks, post-start DB verify
 ECHO   --skip-bridge   Skip launching LLM chatter bridge
 ECHO   --skip-audit    Skip the post-start log noise audit
 ECHO   --skip-config-check  Skip the pre-build config drift check
