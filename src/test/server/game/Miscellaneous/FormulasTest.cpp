@@ -21,6 +21,7 @@
 #include "gtest/gtest.h"
 
 using namespace Acore::Honor;
+using namespace Acore::Rage;
 using namespace Acore::XP;
 
 TEST(FormulasTest, hk_honor_at_level)
@@ -32,6 +33,36 @@ TEST(FormulasTest, hk_honor_at_level)
     EXPECT_EQ(hk_honor_at_level(1, 10), 16);
     EXPECT_EQ(hk_honor_at_level(2), 4);
     EXPECT_EQ(hk_honor_at_level(3), 5);
+}
+
+TEST(FormulasTest, GetRageConversion)
+{
+    EXPECT_NEAR(GetRageConversion(20), 72.42f, 0.01f);
+    EXPECT_NEAR(GetRageConversion(40), 147.87f, 0.01f);
+    EXPECT_NEAR(GetRageConversion(60), 230.60f, 0.01f);
+    EXPECT_NEAR(GetRageConversion(80), 453.32f, 0.01f);
+
+    // The linear tail starts above 70, not at it
+    EXPECT_NEAR(GetRageConversion(70), 274.70f, 0.01f);
+    EXPECT_NEAR(GetRageConversion(71), 292.48f, 0.01f);
+}
+
+TEST(FormulasTest, GetAttackerRage)
+{
+    float const rc80 = GetRageConversion(80);
+
+    // A 3.6 speed main hand contributes 3.5 * 3.6 = 12.6. Normalized rage
+    // is that term alone, so this damage value is where the retail formula
+    // and Rage.Normalized agree at level 80. If this moves, every number in
+    // the rage balance table moves with it.
+    EXPECT_NEAR(GetAttackerRage(762, 12.6f, rc80), 12.6f, 0.05f);
+
+    // Above the break even point the damage term dominates
+    EXPECT_NEAR(GetAttackerRage(2000, 12.6f, rc80), 22.85f, 0.05f);
+
+    // Below it, the cap at twice the damage term stops a slow weapon
+    // landing a trivial hit from paying out
+    EXPECT_NEAR(GetAttackerRage(10, 12.6f, rc80), 0.33f, 0.01f);
 }
 
 TEST(FormulasTest, GetGrayLevel)

@@ -2217,6 +2217,56 @@ Rate.RunicPower.Income = 1
 Rate.RunicPower.Loss   = 1
 Rate.Focus             = 1
 Rate.Energy            = 1
+
+#
+#    Rage.Normalized
+#        Description: Cataclysm style rage generation. In 4.0.1 rage from an
+#                     auto attack stopped scaling with the damage of the swing
+#                     and became a function of weapon speed alone, so a fresh
+#                     80 and a fully geared 80 build rage at the same rate.
+#                     The 3.3.5 formula averages a damage term with exactly
+#                     that weapon speed term, so enabling this simply drops
+#                     the damage term. Affects warriors and bear druids.
+#                     Rage from damage taken is controlled separately by
+#                     Rage.FromDamageTaken.
+#        Default:     0 - (disabled, retail 3.3.5 formula)
+#                     1 - (enabled)
+
+Rage.Normalized = 0
+
+#
+#    Rage.Normalized.Multiplier
+#        Description: Multiplier on the retail Cataclysm coefficients, which
+#                     are 3.5 rage per second of main hand weapon speed and
+#                     1.75 off hand, doubled on a critical strike. Normalized
+#                     rage per second works out to 3.5 * multiplier * (1 +
+#                     crit chance) per weapon, independent of weapon speed,
+#                     level and gear.
+#                     At 1.0 a geared level 80 loses roughly a third of their
+#                     rage income, because Cataclysm also rebalanced ability
+#                     costs and 3.3.5 did not. 1.5 holds level 80 income
+#                     roughly flat while remaining a large buff at levelling
+#                     gear levels, which is where the old formula starves.
+#                     Has no effect unless Rage.Normalized = 1.
+#        Default:     1.5
+
+Rage.Normalized.Multiplier = 1.5
+
+#
+#    Rage.FromDamageTaken
+#        Description: Whether taking damage generates rage. Cataclysm 4.0.1
+#                     removed this, but it did so alongside turning Shield
+#                     Slam and Revenge into rage generators and introducing
+#                     Vengeance. At level 80 it is the majority of a tank's
+#                     rage income, so setting this to 0 without converting
+#                     tank abilities into rage generators leaves protection
+#                     warriors and bear druids unable to sustain a rotation.
+#                     Also disables the Berserker Rage (18499) bonus, which
+#                     only multiplies rage from damage taken.
+#        Default:     1 - (enabled, retail 3.3.5 behaviour)
+#                     0 - (disabled, Cataclysm behaviour)
+
+Rage.FromDamageTaken = 1
 Rate.Loyalty           = 1
 
 #

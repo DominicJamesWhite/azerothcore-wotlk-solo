@@ -41,6 +41,33 @@ namespace Acore::Honor
     }
 }
 
+namespace Acore::Rage
+{
+    // Retail 3.3.5 rage conversion denominator. Quadratic up to level 70,
+    // then a linear WotLK-era guess rather than a datamined constant --
+    // which is why level 80 is the awkward case for any rage retuning.
+    inline float GetRageConversion(uint8 level)
+    {
+        float rageConversion = (0.0091107836f * level * level) +
+            (3.225598133f * level) + 4.2652911f;
+
+        if (level > 70)
+            rageConversion += 13.27f * (level - 70);
+
+        return rageConversion;
+    }
+
+    // Retail 3.3.5 attacker rage: the mean of a damage term and a weapon
+    // speed term, capped at twice the damage term so a slow weapon landing
+    // a trivial hit cannot pay out. See Bornak's bluepost (05/29/2009).
+    inline float GetAttackerRage(uint32 damage, float weaponSpeedHitFactor, float rageConversion)
+    {
+        float rageFromDamageDealt = damage / rageConversion * 7.5f;
+
+        return std::min((rageFromDamageDealt + weaponSpeedHitFactor) / 2.0f, rageFromDamageDealt * 2.0f);
+    }
+}
+
 namespace Acore::XP
 {
     inline uint8 GetGrayLevel(uint8 pl_level)

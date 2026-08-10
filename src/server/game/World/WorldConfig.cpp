@@ -31,6 +31,9 @@ void WorldConfig::BuildConfigCache()
     SetConfigValue<float>(RATE_POWER_MANA, "Rate.Mana", 1.0f, ConfigValueCache::Reloadable::Yes, [](float const& value) { return value > 0.0f; }, "> 0");
     SetConfigValue<float>(RATE_POWER_RAGE_INCOME, "Rate.Rage.Income", 1.0f);
     SetConfigValue<float>(RATE_POWER_RAGE_LOSS, "Rate.Rage.Loss", 1.0f, ConfigValueCache::Reloadable::Yes, [](float const& value) { return value > 0.0f; }, "> 0");
+    SetConfigValue<bool>(CONFIG_RAGE_NORMALIZED, "Rage.Normalized", false, ConfigValueCache::Reloadable::Yes);
+    SetConfigValue<float>(CONFIG_RAGE_NORMALIZED_MULTIPLIER, "Rage.Normalized.Multiplier", 1.5f, ConfigValueCache::Reloadable::Yes, [](float const& value) { return value > 0.0f; }, "> 0");
+    SetConfigValue<bool>(CONFIG_RAGE_FROM_DAMAGE_TAKEN, "Rage.FromDamageTaken", true, ConfigValueCache::Reloadable::Yes);
     SetConfigValue<float>(RATE_POWER_RUNICPOWER_INCOME, "Rate.RunicPower.Income", 1.0f);
     SetConfigValue<float>(RATE_POWER_RUNICPOWER_LOSS, "Rate.RunicPower.Loss", 1, ConfigValueCache::Reloadable::Yes, [](float const& value) { return value > 0.0f; }, "> 0");
     SetConfigValue<float>(RATE_POWER_FOCUS, "Rate.Focus", 1.0f);

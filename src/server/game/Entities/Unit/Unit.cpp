@@ -36,6 +36,7 @@
 #include "DisableMgr.h"
 #include "DynamicVisibility.h"
 #include "Errors.h"
+#include "Formulas.h"
 #include "GameObjectAI.h"
 #include "GameTime.h"
 #include "GridNotifiersImpl.h"
@@ -1128,19 +1129,20 @@ uint32 Unit::DealDamage(Unit* attacker, Unit* victim, uint32 damage, CleanDamage
         }
     }
 
-    // Rage from Damage made (only from direct weapon damage)
-    if (attacker && cleanDamage && damagetype == DIRECT_DAMAGE && attacker != victim && attacker->HasActivePowerType(POWER_RAGE))
+    // Rage from Damage made (only from direct weapon damage). Split damage
+    // redirects also arrive as DIRECT_DAMAGE with a synthetic BASE_ATTACK
+    // CleanDamage, so require a real auto attack (no spellProto) -- under
+    // normalization those would otherwise pay a full weapon speed payout.
+    if (attacker && cleanDamage && damagetype == DIRECT_DAMAGE && !spellProto && attacker != victim && attacker->HasActivePowerType(POWER_RAGE))
     {
-        uint32 weaponSpeedHitFactor;
-
         switch (cleanDamage->attackType)
         {
             case BASE_ATTACK:
             case OFF_ATTACK:
                 {
-                    weaponSpeedHitFactor = uint32(attacker->GetAttackTime(cleanDamage->attackType) / 1000.0f * (cleanDamage->attackType == BASE_ATTACK ? 3.5f : 1.75f));
+                    float weaponSpeedHitFactor = attacker->GetAttackTime(cleanDamage->attackType) / 1000.0f * (cleanDamage->attackType == BASE_ATTACK ? 3.5f : 1.75f);
                     if (cleanDamage->hitOutCome == MELEE_HIT_CRIT)
-                        weaponSpeedHitFactor *= 2;
+                        weaponSpeedHitFactor *= 2.0f;
 
                     attacker->RewardRage(rage_damage, weaponSpeedHitFactor, true);
                     break;
@@ -1158,10 +1160,15 @@ uint32 Unit::DealDamage(Unit* attacker, Unit* victim, uint32 damage, CleanDamage
         if (cleanDamage && cleanDamage->absorbed_damage)
         {
             if (victim->HasActivePowerType(POWER_RAGE))
-                victim->RewardRage(cleanDamage->absorbed_damage, 0, false);
+                victim->RewardRage(cleanDamage->absorbed_damage, 0.f, false);
 
+            // A fully absorbed melee swing already reached the block above
+            // (which has no damage != 0 guard), so this pays the attacker a
+            // second time. Under Rage.Normalized the zero factor makes it a
+            // no-op, which is also the right answer for a fully absorbed
+            // spell -- Cataclysm grants no rage for those.
             if (attacker && attacker->HasActivePowerType(POWER_RAGE))
-                attacker->RewardRage(cleanDamage->absorbed_damage, 0, true);
+                attacker->RewardRage(cleanDamage->absorbed_damage, 0.f, true);
         }
 
         return 0;
@@ -1304,7 +1311,7 @@ uint32 Unit::DealDamage(Unit* attacker, Unit* victim, uint32 damage, CleanDamage
         if (attacker != victim && victim->HasActivePowerType(POWER_RAGE))
         {
             uint32 rageDamage = damage + (cleanDamage ? cleanDamage->absorbed_damage : 0);
-            victim->RewardRage(rageDamage, 0, false);
+            victim->RewardRage(rageDamage, 0.f, false);
         }
 
         if (attacker && attacker->IsPlayer())
@@ -2109,7 +2116,7 @@ void Unit::DealMeleeDamage(CalcDamageInfo* damageInfo, bool durabilityLoss)
             case BASE_ATTACK:
             case OFF_ATTACK:
             {
-                uint32 weaponSpeedHitFactor = uint32(GetAttackTime(damageInfo->attackType) / 1000.0f * (damageInfo->attackType == BASE_ATTACK ? 3.5f : 1.75f));
+                float weaponSpeedHitFactor = GetAttackTime(damageInfo->attackType) / 1000.0f * (damageInfo->attackType == BASE_ATTACK ? 3.5f : 1.75f);
                 RewardRage(damageInfo->cleanDamage, weaponSpeedHitFactor, true);
                 break;
             }
@@ -16105,27 +16112,42 @@ void Unit::UpdateHeight(float newZ)
         GetVehicleKit()->RelocatePassengers();
 }
 
-void Unit::RewardRage(uint32 damage, uint32 weaponSpeedHitFactor, bool attacker)
+void Unit::RewardRage(uint32 damage, float weaponSpeedHitFactor, bool attacker)
 {
     // Rage formulae https://wowwiki-archive.fandom.com/wiki/Rage#Formulae
     float addRage;
 
-    float rageconversion = ((0.0091107836f * GetLevel() * GetLevel()) + 3.225598133f * GetLevel()) + 4.2652911f;
-
-    // Unknown if correct, but lineary adjust rage conversion above level 70
-    if (GetLevel() > 70)
-        rageconversion += 13.27f * (GetLevel() - 70);
+    float rageconversion = Acore::Rage::GetRageConversion(GetLevel());
 
     if (attacker)
     {
-        // see Bornak's bluepost explanation (05/29/2009)
-        float rageFromDamageDealt = damage / rageconversion * 7.5f;
-        addRage = (rageFromDamageDealt + weaponSpeedHitFactor) / 2.0f;
-        addRage = std::min(addRage, rageFromDamageDealt * 2.0f);
+        if (sWorld->getBoolConfig(CONFIG_RAGE_NORMALIZED))
+        {
+            // Cataclysm 4.0.1: rage from an auto attack is a function of
+            // weapon speed alone and no longer scales with damage dealt.
+            // The caller already computed exactly that term, so all that is
+            // left to do is drop the damage half of the average. A zero
+            // factor here therefore means "not a weapon swing" (absorbed
+            // spell, split damage) and correctly pays nothing.
+            addRage = weaponSpeedHitFactor * sWorld->getFloatConfig(CONFIG_RAGE_NORMALIZED_MULTIPLIER);
+        }
+        else
+            addRage = Acore::Rage::GetAttackerRage(damage, weaponSpeedHitFactor, rageconversion);
+
+        // Kept outside the branch so Endless Rage (29623) and Berserker
+        // Rage still apply under normalization. It is a percentage of the
+        // final figure either way, so the talent is worth the same as
+        // before -- moving it here only stops it being skipped entirely.
         AddPct(addRage, GetTotalAuraModifier(SPELL_AURA_MOD_RAGE_FROM_DAMAGE_DEALT));
     }
     else
     {
+        // Cataclysm 4.0.1 removed rage from damage taken entirely. Disabling
+        // this leaves prot warriors and bears unplayable unless their
+        // abilities are converted into rage generators to compensate.
+        if (!sWorld->getBoolConfig(CONFIG_RAGE_FROM_DAMAGE_TAKEN))
+            return;
+
         addRage = damage / rageconversion * 2.5f;
 
         // Berserker Rage effect
