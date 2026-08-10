@@ -17,9 +17,10 @@ An attempt to make WOW better to play alone or in very small groups.
 - [ ] Each tree now has changed talents relating to holy trinity specs’ inherent weaknesses while retaining class character.
 - [ ] Retuned and redesigned dungeon and raid encounters with lots of new difficulty settings to allow solo progression.
 - [x] A living auction house — `mod-ah-bot-plus` both stocks it and buys from it, so loot is worth something and professions have a supply chain without other players.
-- [x] 10x levelling XP, with the low-level XP *range* widened to match so a zone keeps paying while you finish it.
+- [x] 10x levelling XP from quests, with the low-level XP *range* widened to match so a zone keeps paying while you finish it.
 - [x] Gear upgrades — any uncommon+ item can be reforged to your level, so a piece you like is never outlevelled.
 - [x] A Quartermaster who mails you spec-appropriate gear each level, and 8x quest gold, so income keeps pace with 10x XP.
+- [x] Cataclysm rage normalisation — auto-attack rage depends on weapon speed, not damage, so warriors and bears build rage at the same rate at level 20 in greens as at 80 in raid gear. (4.64)
 
 ## Levelling XP
 
@@ -53,6 +54,32 @@ listed, and nobody is buying, so your loot is vendor-trash. `mod-ah-bot-plus`
 supplies both sides. Its money is fiat — gold spent on a bot listing is destroyed,
 gold the buyer bot pays you is created — so the two halves are a sink and a faucet
 rather than a closed economy.
+
+## Rage
+
+In 3.3.5 rage from an auto-attack scales with the *damage* of the swing, which
+makes rage income a function of gear: a character levelling in quest greens
+cannot afford their own rotation, while a geared 80 is rage-capped. On a solo
+fork the starved end of that curve is where most of the playtime is.
+
+Cataclysm 4.0.1 normalised it — auto-attack rage became a function of weapon
+speed alone. `Rage.Normalized` does the same here. Normalised rage per second
+works out to `3.5 x multiplier x (1 + crit)` per weapon, **independent of weapon
+speed, level and item level**. The multiplier defaults to 1.5, chosen to hold
+geared level-80 income flat (Arms 6.96 → 7.09 rage/sec, Fury 9.40 → 11.03) while
+nearly doubling it at levelling gear levels.
+
+Cataclysm also removed rage from damage taken, and `Rage.FromDamageTaken = 0`
+follows. That half does not stand alone: damage taken is the majority of a
+tank's income at 80, so removing it drops protection warriors from 11.9 to 6.0
+rage/sec — below the 7.7 they need for Shield Slam, Revenge and Thunder Clap
+alone. Cataclysm compensated by turning Shield Slam and Revenge into rage
+generators, and so does Alonecraft (+20 and +15). Bear druids get the same
+treatment via Mangle (+15), which needs a module script rather than pure DBC
+because all three of its effect slots are already used.
+
+All three settings live in `worldserver.overrides.conf` and are reloadable, so
+the whole change can be rolled back without a rebuild.
 
 ## Class Changes
 - [x] Resto druid 
@@ -148,6 +175,7 @@ rather than a closed economy.
 
 **Class Changes:**
 - [x] Tree form now uses a cool-as-fuck arakkoa instead of a lame treant. (4.1) Also can use Balance spells. (4.2)
+- [x] Bear form uses the normalised rage model — see [Rage](#rage). **Mangle (Bear)** no longer costs 20 rage; it generates 15, replacing the damage-taken income bears lost. (4.64)
 
 **Spec Themes:**
 - [ ] **Balance:** Summons healing trees.
@@ -375,19 +403,63 @@ rather than a closed economy.
 
 ### Warrior
 
+Implementation detail and the traps hit along the way live in
+[docs/warrior_implementation_notes.md](docs/warrior_implementation_notes.md);
+the rage numbers are in
+[docs/prot_warrior_rage_audit.md](docs/prot_warrior_rage_audit.md).
+
+- [x] **Normalised rage.** See [Rage](#rage) above. (4.64)
+
 **Spell Changes:**
-- [x] **Victory Rush:** Restore the healing component (missing in 3.3.5, added in Cataclysm). Now heals for 20% of maximum health. (Pure DBC -- effects 2 and 3 were empty. `SPELL_EFFECT_HEAL_PCT` (136), the Rune Tap 48982 shape.) (4.63)
+- [x] **Shield Slam:** No longer costs 20 rage; generates 15. (4.64, trimmed in 4.67)
+- [x] **Revenge:** No longer costs 5 rage; generates 10. (4.64, trimmed in 4.67)
+- [x] **Shield Specialization:** 2 rage per block/dodge/parry, down from retail's 5. (4.68)
+- [x] **Mocking Blow:** 100% weapon damage at every rank, and only usable in Defensive Stance. (4.66)
+- [x] **Defensive Stance:** Damage done reduction removed. (4.66)
+- [x] **Shield Wall:** Reduces damage taken by 30%, on a 2 minute cooldown. (4.66)
+- [x] **Vigilance:** Can be self-cast, turning its Taunt-cooldown reset into “every time you are hit, Taunt comes back”. (4.66)
+- [x] **Victory Rush:** Heals for 20% of maximum health, and is usable in every stance. (4.63, stance fix 4.66)
+- [x] **Intervene (redesigned as Protection’s gap closer):** One button that reads its target — an enemy is Staggered (−10% damage done), an ally is Interceded (−10% damage taken). Free, usable in combat, and keeps normal threat so it actually pulls. Protection was the one spec required to stand in Defensive Stance and had no gap closer at all. (4.66, both halves 4.67)
+- [x] **Last Stand:** 90 sec cooldown, and also reduces damage taken by 30%. (4.66)
+- [x] **Heroic Strike & Cleave:** Cataclysm cost model — instant rather than “on next swing”, 30 rage at every rank, and a shared 3 sec cooldown. Deliberately still off the global cooldown, so they remain rage dumps fired between GCD-bound abilities. (4.65)
+- [x] **Berserker Rage:** Tripling rage from damage taken went with that income; it now grants +100% rage from damage dealt for its duration. (4.64)
+
+**Talents affected by normalisation:**
+- [x] **Endless Rage:** Unchanged mechanically — only the wording needed fixing, since rage no longer comes “from damage dealt”. (4.64)
+- [x] **Sword and Board:** Its “reduce Shield Slam’s cost by 100%” half died the moment Shield Slam became free; the proc now grants +50% rage from your next Shield Slam instead. (4.64; halved from +100% in 4.69, because it also refreshes the cooldown and the audit priced the +100% version at ~45 rage against retail’s 20.)
+- [x] **Focused Rage:** Keeps its −1/2/3 rage cost reduction, and now also increases Shield Slam and Revenge damage by 5/10/15%. (4.64)
 
 **Talents:**
-- [x] **Deflection (Renamed to Small Victories) (1, 0):** Increases your Parry chance by 1/2/3/4/5%, and each parry has a 20/40/60/80/100% chance to grant you Victorious, allowing you to use Victory Rush. (5 ranks) (Pure DBC + `spell_proc`, the Glyph of Overpower 58386 shape. The per-rank chance lives in DBC `ProcChance` so `$h` renders it. Victorious 32216 also had `DO_NOT_DISPLAY` cleared -- stock hides it because it fired once per kill; driven by parry it is a window worth seeing.) (4.63)
-- [x] **Improved Charge (0, 1):** Increases the amount of rage generated by your Charge ability by 10. Killing an enemy has a 50/100% chance to reset the cooldown on Charge. (2 ranks) (`PROC_FLAG_KILL` is stock; the reset is not -- `SPELL_EFFECT_RESET_COOLDOWN` does not exist in 3.3.5. Charge's 15s is entirely a *category* cooldown, so `RemoveCategoryCooldown` is the load-bearing call.) (4.63)
-- [x] **Iron Will (Renamed to Riposte):** Redesigned. Parrying an attack immediately counter-attacks every enemy within 8 yards for 40/70/100% weapon damage. Cannot occur more than once every second. Requires 5 points in Deflection. (Only affects enemies where CC wouldn't be broken) (**Shipped with a 2 sec ICD, not 1** -- with this tree's parry rates a 1 sec uncapped 8-yard counter is close to a free weapon swing per second per target. DBC + `spell_proc`; the script only filters CC. Cloned from Whirlwind off-hand 44949, whose `REQUIRES_OFF_HAND_WEAPON` attribute and 4-target cap both had to be undone.) (4.63)
-- [x] **Tactical Mastery (2, 1):** Redesigned. Parrying an attack grants you 3/6/10% critical strike chance for 10 seconds. Landing a critical strike grants you 3/6/10% parry chance for 10 seconds. (3 ranks) (Needs C++ only for routing: `spell_proc` is per-spell, not per-effect, so one row cannot say "effect 0 on parry, effect 1 on crit". The script also checks *direction* -- being crit **by** an enemy carries the same hit mask as your own crit. Costs Arms its stance-change rage retention and Defensive Stance threat bonus, which needed all three effect slots.) (4.63)
-- [x] **Two-Handed Weapon Specialization (1, 3):** Increases the damage you deal with two-handed melee weapons by 6%, and while using a 2h weapon your chance to parry is increased by 33/66/100% of your critical strike chance. (3 ranks) (**The one mechanic in the batch with no prior art anywhere in 3.3.5** -- aura 220 `MOD_RATING_FROM_STAT` reads base stats only, and no aura scales one rating off another. Script modelled on the module's own agility->dodge conversion in `RogueMasterOfDeception.cpp`. Shipped at the full value by decision; this is the dominant term in the tree's parry total and compounds with Tactical Mastery.) (4.63)
-- [x] **Sword Specialization (3, 4):** Remove the "This effect cannot occur more than once every 6 seconds." bit, it should be able to proc whenever it procs. (**Shipped at 1 sec, not 0** -- the trigger is `ADD_EXTRA_ATTACKS`, and extra attacks are auto-attacks that can re-proc it, so a true 0 chains into itself. One integer in one `spell_proc` row.) (4.63)
-- [x] **Weapon Mastery (0, 5):** Reduces the chance for your attacks to be dodged by 2/4% and while using a two-handed weapon your parry chance is increased by your strength. (2 ranks) (Same effect as DK strength -> parry conversion) (**12/25% of Strength per rank**, matching the DK's 25% at full rank rather than a literal 100%, which would have been ~+36% parry alone. Effect 1 is aura 248 `MOD_COMBAT_RESULT_CHANCE`, added flat -- not aura 251, and not a multiplier. The 2H gate is in C++ because `EquippedItemClass` is a whole-spell gate and the dodge reduction must stay unconditional; `spell_linked_spell` cannot substitute, as core never re-adds a linked passive after a weapon swap.) (4.63)
-- [x] **Improved Hamstring (Renamed to Hobble) (2, 5):** Using Hamstring with a two-handed weapon equipped increases your chance to parry by 3/6/10% for 10s. (3 ranks) (Pure DBC -- core already ships the right `spell_proc` row, and `EquippedItemClass` on a *passive* is re-checked at proc time, so the 2H gate needs no code and re-arms on weapon swap.) (4.63)
-- [x] **Second Wind (0, 6):** Being hit by while you are below 35% health generates 20 rage and 10% of your total health over 10 sec. (2 ranks) (Rank 1 is half -- which is exactly stock 29841 vs 29842, so both payloads are reused untouched. Pure DBC: `CasterAuraState = 13` genuinely gates the *proc*, because `ModifyAuraState` unapplies the aura's effects above 35% health. Core's `spell_warr_second_wind` registration is deleted, as it owned the stun/root gate.) (4.63)
-- [x] **Improved Slam (3, 6):** Decreases the swing time of your Slam ability by 0.75/1.5 sec. (2 ranks) (Base points only. Stock's `$/1000;S1` renders the new values with no text edit. Rank 2 makes Slam instant.) (4.63)
-- [x] **Juggernaut (0, 7):** Your Charge ability is now usable while in combat. Following a Charge, your next Slam or Mortal Strike has an additional 25% chance to critically hit if used within 10 sec. (1 rank) (This is stock Juggernaut *minus* the +5 sec Charge cooldown, so the change is one effect zeroed -- and the `${$m3/1000}` clause removed with it, or it would render as "0 sec".) (4.63)
-- [x] **Bladestorm (1, 10):** Instantly Whirlwind up to $50622i nearby targets and for the next 6 sec you will perform a whirlwind attack every 1 sec. While under the effects of Bladestorm, you can move but cannot perform any other abilities, but you do not feel pity or remorse or fear, your parry chance is increased by 50% and you cannot be stopped unless killed. (1 rank) (Everything but the parry was already stock, flavour text included. All three effect slots on 46924 are load-bearing, so the parry rides along via `spell_linked_spell` type 2. The trigger id is written plain -- the loader applies the type multiplier itself.) (4.63)
+- [x] **Deflection (Renamed to Small Victories) (1, 0):** Increases your Parry chance by 1/2/3/4/5%, and each parry has a 10/20/30/40/50% chance to grant you Victorious, allowing you to use Victory Rush. (5 ranks) (4.63, retuned in 4.65)
+- [x] **Improved Charge (0, 1):** Increases the rage generated by Charge by 10. Killing an enemy has a 50/100% chance to reset its cooldown. (2 ranks) (4.63)
+- [x] **Iron Will (Renamed to Riposte):** Redesigned. Parrying an attack immediately counter-attacks every enemy within 8 yards for 20/40/60% weapon damage. Cannot occur more than once every 3 sec. Requires 5 points in Small Victories. (3 ranks) (4.63, retuned in 4.65)
+- [x] **Two-Handed Weapon Specialization (1, 3):** Increases two-handed melee damage by 2/4/6%, and while using a 2h weapon your parry chance is increased by 20/40/60% of your critical strike chance. (3 ranks) (4.63, retuned in 4.65)
+- [x] **Sword Specialization (3, 4):** 6 second internal cooldown removed — it should proc whenever it procs. (4.63)
+- [x] **Weapon Mastery (0, 5):** Reduces the chance for your attacks to be dodged by 2/4%, and while using a two-handed weapon your parry chance is increased by your strength. (2 ranks) (4.63)
+- [x] **Improved Hamstring (Renamed to Hobble) (2, 5):** Using Hamstring with a two-handed weapon equipped increases your chance to parry by 3/6/10% for 10s. (3 ranks) (4.63)
+- [x] **Second Wind (0, 6):** Being hit while below 35% health generates 20 rage and 10% of your total health over 10 sec. (2 ranks) (4.63)
+- [x] **Improved Slam (3, 6):** Decreases the swing time of your Slam ability by 0.75/1.5 sec. (2 ranks) (4.63)
+- [x] **Juggernaut (0, 7):** Your Charge is usable in combat, and your next Slam or Mortal Strike within 10 sec has an additional 25% chance to critically hit. (1 rank) (4.63, in-combat half reworked in 4.65)
+- [x] **Bladestorm (1, 10):** As today, plus your parry chance is increased by 50% for the duration. (1 rank) (4.63)
+
+**Protection Talents:**
+Where a line below gives a single number for a multi-rank talent, that number is
+the **max-rank** value and the ranks scale linearly to it — the convention used
+throughout this list.
+
+- [x] **SWAP Improved Bloodrage (0, 0) and Toughness (3, 2) positions.** (4.66)
+- [x] **Toughness (0, 0):** (As today plus) block value scaling from Strength increased by 10/20/30/40/50%, i.e. doubled at 5/5. (5 ranks) (4.66)
+- [x] **Anticipation (2, 1):** Increases your Dodge chance by 1/2/3/4/5% (unchanged), and dodging an attack increases the damage of your next warrior ability by 5/10/15/20/25%. White swings are excluded by design. (5 ranks) (4.66)
+- [x] **Incite (1, 1):** Redesigned. Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your block chance to do additional damage equal to 33/66/100% of your block value. (3 ranks) (4.68, replacing a 4.66 Mocking Blow version whose Revenge half was inert against taunt-immune targets)
+- [x] **SWAP Improved Thunder Clap (2, 0) and Shield Mastery (2, 2) positions.** (4.69)
+- [x] **Shield Mastery (2, 0):** Increases block value by 15/30% (unchanged), reduces the cooldown of Shield Block by 10/20 sec, and blocking an attack causes your enemy to take damage equal to 25/50% of your block value. (2 ranks) (4.66, moved to tier 0 in 4.69)
+- [x] **Improved Thunder Clap (2, 2):** Redesigned. Increases the radius of Thunder Clap from 8 to 10/12/15 yards and its damage by 33/66/100%, and causes it to bleed every target for 33/66/100% of your block value over 6 sec. (3 ranks) (Its rage cost reduction and slow bonus are gone — a Spell.dbc row has only three effect slots.) (4.69)
+- [x] **Improved Bloodrage (Renamed to Controlled Aggression) (3, 2):** Redesigned. While Bloodrage or Berserker Rage is active, 12/25% of your shield block value is added to your attack power. (2 ranks) (Block value was the tree’s central number with no offensive outlet.) (4.68, retuned down from 50/100% in 4.69 — block value already compounds through Toughness, Shield Mastery and Barricade.)
+- [x] **Puncture (2, 3):** Redesigned. Increases your Strength by 5/10/15% of your Stamina. (3 ranks) (Was a rage cost reduction on Sunder Armor and Devastate, which the rage audit flagged as overtuned.) (4.68, halved from 10/20/30% in 4.69)
+- [x] **Improved Spell Reflection (Renamed to Spellshield) (0, 3):** Redesigned. You have a chance equal to your block chance to absorb spell damage equal to 50/100% of your block value. (2 ranks) (4.66)
+- [x] **Improved Disarm (Renamed to Blood and Thunder) (1, 3):** Redesigned. When you Thunder Clap a target affected by Rend, you have a 50/100% chance to Rend nearby enemies. (2 ranks) (4.66)
+- [x] **Improved Disciplines (0, 4):** Redesigned. While in Defensive Stance, you gain melee haste rating equal to 25/50% of your defense rating, doubled while Shield Block or Shield Wall is active. (2 ranks) (Defense rating is dead weight past the cap; paying it back as haste turns overcapped avoidance gear into rage income.) (4.68, replacing a 4.66 Shield Wall proc; halved from 50/100% in 4.69)
+- [x] **Concussion Blow (1, 4) replaced with Barricade:** Become a living barricade, increasing your shield block chance and value by 10% and converting each 2 additional points of rage into 1 additional percent (up to a maximum cost of 80 rage). When you block with Barricade active, you heal for 25% of your block value. 10 sec duration, 10 sec cooldown, shield required. (1 rank) (Protection had no rage spender. Shipped as a toggle in 4.66, rebuilt as a scaling dump in 4.68, benefit halved in 4.69 with the cost unchanged.)
+- [x] **One-Handed Weapon Specialization (2, 5):** Keeps its 2/4/6/8/10% one-handed damage, and while a one-handed weapon is equipped your critical strike chance is increased by 5/10/15/20/25% of your dodge and parry chance. (5 ranks) (The mirror of Arms’ Two-Handed Weapon Specialization.) (4.67, halved from 10/20/30/40/50% in 4.69)
+- [x] **Safeguard (2, 7):** Redesigned. Blocking an attack has a 5/10% chance to grant you Safeguard, allowing you to use Victory Rush and doubling its damage but reducing its healing by 50%. (2 ranks) (4.66)
+- [x] **Damage Shield (2, 9):** Redesigned. When you deal damage you fortify yourself, absorbing damage equal to 10/20% of the damage caused, accumulating up to 10% of your maximum health. (2 ranks) (Its old block-value damage moved to Shield Mastery.) (4.66)

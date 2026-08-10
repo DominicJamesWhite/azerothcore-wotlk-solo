@@ -162,6 +162,26 @@ Type(Scope/Subscope): Short description (max 50 chars)
 - Use {} to parse variables into output instead of %u etc.
 - CI enforces code style checks and compiles with `-Werror`
 
+## Communication Style
+
+**Never write in the first person.** No "I", "me", "my", "I'll", "I've", "let me",
+"we", "us", "our". This applies to all user-facing output — chat replies, summaries,
+plans, commit messages, and comments — and to visible thinking.
+
+Write about the work, not about the worker. Use the imperative or the passive, and
+name the thing that acted rather than claiming it:
+
+| Instead of | Write |
+|------------|-------|
+| "I'll check the DBC row." | "Checking the DBC row." |
+| "I found the bug in `Unit.cpp`." | "The bug is in `Unit.cpp:1204`." |
+| "Let me run the tests." | "Running the tests." |
+| "I've added the SQL file." | "Added the SQL file." / "The SQL file is added." |
+| "We should rebuild first." | "A rebuild is needed first." |
+
+Questions still get asked directly ("Which spell ID should this use?") — dropping
+the pronoun does not mean dropping clarity or hedging what is uncertain.
+
 ## Logging
 
 ### Temporary diagnostics: use `alonecraft.debug`, never `LOG_ERROR`
@@ -440,6 +460,31 @@ New talents (not just redesigns of existing ones) require a new entry in Talent.
 
 **Priest TalentTabIDs:** 201 = Discipline (tabpage 0), 202 = Holy (tabpage 1), 203 = Shadow (tabpage 2).
 
+### SkillLineAbility.dbc Patching — the spellbook tab
+
+**A brand-new custom spell taught by a talent lands in the "General" tab, not its
+tree's tab.** Talent.dbc grants the spell but says nothing about where it is filed.
+The client groups known spells by looking each one up in `SkillLineAbility.dbc` and
+using its `SkillLine`; a spell with no row there has no skill line and falls through
+to General.
+
+This never shows up when *redesigning* an existing talent, because the original
+spell keeps its retail row — that is exactly why it is easy to miss. It only bites
+when a redesign introduces a new spell ID. Barricade (200651) hit it; Concussion
+Blow, which it replaced, had `SkillLineAbility` 6973 → `SkillLine` 257 all along.
+
+Overrides go in the `skilllineability_dbc` table (14 int columns matching
+`SLA_COLUMNS` in `build_dbc.py`), keyed by a synthetic ID in the **60000+** range —
+retail's maximum is 31441. `build_dbc.py` patches the file into `patch-4.mpq`, and
+`build_and_run.bat` copies it to the server's `Data/dbc` so both sides agree on the
+skill association.
+
+Warrior skill lines are 26 Arms, 256 Fury, 257 Protection; other classes follow the
+same pattern — read them off a known spell of that spec rather than guessing.
+
+Only spells that actually appear in a spellbook need a row. Buff and payload spells
+that are never taught are never filed anywhere.
+
 ### SpellShapeshiftForm.dbc Patching
 
 Custom shapeshift forms need correct flags in `SpellShapeshiftForm.dbc`. The build pipeline reads the base DBC, patches form entries, and packs the result into `patch-4.mpq`.
@@ -489,7 +534,24 @@ Interface/custom/AddOns/YourAddon/
 ```bash
 python Interface/build_interface.py          # pack modified files
 python Interface/build_interface.py --dry-run # preview without packing
+python Interface/build_interface.py --force   # ignore the cache, repack everything
 ```
+
+**Packing is cached, because it is expensive.** Each file is a separate
+`mpqcli add` subprocess and the whole set (12 addon files + 16
+`woa_upgrade_*.blp` icons) takes ~100 seconds. The base/ comparison in
+`is_modified()` cannot help here — nothing in `Interface/base/` is a `.blp` and
+none of our AddOns are there — so before this cache every build repacked all 28
+files whether or not anything had changed.
+
+`modules/world_of_alonecraft/dbc/output/interface_pack_cache.json` records the
+sha256 last packed for each archive path. A file is skipped only when its hash
+still matches **and** `mpqcli list` still shows that path in the archive. That
+second condition is load-bearing: `build_dbc.py` *creates* a fresh `patch-4.mpq`
+whenever the file is missing, silently dropping every `Interface\` entry, and a
+hash-only cache would then skip everything and ship an MPQ with no addons and no
+icons. Deleting `patch-4.mpq` also discards the cache, which is why they live in
+the same directory.
 
 **Screenshot watcher:** Monitors WoW's Screenshots folder, copies new screenshots (resized to max 1920px wide, converted to JPEG) to `Interface/screenshots/` for visual review:
 ```bash
@@ -607,6 +669,60 @@ python tools/gen_sql.py dbc --spell-id 49490 --set EffectBasePoints1=7 --append-
 ```
 
 Subcommands: `lookup` (spell viewer + name search), `talent` (talent lookup by name), `talent-link` (decode wowhead talent link strings), `dbc` (alonecraft_spell_dbc, single or batch), `proc` (spell_proc), `script` (spell_script_names), `classmask` (SpellFamilyFlags computation), `enum` (aura/effect enum lookup). Validates column names with fuzzy "did you mean?" suggestions on typos. Enum names (`SPELL_AURA_*`, `SPELL_EFFECT_*`) are auto-resolved in `--set` arguments.
+
+### Item spell scaling (`tools/item_spell_scaling.py`)
+
+Scales the on-use and proc effects of upgraded items. Each item spell is cloned
+into a reserved band with its base points multiplied by the same RandPropPoints
+ratio the stat path uses, and the variant's `spellid_N` points at the clone.
+
+Two problems, one mechanism. 759 uncommon+ equippables have no stats, no armour
+and no weapon damage, so `gen_item_variants.py` used to end their chain at step 1
+and they had no upgrade path at all — Gnomeregan Auto-Blocker 600 (29387) is the
+type case. And every *other* item's proc stayed frozen at its original value
+while its stats scaled: Moroes' Lucky Pocket Watch (28528) has 38 dodge rating
+**and** an on-use granting dodge rating, so the static half reached 97 while the
+on-use sat at its level-70 number. 8,785 items carry an item spell; all of them
+are in scope.
+
+Imported by `gen_item_variants.py`, not run standalone: the clone ids and the
+`spellid_N` values pointing at them must land in one SQL file. It has one
+standalone mode, and it is worth running after any content import:
+
+```bash
+python tools/item_spell_scaling.py      # census: what the whitelist rejects, and why
+```
+
+- **Ids are dense in `300000..349999`, not encoded from the item entry.** An
+  arithmetic encoding reaches ~11.4M and `DBCFileLoader::AutoProduceData`
+  allocates `indexTable[maxId + 1]` — 91 MB of null pointers on server *and*
+  32-bit client, for nothing.
+- **Clones are deduplicated by payload, not per item.** The same base spell at
+  the same ratio is the same spell whoever asked for it: 34,433 per-item clones
+  collapse to 11,324, so `Spell.dbc` grows 10 MB rather than 32 MB. One
+  `clone_spell` therefore serves many variants — ask `item_template` which.
+- **The id mapping is frozen** in `alonecraft_item_upgrade_spell`, keyed by
+  `payload_hash`, and reloaded each run because live `character_aura` /
+  `character_spell_cooldown` rows are keyed by spell id. `--limit` runs never
+  write it. Re-running the generator and diffing `clone_spell` is the single
+  most important regression test. Note the trade: a *retune* changes a payload,
+  allocates a new id, and orphans the old one — acceptable only because these
+  are second-long item buffs.
+- **A reused id still needs its row emitted.** "Already in the frozen map" is
+  not "already written": the generated file `DELETE`s the whole id band and must
+  be re-appliable to an empty database. Conflating the two emitted nothing on
+  the second run while 80,000 items still pointed at the band.
+- **Rows are the closure reachable from surviving variants**, not whatever was
+  emitted during generation. A payload is written on first allocation; if that
+  step is then pruned for gaining nothing, the row would vanish while the id
+  lived on in the allocator.
+- **Classification is a whitelist and fails closed.** `SPELL_EFFECT_DUMMY`,
+  `SCRIPT_EFFECT`, `SPELL_AURA_DUMMY` and anything with a `spell_script_names`
+  row are rejected: their payload is C++ keyed to the original spell id, so a
+  clone silently does nothing. `spell_proc` rows are the opposite — declarative,
+  so they are cloned alongside. Percentages, durations and millisecond values
+  (including `ADD_FLAT_MODIFIER`, whose unit depends on `EffectMiscValue`) pass
+  through unscaled. 1,336 of 1,595 spells (84%) currently qualify.
 
 ### Post-Build DB Verifier (`tools/verify_db.py`)
 
