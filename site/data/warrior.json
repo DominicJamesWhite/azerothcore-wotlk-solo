@@ -41,9 +41,14 @@
       {
        "r": 3,
        "spell": 12664,
-       "desc": "Reduces the cost of your Heroic Strike ability by 3 rage points.",
+       "desc": "Reduces the cost of your Heroic Strike ability by 5 rage points.",
        "raw": "Reduces the cost of your Heroic Strike ability by $/10;s1 rage points."
       }
+     ],
+     "modified": true,
+     "modKind": "values",
+     "modDetail": [
+      "EffectBasePoints1"
      ]
     },
     {
@@ -68,31 +73,31 @@
       {
        "r": 1,
        "spell": 16462,
-       "desc": "Increases your chance to parry by 1%.  Each parry has a 20% chance to grant you Victorious, allowing the use of Victory Rush.",
+       "desc": "Increases your chance to parry by 1%.  Each parry has a 10% chance to grant you Victorious, allowing the use of Victory Rush.",
        "raw": "Increases your chance to parry by $s1%.  Each parry has a $h% chance to grant you Victorious, allowing the use of Victory Rush."
       },
       {
        "r": 2,
        "spell": 16463,
-       "desc": "Increases your chance to parry by 2%.  Each parry has a 40% chance to grant you Victorious, allowing the use of Victory Rush.",
+       "desc": "Increases your chance to parry by 2%.  Each parry has a 20% chance to grant you Victorious, allowing the use of Victory Rush.",
        "raw": "Increases your chance to parry by $s1%.  Each parry has a $h% chance to grant you Victorious, allowing the use of Victory Rush."
       },
       {
        "r": 3,
        "spell": 16464,
-       "desc": "Increases your chance to parry by 3%.  Each parry has a 60% chance to grant you Victorious, allowing the use of Victory Rush.",
+       "desc": "Increases your chance to parry by 3%.  Each parry has a 30% chance to grant you Victorious, allowing the use of Victory Rush.",
        "raw": "Increases your chance to parry by $s1%.  Each parry has a $h% chance to grant you Victorious, allowing the use of Victory Rush."
       },
       {
        "r": 4,
        "spell": 16465,
-       "desc": "Increases your chance to parry by 4%.  Each parry has a 80% chance to grant you Victorious, allowing the use of Victory Rush.",
+       "desc": "Increases your chance to parry by 4%.  Each parry has a 40% chance to grant you Victorious, allowing the use of Victory Rush.",
        "raw": "Increases your chance to parry by $s1%.  Each parry has a $h% chance to grant you Victorious, allowing the use of Victory Rush."
       },
       {
        "r": 5,
        "spell": 16466,
-       "desc": "Increases your chance to parry by 5%.  Each parry has a 100% chance to grant you Victorious, allowing the use of Victory Rush.",
+       "desc": "Increases your chance to parry by 5%.  Each parry has a 50% chance to grant you Victorious, allowing the use of Victory Rush.",
        "raw": "Increases your chance to parry by $s1%.  Each parry has a $h% chance to grant you Victorious, allowing the use of Victory Rush."
       }
      ],
@@ -198,20 +203,20 @@
       {
        "r": 1,
        "spell": 12300,
-       "desc": "Parrying an attack immediately counterattacks every enemy within 8 yards for 40% weapon damage.  Cannot occur more than once every 2 sec.  Requires 5 points in Small Victories.",
-       "raw": "Parrying an attack immediately counterattacks every enemy within 8 yards for $200600s1% weapon damage.  Cannot occur more than once every 2 sec.  Requires 5 points in Small Victories."
+       "desc": "Parrying an attack immediately counterattacks every enemy within 8 yards for 20% weapon damage.  Cannot occur more than once every 3 sec.  Requires 5 points in Small Victories.",
+       "raw": "Parrying an attack immediately counterattacks every enemy within 8 yards for $200600s1% weapon damage.  Cannot occur more than once every 3 sec.  Requires 5 points in Small Victories."
       },
       {
        "r": 2,
        "spell": 12959,
-       "desc": "Parrying an attack immediately counterattacks every enemy within 8 yards for 70% weapon damage.  Cannot occur more than once every 2 sec.  Requires 5 points in Small Victories.",
-       "raw": "Parrying an attack immediately counterattacks every enemy within 8 yards for $200601s1% weapon damage.  Cannot occur more than once every 2 sec.  Requires 5 points in Small Victories."
+       "desc": "Parrying an attack immediately counterattacks every enemy within 8 yards for 40% weapon damage.  Cannot occur more than once every 3 sec.  Requires 5 points in Small Victories.",
+       "raw": "Parrying an attack immediately counterattacks every enemy within 8 yards for $200601s1% weapon damage.  Cannot occur more than once every 3 sec.  Requires 5 points in Small Victories."
       },
       {
        "r": 3,
        "spell": 12960,
-       "desc": "Parrying an attack immediately counterattacks every enemy within 8 yards for 100% weapon damage.  Cannot occur more than once every 2 sec.  Requires 5 points in Small Victories.",
-       "raw": "Parrying an attack immediately counterattacks every enemy within 8 yards for $200602s1% weapon damage.  Cannot occur more than once every 2 sec.  Requires 5 points in Small Victories."
+       "desc": "Parrying an attack immediately counterattacks every enemy within 8 yards for 60% weapon damage.  Cannot occur more than once every 3 sec.  Requires 5 points in Small Victories.",
+       "raw": "Parrying an attack immediately counterattacks every enemy within 8 yards for $200602s1% weapon damage.  Cannot occur more than once every 3 sec.  Requires 5 points in Small Victories."
       }
      ],
      "prereqLocation": {
@@ -256,20 +261,20 @@
       {
        "r": 1,
        "spell": 12295,
-       "desc": "Parrying an attack grants you 3% critical strike chance for 10 sec.  Landing a critical strike grants you 3% parry chance for 10 sec.",
-       "raw": "Parrying an attack grants you $200610s1% critical strike chance for $200610d.  Landing a critical strike grants you $200613s1% parry chance for $200613d."
+       "desc": "While wielding a two-handed weapon, parrying an attack grants you 3% critical strike chance for 10 sec, and landing a critical strike grants you 3% parry chance for 10 sec.",
+       "raw": "While wielding a two-handed weapon, parrying an attack grants you $200610s1% critical strike chance for $200610d, and landing a critical strike grants you $200613s1% parry chance for $200613d."
       },
       {
        "r": 2,
        "spell": 12676,
-       "desc": "Parrying an attack grants you 6% critical strike chance for 10 sec.  Landing a critical strike grants you 6% parry chance for 10 sec.",
-       "raw": "Parrying an attack grants you $200611s1% critical strike chance for $200611d.  Landing a critical strike grants you $200614s1% parry chance for $200614d."
+       "desc": "While wielding a two-handed weapon, parrying an attack grants you 6% critical strike chance for 10 sec, and landing a critical strike grants you 6% parry chance for 10 sec.",
+       "raw": "While wielding a two-handed weapon, parrying an attack grants you $200611s1% critical strike chance for $200611d, and landing a critical strike grants you $200614s1% parry chance for $200614d."
       },
       {
        "r": 3,
        "spell": 12677,
-       "desc": "Parrying an attack grants you 10% critical strike chance for 10 sec.  Landing a critical strike grants you 10% parry chance for 10 sec.",
-       "raw": "Parrying an attack grants you $200612s1% critical strike chance for $200612d.  Landing a critical strike grants you $200615s1% parry chance for $200615d."
+       "desc": "While wielding a two-handed weapon, parrying an attack grants you 10% critical strike chance for 10 sec, and landing a critical strike grants you 10% parry chance for 10 sec.",
+       "raw": "While wielding a two-handed weapon, parrying an attack grants you $200612s1% critical strike chance for $200612d, and landing a critical strike grants you $200615s1% parry chance for $200615d."
       }
      ],
      "modified": true,
@@ -431,19 +436,19 @@
       {
        "r": 1,
        "spell": 12163,
-       "desc": "Increases the damage you deal with two-handed melee weapons by 6%, and while a two-handed weapon is equipped your parry chance is increased by 33% of your critical strike chance.",
+       "desc": "Increases the damage you deal with two-handed melee weapons by 2%, and while a two-handed weapon is equipped your parry chance is increased by 20% of your critical strike chance.",
        "raw": "Increases the damage you deal with two-handed melee weapons by $s1%, and while a two-handed weapon is equipped your parry chance is increased by $s2% of your critical strike chance."
       },
       {
        "r": 2,
        "spell": 12711,
-       "desc": "Increases the damage you deal with two-handed melee weapons by 6%, and while a two-handed weapon is equipped your parry chance is increased by 66% of your critical strike chance.",
+       "desc": "Increases the damage you deal with two-handed melee weapons by 4%, and while a two-handed weapon is equipped your parry chance is increased by 40% of your critical strike chance.",
        "raw": "Increases the damage you deal with two-handed melee weapons by $s1%, and while a two-handed weapon is equipped your parry chance is increased by $s2% of your critical strike chance."
       },
       {
        "r": 3,
        "spell": 12712,
-       "desc": "Increases the damage you deal with two-handed melee weapons by 6%, and while a two-handed weapon is equipped your parry chance is increased by 100% of your critical strike chance.",
+       "desc": "Increases the damage you deal with two-handed melee weapons by 6%, and while a two-handed weapon is equipped your parry chance is increased by 60% of your critical strike chance.",
        "raw": "Increases the damage you deal with two-handed melee weapons by $s1%, and while a two-handed weapon is equipped your parry chance is increased by $s2% of your critical strike chance."
       }
      ],
@@ -451,7 +456,6 @@
      "modKind": "description",
      "modDetail": [
       "SpellDescription0",
-      "EffectBasePoints1",
       "EffectBasePoints2",
       "EffectDieSides2",
       "Effect2",
@@ -1082,9 +1086,14 @@
       {
        "r": 1,
        "spell": 29623,
-       "desc": "You generate 25% more rage from damage dealt.",
-       "raw": "You generate $s1% more rage from damage dealt."
+       "desc": "You generate 25% more rage from your attacks.",
+       "raw": "You generate $s1% more rage from your attacks."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
      ]
     },
     {
@@ -2226,32 +2235,64 @@
    "talents": [
     {
      "i": 0,
-     "id": 142,
-     "fieldName": "improvedBloodrage",
+     "id": 140,
+     "fieldName": "toughness",
      "location": {
       "rowIdx": 0,
       "colIdx": 0
      },
      "spellIds": [
-      12301,
-      12818
+      12299,
+      12761,
+      12762,
+      12763,
+      12764
      ],
-     "maxPoints": 2,
-     "name": "Improved Bloodrage",
-     "icon": "ability_racial_bloodrage",
+     "maxPoints": 5,
+     "name": "Toughness",
+     "icon": "spell_holy_devotion",
      "ranks": [
       {
        "r": 1,
-       "spell": 12301,
-       "desc": "Increases the rage generated by your Bloodrage ability by 25%.",
-       "raw": "Increases the rage generated by your Bloodrage ability by $s1%."
+       "spell": 12299,
+       "desc": "Increases your armor value from items by 2% and reduces the duration of all movement slowing effects by 6%.  Increases the block value you gain from Strength by 10%.",
+       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%.  Increases the block value you gain from Strength by $s3%."
       },
       {
        "r": 2,
-       "spell": 12818,
-       "desc": "Increases the rage generated by your Bloodrage ability by 50%.",
-       "raw": "Increases the rage generated by your Bloodrage ability by $s1%."
+       "spell": 12761,
+       "desc": "Increases your armor value from items by 4% and reduces the duration of all movement slowing effects by 12%.  Increases the block value you gain from Strength by 20%.",
+       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%.  Increases the block value you gain from Strength by $s3%."
+      },
+      {
+       "r": 3,
+       "spell": 12762,
+       "desc": "Increases your armor value from items by 6% and reduces the duration of all movement slowing effects by 18%.  Increases the block value you gain from Strength by 30%.",
+       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%.  Increases the block value you gain from Strength by $s3%."
+      },
+      {
+       "r": 4,
+       "spell": 12763,
+       "desc": "Increases your armor value from items by 8% and reduces the duration of all movement slowing effects by 24%.  Increases the block value you gain from Strength by 40%.",
+       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%.  Increases the block value you gain from Strength by $s3%."
+      },
+      {
+       "r": 5,
+       "spell": 12764,
+       "desc": "Increases your armor value from items by 10% and reduces the duration of all movement slowing effects by 30%.  Increases the block value you gain from Strength by 50%.",
+       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%.  Increases the block value you gain from Strength by $s3%."
       }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
      ]
     },
     {
@@ -2276,70 +2317,75 @@
       {
        "r": 1,
        "spell": 12298,
-       "desc": "Increases your chance to block attacks with a shield by 1% and has a 20% chance to generate 5 rage when a block, dodge, or parry occurs.",
+       "desc": "Increases your chance to block attacks with a shield by 1% and has a 20% chance to generate 2 rage when a block, dodge, or parry occurs.",
        "raw": "Increases your chance to block attacks with a shield by $s1% and has a $h% chance to generate $/10;23602s1 rage when a block, dodge, or parry occurs."
       },
       {
        "r": 2,
        "spell": 12724,
-       "desc": "Increases your chance to block attacks with a shield by 2% and has a 40% chance to generate 5 rage when a block, dodge, or parry occurs.",
+       "desc": "Increases your chance to block attacks with a shield by 2% and has a 40% chance to generate 2 rage when a block, dodge, or parry occurs.",
        "raw": "Increases your chance to block attacks with a shield by $s1% and has a $h% chance to generate $/10;23602s1 rage when a block, dodge, or parry occurs."
       },
       {
        "r": 3,
        "spell": 12725,
-       "desc": "Increases your chance to block attacks with a shield by 3% and has a 60% chance to generate 5 rage when a block, dodge, or parry occurs.",
+       "desc": "Increases your chance to block attacks with a shield by 3% and has a 60% chance to generate 2 rage when a block, dodge, or parry occurs.",
        "raw": "Increases your chance to block attacks with a shield by $s1% and has a $h% chance to generate $/10;23602s1 rage when a block, dodge, or parry occurs."
       },
       {
        "r": 4,
        "spell": 12726,
-       "desc": "Increases your chance to block attacks with a shield by 4% and has a 80% chance to generate 5 rage when a block, dodge, or parry occurs.",
+       "desc": "Increases your chance to block attacks with a shield by 4% and has a 80% chance to generate 2 rage when a block, dodge, or parry occurs.",
        "raw": "Increases your chance to block attacks with a shield by $s1% and has a $h% chance to generate $/10;23602s1 rage when a block, dodge, or parry occurs."
       },
       {
        "r": 5,
        "spell": 12727,
-       "desc": "Increases your chance to block attacks with a shield by 5% and has a 100% chance to generate 5 rage when a block, dodge, or parry occurs.",
+       "desc": "Increases your chance to block attacks with a shield by 5% and has a 100% chance to generate 2 rage when a block, dodge, or parry occurs.",
        "raw": "Increases your chance to block attacks with a shield by $s1% and has a $h% chance to generate $/10;23602s1 rage when a block, dodge, or parry occurs."
       }
      ]
     },
     {
      "i": 2,
-     "id": 141,
-     "fieldName": "improvedThunderClap",
+     "id": 1654,
+     "fieldName": "shieldMastery",
      "location": {
       "rowIdx": 0,
       "colIdx": 2
      },
      "spellIds": [
-      12287,
-      12665,
-      12666
+      29598,
+      29599
      ],
-     "maxPoints": 3,
-     "name": "Improved Thunder Clap",
-     "icon": "ability_thunderclap",
+     "maxPoints": 2,
+     "name": "Shield Mastery",
+     "icon": "ability_warrior_shieldmastery",
      "ranks": [
       {
        "r": 1,
-       "spell": 12287,
-       "desc": "Reduces the cost of your Thunder Clap ability by 1 rage point and increases the damage by 10% and the slowing effect by an additional 4%.",
-       "raw": "Reduces the cost of your Thunder Clap ability by $/10;s1 rage point and increases the damage by $s2% and the slowing effect by an additional $/10;s3%."
+       "spell": 29598,
+       "desc": "Increases your block value by 15% and reduces the cooldown of your Shield Block ability by 10 sec.  Blocking an attack causes your attacker to take damage equal to 25% of your block value.",
+       "raw": "Increases your block value by $s3% and reduces the cooldown of your Shield Block ability by $/1000;s2 sec.  Blocking an attack causes your attacker to take damage equal to $s1% of your block value."
       },
       {
        "r": 2,
-       "spell": 12665,
-       "desc": "Reduces the cost of your Thunder Clap ability by 2 rage points and increases the damage by 20% and the slowing effect by an additional 7%.",
-       "raw": "Reduces the cost of your Thunder Clap ability by $/10;s1 rage points and increases the damage by $s2% and the slowing effect by an additional $/10;s3%."
-      },
-      {
-       "r": 3,
-       "spell": 12666,
-       "desc": "Reduces the cost of your Thunder Clap ability by 4 rage points and increases the damage by 30% and the slowing effect by an additional 10%.",
-       "raw": "Reduces the cost of your Thunder Clap ability by $/10;s1 rage points and increases the damage by $s2% and the slowing effect by an additional $/10;s3%."
+       "spell": 29599,
+       "desc": "Increases your block value by 30% and reduces the cooldown of your Shield Block ability by 20 sec.  Blocking an attack causes your attacker to take damage equal to 50% of your block value.",
+       "raw": "Increases your block value by $s3% and reduces the cooldown of your Shield Block ability by $/1000;s2 sec.  Blocking an attack causes your attacker to take damage equal to $s1% of your block value."
       }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName3"
      ]
     },
     {
@@ -2362,21 +2408,30 @@
       {
        "r": 1,
        "spell": 50685,
-       "desc": "Increases the critical strike chance of your Heroic Strike, Thunder Clap and Cleave abilities by 5%.",
-       "raw": "Increases the critical strike chance of your Heroic Strike, Thunder Clap and Cleave abilities by $s1%."
+       "desc": "Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your shield block chance to deal additional damage equal to 33% of your shield block value.",
+       "raw": "Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your shield block chance to deal additional damage equal to $s1% of your shield block value."
       },
       {
        "r": 2,
        "spell": 50686,
-       "desc": "Increases the critical strike chance of your Heroic Strike, Thunder Clap and Cleave abilities by 10%.",
-       "raw": "Increases the critical strike chance of your Heroic Strike, Thunder Clap and Cleave abilities by $s1%."
+       "desc": "Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your shield block chance to deal additional damage equal to 66% of your shield block value.",
+       "raw": "Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your shield block chance to deal additional damage equal to $s1% of your shield block value."
       },
       {
        "r": 3,
        "spell": 50687,
-       "desc": "Increases the critical strike chance of your Heroic Strike, Thunder Clap and Cleave abilities by 15%.",
-       "raw": "Increases the critical strike chance of your Heroic Strike, Thunder Clap and Cleave abilities by $s1%."
+       "desc": "Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your shield block chance to deal additional damage equal to 100% of your shield block value.",
+       "raw": "Your Heroic Strike, Thunder Clap and Cleave have a chance equal to your shield block chance to deal additional damage equal to $s1% of your shield block value."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "EffectApplyAuraName1"
      ]
     },
     {
@@ -2401,33 +2456,42 @@
       {
        "r": 1,
        "spell": 12297,
-       "desc": "Increases your Dodge chance by 1%.",
-       "raw": "Increases your Dodge chance by $s1%."
+       "desc": "Increases your Dodge chance by 1%, and dodging an attack increases the damage of your next Warrior ability by 5%.",
+       "raw": "Increases your Dodge chance by $s1%, and dodging an attack increases the damage of your next Warrior ability by $200641s1%."
       },
       {
        "r": 2,
        "spell": 12750,
-       "desc": "Increases your Dodge chance by 2%.",
-       "raw": "Increases your Dodge chance by $s1%."
+       "desc": "Increases your Dodge chance by 2%, and dodging an attack increases the damage of your next Warrior ability by 10%.",
+       "raw": "Increases your Dodge chance by $s1%, and dodging an attack increases the damage of your next Warrior ability by $200642s1%."
       },
       {
        "r": 3,
        "spell": 12751,
-       "desc": "Increases your Dodge chance by 3%.",
-       "raw": "Increases your Dodge chance by $s1%."
+       "desc": "Increases your Dodge chance by 3%, and dodging an attack increases the damage of your next Warrior ability by 15%.",
+       "raw": "Increases your Dodge chance by $s1%, and dodging an attack increases the damage of your next Warrior ability by $200643s1%."
       },
       {
        "r": 4,
        "spell": 12752,
-       "desc": "Increases your Dodge chance by 4%.",
-       "raw": "Increases your Dodge chance by $s1%."
+       "desc": "Increases your Dodge chance by 4%, and dodging an attack increases the damage of your next Warrior ability by 20%.",
+       "raw": "Increases your Dodge chance by $s1%, and dodging an attack increases the damage of your next Warrior ability by $200644s1%."
       },
       {
        "r": 5,
        "spell": 12753,
-       "desc": "Increases your Dodge chance by 5%.",
-       "raw": "Increases your Dodge chance by $s1%."
+       "desc": "Increases your Dodge chance by 5%, and dodging an attack increases the damage of your next Warrior ability by 25%.",
+       "raw": "Increases your Dodge chance by $s1%, and dodging an attack increases the damage of your next Warrior ability by $200645s1%."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -2448,9 +2512,14 @@
       {
        "r": 1,
        "spell": 12975,
-       "desc": "When activated, this ability temporarily grants you 30% of your maximum health for 20 sec.  After the effect expires, the health is lost.",
-       "raw": "When activated, this ability temporarily grants you $s1% of your maximum health for $12976d.  After the effect expires, the health is lost."
+       "desc": "When activated, this ability temporarily grants you 30% of your maximum health and reduces damage taken by 30% for 20 sec.  After the effect expires, the health is lost.",
+       "raw": "When activated, this ability temporarily grants you $s1% of your maximum health and reduces damage taken by $12976s2% for $12976d.  After the effect expires, the health is lost."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
      ]
     },
     {
@@ -2485,89 +2554,96 @@
     },
     {
      "i": 7,
-     "id": 1654,
-     "fieldName": "shieldMastery",
+     "id": 141,
+     "fieldName": "improvedThunderClap",
      "location": {
       "rowIdx": 2,
       "colIdx": 2
      },
      "spellIds": [
-      29598,
-      29599
+      12287,
+      12665,
+      12666
      ],
-     "maxPoints": 2,
-     "name": "Shield Mastery",
-     "icon": "ability_warrior_shieldmastery",
+     "maxPoints": 3,
+     "name": "Improved Thunder Clap",
+     "icon": "ability_thunderclap",
      "ranks": [
       {
        "r": 1,
-       "spell": 29598,
-       "desc": "Increases your block value by 15% and reduces the cooldown of your Shield Block ability by 10 sec.",
-       "raw": "Increases your block value by $s1% and reduces the cooldown of your Shield Block ability by $/1000;S2 sec."
+       "spell": 12287,
+       "desc": "Increases the radius of your Thunder Clap by 2 yards and its damage by 33%, and causes it to bleed the target for 33% of your block value over 6 sec.",
+       "raw": "Increases the radius of your Thunder Clap by $s1 yards and its damage by $s2%, and causes it to bleed the target for $s3% of your block value over 6 sec."
       },
       {
        "r": 2,
-       "spell": 29599,
-       "desc": "Increases your block value by 30% and reduces the cooldown of your Shield Block ability by 20 sec.",
-       "raw": "Increases your block value by $s1% and reduces the cooldown of your Shield Block ability by $/1000;S2 sec."
+       "spell": 12665,
+       "desc": "Increases the radius of your Thunder Clap by 4 yards and its damage by 66%, and causes it to bleed the target for 66% of your block value over 6 sec.",
+       "raw": "Increases the radius of your Thunder Clap by $s1 yards and its damage by $s2%, and causes it to bleed the target for $s3% of your block value over 6 sec."
+      },
+      {
+       "r": 3,
+       "spell": 12666,
+       "desc": "Increases the radius of your Thunder Clap by 7 yards and its damage by 100%, and causes it to bleed the target for 100% of your block value over 6 sec.",
+       "raw": "Increases the radius of your Thunder Clap by $s1 yards and its damage by $s2%, and causes it to bleed the target for $s3% of your block value over 6 sec."
       }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectApplyAuraName3"
      ]
     },
     {
      "i": 8,
-     "id": 140,
-     "fieldName": "toughness",
+     "id": 142,
+     "fieldName": "controlledAggression",
      "location": {
       "rowIdx": 2,
       "colIdx": 3
      },
      "spellIds": [
-      12299,
-      12761,
-      12762,
-      12763,
-      12764
+      12301,
+      12818
      ],
-     "maxPoints": 5,
-     "name": "Toughness",
-     "icon": "spell_holy_devotion",
+     "maxPoints": 2,
+     "name": "Controlled Aggression",
+     "icon": "ability_racial_bloodrage",
      "ranks": [
       {
        "r": 1,
-       "spell": 12299,
-       "desc": "Increases your armor value from items by 2% and reduces the duration of all movement slowing effects by 6%.",
-       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%."
+       "spell": 12301,
+       "desc": "While Bloodrage or Berserker Rage is active, 12% of your shield block value is added to your attack power.",
+       "raw": "While Bloodrage or Berserker Rage is active, $s1% of your shield block value is added to your attack power."
       },
       {
        "r": 2,
-       "spell": 12761,
-       "desc": "Increases your armor value from items by 4% and reduces the duration of all movement slowing effects by 12%.",
-       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%."
-      },
-      {
-       "r": 3,
-       "spell": 12762,
-       "desc": "Increases your armor value from items by 6% and reduces the duration of all movement slowing effects by 18%.",
-       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%."
-      },
-      {
-       "r": 4,
-       "spell": 12763,
-       "desc": "Increases your armor value from items by 8% and reduces the duration of all movement slowing effects by 24%.",
-       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%."
-      },
-      {
-       "r": 5,
-       "spell": 12764,
-       "desc": "Increases your armor value from items by 10% and reduces the duration of all movement slowing effects by 30%.",
-       "raw": "Increases your armor value from items by $s1% and reduces the duration of all movement slowing effects by $s2%."
+       "spell": 12818,
+       "desc": "While Bloodrage or Berserker Rage is active, 25% of your shield block value is added to your attack power.",
+       "raw": "While Bloodrage or Berserker Rage is active, $s1% of your shield block value is added to your attack power."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
+     ],
+     "baseName": "Improved Bloodrage"
     },
     {
      "i": 9,
      "id": 2247,
-     "fieldName": "improvedSpellReflection",
+     "fieldName": "spellshield",
      "location": {
       "rowIdx": 3,
       "colIdx": 0
@@ -2577,27 +2653,43 @@
       59089
      ],
      "maxPoints": 2,
-     "name": "Improved Spell Reflection",
+     "name": "Spellshield",
      "icon": "ability_warrior_shieldreflection",
      "ranks": [
       {
        "r": 1,
        "spell": 59088,
-       "desc": "Reduces the chance you'll be hit by spells by 2% and when the ability is used it will reflect the first spell cast against the 2 closest party members within 20 yards.",
-       "raw": "Reduces the chance you'll be hit by spells by $s3% and when the ability is used it will reflect the first spell cast against the $s2 closest party members within 20 yards."
+       "desc": "You have a chance equal to your block chance to absorb spell damage equal to 50% of your block value.",
+       "raw": "You have a chance equal to your block chance to absorb spell damage equal to $s2% of your block value."
       },
       {
        "r": 2,
        "spell": 59089,
-       "desc": "Reduces the chance you'll be hit by spells by 4% and when the ability is used it will reflect the first spell cast against the 4 closest party members within 20 yards.",
-       "raw": "Reduces the chance you'll be hit by spells by $s3% and when the ability is used it will reflect the first spell cast against the $s2 closest party members within 20 yards."
+       "desc": "You have a chance equal to your block chance to absorb spell damage equal to 100% of your block value.",
+       "raw": "You have a chance equal to your block chance to absorb spell damage equal to $s2% of your block value."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides1",
+      "EffectDieSides3",
+      "Effect1",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName3"
+     ],
+     "baseName": "Improved Spell Reflection"
     },
     {
      "i": 10,
      "id": 151,
-     "fieldName": "improvedDisarm",
+     "fieldName": "bloodAndThunder",
      "location": {
       "rowIdx": 3,
       "colIdx": 1
@@ -2607,22 +2699,36 @@
       12804
      ],
      "maxPoints": 2,
-     "name": "Improved Disarm",
-     "icon": "ability_warrior_disarm",
+     "name": "Blood and Thunder",
+     "icon": "ability_gouge",
      "ranks": [
       {
        "r": 1,
        "spell": 12313,
-       "desc": "Reduces the cooldown of your Disarm ability by 10 sec and causes the target to take an additional 5% damage while disarmed.",
-       "raw": "Reduces the cooldown of your Disarm ability by $/1000;s1 sec and causes the target to take an additional $s2% damage while disarmed."
+       "desc": "When you Thunder Clap a target affected by your Rend, you have a 50% chance to apply Rend to all other enemies struck.",
+       "raw": "When you Thunder Clap a target affected by your Rend, you have a $s1% chance to apply Rend to all other enemies struck."
       },
       {
        "r": 2,
        "spell": 12804,
-       "desc": "Reduces the cooldown of your Disarm ability by 20 sec and causes the target to take an additional 10% damage while disarmed.",
-       "raw": "Reduces the cooldown of your Disarm ability by $/1000;s1 sec and causes the target to take an additional $s2% damage while disarmed."
+       "desc": "When you Thunder Clap a target affected by your Rend, you have a 100% chance to apply Rend to all other enemies struck.",
+       "raw": "When you Thunder Clap a target affected by your Rend, you have a $s1% chance to apply Rend to all other enemies struck."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Disarm"
     },
     {
      "i": 11,
@@ -2644,21 +2750,28 @@
       {
        "r": 1,
        "spell": 12308,
-       "desc": "Reduces the rage cost of your Sunder Armor and Devastate abilities by 1.",
-       "raw": "Reduces the rage cost of your Sunder Armor and Devastate abilities by $/10;s1."
+       "desc": "Increases your Strength by 5% of your Stamina.",
+       "raw": "Increases your Strength by $s1% of your Stamina."
       },
       {
        "r": 2,
        "spell": 12810,
-       "desc": "Reduces the rage cost of your Sunder Armor and Devastate abilities by 2.",
-       "raw": "Reduces the rage cost of your Sunder Armor and Devastate abilities by $/10;s1."
+       "desc": "Increases your Strength by 10% of your Stamina.",
+       "raw": "Increases your Strength by $s1% of your Stamina."
       },
       {
        "r": 3,
        "spell": 12811,
-       "desc": "Reduces the rage cost of your Sunder Armor and Devastate abilities by 3.",
-       "raw": "Reduces the rage cost of your Sunder Armor and Devastate abilities by $/10;s1."
+       "desc": "Increases your Strength by 15% of your Stamina.",
+       "raw": "Increases your Strength by $s1% of your Stamina."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
      ]
     },
     {
@@ -2680,41 +2793,51 @@
       {
        "r": 1,
        "spell": 12312,
-       "desc": "Reduces the cooldown of your Shield Wall, Retaliation and Recklessness abilities by 30 secs.",
-       "raw": "Reduces the cooldown of your Shield Wall, Retaliation and Recklessness abilities by $/1000;s1 secs."
+       "desc": "While in Defensive Stance, you gain melee haste rating equal to 25% of your defense rating.  This is doubled while Shield Block or Shield Wall is active.",
+       "raw": "While in Defensive Stance, you gain melee haste rating equal to $s1% of your defense rating.  This is doubled while Shield Block or Shield Wall is active."
       },
       {
        "r": 2,
        "spell": 12803,
-       "desc": "Reduces the cooldown of your Shield Wall, Retaliation and Recklessness abilities by 60 secs.",
-       "raw": "Reduces the cooldown of your Shield Wall, Retaliation and Recklessness abilities by $/1000;s1 secs."
+       "desc": "While in Defensive Stance, you gain melee haste rating equal to 50% of your defense rating.  This is doubled while Shield Block or Shield Wall is active.",
+       "raw": "While in Defensive Stance, you gain melee haste rating equal to $s1% of your defense rating.  This is doubled while Shield Block or Shield Wall is active."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "EffectApplyAuraName1"
      ]
     },
     {
      "i": 13,
      "id": 152,
-     "fieldName": "concussionBlow",
+     "fieldName": "barricade",
      "location": {
       "rowIdx": 4,
       "colIdx": 1
      },
      "spellIds": [
-      12809
+      200651
      ],
      "maxPoints": 1,
-     "name": "Concussion Blow",
-     "icon": "ability_thunderbolt",
+     "name": "Barricade",
+     "icon": "ability_warrior_shieldguard",
      "ranks": [
       {
        "r": 1,
-       "spell": 12809,
-       "desc": "Stuns the opponent for 5 sec and deals ${38/100*$AP} damage (based on attack power).",
-       "raw": "Stuns the opponent for $d and deals ${$m3/100*$AP} damage (based on attack power).",
-       "unresolved": [
-        "${38/100*$AP}"
-       ]
+       "spell": 200651,
+       "desc": "Become a living barricade, increasing your shield block chance and value by 10% and converting each 2 additional points of rage into 1 additional percent (up to a maximum cost of 80 rage).  When you block with Barricade active, you heal for 25% of your block value."
       }
+     ],
+     "modified": true,
+     "modKind": "new",
+     "modDetail": [
+      "SpellRank_1"
      ]
     },
     {
@@ -2769,33 +2892,42 @@
       {
        "r": 1,
        "spell": 16538,
-       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 2%.",
-       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%."
+       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 2%, and increases your critical strike chance by 5% of your dodge and parry chance.",
+       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%, and increases your critical strike chance by $s2% of your dodge and parry chance."
       },
       {
        "r": 2,
        "spell": 16539,
-       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 4%.",
-       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%."
+       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 4%, and increases your critical strike chance by 10% of your dodge and parry chance.",
+       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%, and increases your critical strike chance by $s2% of your dodge and parry chance."
       },
       {
        "r": 3,
        "spell": 16540,
-       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 6%.",
-       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%."
+       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 6%, and increases your critical strike chance by 15% of your dodge and parry chance.",
+       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%, and increases your critical strike chance by $s2% of your dodge and parry chance."
       },
       {
        "r": 4,
        "spell": 16541,
-       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 8%.",
-       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%."
+       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 8%, and increases your critical strike chance by 20% of your dodge and parry chance.",
+       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%, and increases your critical strike chance by $s2% of your dodge and parry chance."
       },
       {
        "r": 5,
        "spell": 16542,
-       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 10%.",
-       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%."
+       "desc": "Increases physical damage you deal when a one-handed melee weapon is equipped by 10%, and increases your critical strike chance by 25% of your dodge and parry chance.",
+       "raw": "Increases physical damage you deal when a one-handed melee weapon is equipped by $s1%, and increases your critical strike chance by $s2% of your dodge and parry chance."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -2879,21 +3011,30 @@
       {
        "r": 1,
        "spell": 29787,
-       "desc": "Reduces the rage cost of your offensive abilities by 1.",
-       "raw": "Reduces the rage cost of your offensive abilities by $/10;s1."
+       "desc": "Reduces the rage cost of your offensive abilities by 1, and increases the damage of your Shield Slam and Revenge abilities by 5%.",
+       "raw": "Reduces the rage cost of your offensive abilities by $/10;s1, and increases the damage of your Shield Slam and Revenge abilities by $s2%."
       },
       {
        "r": 2,
        "spell": 29790,
-       "desc": "Reduces the rage cost of your offensive abilities by 2.",
-       "raw": "Reduces the rage cost of your offensive abilities by $/10;s1."
+       "desc": "Reduces the rage cost of your offensive abilities by 2, and increases the damage of your Shield Slam and Revenge abilities by 10%.",
+       "raw": "Reduces the rage cost of your offensive abilities by $/10;s1, and increases the damage of your Shield Slam and Revenge abilities by $s2%."
       },
       {
        "r": 3,
        "spell": 29792,
-       "desc": "Reduces the rage cost of your offensive abilities by 3.",
-       "raw": "Reduces the rage cost of your offensive abilities by $/10;s1."
+       "desc": "Reduces the rage cost of your offensive abilities by 3, and increases the damage of your Shield Slam and Revenge abilities by 15%.",
+       "raw": "Reduces the rage cost of your offensive abilities by $/10;s1, and increases the damage of your Shield Slam and Revenge abilities by $s2%."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -2952,15 +3093,21 @@
       {
        "r": 1,
        "spell": 46945,
-       "desc": "Reduces damage taken by the target of your Intervene ability by 15% for 6 sec.",
-       "raw": "Reduces damage taken by the target of your Intervene ability by $46946s1% for $46946d."
+       "desc": "Blocking an attack has a 5% chance to grant you Safeguard, allowing the use of Victory Rush.  While Safeguard is active your next Victory Rush deals 100% additional damage but heals for 50% less.",
+       "raw": "Blocking an attack has a $h% chance to grant you Safeguard, allowing the use of Victory Rush.  While Safeguard is active your next Victory Rush deals $200646s2% additional damage but heals for $200646s3% less."
       },
       {
        "r": 2,
        "spell": 46949,
-       "desc": "Reduces damage taken by the target of your Intervene ability by 30% for 6 sec.",
-       "raw": "Reduces damage taken by the target of your Intervene ability by $46947s1% for $46947d."
+       "desc": "Blocking an attack has a 10% chance to grant you Safeguard, allowing the use of Victory Rush.  While Safeguard is active your next Victory Rush deals 100% additional damage but heals for 50% less.",
+       "raw": "Blocking an attack has a $h% chance to grant you Safeguard, allowing the use of Victory Rush.  While Safeguard is active your next Victory Rush deals $200646s2% additional damage but heals for $200646s3% less."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance"
      ]
     },
     {
@@ -3065,27 +3212,32 @@
       {
        "r": 1,
        "spell": 46951,
-       "desc": "Increases the critical strike chance of your Devastate ability by 5% and when your Devastate or Revenge ability deals damage it has a 10% chance of refreshing the cooldown of your Shield Slam ability and reducing its cost by 100% for 5 sec.",
-       "raw": "Increases the critical strike chance of your Devastate ability by $s2% and when your Devastate or Revenge ability deals damage it has a $h% chance of refreshing the cooldown of your Shield Slam ability and reducing its cost by $50227s1% for $50227d."
+       "desc": "Increases the critical strike chance of your Devastate ability by 5% and when your Devastate or Revenge ability deals damage it has a 10% chance of refreshing the cooldown of your Shield Slam ability and causing your next Shield Slam within 5 sec to generate 50% additional rage.",
+       "raw": "Increases the critical strike chance of your Devastate ability by $s2% and when your Devastate or Revenge ability deals damage it has a $h% chance of refreshing the cooldown of your Shield Slam ability and causing your next Shield Slam within $50227d to generate $50227s1% additional rage."
       },
       {
        "r": 2,
        "spell": 46952,
-       "desc": "Increases the critical strike chance of your Devastate ability by 10% and when your Devastate or Revenge ability deals damage it has a 20% chance of refreshing the cooldown of your Shield Slam ability and reducing its cost by 100% for 5 sec.",
-       "raw": "Increases the critical strike chance of your Devastate ability by $s2% and when your Devastate or Revenge ability deals damage it has a $h% chance of refreshing the cooldown of your Shield Slam ability and reducing its cost by $50227s1% for $50227d."
+       "desc": "Increases the critical strike chance of your Devastate ability by 10% and when your Devastate or Revenge ability deals damage it has a 20% chance of refreshing the cooldown of your Shield Slam ability and causing your next Shield Slam within 5 sec to generate 50% additional rage.",
+       "raw": "Increases the critical strike chance of your Devastate ability by $s2% and when your Devastate or Revenge ability deals damage it has a $h% chance of refreshing the cooldown of your Shield Slam ability and causing your next Shield Slam within $50227d to generate $50227s1% additional rage."
       },
       {
        "r": 3,
        "spell": 46953,
-       "desc": "Increases the critical strike chance of your Devastate ability by 15% and when your Devastate or Revenge ability deals damage it has a 30% chance of refreshing the cooldown of your Shield Slam ability and reducing its cost by 100% for 5 sec.",
-       "raw": "Increases the critical strike chance of your Devastate ability by $s2% and when your Devastate or Revenge ability deals damage it has a $h% chance of refreshing the cooldown of your Shield Slam ability and reducing its cost by $50227s1% for $50227d."
+       "desc": "Increases the critical strike chance of your Devastate ability by 15% and when your Devastate or Revenge ability deals damage it has a 30% chance of refreshing the cooldown of your Shield Slam ability and causing your next Shield Slam within 5 sec to generate 50% additional rage.",
+       "raw": "Increases the critical strike chance of your Devastate ability by $s2% and when your Devastate or Revenge ability deals damage it has a $h% chance of refreshing the cooldown of your Shield Slam ability and causing your next Shield Slam within $50227d to generate $50227s1% additional rage."
       }
      ],
      "prereqLocation": {
       "rowIdx": 8,
       "colIdx": 1
      },
-     "prereqRank": 1
+     "prereqRank": 1,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
+     ]
     },
     {
      "i": 25,
@@ -3106,15 +3258,20 @@
       {
        "r": 1,
        "spell": 58872,
-       "desc": "Whenever you take damage from or block a melee attack you cause damage equal to 10% of your block value.",
-       "raw": "Whenever you take damage from or block a melee attack you cause damage equal to $s1% of your block value."
+       "desc": "When you deal damage you fortify yourself, absorbing damage equal to 10% of the damage caused.  The shield accumulates up to a maximum of 10% of your total health.",
+       "raw": "When you deal damage you fortify yourself, absorbing damage equal to $s1% of the damage caused.  The shield accumulates up to a maximum of 10% of your total health."
       },
       {
        "r": 2,
        "spell": 58874,
-       "desc": "Whenever you take damage from or block a melee attack you cause damage equal to 20% of your block value.",
-       "raw": "Whenever you take damage from or block a melee attack you cause damage equal to $s1% of your block value."
+       "desc": "When you deal damage you fortify yourself, absorbing damage equal to 20% of the damage caused.  The shield accumulates up to a maximum of 10% of your total health.",
+       "raw": "When you deal damage you fortify yourself, absorbing damage equal to $s1% of the damage caused.  The shield accumulates up to a maximum of 10% of your total health."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
      ]
     },
     {

@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "generated": "2026-08-07T22:28:12Z",
+ "generated": "2026-08-10T18:57:07Z",
  "source": "live",
- "fingerprint": "b830924be29500be",
+ "fingerprint": "52f8281f9fb1795d",
  "iconBase": "./assets/icons/",
  "maxPoints": 71,
  "classes": [
@@ -124,21 +124,21 @@
     "Protection"
    ],
    "talents": 85,
-   "modified": 12
+   "modified": 31
   }
  ],
  "degraded": [],
  "stats": {
   "talents": 834,
-  "talentsModified": 194,
+  "talentsModified": 213,
   "descriptions": 2245,
-  "descriptionsWithUnresolved": 17,
+  "descriptionsWithUnresolved": 16,
   "modifiedKinds": {
-   "description": 119,
-   "new": 10,
-   "renamed": 47,
-   "structure": 10,
-   "values": 8
+   "description": 130,
+   "new": 11,
+   "renamed": 49,
+   "structure": 14,
+   "values": 9
   }
  }
 }
