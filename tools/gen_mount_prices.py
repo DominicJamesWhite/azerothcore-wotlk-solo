@@ -2,53 +2,55 @@
 """
 Mount Price Generator
 
-Cuts riding skill training and gold-priced mount items by a factor of 10, to
-match Alonecraft's 10x XP rate.
+Restores riding skill training and gold-priced mount items to their retail
+values, undoing the 10x cut that used to live here.
 
-Why this exists at all: XP runs at 10x but gold income is still 1x, so a
-character arrives at level 40 with roughly a tenth of the gold retail assumed
-they would have.  The riding gates (50g, 250g, 5000g) were paced against the
-retail levelling curve, and at 10x they land as walls that never existed in the
-original game.  Dividing them by 10 restores the *original* ratio of
-gold-earned to gold-owed rather than removing the gate.
+Why the cut existed, and why it is gone: XP runs at 10x, so a character used to
+arrive at level 40 with roughly a tenth of the gold retail assumed they would
+have, and the riding gates (50g, 250g, 5000g) landed as walls that never
+existed in the original game.  Dividing every mount price by 10 fixed that.
+Then the *income* side was fixed too -- `Rate.RewardQuestMoney = 8` in
+worldserver.overrides.conf -- and the two compensations stack: gold per level
+is back near the retail ratio while mounts still cost a tenth of retail.  One
+correction for one problem, so the price cut is the one that goes.
 
-Two things this generator is careful about:
+`Rate.RewardQuestMoney` is the better half of the pair to keep: it is a single
+config key that scales with the whole levelling curve, whereas the price cut
+was 242 hardcoded rows that had to be regenerated whenever the world DB moved,
+and it silently disagreed with every wiki, guide and player expectation about
+what a mount costs.
 
-1.  SELLPRICE MUST BE SCALED TOO.  131 of the 236 gold-priced mounts have a
-    SellPrice above a tenth of their BuyPrice -- Horn of the Timber Wolf buys
-    at 10000c and vendors back at 2500c.  Cut BuyPrice alone and it sells for
-    2.5x what it costs, which is an infinite gold loop with no cooldown.
-    Scaling both preserves the original buy/sell ratio exactly.
+Where the retail numbers come from: `data/sql/base/db_world/`, the world DB dump
+this fork is built on -- not the live database, which still holds the cut values,
+and not the previous version of these SQL files, which would make the generator
+unable to run twice.  The dump is queried with the same predicates the cut used,
+so it reproduces exactly the same row set.
 
-2.  ABSOLUTE VALUES, NOT ARITHMETIC.  `SET BuyPrice = BuyPrice / 10` is not
-    idempotent, and module SQL is re-applied by the server at startup on top of
-    any manual pre-application (see the ordering trap in CLAUDE.md) -- a second
-    pass would divide twice.  So every row's new price is precomputed and
-    emitted as a literal, matching the precedent in woa_2026_08_06_24.sql.
-    DIVISOR lives here, so regenerating reproduces these prices instead of
-    reducing them again.
+That equivalence was proved rather than assumed: before this revert was written,
+all 242 rows were cross-checked and floor(retail / 10) matched the cut value the
+module SQL carried in every single case.  ROW_COUNTS below pins the counts so a
+world DB that gains or loses a mount is a loud failure, not a silent partial
+revert.
 
-Scope notes:
+Scope notes (unchanged from the cut this reverts, since it must cover exactly
+the same rows):
 
-  * Riding is selected by `trainer_spell.ReqSkillLine = 762`, which also picks
-    up the druid Swift Flight Form (40120).  That is intended -- it is a riding
-    cost like any other.  `npc_trainer` is deliberately untouched: it is legacy
-    and no C++ in src/ reads it.
-  * Mount items are `item_template.class = 15 AND subclass = 5`.  Rows with
-    BuyPrice = 0 are skipped entirely; they cannot be bought, so there is no
-    cost to cut and no exploit to create.
+  * Riding is `trainer_spell.ReqSkillLine = 762`, which also picks up the druid
+    Swift Flight Form (40120) -- a riding cost like any other.  `npc_trainer` is
+    untouched: it is legacy and no C++ in src/ reads it.
+  * Mount items are `item_template.class = 15 AND subclass = 5` with
+    BuyPrice > 0.  SellPrice is restored alongside BuyPrice, because the cut
+    scaled both to keep the buy/sell ratio intact; restoring BuyPrice alone
+    would leave 131 mounts vendoring for 2.5x their cost.
   * The 19 priced mounts that also sit on an ExtendedCost vendor are emitted
     anyway but are no-ops in practice: CreatureData.h::IsGoldRequired makes the
-    core ignore BuyPrice when ExtendedCost is set.  Honor/arena/badge costs
-    live in ItemExtendedCost.dbc and are out of scope -- changing them
-    server-side without a client DBC patch would make the tooltip disagree with
-    what the player is actually charged.
-  * Player::GetReputationPriceDiscount still applies up to 20% on top of these
-    prices at Exalted.  Unchanged and intended.
+    core ignore BuyPrice when ExtendedCost is set.
+  * Player::GetReputationPriceDiscount still applies up to 20% at Exalted.
+    Unchanged and intended, exactly as at retail.
 
 Usage:
     python tools/gen_mount_prices.py            # write both SQL files
-    python tools/gen_mount_prices.py --dry-run  # summary only
+    python tools/gen_mount_prices.py --dry-run  # verify only, write nothing
     python tools/gen_mount_prices.py --stdout   # print SQL
 """
 
@@ -57,41 +59,178 @@ import os
 import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "dbc"))
 
+BASE_SQL = os.path.join(REPO_ROOT, "data", "sql", "base", "db_world")
 MODULE_SQL = os.path.join(
     REPO_ROOT, "modules", "world_of_alonecraft", "data", "sql", "db-world"
 )
 
-# The single coefficient.  Everything else in this file derives from it.
-DIVISOR = 10
-
 RIDING_SKILL_LINE = 762
 ITEM_CLASS_MISC = 15
 ITEM_SUBCLASS_MOUNT = 5
+
+# The row set the 10x cut covered, and therefore the row set this revert must
+# cover.  A mismatch means the base dump moved under us; fail rather than write
+# a partial revert that leaves some mounts at a tenth of their price.
+ROW_COUNTS = {"riding": 6, "mounts": 236}
 
 RIDING_SQL = "woa_2026_08_07_00.sql"
 MOUNT_SQL = "woa_2026_08_07_01.sql"
 
 GOLD = 10000
 
+RIDING_NAMES = {
+    33388: "Apprentice Riding",
+    33391: "Journeyman Riding",
+    34090: "Expert Riding",
+    34091: "Artisan Riding",
+    54197: "Cold Weather Flying",
+    40120: "Swift Flight Form",
+}
 
-def get_db_connection():
-    import config
-    import mysql.connector
-    return mysql.connector.connect(
-        host=config.MYSQL_HOST,
-        user=config.MYSQL_USER,
-        password=config.MYSQL_PASS,
-        database=config.MYSQL_DB,
+
+# --------------------------------------------------------------------------
+# mysqldump parsing
+# --------------------------------------------------------------------------
+
+def _split_row(row):
+    """Split one `(...)` VALUES tuple into fields, respecting quoted strings."""
+    out, cur, i, n = [], [], 0, len(row)
+    while i < n:
+        c = row[i]
+        if c == "'":
+            cur.append(c)
+            i += 1
+            while i < n:
+                if row[i] == "\\":
+                    cur.append(row[i:i + 2])
+                    i += 2
+                    continue
+                cur.append(row[i])
+                if row[i] == "'":
+                    i += 1
+                    break
+                i += 1
+            continue
+        if c == ",":
+            out.append("".join(cur).strip())
+            cur = []
+            i += 1
+            continue
+        cur.append(c)
+        i += 1
+    out.append("".join(cur).strip())
+    return out
+
+
+def iter_dump_rows(path, table):
+    """Yield field lists for every row of every `INSERT INTO <table>`.
+
+    mysqldump puts `INSERT INTO ... VALUES` on its own line with the tuples on
+    the lines after it, so a statement has to be accumulated to its `;` rather
+    than read a line at a time.
+    """
+    marker = f"INSERT INTO `{table}` VALUES"
+    with open(path, "r", encoding="utf-8", errors="replace") as fh:
+        text = fh.read()
+
+    pos = 0
+    while True:
+        stmt = text.find(marker, pos)
+        if stmt < 0:
+            return
+        cursor = stmt + len(marker)
+
+        # Statement terminator, ignoring semicolons inside string literals.
+        j, in_str, end = cursor, False, len(text)
+        while j < end:
+            c = text[j]
+            if in_str:
+                if c == "\\":
+                    j += 2
+                    continue
+                if c == "'":
+                    in_str = False
+            elif c == "'":
+                in_str = True
+            elif c == ";":
+                break
+            j += 1
+        body = text[cursor:j]
+        pos = j + 1
+
+        depth, start, i, n = 0, None, 0, len(body)
+        in_str = False
+        while i < n:
+            c = body[i]
+            if in_str:
+                if c == "\\":
+                    i += 2
+                    continue
+                if c == "'":
+                    in_str = False
+            elif c == "'":
+                in_str = True
+            elif c == "(":
+                if depth == 0:
+                    start = i + 1
+                depth += 1
+            elif c == ")":
+                depth -= 1
+                if depth == 0:
+                    yield _split_row(body[start:i])
+            i += 1
+
+
+# --------------------------------------------------------------------------
+# selecting the rows to restore, straight out of the base dump
+# --------------------------------------------------------------------------
+
+def fetch_riding():
+    """Riding ranks, deduplicated -- the same spell sits on many trainers.
+
+    trainer_spell columns: TrainerId, SpellId, MoneyCost, ReqSkillLine,
+    ReqSkillRank, ReqAbility1-3, ReqLevel, VerifiedBuild.
+    """
+    seen, conflicts = {}, {}
+    path = os.path.join(BASE_SQL, "trainer_spell.sql")
+    for f in iter_dump_rows(path, "trainer_spell"):
+        if int(f[3]) != RIDING_SKILL_LINE:
+            continue
+        cost = int(f[2])
+        if cost <= 0:
+            continue
+        spell_id, level = int(f[1]), int(f[8])
+        if spell_id in seen and seen[spell_id] != (cost, level):
+            conflicts.setdefault(spell_id, {seen[spell_id]}).add((cost, level))
+        seen[spell_id] = (cost, level)
+    return (
+        sorted((sid, c, lvl) for sid, (c, lvl) in seen.items()),
+        conflicts,
     )
 
 
-def scale(value):
-    """Divide by DIVISOR, never rounding a real price down to free."""
-    if value <= 0:
-        return 0
-    return max(1, value // DIVISOR)
+def fetch_mounts():
+    """Gold-priced mount items.
+
+    item_template columns: entry, class, subclass, SoundOverrideSubclass, name,
+    displayid, Quality, Flags, FlagsExtra, BuyCount, BuyPrice, SellPrice.
+    """
+    rows = []
+    path = os.path.join(BASE_SQL, "item_template.sql")
+    for f in iter_dump_rows(path, "item_template"):
+        if int(f[1]) != ITEM_CLASS_MISC or int(f[2]) != ITEM_SUBCLASS_MOUNT:
+            continue
+        buy = int(f[10])
+        if buy <= 0:
+            continue
+        name = f[4].strip()
+        if name.startswith("'") and name.endswith("'"):
+            name = name[1:-1]
+        name = name.replace("\\'", "'").replace('\\"', '"').replace("\n", " ")
+        rows.append((int(f[0]), name, buy, int(f[11])))
+    rows.sort()
+    return rows
 
 
 def money(copper):
@@ -108,76 +247,28 @@ def money(copper):
     return "".join(parts)
 
 
-def fetch_riding(conn):
-    """Riding skill ranks, deduplicated -- the same spell sits on many trainers."""
-    cur = conn.cursor()
-    cur.execute(
-        "SELECT ts.SpellId, ts.MoneyCost, ts.ReqLevel "
-        "FROM trainer_spell ts "
-        "WHERE ts.ReqSkillLine = %s AND ts.MoneyCost > 0 "
-        "GROUP BY ts.SpellId, ts.MoneyCost, ts.ReqLevel "
-        "ORDER BY ts.ReqLevel, ts.MoneyCost",
-        (RIDING_SKILL_LINE,),
-    )
-    rows = cur.fetchall()
-    cur.close()
-    return rows
-
-
-def fetch_mounts(conn):
-    cur = conn.cursor()
-    cur.execute(
-        "SELECT entry, name, BuyPrice, SellPrice "
-        "FROM item_template "
-        "WHERE class = %s AND subclass = %s AND BuyPrice > 0 "
-        "ORDER BY entry",
-        (ITEM_CLASS_MISC, ITEM_SUBCLASS_MOUNT),
-    )
-    rows = cur.fetchall()
-    cur.close()
-    return rows
-
-
-def spell_names(conn, spell_ids):
-    """Best-effort names for the SQL comments; falls back to the bare id."""
-    if not spell_ids:
-        return {}
-    placeholders = ",".join(["%s"] * len(spell_ids))
-    cur = conn.cursor()
-    try:
-        cur.execute(
-            f"SELECT ID, SpellName0 FROM alonecraft_spell_dbc WHERE ID IN ({placeholders})",
-            tuple(spell_ids),
-        )
-        found = {int(r[0]): r[1] for r in cur.fetchall()}
-    except Exception:
-        found = {}
-    cur.close()
-    return found
-
-
-# Names for the riding ranks.  The client DBC is the authoritative source but
-# these six ids are stable across 3.3.5a and hardcoding them keeps this
-# generator free of a DBC dependency for what is only a comment.
-RIDING_NAMES = {
-    33388: "Apprentice Riding",
-    33391: "Journeyman Riding",
-    34090: "Expert Riding",
-    34091: "Artisan Riding",
-    54197: "Cold Weather Flying",
-    40120: "Swift Flight Form",
-}
-
 RIDING_HEADER = """\
 -- ==========================================================================
--- Riding skill costs: 10x cut to match the 10x XP rate
+-- Riding skill costs: restored to retail
 -- ==========================================================================
 --
--- XP runs at 10x but gold income is still 1x, so a character reaches level 40
--- with about a tenth of the gold retail assumed.  The riding gates were paced
--- against the retail levelling curve; at 10x they are walls that never existed
--- in the original game.  Dividing by 10 restores the original ratio of
--- gold-earned to gold-owed rather than removing the gate.
+-- This file used to divide every riding cost by 10, on the reasoning that XP
+-- ran at 10x while gold income ran at 1x.  That reasoning was sound at the
+-- time and is not any more: the income side was fixed too, by
+-- `Rate.RewardQuestMoney = 8` in worldserver.overrides.conf.  Two corrections
+-- for one problem stack, leaving gold per level near the retail ratio while
+-- mounts still cost a tenth of retail.  The config key is the half worth
+-- keeping -- it scales with the whole levelling curve instead of pinning 242
+-- rows that have to be regenerated whenever the world DB moves.
+--
+-- Values come from data/sql/base/db_world/trainer_spell.sql, the dump this
+-- fork is built on.  When the cut was reverted every one of them was checked
+-- against the price this file used to carry: floor(retail / 10) matched in all
+-- 6 cases, so the dump is provably the thing that was divided.
+--
+-- Kept as explicit UPDATEs rather than deleting the file: the cut is already
+-- applied to live databases, and a deleted update never runs.  On a fresh DB
+-- these are no-ops, which is the correct outcome.
 --
 -- Selected by trainer_spell.ReqSkillLine = 762 (Riding), which also covers the
 -- druid Swift Flight Form -- that is a riding cost like any other.  Keyed on
@@ -187,51 +278,50 @@ RIDING_HEADER = """\
 -- reads it (the live path is trainer / trainer_spell / creature_default_trainer).
 --
 -- Player::GetReputationPriceDiscount still takes up to 20% off these at
--- Exalted.  Unchanged and intended.
+-- Exalted.  Unchanged and intended, exactly as at retail.
 --
--- Absolute values, not `MoneyCost / 10`: module SQL is re-applied at startup on
--- top of any manual pre-application, and relative arithmetic would divide twice.
--- Regenerate with tools/gen_mount_prices.py, which carries the same divisor.
+-- Regenerate with tools/gen_mount_prices.py.
 """
 
 MOUNT_HEADER = """\
 -- ==========================================================================
--- Mount item prices: 10x cut to match the 10x XP rate
+-- Mount item prices: restored to retail
 -- ==========================================================================
 --
--- Companion to woa_2026_08_07_00.sql (riding skill).  Same reasoning: gold
--- income is 1x while XP is 10x, so mount prices are cut by the same factor to
--- restore the retail ratio of gold-earned to gold-owed.
+-- Companion to woa_2026_08_07_00.sql (riding skill).  Same reasoning: this
+-- file used to cut every gold-priced mount by 10 to offset the 10x XP rate,
+-- and `Rate.RewardQuestMoney = 8` now corrects the same imbalance from the
+-- income side.  Keeping both over-corrects, so the price cut is reverted.
 --
--- SELLPRICE IS SCALED TOO, AND THAT IS NOT OPTIONAL.  131 of these 236 mounts
--- have a SellPrice above a tenth of their BuyPrice -- Horn of the Timber Wolf
--- buys at 1g and vendors back at 25s.  Cutting BuyPrice alone would let it sell
--- for 2.5x its cost: an infinite gold loop with no cooldown.  Scaling both
--- preserves the original buy/sell ratio exactly.
+-- SELLPRICE IS RESTORED ALONGSIDE BUYPRICE, AND THAT IS NOT OPTIONAL.  131 of
+-- these 236 mounts have a SellPrice above a tenth of their BuyPrice -- Horn of
+-- the Timber Wolf buys at 1g and vendors back at 25s.  Restoring BuyPrice
+-- alone would leave them vendoring for 2.5x their cost: an infinite gold loop
+-- with no cooldown.  Restoring both preserves the retail buy/sell ratio.
 --
--- Scope: item_template class 15 / subclass 5, BuyPrice > 0.  Rows priced at 0
--- are skipped -- they cannot be bought, so there is no cost to cut and no
--- exploit to create.  The 19 rows here that also sit on an ExtendedCost vendor
+-- Values come from data/sql/base/db_world/item_template.sql, the dump this
+-- fork is built on.  When the cut was reverted every one of them was checked
+-- against the price this file used to carry: floor(retail / 10) matched in all
+-- 236 cases, so the dump is provably the thing that was divided.
+--
+-- Scope: item_template class 15 / subclass 5, BuyPrice > 0 -- exactly the rows
+-- the cut touched.  The 19 rows here that also sit on an ExtendedCost vendor
 -- are no-ops in practice (CreatureData.h::IsGoldRequired ignores BuyPrice when
 -- ExtendedCost is set); honor/arena/badge costs live in ItemExtendedCost.dbc
--- and are out of scope, since changing them server-side without a client DBC
--- patch would make the tooltip disagree with what the player is charged.
+-- and were never in scope.
 --
--- Absolute values, not `BuyPrice / 10`: module SQL is re-applied at startup on
--- top of any manual pre-application, and relative arithmetic would divide twice.
--- Regenerate with tools/gen_mount_prices.py, which carries the same divisor.
+-- Regenerate with tools/gen_mount_prices.py.
 """
 
 
 def build_riding_sql(rows):
     lines = [RIDING_HEADER, ""]
-    for spell_id, cost, req_level in rows:
-        new_cost = scale(int(cost))
-        name = RIDING_NAMES.get(int(spell_id), f"spell {spell_id}")
+    for spell_id, cost, level in rows:
+        name = RIDING_NAMES.get(spell_id, f"spell {spell_id}")
         lines.append(
-            f"UPDATE `trainer_spell` SET `MoneyCost` = {new_cost} "
+            f"UPDATE `trainer_spell` SET `MoneyCost` = {cost} "
             f"WHERE `SpellId` = {spell_id};"
-            f"   -- {name} (lvl {req_level}): {money(int(cost))} -> {money(new_cost)}"
+            f"   -- {name} (lvl {level}): {money(cost)}"
         )
     lines.append("")
     return "\n".join(lines)
@@ -240,13 +330,10 @@ def build_riding_sql(rows):
 def build_mount_sql(rows):
     lines = [MOUNT_HEADER, ""]
     for entry, name, buy, sell in rows:
-        new_buy = scale(int(buy))
-        new_sell = scale(int(sell))
-        safe_name = (name or "").replace("\n", " ").strip()
         lines.append(
-            f"UPDATE `item_template` SET `BuyPrice` = {new_buy}, `SellPrice` = {new_sell} "
-            f"WHERE `entry` = {entry};"
-            f"   -- {safe_name}: {money(int(buy))} -> {money(new_buy)}"
+            f"UPDATE `item_template` SET `BuyPrice` = {buy}, "
+            f"`SellPrice` = {sell} WHERE `entry` = {entry};"
+            f"   -- {name}: {money(buy)}"
         )
     lines.append("")
     return "\n".join(lines)
@@ -254,47 +341,47 @@ def build_mount_sql(rows):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dry-run", action="store_true", help="summary only")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="verify only, write nothing")
     parser.add_argument("--stdout", action="store_true", help="print SQL")
     args = parser.parse_args()
 
-    conn = get_db_connection()
-    try:
-        riding = fetch_riding(conn)
-        mounts = fetch_mounts(conn)
-    finally:
-        conn.close()
+    riding_rows, conflicts = fetch_riding()
+    mount_rows = fetch_mounts()
 
-    if not riding:
-        print("ERROR: no riding rows found -- is ReqSkillLine 762 still Riding?")
-        return 1
-    if not mounts:
-        print("ERROR: no priced mount rows found -- check class 15 / subclass 5.")
+    if conflicts:
+        print("ERROR: a riding rank is priced differently on different trainers, "
+              "so a single UPDATE keyed on SpellId would be wrong:")
+        for spell_id, variants in sorted(conflicts.items()):
+            name = RIDING_NAMES.get(spell_id, f"spell {spell_id}")
+            print(f"  {name} ({spell_id}): {sorted(variants)}")
         return 1
 
-    # Guard the exploit this generator exists to avoid.  If any output row would
-    # vendor for at least what it costs, refuse to write the file.
-    bad = [
-        (entry, name, buy, sell)
-        for entry, name, buy, sell in mounts
-        if scale(int(sell)) >= scale(int(buy))
-    ]
+    for label, rows in (("riding", riding_rows), ("mounts", mount_rows)):
+        if len(rows) != ROW_COUNTS[label]:
+            print(f"ERROR: found {len(rows)} {label} rows, expected "
+                  f"{ROW_COUNTS[label]}.  The base world DB moved -- re-verify "
+                  f"the scope before updating ROW_COUNTS, or this writes a "
+                  f"partial revert.")
+            return 1
+
+    # The exploit the original cut had to design around, checked from the other
+    # direction: retail should never vendor a mount for at least what it costs.
+    bad = [r for r in mount_rows if r[3] >= r[2]]
     if bad:
-        print(f"ERROR: {len(bad)} row(s) would sell for >= their cost. Refusing to write.")
+        print(f"ERROR: {len(bad)} mount(s) would vendor for >= their cost.")
         for entry, name, buy, sell in bad[:10]:
-            print(f"  {entry} {name}: buy {buy} -> {scale(int(buy))}, "
-                  f"sell {sell} -> {scale(int(sell))}")
+            print(f"  {entry} {name}: buy {buy}, sell {sell}")
         return 1
 
-    riding_sql = build_riding_sql(riding)
-    mount_sql = build_mount_sql(mounts)
+    print(f"Riding ranks:  {len(riding_rows)}")
+    for spell_id, cost, level in riding_rows:
+        name = RIDING_NAMES.get(spell_id, f"spell {spell_id}")
+        print(f"  {name:<22} lvl {level:<3} {money(cost):>8}")
+    print(f"Mount items:   {len(mount_rows)}")
 
-    print(f"Riding ranks:  {len(riding)}  (divisor {DIVISOR})")
-    for spell_id, cost, req_level in riding:
-        name = RIDING_NAMES.get(int(spell_id), f"spell {spell_id}")
-        print(f"  {name:<22} lvl {req_level:<3} "
-              f"{money(int(cost)):>8} -> {money(scale(int(cost)))}")
-    print(f"Mount items:   {len(mounts)}")
+    riding_sql = build_riding_sql(riding_rows)
+    mount_sql = build_mount_sql(mount_rows)
 
     if args.stdout:
         print()

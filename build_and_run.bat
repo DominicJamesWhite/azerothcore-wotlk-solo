@@ -454,7 +454,7 @@ REM particular, where Flags=1 (addToSpellBook) is what makes
 REM Player::LearnTalent actually call learnSpell() for talents we
 REM redesigned from passives into active abilities.
 SET "SERVER_DBC_DIR=%BUILD_DIR%\bin\%BUILD_CONFIG%\Data\dbc"
-FOR %%D IN (Spell.dbc Talent.dbc SpellShapeshiftForm.dbc) DO (
+FOR %%D IN (Spell.dbc Talent.dbc SpellShapeshiftForm.dbc SkillLineAbility.dbc) DO (
     SET "PATCHED_DBC=%DBC_SCRIPT_DIR%\output\DBFilesClient\%%D"
     IF EXIST "!PATCHED_DBC!" (
         COPY /Y "!PATCHED_DBC!" "%SERVER_DBC_DIR%\%%D" >NUL

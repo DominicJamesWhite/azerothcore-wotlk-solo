@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Alonecraft Tooltip Fix
+## Notes: Turns on Enhanced Tooltips once, so action bar hovers show full text.
+## Version: 1.0
+## SavedVariables: AlonecraftTooltipFixDB
+
+AlonecraftTooltipFix.lua

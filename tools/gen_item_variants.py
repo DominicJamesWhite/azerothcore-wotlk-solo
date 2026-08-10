@@ -48,6 +48,13 @@ from build_dbc import read_int_dbc  # noqa: E402
 # it cannot drift apart.
 from gen_upgrade_tools import TOOL_NAMES, TOOL_ALT_PREFIX  # noqa: E402
 
+# Upgrade paths for items whose entire value is a proc or an on-use effect.
+# Kept in its own module because the classification tables are long, but called
+# from inside scale_item: the cloned spell ids and the item_template.spellid_N
+# values that point at them must be allocated in one pass and land in one SQL
+# file, or a partial apply leaves items referring to spells that do not exist.
+import item_spell_scaling as spellscale  # noqa: E402
+
 MODULE_SQL = os.path.join(
     REPO_ROOT, "modules", "world_of_alonecraft", "data", "sql", "db-world"
 )
@@ -191,7 +198,10 @@ def fetch_candidates(conn):
                stat_type5, stat_value5, stat_type6, stat_value6,
                stat_type7, stat_value7, stat_type8, stat_value8,
                stat_type9, stat_value9, stat_type10, stat_value10,
-               holy_res, fire_res, nature_res, frost_res, shadow_res, arcane_res
+               holy_res, fire_res, nature_res, frost_res, shadow_res, arcane_res,
+               spellid_1, spellid_2, spellid_3, spellid_4, spellid_5,
+               spelltrigger_1, spelltrigger_2, spelltrigger_3,
+               spelltrigger_4, spelltrigger_5
         FROM item_template
         WHERE Quality BETWEEN %s AND %s
           AND InventoryType NOT IN (0, 24, 27, 28)
@@ -417,7 +427,30 @@ def derive_item_level(row, quality, base_level, target_level, tiers):
     return int(min(284, max(1, round(target_tier + offset), row["ItemLevel"])))
 
 
-def scale_item(row, step, rpp, tiers, armor_curves, dps_curves):
+class SpellCtx:
+    """Everything the spell-cloning pass needs, threaded through scale_item.
+
+    A holder rather than five more positional arguments, and `enabled` lets
+    --no-spells fall back to the pure-stat generator without a second code path.
+    """
+
+    def __init__(self, index=None, allocator=None, scripted=frozenset(),
+                 enabled=True):
+        self.index = index or {}
+        self.allocator = allocator or spellscale.Allocator()
+        self.scripted = scripted
+        self.enabled = enabled and bool(index)
+        # base_spell -> why it was turned away.  Reported once at the end
+        # rather than per item, since the same spell recurs across steps.
+        self.reasons = {}
+        # {clone_id: entry} for EVERY payload allocated, kept step or not.
+        # Nothing is written from here directly -- see resolve_referenced.
+        self.registry = {}
+        # The reachable closure, filled in once generation is complete.
+        self.cloned = []
+
+
+def scale_item(row, step, rpp, tiers, armor_curves, dps_curves, spells=None):
     """Compute one variant. Returns a delta dict, or None if not applicable."""
     base_level = infer_base_level(row, tiers)
 
@@ -435,11 +468,17 @@ def scale_item(row, step, rpp, tiers, armor_curves, dps_curves):
     if target_level > MAX_LEVEL:
         return None
 
-    # Nothing to scale: tabards, shirts, cosmetic trinkets and the like derive
-    # all their value from procs or flavour, so a variant would be an identical
-    # copy at a higher required level -- strictly worse than the original.
-    if not any(row[f"stat_value{i}"] for i in range(1, 11))             and not row["armor"] and not row["dmg_max1"]:
-        return None
+    # An item with no stats, no armour and no weapon damage used to end its
+    # chain here, on the grounds that a variant identical to the base but with a
+    # higher RequiredLevel is strictly worse than the original.  That is still
+    # true -- but only if nothing about it improves, and for 386 of these 759
+    # items the power is in a spell that CAN be scaled.  See item_spell_scaling.
+    #
+    # The "did anything gain?" test therefore moves to the END of this function,
+    # after the spell pass, and _power() carries the spell magnitude so
+    # generate()'s existing no-op-step pruning covers spell-only items unchanged.
+    has_plain_stats = (any(row[f"stat_value{i}"] for i in range(1, 11))
+                       or row["armor"] or row["dmg_max1"])
 
     quality = row["Quality"]
     invtype, subclass = row["InventoryType"], row["subclass"]
@@ -489,8 +528,44 @@ def scale_item(row, step, rpp, tiers, armor_curves, dps_curves):
         dmg[f"dmg_min{i}"] = round(dmin * m_dps, 2) if dmin else 0.0
         dmg[f"dmg_max{i}"] = round(dmax * m_dps, 2) if dmax else 0.0
 
+    # Item spells ride the same RandPropPoints ratio as the stats, so a
+    # spell-only trinket lands on the same curve as a statted one.
+    entry = VARIANT_BASE + row["entry"] * STRIDE + step
+    spell_ids, spell_power, cloned = {}, 0, []
+
+    # EVERY item with a scalable spell, not just the ones with nothing else.
+    #
+    # Restricting this to stat-less items looked like a cheap way to cap the
+    # cost, and it produced a worse bug than the one it avoided: Moroes' Lucky
+    # Pocket Watch has 38 dodge rating AND an on-use that grants dodge rating,
+    # so the static half scaled to 97 while the on-use stayed frozen at its
+    # level-70 value -- the same stat, on the same item, in two places.  8,135
+    # items were gated off that way.
+    #
+    # What made it affordable is deduplicating by payload rather than by item
+    # (see Allocator): 34,433 clones collapse to 11,130 distinct ones, so
+    # Spell.dbc grows by 10 MB instead of 32 MB.
+    if spells and spells.enabled:
+        spell_ids, cloned, spell_power = spellscale.scale_item_spells(
+            row, m_stat, spells.allocator, spells.index,
+            spells.scripted, spells.reasons)
+        # Registered unconditionally, even for a step generate() is about to
+        # drop.  A payload is emitted only the first time it is allocated, so
+        # discarding a dropped step's rows would strand every later variant
+        # that deduplicates onto the same payload -- it would hold an id with
+        # no row behind it.  What actually gets written is the closure
+        # reachable from the variants that survive (resolve_referenced).
+        for e in cloned:
+            spells.registry[e["row"]["ID"]] = e
+
+    # Nothing to scale at all: tabards, shirts and pure-flavour items, plus the
+    # spell-bearing items whose every spell the whitelist turned away.  A
+    # variant of one of those is the original at a higher required level.
+    if not has_plain_stats and not spell_ids:
+        return None
+
     return {
-        "entry": VARIANT_BASE + row["entry"] * STRIDE + step,
+        "entry": entry,
         "base_entry": row["entry"],
         "step": step,
         "name": row["name"],
@@ -514,16 +589,22 @@ def scale_item(row, step, rpp, tiers, armor_curves, dps_curves):
         "dbc": (row["class"], row["subclass"], row["SoundOverrideSubclass"],
                 row["Material"], row["displayid"], row["InventoryType"],
                 row["sheath"]),
+        # {slot: clone_id} for the slots that were cloned.  An absent slot means
+        # "leave the base item's spellid_N alone", which is what lets an item
+        # with one scalable and one unscalable spell still get a variant.
+        "spell_ids": spell_ids,
+        "spell_power": spell_power,
         **dmg,
     }
 
 
 def _power(v):
     """Comparable power tuple, for detecting steps that gain nothing."""
-    return (sum(s for s in v["stats"] if s > 0), v["armor"], v["dmg_max1"])
+    return (sum(s for s in v["stats"] if s > 0), v["armor"], v["dmg_max1"],
+            v["spell_power"])
 
 
-def generate(rows, rpp, tiers, armor_curves, dps_curves, limit=None):
+def generate(rows, rpp, tiers, armor_curves, dps_curves, limit=None, spells=None):
     """Emit variants, dropping steps that are no better than the step before.
 
     A no-op step is worse than useless: the vendor would charge gold for an
@@ -540,9 +621,14 @@ def generate(rows, rpp, tiers, armor_curves, dps_curves, limit=None):
             sum(row[f"stat_value{i}"] for i in range(1, 11) if row[f"stat_value{i}"] > 0),
             row["armor"],
             row["dmg_max1"],
+            # The item's own spell magnitude, unscaled.  Without it a step whose
+            # multiplier came out at 1.0 would read as a gain for a spell-only
+            # item and the player would be charged for an identical item.
+            spellscale.base_spell_power(row, spells.index, spells.scripted)
+            if spells and spells.enabled else 0,
         )
         for step in range(1, (MAX_LEVEL // STEP_SIZE) + 1):
-            v = scale_item(row, step, rpp, tiers, armor_curves, dps_curves)
+            v = scale_item(row, step, rpp, tiers, armor_curves, dps_curves, spells)
             if v is None:
                 break
             cur = _power(v)
@@ -562,7 +648,52 @@ def sql_str(value):
     return "'" + str(value).replace("\\", "\\\\").replace("'", "''") + "'"
 
 
-def format_sql(variants, conn):
+def format_spell_blocks(spells, conn):
+    """The alonecraft_spell_dbc, mapping and spell_proc blocks.
+
+    Emitted BEFORE the item_template block so a partial apply leaves spells with
+    no item pointing at them rather than items pointing at missing spells.
+    """
+    if not spells or not spells.cloned:
+        return ""
+
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from gen_sql import format_sql_value
+    import spell_dbc
+
+    parts = [
+        spellscale.format_spell_sql(spells.cloned, spell_dbc.SPELL_COLUMNS,
+                                    format_sql_value),
+        spellscale.format_mapping_sql(spells.cloned),
+    ]
+
+    # spell_proc is declarative, so unlike spell_script_names it carries across
+    # to a clone cleanly.  51 of the 402 spells in scope have a row, and without
+    # this their procs would simply stop firing once the item was upgraded.
+    base_ids = sorted({e["base_spell"] for e in spells.cloned})
+    cur = conn.cursor(dictionary=True)
+    cur.execute(
+        "SELECT * FROM `spell_proc` WHERE `SpellId` IN ({})".format(
+            ", ".join(str(i) for i in base_ids) or "0"))
+    proc_by_base = {r["SpellId"]: r for r in cur.fetchall()}
+    proc_columns = [c[0] for c in cur.description] if cur.description else []
+    cur.close()
+
+    proc_rows = []
+    for e in spells.cloned:
+        src = proc_by_base.get(e["base_spell"])
+        if src:
+            clone = dict(src)
+            clone["SpellId"] = e["row"]["ID"]
+            proc_rows.append(clone)
+    parts.append(spellscale.format_proc_sql(proc_rows, proc_columns))
+
+    print(f"Cloned spells: {len(spells.cloned)} "
+          f"({len(proc_rows)} with a spell_proc row)")
+    return "\n".join(p for p in parts if p)
+
+
+def format_sql(variants, conn, spells=None):
     L = []
     A = L.append
     A("-- ==========================================================================")
@@ -610,6 +741,10 @@ def format_sql(variants, conn):
             A(",\n".join(rows_[i:i + chunk]) + ";")
             A("")
 
+    spell_sql = format_spell_blocks(spells, conn)
+    if spell_sql:
+        A(spell_sql)
+
     A("-- -- item_dbc -----")
     dbc_rows = [
         "({}, {}, {}, {}, {}, {}, {}, {})".format(
@@ -646,6 +781,7 @@ def format_sql(variants, conn):
     A("  `dmin2` FLOAT NOT NULL, `dmax2` FLOAT NOT NULL,")
     A("  " + ", ".join(f"`sv{i}` INT NOT NULL" for i in range(1, 11)) + ",")
     A("  " + ", ".join(f"`r{i}` INT NOT NULL" for i in range(1, 7)) + ",")
+    A("  " + ", ".join(f"`sp{i}` INT UNSIGNED NOT NULL" for i in range(1, 6)) + ",")
     A("  KEY `idx_step` (`step`)")
     A(") ENGINE=MEMORY;")
     A("")
@@ -653,18 +789,20 @@ def format_sql(variants, conn):
     delta_rows = []
     for v in variants:
         delta_rows.append(
-            "({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})".format(
+            "({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})".format(
                 v["entry"], v["base_entry"], v["step"], v["req_level"],
                 v["item_level"], v["armor"], v["block"],
                 v["dmg_min1"], v["dmg_max1"], v["dmg_min2"], v["dmg_max2"],
                 ", ".join(str(s) for s in v["stats"]),
                 ", ".join(str(r) for r in v["res"]),
+                ", ".join(str(v["spell_ids"].get(i, 0)) for i in range(1, 6)),
             )
         )
     cols = ("`entry`, `base_entry`, `step`, `req_level`, `item_level`, `armor`, "
             "`block`, `dmin1`, `dmax1`, `dmin2`, `dmax2`, "
             + ", ".join(f"`sv{i}`" for i in range(1, 11)) + ", "
-            + ", ".join(f"`r{i}`" for i in range(1, 7)))
+            + ", ".join(f"`r{i}`" for i in range(1, 7)) + ", "
+            + ", ".join(f"`sp{i}`" for i in range(1, 6)))
     batched(delta_rows, f"INSERT INTO `_woa_delta` ({cols}) VALUES")
 
     A("-- -- clone + patch, one pass per step -----")
@@ -696,6 +834,16 @@ def format_sql(variants, conn):
 
     max_step = max(v["step"] for v in variants)
     stat_set = ", ".join(f"c.`stat_value{i}` = d.`sv{i}`" for i in range(1, 11))
+    # IF, not a plain assignment: 0 in the delta means "this slot was not
+    # cloned", never "clear the slot".  Same trap as RandomProperty below.
+    #
+    # spelltrigger_N, spellcharges_N, spellcategory_N, spellcooldown_N and
+    # spellcategorycooldown_N are deliberately untouched -- the shared trinket
+    # cooldown groups (category 1141 and friends) have to survive, and the
+    # clone carries the base spell's own Category/RecoveryTime unchanged.
+    spellid_set = ", ".join(
+        f"c.`spellid_{i}` = IF(d.`sp{i}` = 0, c.`spellid_{i}`, d.`sp{i}`)"
+        for i in range(1, 6))
     res_names = ("holy", "fire", "nature", "frost", "shadow", "arcane")
     res_set = ", ".join(f"c.`{n}_res` = d.`r{i+1}`" for i, n in enumerate(res_names))
     name_prefix_case = build_name_prefix_case()
@@ -724,6 +872,7 @@ def format_sql(variants, conn):
         A("  c.`dmg_min1` = d.`dmin1`, c.`dmg_max1` = d.`dmax1`,")
         A("  c.`dmg_min2` = d.`dmin2`, c.`dmg_max2` = d.`dmax2`,")
         A(f"  {stat_set},")
+        A(f"  {spellid_set},")
         A(f"  {res_set};")
         A("INSERT INTO `item_template` SELECT * FROM `_woa_clone`;")
         A("")
@@ -734,7 +883,7 @@ def format_sql(variants, conn):
     return "\n".join(L) + "\n"
 
 
-def validate(variants):
+def validate(variants, spells=None):
     """Structural invariants. True if every one holds; prints each failure.
 
     Cheap to run and worth running: the whole batch is 78k rows that the updater
@@ -790,6 +939,45 @@ def validate(variants):
     check("entry below VARIANT_BASE",
           [v["entry"] for v in variants if v["entry"] < VARIANT_BASE])
 
+    # ── cloned item spells ──────────────────────────────────────────────
+    if spells and spells.enabled:
+        clone_ids = {e["row"]["ID"] for e in spells.cloned}
+
+        check("cloned spell id outside the reserved band",
+              [e["row"]["ID"] for e in spells.cloned
+               if not spellscale.SPELL_VARIANT_BASE <= e["row"]["ID"]
+               < spellscale.SPELL_VARIANT_LIMIT])
+
+        # An item pointing at a spell that was never written is an item whose
+        # proc silently does nothing -- exactly the failure mode this whole
+        # module exists to avoid.
+        check("variant references a spell that was not emitted",
+              [f"{v['entry']}->{sid}" for v in variants
+               for sid in v["spell_ids"].values() if sid not in clone_ids])
+
+        # A clone triggering an ORIGINAL spell would run the unscaled child.
+        check("cloned spell triggers outside the band",
+              [f"{e['row']['ID']}->{e['row'][f'EffectTriggerSpell{i}']}"
+               for e in spells.cloned for i in (1, 2, 3)
+               if e["row"][f"EffectTriggerSpell{i}"]
+               and e["row"][f"EffectTriggerSpell{i}"] not in clone_ids])
+
+        seen_ids = set()
+        check("duplicate cloned spell id",
+              [e["row"]["ID"] for e in spells.cloned
+               if e["row"]["ID"] in seen_ids or seen_ids.add(e["row"]["ID"])])
+
+        # CLAUDE.md: the buff bar renders SpellToolTip, the spellbook renders
+        # SpellDescription.  A visible aura with an empty tooltip has no hover
+        # text at all -- reported, not failed, since 6 are empty upstream.
+        blank = [e["row"]["ID"] for e in spells.cloned
+                 if any(e["row"][f"Effect{i}"] == 6 for i in (1, 2, 3))
+                 and not (e["row"]["Attributes"] & 0xC0)
+                 and not (e["row"].get("SpellToolTip0") or "").strip()]
+        if blank:
+            print(f"  note  {len(blank)} cloned aura(s) have an empty "
+                  f"SpellToolTip0 (inherited from the base spell)")
+
     declared_odd = sorted({(v["name"], v["base_entry"]) for v in suspicious
                            if v["declared"]})
     if declared_odd:
@@ -818,14 +1006,70 @@ def write_audit_csv(path, variants):
                         v["dmg_min1"], v["dmg_max1"], sum(v["stats"])])
 
 
+def load_spell_ctx(conn, enabled=True, freeze=True):
+    """Build the SpellCtx: the DBC index, the frozen id map, the script blocklist.
+
+    `freeze=False` (a --limit sample run) starts the allocator empty and, more
+    importantly, keeps the sample's ids out of the persisted mapping -- a sample
+    covers an arbitrary slice of items, and freezing ids from it would pin the
+    band to that slice.
+    """
+    if not enabled:
+        print("Item spell scaling: DISABLED (--no-spells)")
+        return SpellCtx(enabled=False)
+
+    import spell_dbc
+    index = spell_dbc.load_spell_index(config.BASE_DBC_PATH)
+
+    cur = conn.cursor()
+    # ABS: a negative spell_id registers a script for every rank.
+    cur.execute("SELECT DISTINCT ABS(`spell_id`) FROM `spell_script_names`")
+    scripted = {r[0] for r in cur.fetchall()}
+
+    existing = {}
+    if freeze:
+        # Column check, not just a table check: the mapping was keyed by
+        # (variant_entry, spell_index, base_spell) before clones were
+        # deduplicated by payload.  An old-schema table holds ids that cannot be
+        # matched to anything, so it is ignored rather than crashed on -- the
+        # generated file recreates it with the current shape.
+        cur.execute("SHOW TABLES LIKE 'alonecraft_item_upgrade_spell'")
+        if cur.fetchone():
+            cur.execute("SHOW COLUMNS FROM `alonecraft_item_upgrade_spell` "
+                        "LIKE 'payload_hash'")
+            if cur.fetchone():
+                cur.execute("SELECT `payload_hash`, `clone_spell` "
+                            "FROM `alonecraft_item_upgrade_spell`")
+                existing = dict(cur.fetchall())
+            else:
+                print("  alonecraft_item_upgrade_spell has the pre-dedup schema; "
+                      "ignoring it and reallocating")
+    cur.close()
+
+    print(f"Item spell scaling: {len(index)} spells indexed, "
+          f"{len(scripted)} script-registered ids blocked, "
+          f"{len(existing)} frozen id(s) reloaded")
+    return SpellCtx(index=index,
+                    allocator=spellscale.Allocator(existing),
+                    scripted=scripted)
+
+
 def next_sql_path():
     import datetime
     today = datetime.date.today().strftime("%Y_%m_%d")
     # The woa_ prefix is load-bearing: the updater orders ALL updates by bare
     # filename, and a duplicate aborts the entire world DB update.
-    seq = 0
-    while os.path.exists(os.path.join(MODULE_SQL, f"woa_{today}_{seq:02d}.sql")):
-        seq += 1
+    #
+    # Highest + 1, NOT the first free number.  Scanning up from 00 fills gaps,
+    # and a gap means the new file sorts BEFORE files written after the gap
+    # appeared -- which for this generator is a real hazard, since it clones
+    # item_template rows at apply time and must run after anything that edits
+    # the base rows.
+    import glob
+    used = [int(os.path.basename(p)[-6:-4])
+            for p in glob.glob(os.path.join(MODULE_SQL, f"woa_{today}_*.sql"))
+            if os.path.basename(p)[-6:-4].isdigit()]
+    seq = max(used) + 1 if used else 0
     return os.path.join(MODULE_SQL, f"woa_{today}_{seq:02d}.sql")
 
 
@@ -837,6 +1081,11 @@ def main():
     with contextlib.redirect_stdout(sys.stderr):
         args, payload = _run()
     if payload is not None:
+        # Explicit UTF-8: on Windows sys.stdout defaults to the console code
+        # page, which mangles the em-dash in the header banner and corrupts
+        # anything else non-ASCII on its way into a redirect or into mysql.
+        # The file-writing path already opens with encoding="utf-8".
+        sys.stdout.reconfigure(encoding="utf-8", newline="")
         sys.stdout.write(payload)
 
 
@@ -848,11 +1097,15 @@ def _run():
     p.add_argument("--audit-csv", help="write an audit CSV here")
     p.add_argument("--validate", action="store_true",
                    help="check invariants; exit non-zero and write nothing on failure")
+    p.add_argument("--no-spells", action="store_true",
+                   help="skip item spell scaling (stat path only)")
     args = p.parse_args()
 
     rpp = load_rpp()
     conn = get_db_connection()
     rows = fetch_candidates(conn)
+    spells = load_spell_ctx(conn, enabled=not args.no_spells,
+                            freeze=not args.limit)
     conn.close()
     print(f"Candidate items: {len(rows)}")
 
@@ -875,12 +1128,28 @@ def _run():
           f"{len(armor_curves)} armor shapes, {len(dps_curves)} weapon shapes")
 
     variants = generate(rows, rpp, tiers, armor_curves, dps_curves,
-                        limit=args.limit)
+                        limit=args.limit, spells=spells)
     print(f"Variants generated: {len(variants)}")
+    if spells.enabled:
+        # Only now, with the surviving variants known, is it decidable which
+        # cloned payloads are actually reachable.
+        spells.cloned = spellscale.resolve_referenced(
+            (v["spell_ids"].values() for v in variants), spells.registry)
+        stranded = len(spells.registry) - len(spells.cloned)
+        if stranded:
+            print(f"  dropped {stranded} clone(s) allocated for steps that were "
+                  f"later pruned")
+        spell_only = sum(1 for v in variants if v["spell_ids"]
+                         and not any(v["stats"]) and not v["armor"]
+                         and not v["dmg_max1"])
+        print(f"  spell clones: {len(spells.cloned)}, "
+              f"{spell_only} variant(s) exist purely because of them")
+        print(f"  spells turned away by the whitelist: {len(spells.reasons)} "
+              f"(run tools/item_spell_scaling.py for the breakdown)")
 
     # Before anything is written: a bad batch should fail the run, not land in
     # the module's SQL directory where the updater will happily apply it.
-    if args.validate and not validate(variants):
+    if args.validate and not validate(variants, spells):
         sys.exit(1)
 
     by_quality = defaultdict(int)
@@ -903,7 +1172,7 @@ def _run():
 
     conn = get_db_connection()
     try:
-        sql = format_sql(variants, conn)
+        sql = format_sql(variants, conn, spells)
     finally:
         conn.close()
     if args.stdout:

@@ -9,10 +9,19 @@ Files in custom/ map to MPQ archive paths:
   custom/AddOns/Bar/Bar.lua -> Interface/AddOns/Bar/Bar.lua
 
 Only files that differ from Interface/base/ (or don't exist there) are packed.
+
+Nothing in base/ is a .blp and none of our AddOns are there either, so that
+filter alone says "pack" for every file we own -- which meant ~28 mpqcli
+subprocesses on every build, including builds that changed nothing.  So a
+content cache next to patch-4.mpq records the sha256 last packed for each
+archive path, and a file is skipped only when its hash still matches AND the
+archive still lists that path.  Use --force to repack regardless.
 """
 
 import os
 import sys
+import json
+import hashlib
 import filecmp
 import subprocess
 
@@ -25,6 +34,10 @@ OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
 # patch-4.mpq lives in the DBC output directory (shared with build_dbc.py)
 DBC_OUTPUT_DIR = os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "dbc", "output")
 MPQ_PATH = os.path.join(DBC_OUTPUT_DIR, "patch-4.mpq")
+
+# Cache lives next to the MPQ it describes, so the documented "delete
+# patch-4.mpq and rebuild" recovery also discards the cache.
+CACHE_PATH = os.path.join(DBC_OUTPUT_DIR, "interface_pack_cache.json")
 
 # mpqcli.exe lives next to build_dbc.py
 MPQCLI_DIR = os.path.join(REPO_ROOT, "modules", "world_of_alonecraft", "dbc")
@@ -80,25 +93,78 @@ def is_modified(rel_path):
     return True
 
 
+def archive_path_of(rel_path):
+    """custom/ relative path -> MPQ archive path (backslashes)."""
+    return "Interface\\" + rel_path.replace("/", "\\")
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_cache():
+    """Read the pack cache. A missing or corrupt cache just means repack."""
+    try:
+        with open(CACHE_PATH, "r", encoding="utf-8") as f:
+            cache = json.load(f)
+        return cache if isinstance(cache, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_cache(cache):
+    try:
+        os.makedirs(DBC_OUTPUT_DIR, exist_ok=True)
+        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump(cache, f, indent=2, sort_keys=True)
+    except OSError as exc:
+        print(f"  WARNING: could not write pack cache: {exc}")
+
+
+def archive_entries():
+    """Paths currently inside patch-4.mpq, or None if we can't tell.
+
+    build_dbc.py creates a *fresh* patch-4.mpq whenever the file is missing,
+    which silently drops every Interface\\ entry. Without this check a
+    hash-only cache would skip everything and ship an MPQ with no addons and
+    no icons. None means "unknown" -- pack everything, as before.
+    """
+    if not os.path.isfile(MPQCLI) or not os.path.isfile(MPQ_PATH):
+        return None
+    try:
+        result = subprocess.run([MPQCLI, "list", MPQ_PATH],
+                                capture_output=True, text=True)
+    except OSError:
+        return None
+    if result.returncode != 0:
+        return None
+    return {line.strip() for line in result.stdout.splitlines() if line.strip()}
+
+
 def pack_files(files):
     """Add files to patch-4.mpq."""
     if not os.path.isfile(MPQCLI):
         print(f"ERROR: mpqcli not found at {MPQCLI}")
         print("Download from: https://github.com/TheGrayDot/mpqcli/releases")
-        return False
+        return False, []
 
     if not os.path.isfile(MPQ_PATH):
         print(f"ERROR: patch-4.mpq not found at {MPQ_PATH}")
         print("Run build_dbc.py first to create the base MPQ.")
-        return False
+        return False, []
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     success = True
+    packed = []
 
     for rel_path in files:
         src_file = os.path.join(CUSTOM_DIR, rel_path)
         # MPQ archive path uses backslashes: Interface\FrameXML\Foo.lua
-        archive_path = "Interface\\" + rel_path.replace("/", "\\")
+        archive_path = archive_path_of(rel_path)
 
         cmd = [
             MPQCLI, "add",
@@ -116,13 +182,14 @@ def pack_files(files):
                 print(f"    ERROR: {result.stderr.strip()}")
                 success = False
             else:
+                packed.append(rel_path)
                 if result.stdout.strip():
                     print(f"    {result.stdout.strip()}")
         except FileNotFoundError:
             print(f"ERROR: mpqcli not found")
-            return False
+            return False, packed
 
-    return success
+    return success, packed
 
 
 def main():
@@ -134,24 +201,54 @@ def main():
         print("Nothing to pack.")
         return 0
 
+    force = "--force" in sys.argv
+    dry_run = "--dry-run" in sys.argv
+
     # Filter to only modified/new files
     modified = [f for f in files if is_modified(f)]
 
-    print(f"Found {len(files)} custom file(s), {len(modified)} modified/new:")
-    for f in modified:
-        print(f"  {f}")
+    print(f"Found {len(files)} custom file(s), {len(modified)} modified/new.")
 
     if not modified:
         print("All custom files match base. Nothing to pack.")
         return 0
 
-    if "--dry-run" in sys.argv:
+    # Then drop anything already in the archive with the same contents.
+    cache = {} if force else load_cache()
+    in_archive = archive_entries()
+    hashes = {f: file_sha256(os.path.join(CUSTOM_DIR, f)) for f in modified}
+
+    to_pack = []
+    for rel_path in modified:
+        archive_path = archive_path_of(rel_path)
+        cached = cache.get(archive_path) == hashes[rel_path]
+        present = in_archive is None or archive_path in in_archive
+        if cached and present:
+            continue
+        to_pack.append(rel_path)
+
+    skipped = len(modified) - len(to_pack)
+    print(f"{skipped} unchanged (cached), {len(to_pack)} to pack.")
+    for f in to_pack:
+        print(f"  {f}")
+
+    if not to_pack:
+        return 0
+
+    if dry_run:
         print("Dry run - no files packed.")
         return 0
 
     print(f"\nPacking into {MPQ_PATH}...")
-    if pack_files(modified):
-        print(f"\nDone! {len(modified)} file(s) packed into patch-4.mpq")
+    success, packed = pack_files(to_pack)
+
+    # Record only what actually packed, so a failed add is retried next run.
+    if packed:
+        cache.update({archive_path_of(f): hashes[f] for f in packed})
+        save_cache(cache)
+
+    if success:
+        print(f"\nDone! {len(packed)} file(s) packed into patch-4.mpq")
         return 0
     else:
         print("\nSome files failed to pack.")
