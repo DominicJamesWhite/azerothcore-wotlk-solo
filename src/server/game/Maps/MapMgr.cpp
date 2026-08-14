@@ -268,6 +268,19 @@ void MapMgr::Update(uint32 diff)
     MapMapType::iterator iter = i_maps.begin();
     for (; iter != i_maps.end(); ++iter)
     {
+        // Offline combat simulator: update only the arena map.
+        //
+        // The simulator shares a process with a whole live world, and the busy
+        // continents never stop working -- Northrend alone produced ~2900 NPC-vs-NPC
+        // damage events during a 60 second measurement, from the Ebon Hold and
+        // Borean Tundra scripted battles. That costs wall-clock time the sim is
+        // trying to save, and worse, every one of those rolls draws from the same
+        // thread-local RNG stream as our fight, so a seeded run is not reproducible.
+        //
+        // Zero (the default) disables this entirely, so live behaviour is unchanged.
+        if (_simArenaMapId && iter->second->GetId() != _simArenaMapId)
+            continue;
+
         bool full = mapUpdateStep < 3 && ((mapUpdateStep == 0 && !iter->second->IsBattlegroundOrArena() && !iter->second->IsDungeon()) || (mapUpdateStep == 1 && iter->second->IsBattlegroundOrArena()) || (mapUpdateStep == 2 && iter->second->IsDungeon()));
         if (m_updater.activated())
             m_updater.schedule_update(*iter->second, uint32(full ? i_timer[mapUpdateStep].GetCurrent() : 0), diff);

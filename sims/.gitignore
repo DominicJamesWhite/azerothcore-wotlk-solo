@@ -1,0 +1,5 @@
+# Simulator run artefacts: one JSON result and one ~38k-line worldserver log per
+# run. Committed baselines live in sims/baseline/ and are tracked deliberately
+# (see the --check regression mode in the plan); everything under runs/ is
+# reproducible output and is not.
+runs/

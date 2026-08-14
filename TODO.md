@@ -37,7 +37,6 @@ item-targeting cursor (the sharpening-stone interaction) and clicking an item
 upgrades it.
 
 ## The Quartermaster
-
 10x XP without 10x loot means you level roughly ten times faster than equipment
 and money arrive, so you outrun your gear and cannot afford what the game still
 charges. Two separate fixes.
@@ -130,11 +129,17 @@ the whole change can be rolled back without a rebuild.
     - [ ]  Tuning
 - [x] Frost dk
     - [ ]  Tuning
-- [ ] MM hunter
+- [x] MM hunter
     - [ ]  Tuning
-- [ ] BM hunter
+- [x] BM hunter
     - [ ]  Tuning
 - [ ] Surv hunter
+    - [ ]  Tuning
+- [x] Arms warrior
+    - [ ]  Tuning
+- [x] Prot warrior
+    - [ ]  Tuning
+- [ ] Fury warrior
     - [ ]  Tuning
 
 ### Death Knight
@@ -207,13 +212,52 @@ the whole change can be rolled back without a rebuild.
 
 ### Hunter
 
-**Spec Themes:**
-- [ ] **Beast Mastery:** Pet armor and health is boosted.
-- [ ] **Marksmanship:** Your attacks reduce the damage taken by pets.
-- [ ] **Survival:** Traps reduce enemy damage.
+Implementation detail and the traps hit along the way live in
+[docs/hunter_implementation_notes.md](docs/hunter_implementation_notes.md).
 
-**Class Signature Skill:**
-- [ ] **Primal Bond:** Damage you do heals your pet and damage your pet does increases your armor.
+- [x] **Pet damage/threat trade:** the pet does 20% less damage but generates 60% more threat from melee and special attacks, so it can hold a pull for a solo hunter. Hunter pets only. (4.71)
+
+**Spell Changes:**
+- [x] **Aspect of the Beast (Renamed to Beast Cleave):** Redesigned. Command your pet to cleave. For 15 sec your pet's melee attacks also strike all other enemies within 8 yds for 75% of the damage dealt. 30s cooldown. Still trained at level 30. (4.70) — the original "Renamed to Explosive Shot" plan was dropped because retail Explosive Shot (53301) is still the Survival tier-9 talent and two spells of that name would collide.
+- [x] **Aspect of the Monkey:** Also "becoming untrackable and increasing melee attack power of the hunter and the hunter's pet by 10%." in addition to other benefits to replace Aspect of the Beast (4.70)
+- [x] **Scare Beast (Renamed to Lacerating Shot)**: Redesigned. A shot that causes the target to bleed for ( 60% of RAP ) over 10 seconds. 10s cooldown. (4.70) Retuned down from the originally specified 300% of RAP, which was 15x Serpent Sting's total and 3x Arcane Shot's sustained throughput.
+- [x] **Beast Lore (Renamed to Instinctive Fire)**: Redesigned. Fire off an instinctive shot, dealing ( 12% of RAP ) damage and increasing your ranged attack speed by 20% for 6 seconds after firing. 8s cooldown. (4.70)
+- [x] **Freezing Arrow (Renamed to Pack Hunting)**: Redesigned. For 10s all threat from your abilities is transferred to your pet. 20s cooldown. (Granted at Level 24 instead of 80) (4.70)
+
+
+**Beast Mastery Talents:**
+Positions are `(column, tier)`, both zero-indexed, matching the client's tree
+layout, and reflect the **post-swap** layout as shipped.
+
+- [x] **SWAP positions of CATLIKE REFLEXES and ANIMAL HANDLER** (4.71)
+- [x] **SWAP positions of TASTE FOR BLOOD and BESTIAL DISCIPLINE** (4.71)
+
+- [x] **Endurance Training (2, 0):** Increases the health of your pet by 10% and your total health by 5%. When your pet heals from Mend Pet you also recover mana equal to 20/40/60/80/100% of the amount healed. (5 ranks) (4.71)
+- [x] **Improved Aspect of the Monkey (Renamed to Taste for Blood) (3, 4):** Redesigned. Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to 5/10/15% of your ranged attack power. (3 ranks) (4.71) The bleed has to be yours, and the pet is what triggers it — your own attacks are not involved. Retuned down from 20/40/60% to 10/20/30% in 4.72 and again to 5/10/15% in 4.73 — measured at about twice the intended damage each time, because output rides pet attack speed rather than the hunter's rotation.
+- [x] **Thick Hide (2, 1):** Increases the armor rating of your pets by 20%, and their chance to dodge is increased by your agility. (3 ranks) (4.71)
+- [x] **Improved Revive Pet (Renamed to Share the Spoils) (3, 1):** Redesigned. Killing an enemy that grants experience or honor has a 50/100% chance to increase the mana returned by Aspect of the Viper by 500% for 10 seconds. (2 ranks) (4.71)
+- [x] **Pathfinding (Renamed to Against the odds) (0, 2):** Your Multi-Shot has a 50/100% chance to also cast an empowered Beast Cleave when it hits an enemy, dealing 100% more damage. (2 ranks) (4.71)
+- [x] **Improved Mend Pet (Renamed to Superior Training) (1, 3):** When your pet is attacked it has a 50/100% chance to bite back, dealing damage to all enemies within 8 yards. If your pet hasn't been attacked for more than 8 seconds it gains Well-Trained, increasing its damage by 10%. (2 ranks) (4.71)
+- [x] **Spirit Bond (0, 4):** While your pet is active, you and your pet regenerate 2% of total health every 10 sec, and Mend Pet is 50/100% more effective. (2 ranks) (4.71)
+- [x] **Bestial Discipline (1, 1):** Increases the focus regeneration of your pets by 100%, and your critical hits restore 5 focus to your pet. (2 ranks) (4.71)
+- [x] **Animal Handler (2, 6):** Increases your pet's attack power by 10%, and your ranged attacks have a 10/20% chance to trigger Bestial Wrath. (2 ranks) (4.71) Requires Bestial Wrath. Retuned up from 1/2%, which was too rare to notice.
+- [x] **Catlike Reflexes (0, 5):** Increases your pet's chance to dodge by 3/6/9%, and when your pet dodges the cooldown on Pack Hunting is reset. Additionally reduces the cooldown of Kill Command by 10/20/30 sec. (3 ranks) (4.71)
+- [x] **Invigoration (0, 7):** When your pet scores a critical hit with a special ability, you instantly regenerate 1/2% mana and the cooldown on Instinctive Fire is reset and its next cast costs no mana. (2 ranks) (4.71)
+
+**Marksmanship Talents:**
+Positions are `(column, tier)`, both zero-indexed, matching the client's tree
+layout, and reflect the **post-swap** layout as shipped.
+
+- [x] **SWAP positions of Go for The Throat with Improved Concussive Shot** (4.72)
+
+- [x] **Improved Concussive Shot (Renamed to Lethal Instincts) (0, 2):** Your Arcane Shot, Chimera Shot, Aimed Shot and Steady Shot have a 50/100% chance to refresh the duration of Instinctive Fire. Increases the duration of Instinctive Fire by 3/6 sec. (2 ranks) (4.72) Two independent effects: the flat increase is a duration spellmod applying to every cast, the refresh is the shot proc. Uses Instinctive Fire's icon. Required giving the buff (200742) a SpellFamilyFlags bit, since it had none.
+- [x] **Focused Aim (1, 0):** Your pet's attacks do 33/66/100% more threat to targets affected by Hunter's Mark. Additionally increases hit chance by 1/2/3% permanently. (3 ranks) (4.72)
+- [x] **Improved Hunter's Mark (1, 1):** Retail's attack power and mana cost effects are kept. Additionally, your damage to targets affected by your Hunter's Mark heals your pet for 10/20/30% of the damage done. (3 ranks) (4.72) Your damage only, not the pet's. The heal carries SPELL_ATTR1_NO_THREAT — without it, healing forwards 50% of the amount as assist threat to the hunter, which would fight Pack Hunting and Focused Aim.
+- [x] **Go for the Throat (0, 0):** Ranged critical hits cause your pet to generate 25/50 Focus, and for ten seconds your pet's melee hits cause a bleed to be applied to the target for 25/50% of the damage done that causes a high amount of threat. (2 ranks) (Damage added like Deep Wounds / Unholy Blight) (4.72)
+- [x] **Rapid Killing (3, 2):** Reduces Rapid Fire's cooldown by 1.5/3 min, and your Steady Shot, Arcane Shot, Chimera Shot and Aimed Shot refresh the duration of Pack Hunting. (2 ranks) (4.72) The refresh does not scale with rank; the cooldown is what the second point buys.
+- [x] **Concussive Barrage (0, 4):** Your Multi Shot has a 50/100% chance to reduce the channeled duration of the next Volley by 2.5 secs, reduce the mana cost by 100%, and shots fire every .5 secs. (2 ranks) (4.72)
+- [x] **Piercing Shots (0, 6):** Critical Aimed, Steady and Chimera Shots bleed the target for 30% of the damage dealt over 8 sec and have a 33/66/100% chance to reset the duration of Lacerating Shot on your target. Increases the duration of Lacerating Shot by 2/4/6 sec. (3 ranks) (duration refresh similar to Everlasting Affliction) (4.72) Two independent effects: the flat increase is a duration spellmod applying to every Lacerating Shot, the reset is the crit proc. Required giving Lacerating Shot a SpellFamilyFlags bit, since it had none. **The flat increase is a damage increase, not just uptime:** the bleed ticks every 2 sec, so +2/4/6 sec buys 6/7/8 ticks instead of 5 — +20/40/60% total bleed damage.
+- [x] **Improved Barrage (2, 6):** Replace Volley pushback reduction with mana cost reduction of 10/20/30%. (3 ranks) (4.72) 
 
 ### Mage
 

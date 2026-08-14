@@ -72,6 +72,11 @@ public:
     void Initialize(void);
     void Update(uint32);
 
+    /// Offline combat simulator: when non-zero, only this map is updated.
+    /// Zero (the default) is normal server behaviour. See MapMgr::Update.
+    void SetSimArenaMapId(uint32 mapId) { _simArenaMapId = mapId; }
+    [[nodiscard]] uint32 GetSimArenaMapId() const { return _simArenaMapId; }
+
     void SetMapUpdateInterval(uint32 t)
     {
         if (t < MIN_MAP_UPDATE_DELAY)
@@ -175,6 +180,7 @@ private:
 
     InstanceIds _instanceIds;
     uint32 _nextInstanceId;
+    uint32 _simArenaMapId = 0;
     MapUpdater m_updater;
 };
 

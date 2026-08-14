@@ -21,6 +21,8 @@
 #include "Common.h"
 #include "Duration.h"
 
+#include <atomic>
+
 enum class TimeFormat : uint8
 {
     FullText,  // 1 Days 2 Hours 3 Minutes 4 Seconds 5 Milliseconds
@@ -100,9 +102,31 @@ inline Milliseconds GetMSTimeDiff(Milliseconds oldMSTime, Milliseconds newMSTime
     }
 }
 
+// -- Virtual clock (offline combat simulator) -------------------------------
+//
+// Zero on every build that is not running --sim, and the branch below is then a
+// predictable no-op on an already-hot cache line.
+//
+// This exists because spell cooldowns do not go through GameTime at all:
+// Player::HasSpellCooldown compares against getMSTime(), which reads the OS
+// clock. With the rest of the world on a virtual clock running at 10-40x
+// realtime, every cooldown lasted 10-40x longer in game terms -- a 4-second
+// Crusader Strike came up roughly once per fight. The effect was invisible in
+// aggregate and enormous in detail: it silently depressed every cooldown-driven
+// spec while leaving spammable casters intact, so a balance matrix built on it
+// would have "shown" that melee needs buffing.
+//
+// Set by GameTime::UpdateGameTimers, which is the one place that knows what
+// time it is. It shares an origin with GetApplicationStartTime, so the value is
+// continuous across the moment the simulator takes over.
+AC_COMMON_API extern std::atomic<uint32> VirtualMSTime;
+
 inline uint32 getMSTime()
 {
     using namespace std::chrono;
+
+    if (uint32 virtualMS = VirtualMSTime.load(std::memory_order_relaxed))
+        return virtualMS;
 
     return uint32(duration_cast<milliseconds>(steady_clock::now() - GetApplicationStartTime()).count());
 }

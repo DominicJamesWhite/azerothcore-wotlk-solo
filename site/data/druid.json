@@ -2677,7 +2677,6 @@
      "modDetail": [
       "SpellDescription0",
       "Effect3",
-      "EffectApplyAuraName3",
       "EffectBasePoints3",
       "EffectDieSides3"
      ]
@@ -2760,14 +2759,13 @@
      "modKind": "description",
      "modDetail": [
       "SpellDescription0",
+      "ProcChance",
       "EffectBasePoints1",
       "EffectBasePoints2",
-      "EffectDieSides1",
       "EffectDieSides2",
       "Effect2",
       "EffectApplyAuraName1",
-      "EffectApplyAuraName2",
-      "ProcChance"
+      "EffectApplyAuraName2"
      ]
     },
     {

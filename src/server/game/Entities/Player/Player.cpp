@@ -11854,7 +11854,8 @@ void Player::ApplyEquipCooldown(Item* pItem)
                 continue;
 
             if (Aura* itemAura = GetAura(spellData.SpellId, GetGUID(), pItem->GetGUID()))
-                itemAura->AddProcCooldown(std::chrono::steady_clock::now() + procEntry->Cooldown);
+                // GameTime::Now(): same clock the proc ICD is later compared against.
+                itemAura->AddProcCooldown(GameTime::Now() + procEntry->Cooldown);
             continue;
         }
 
@@ -14273,7 +14274,14 @@ void Player::LearnPetTalent(ObjectGuid petGuid, uint32 talentId, uint32 talentRa
 
     // prevent learn talent for different family (cheating)
     if (!((1 << pet_family->petTalentType) & talentTabInfo->petTalentMask))
+    {
+        // Kept deliberately: this gate is data-driven and rejects silently, so
+        // a bad petTalentMask (talenttab_dbc overrides TalentTab.dbc) makes a
+        // whole pet family unable to learn anything with no other symptom than
+        // "Learn does nothing". See woa_2026_08_11_05.sql.
+        LOG_DEBUG("alonecraft.debug", "LearnPetTalent: family-mask reject talent={} tab={} petTalentType={} petTalentMask={}", talentId, talentInfo->TalentTab, pet_family->petTalentType, talentTabInfo->petTalentMask);
         return;
+    }
 
     // find current max talent rank (0~5)
     uint8 curtalent_maxrank = 0; // 0 = not learned any rank

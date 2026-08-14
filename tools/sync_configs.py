@@ -253,8 +253,25 @@ def value_diff(dist_path, deployed_path, overrides):
     deployed_values = dict(deployed_settings)
 
     changes = []
+    seen = set()
     for key, dist_value in dist_settings:
+        seen.add(key)
         new_value = overrides.get(key, dist_value)
+        old_value = deployed_values.get(key)
+        if old_value is None:
+            changes.append((key, None, new_value))
+        elif old_value != new_value:
+            changes.append((key, old_value, new_value))
+
+    # Keys the override files add but the template does not define. render()
+    # writes these into the "Alonecraft additions" block, so leaving them out of
+    # the diff made a new or edited addition report "no effective change" and
+    # never prompt for --accept-changes. Found when a new WoaSoloSpecLink entry
+    # was reported as an addition by the drift check, shown as no change by the
+    # diff, and was absent from the deployed config all along.
+    for key, new_value in overrides.items():
+        if key in seen:
+            continue
         old_value = deployed_values.get(key)
         if old_value is None:
             changes.append((key, None, new_value))

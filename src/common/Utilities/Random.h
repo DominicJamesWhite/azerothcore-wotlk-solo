@@ -53,6 +53,18 @@ AC_COMMON_API double rand_chance();
 /* Return a random number in the range 0..count (exclusive) with each value having a different chance of happening */
 AC_COMMON_API uint32 urandweighted(std::size_t count, double const* chances);
 
+/**
+ * @brief Reseed the calling thread's random stream deterministically.
+ *
+ * Every combat roll -- irand/urand/frand/rand_norm/rand_chance/roll_chance_*
+ * -- routes through the same thread-local engine, so one call covers them all.
+ *
+ * Only the offline combat simulator calls this, at the start of each iteration.
+ * Combat runs on the world thread and the engine is thread_local, so DB and
+ * network threads keep their own streams and cannot perturb a simulated fight.
+ */
+AC_COMMON_API void SetRandomSeed(uint32 seed);
+
 /* Return true if a random roll fits in the specified chance (range 0-100). */
 inline bool roll_chance_f(float chance)
 {

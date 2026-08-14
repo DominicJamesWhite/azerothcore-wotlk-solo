@@ -82,33 +82,42 @@
       {
        "r": 1,
        "spell": 19583,
-       "desc": "Increases the health of your pet by 2% and your total health by 1%.",
-       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+       "desc": "Increases the health of your pet by 2% and your total health by 1%.  When your pet is healed by your Mend Pet, you recover mana equal to 20% of the amount healed.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%.  When your pet is healed by your Mend Pet, you recover mana equal to $s3% of the amount healed."
       },
       {
        "r": 2,
        "spell": 19584,
-       "desc": "Increases the health of your pet by 4% and your total health by 2%.",
-       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+       "desc": "Increases the health of your pet by 4% and your total health by 2%.  When your pet is healed by your Mend Pet, you recover mana equal to 40% of the amount healed.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%.  When your pet is healed by your Mend Pet, you recover mana equal to $s3% of the amount healed."
       },
       {
        "r": 3,
        "spell": 19585,
-       "desc": "Increases the health of your pet by 6% and your total health by 3%.",
-       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+       "desc": "Increases the health of your pet by 6% and your total health by 3%.  When your pet is healed by your Mend Pet, you recover mana equal to 60% of the amount healed.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%.  When your pet is healed by your Mend Pet, you recover mana equal to $s3% of the amount healed."
       },
       {
        "r": 4,
        "spell": 19586,
-       "desc": "Increases the health of your pet by 8% and your total health by 4%.",
-       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+       "desc": "Increases the health of your pet by 8% and your total health by 4%.  When your pet is healed by your Mend Pet, you recover mana equal to 80% of the amount healed.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%.  When your pet is healed by your Mend Pet, you recover mana equal to $s3% of the amount healed."
       },
       {
        "r": 5,
        "spell": 19587,
-       "desc": "Increases the health of your pet by 10% and your total health by 5%.",
-       "raw": "Increases the health of your pet by $s1% and your total health by $s2%."
+       "desc": "Increases the health of your pet by 10% and your total health by 5%.  When your pet is healed by your Mend Pet, you recover mana equal to 100% of the amount healed.",
+       "raw": "Increases the health of your pet by $s1% and your total health by $s2%.  When your pet is healed by your Mend Pet, you recover mana equal to $s3% of the amount healed."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
      ]
     },
     {
@@ -143,39 +152,41 @@
     },
     {
      "i": 3,
-     "id": 1381,
-     "fieldName": "improvedAspectOfTheMonkey",
+     "id": 1390,
+     "fieldName": "bestialDiscipline",
      "location": {
       "rowIdx": 1,
       "colIdx": 1
      },
      "spellIds": [
-      19549,
-      19550,
-      19551
+      19590,
+      19592
      ],
-     "maxPoints": 3,
-     "name": "Improved Aspect of the Monkey",
-     "icon": "ability_hunter_aspectofthemonkey",
+     "maxPoints": 2,
+     "name": "Bestial Discipline",
+     "icon": "spell_nature_abolishmagic",
      "ranks": [
       {
        "r": 1,
-       "spell": 19549,
-       "desc": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 2%.",
-       "raw": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by $s1%."
+       "spell": 19590,
+       "desc": "Increases the Focus regeneration of your pets by 50%, and your critical hits restore 5 Focus to your pet.",
+       "raw": "Increases the Focus regeneration of your pets by $s1%, and your critical hits restore $200754s1 Focus to your pet."
       },
       {
        "r": 2,
-       "spell": 19550,
-       "desc": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 4%.",
-       "raw": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by $s1%."
-      },
-      {
-       "r": 3,
-       "spell": 19551,
-       "desc": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 6%.",
-       "raw": "Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by $s1%."
+       "spell": 19592,
+       "desc": "Increases the Focus regeneration of your pets by 100%, and your critical hits restore 5 Focus to your pet.",
+       "raw": "Increases the Focus regeneration of your pets by $s1%, and your critical hits restore $200754s1 Focus to your pet."
       }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "SpellDescription0",
+      "Effect2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -198,27 +209,35 @@
       {
        "r": 1,
        "spell": 19609,
-       "desc": "Increases the armor rating of your pets by 7% and your armor contribution from items by 4%.",
-       "raw": "Increases the armor rating of your pets by $s1% and your armor contribution from items by $s2%."
+       "desc": "Increases the armor rating of your pets by 7%, and increases their chance to dodge by your Agility.",
+       "raw": "Increases the armor rating of your pets by $s1%, and increases their chance to dodge by your Agility."
       },
       {
        "r": 2,
        "spell": 19610,
-       "desc": "Increases the armor rating of your pets by 14% and your armor contribution from items by 7%.",
-       "raw": "Increases the armor rating of your pets by $s1% and your armor contribution from items by $s2%."
+       "desc": "Increases the armor rating of your pets by 14%, and increases their chance to dodge by your Agility.",
+       "raw": "Increases the armor rating of your pets by $s1%, and increases their chance to dodge by your Agility."
       },
       {
        "r": 3,
        "spell": 19612,
-       "desc": "Increases the armor rating of your pets by 20% and your armor contribution from items by 10%.",
-       "raw": "Increases the armor rating of your pets by $s1% and your armor contribution from items by $s2%."
+       "desc": "Increases the armor rating of your pets by 20%, and increases their chance to dodge by your Agility.",
+       "raw": "Increases the armor rating of your pets by $s1%, and increases their chance to dodge by your Agility."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "EffectApplyAuraName2"
      ]
     },
     {
      "i": 5,
      "id": 1625,
-     "fieldName": "improvedRevivePet",
+     "fieldName": "shareTheSpoils",
      "location": {
       "rowIdx": 1,
       "colIdx": 3
@@ -228,27 +247,48 @@
       19575
      ],
      "maxPoints": 2,
-     "name": "Improved Revive Pet",
-     "icon": "ability_hunter_beastsoothe",
+     "name": "Share the Spoils",
+     "icon": "ability_hunter_aspectoftheviper",
      "ranks": [
       {
        "r": 1,
        "spell": 24443,
-       "desc": "Revive Pet's casting time is reduced by 3 sec, mana cost is reduced by 20%, and increases the health your pet returns with by an additional 15%.",
-       "raw": "Revive Pet's casting time is reduced by $/1000;s1 sec, mana cost is reduced by $s2%, and increases the health your pet returns with by an additional $s3%."
+       "desc": "Killing an enemy that grants experience or honor has a 50% chance to increase the mana returned by your Aspect of the Viper by 500% for 10 sec.",
+       "raw": "Killing an enemy that grants experience or honor has a $h% chance to increase the mana returned by your Aspect of the Viper by $200748s1% for $200748d."
       },
       {
        "r": 2,
        "spell": 19575,
-       "desc": "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%.",
-       "raw": "Revive Pet's casting time is reduced by $/1000;s1 sec, mana cost is reduced by $s2%, and increases the health your pet returns with by an additional $s3%."
+       "desc": "Killing an enemy that grants experience or honor has a 100% chance to increase the mana returned by your Aspect of the Viper by 500% for 10 sec.",
+       "raw": "Killing an enemy that grants experience or honor has a $h% chance to increase the mana returned by your Aspect of the Viper by $200748s1% for $200748d."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "DurationIndex",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "EffectDieSides3",
+      "Effect2",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ],
+     "baseName": "Improved Revive Pet"
     },
     {
      "i": 6,
      "id": 1384,
-     "fieldName": "pathfinding",
+     "fieldName": "againstTheOdds",
      "location": {
       "rowIdx": 2,
       "colIdx": 0
@@ -258,22 +298,41 @@
       19560
      ],
      "maxPoints": 2,
-     "name": "Pathfinding",
-     "icon": "ability_mount_jungletiger",
+     "name": "Against the Odds",
+     "icon": "ability_whirlwind",
      "ranks": [
       {
        "r": 1,
        "spell": 19559,
-       "desc": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 4%, and increases your speed while mounted by 5%. The mounted movement speed increase does not stack with other effects.",
-       "raw": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by $s1%, and increases your speed while mounted by $s2%. The mounted movement speed increase does not stack with other effects."
+       "desc": "Your Multi-Shot has a 50% chance to also command your pet to Beast Cleave, and that Beast Cleave deals 100% additional damage.",
+       "raw": "Your Multi-Shot has a $h% chance to also command your pet to Beast Cleave, and that Beast Cleave deals $200749s1% additional damage."
       },
       {
        "r": 2,
        "spell": 19560,
-       "desc": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 8%, and increases your speed while mounted by 10%. The mounted movement speed increase does not stack with other effects.",
-       "raw": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by $s1%, and increases your speed while mounted by $s2%. The mounted movement speed increase does not stack with other effects."
+       "desc": "Your Multi-Shot has a 100% chance to also command your pet to Beast Cleave, and that Beast Cleave deals 100% additional damage.",
+       "raw": "Your Multi-Shot has a $h% chance to also command your pet to Beast Cleave, and that Beast Cleave deals $200749s1% additional damage."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectBasePoints3",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2",
+      "EffectApplyAuraName3"
+     ],
+     "baseName": "Pathfinding"
     },
     {
      "i": 7,
@@ -357,7 +416,7 @@
     {
      "i": 9,
      "id": 1385,
-     "fieldName": "improvedMendPet",
+     "fieldName": "superiorTraining",
      "location": {
       "rowIdx": 3,
       "colIdx": 1
@@ -367,22 +426,37 @@
       19573
      ],
      "maxPoints": 2,
-     "name": "Improved Mend Pet",
-     "icon": "ability_hunter_mendpet",
+     "name": "Superior Training",
+     "icon": "ability_druid_ferociousbite",
      "ranks": [
       {
        "r": 1,
        "spell": 19572,
-       "desc": "Reduces the mana cost of your Mend Pet spell by 10% and gives the Mend Pet spell a 25% chance of cleansing 1 Curse, Disease, Magic or Poison effect from the pet each tick.",
-       "raw": "Reduces the mana cost of your Mend Pet spell by $s2% and gives the Mend Pet spell a $s1% chance of cleansing $24406s1 Curse, Disease, Magic or Poison effect from the pet each tick."
+       "desc": "When your pet is attacked it has a 50% chance to bite back, dealing damage to all enemies within 8 yards.  If your pet has not been attacked for more than 8 sec it gains Well-Trained, increasing its damage by 10%.",
+       "raw": "When your pet is attacked it has a $h% chance to bite back, dealing damage to all enemies within 8 yards.  If your pet has not been attacked for more than 8 sec it gains Well-Trained, increasing its damage by $200753s1%."
       },
       {
        "r": 2,
        "spell": 19573,
-       "desc": "Reduces the mana cost of your Mend Pet spell by 20% and gives the Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic or Poison effect from the pet each tick.",
-       "raw": "Reduces the mana cost of your Mend Pet spell by $s2% and gives the Mend Pet spell a $s1% chance of cleansing $24406s1 Curse, Disease, Magic or Poison effect from the pet each tick."
+       "desc": "When your pet is attacked it has a 100% chance to bite back, dealing damage to all enemies within 8 yards.  If your pet has not been attacked for more than 8 sec it gains Well-Trained, increasing its damage by 10%.",
+       "raw": "When your pet is attacked it has a $h% chance to bite back, dealing damage to all enemies within 8 yards.  If your pet has not been attacked for more than 8 sec it gains Well-Trained, increasing its damage by $200753s1%."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "renamed",
+     "modDetail": [
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Mend Pet"
     },
     {
      "i": 10,
@@ -454,15 +528,22 @@
       {
        "r": 1,
        "spell": 19578,
-       "desc": "While your pet is active, you and your pet will regenerate 1% of total health every 10 sec., and increases healing done to you and your pet by 5%.",
-       "raw": "While your pet is active, you and your pet will regenerate $19579s1% of total health every $19579t1 sec., and increases healing done to you and your pet by $s2%."
+       "desc": "While your pet is active, you and your pet will regenerate 1% of total health every 10 sec., and your Mend Pet is 50% more effective.",
+       "raw": "While your pet is active, you and your pet will regenerate $19579s1% of total health every $19579t1 sec., and your Mend Pet is $s2% more effective."
       },
       {
        "r": 2,
        "spell": 20895,
-       "desc": "While your pet is active, you and your pet will regenerate 2% of total health every 10 sec., and increases healing done to you and your pet by 10%.",
-       "raw": "While your pet is active, you and your pet will regenerate $24529s1% of total health every $24529t1 sec., and increases healing done to you and your pet by $s2%."
+       "desc": "While your pet is active, you and your pet will regenerate 2% of total health every 10 sec., and your Mend Pet is 100% more effective.",
+       "raw": "While your pet is active, you and your pet will regenerate $24529s1% of total health every $24529t1 sec., and your Mend Pet is $s2% more effective."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -490,62 +571,100 @@
     },
     {
      "i": 13,
-     "id": 1390,
-     "fieldName": "bestialDiscipline",
+     "id": 1381,
+     "fieldName": "tasteForBlood",
      "location": {
       "rowIdx": 4,
       "colIdx": 3
      },
      "spellIds": [
-      19590,
-      19592
+      19549,
+      19550,
+      19551
      ],
-     "maxPoints": 2,
-     "name": "Bestial Discipline",
-     "icon": "spell_nature_abolishmagic",
+     "maxPoints": 3,
+     "name": "Taste for Blood",
+     "icon": "ability_ghoulfrenzy",
      "ranks": [
       {
        "r": 1,
-       "spell": 19590,
-       "desc": "Increases the Focus regeneration of your pets by 50%.",
-       "raw": "Increases the Focus regeneration of your pets by $s1%."
+       "spell": 19549,
+       "desc": "Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to 5% of your ranged attack power.",
+       "raw": "Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to $s1% of your ranged attack power."
       },
       {
        "r": 2,
-       "spell": 19592,
-       "desc": "Increases the Focus regeneration of your pets by 100%.",
-       "raw": "Increases the Focus regeneration of your pets by $s1%."
+       "spell": 19550,
+       "desc": "Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to 10% of your ranged attack power.",
+       "raw": "Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to $s1% of your ranged attack power."
+      },
+      {
+       "r": 3,
+       "spell": 19551,
+       "desc": "Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to 15% of your ranged attack power.",
+       "raw": "Your pet's attacks against targets affected by your Lacerating Shot deal additional damage equal to $s1% of your ranged attack power."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "SpellName0",
+      "SpellDescription0",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "EffectApplyAuraName1"
+     ],
+     "baseName": "Improved Aspect of the Monkey"
     },
     {
      "i": 14,
-     "id": 1799,
-     "fieldName": "animalHandler",
+     "id": 1801,
+     "fieldName": "catlikeReflexes",
      "location": {
       "rowIdx": 5,
       "colIdx": 0
      },
      "spellIds": [
-      34453,
-      34454
+      34462,
+      34464,
+      34465
      ],
-     "maxPoints": 2,
-     "name": "Animal Handler",
-     "icon": "ability_hunter_animalhandler",
+     "maxPoints": 3,
+     "name": "Catlike Reflexes",
+     "icon": "ability_hunter_catlikereflexes",
      "ranks": [
       {
        "r": 1,
-       "spell": 34453,
-       "desc": "Increases your pet's attack power by 5%, and increases the duration of your Master's Call effect by 3 sec.",
-       "raw": "Increases your pet's attack power by $s2%, and increases the duration of your Master's Call effect by $/1000;s1 sec."
+       "spell": 34462,
+       "desc": "Increases your pet's chance to dodge by 3%, and when your pet dodges an attack the cooldown on your Pack Hunting is reset.  In addition, reduces the cooldown of your Kill Command ability by 10 sec.",
+       "raw": "Increases your pet's chance to dodge by $s2%, and when your pet dodges an attack the cooldown on your Pack Hunting is reset.  In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
       },
       {
        "r": 2,
-       "spell": 34454,
-       "desc": "Increases your pet's attack power by 10%, and increases the duration of your Master's Call effect by 6 sec.",
-       "raw": "Increases your pet's attack power by $s2%, and increases the duration of your Master's Call effect by $/1000;s1 sec."
+       "spell": 34464,
+       "desc": "Increases your pet's chance to dodge by 6%, and when your pet dodges an attack the cooldown on your Pack Hunting is reset.  In addition, reduces the cooldown of your Kill Command ability by 20 sec.",
+       "raw": "Increases your pet's chance to dodge by $s2%, and when your pet dodges an attack the cooldown on your Pack Hunting is reset.  In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
+      },
+      {
+       "r": 3,
+       "spell": 34465,
+       "desc": "Increases your pet's chance to dodge by 9%, and when your pet dodges an attack the cooldown on your Pack Hunting is reset.  In addition, reduces the cooldown of your Kill Command ability by 30 sec.",
+       "raw": "Increases your pet's chance to dodge by $s2%, and when your pet dodges an attack the cooldown on your Pack Hunting is reset.  In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
       }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "SpellDescription0",
+      "EffectDieSides1",
+      "EffectApplyAuraName1",
+      "EffectBasePoints1"
      ]
     },
     {
@@ -671,39 +790,51 @@
     },
     {
      "i": 18,
-     "id": 1801,
-     "fieldName": "catlikeReflexes",
+     "id": 1799,
+     "fieldName": "animalHandler",
      "location": {
       "rowIdx": 6,
       "colIdx": 2
      },
      "spellIds": [
-      34462,
-      34464,
-      34465
+      34453,
+      34454
      ],
-     "maxPoints": 3,
-     "name": "Catlike Reflexes",
-     "icon": "ability_hunter_catlikereflexes",
+     "maxPoints": 2,
+     "name": "Animal Handler",
+     "icon": "ability_hunter_animalhandler",
      "ranks": [
       {
        "r": 1,
-       "spell": 34462,
-       "desc": "Increases your chance to dodge by 1% and your pet's chance to dodge by an additional 3%. In addition, reduces the cooldown of your Kill Command ability by 10 sec.",
-       "raw": "Increases your chance to dodge by $s1% and your pet's chance to dodge by an additional $s2%. In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
+       "spell": 34453,
+       "desc": "Increases your pet's attack power by 5%, and gives your ranged attacks a 10% chance to send your pet into a Bestial Wrath.",
+       "raw": "Increases your pet's attack power by $s2%, and gives your ranged attacks a $h% chance to send your pet into a Bestial Wrath."
       },
       {
        "r": 2,
-       "spell": 34464,
-       "desc": "Increases your chance to dodge by 2% and your pet's chance to dodge by an additional 6%. In addition, reduces the cooldown of your Kill Command ability by 20 sec.",
-       "raw": "Increases your chance to dodge by $s1% and your pet's chance to dodge by an additional $s2%. In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
-      },
-      {
-       "r": 3,
-       "spell": 34465,
-       "desc": "Increases your chance to dodge by 3% and your pet's chance to dodge by an additional 9%. In addition, reduces the cooldown of your Kill Command ability by 30 sec.",
-       "raw": "Increases your chance to dodge by $s1% and your pet's chance to dodge by an additional $s2%. In addition, reduces the cooldown of your Kill Command ability by $/1000;s3 sec."
+       "spell": 34454,
+       "desc": "Increases your pet's attack power by 10%, and gives your ranged attacks a 20% chance to send your pet into a Bestial Wrath.",
+       "raw": "Increases your pet's attack power by $s2%, and gives your ranged attacks a $h% chance to send your pet into a Bestial Wrath."
       }
+     ],
+     "prereqLocation": {
+      "rowIdx": 6,
+      "colIdx": 1
+     },
+     "prereqRank": 1,
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "ColumnIndex",
+      "PrereqTalent_1",
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints1",
+      "EffectBasePoints3",
+      "EffectDieSides1",
+      "EffectDieSides3",
+      "EffectApplyAuraName1"
      ]
     },
     {
@@ -725,21 +856,32 @@
       {
        "r": 1,
        "spell": 53252,
-       "desc": "When your pet scores a critical hit with a special ability, you have a 50% chance to instantly regenerate 1% mana.",
-       "raw": "When your pet scores a critical hit with a special ability, you have a $s1% chance to instantly regenerate $53398s1% mana."
+       "desc": "When your pet scores a critical hit with a special ability, you instantly regenerate 1% of your total mana and the cooldown on your Instinctive Fire is reset, its next cast costing no mana.",
+       "raw": "When your pet scores a critical hit with a special ability, you instantly regenerate $s2% of your total mana and the cooldown on your Instinctive Fire is reset, its next cast costing no mana."
       },
       {
        "r": 2,
        "spell": 53253,
-       "desc": "When your pet scores a critical hit with a special ability, you have a 100% chance to instantly regenerate 1% mana.",
-       "raw": "When your pet scores a critical hit with a special ability, you have a $s1% chance to instantly regenerate $53398s1% mana."
+       "desc": "When your pet scores a critical hit with a special ability, you instantly regenerate 2% of your total mana and the cooldown on your Instinctive Fire is reset, its next cast costing no mana.",
+       "raw": "When your pet scores a critical hit with a special ability, you instantly regenerate $s2% of your total mana and the cooldown on your Instinctive Fire is reset, its next cast costing no mana."
       }
      ],
      "prereqLocation": {
       "rowIdx": 6,
       "colIdx": 0
      },
-     "prereqRank": 3
+     "prereqRank": 3,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2",
+      "EffectBasePoints2"
+     ]
     },
     {
      "i": 20,
@@ -983,32 +1125,42 @@
    "talents": [
     {
      "i": 0,
-     "id": 1341,
-     "fieldName": "improvedConcussiveShot",
+     "id": 1818,
+     "fieldName": "goForTheThroat",
      "location": {
       "rowIdx": 0,
       "colIdx": 0
      },
      "spellIds": [
-      19407,
-      19412
+      34950,
+      34954
      ],
      "maxPoints": 2,
-     "name": "Improved Concussive Shot",
-     "icon": "spell_frost_stun",
+     "name": "Go for the Throat",
+     "icon": "ability_hunter_goforthethroat",
      "ranks": [
       {
        "r": 1,
-       "spell": 19407,
-       "desc": "Increases the duration of your Concussive Shot's daze effect by 1 sec.",
-       "raw": "Increases the duration of your Concussive Shot's daze effect by $/1000;s1 sec."
+       "spell": 34950,
+       "desc": "Your ranged critical hits cause your pet to generate 25 Focus and enter a frenzy for 10 sec.  While frenzied, your pet's melee hits rend the target for 25% of the damage dealt, generating a high amount of threat.",
+       "raw": "Your ranged critical hits cause your pet to generate $34952s1 Focus and enter a frenzy for $200760d.  While frenzied, your pet's melee hits rend the target for $s2% of the damage dealt, generating a high amount of threat."
       },
       {
        "r": 2,
-       "spell": 19412,
-       "desc": "Increases the duration of your Concussive Shot's daze effect by 2 sec.",
-       "raw": "Increases the duration of your Concussive Shot's daze effect by $/1000;s1 sec."
+       "spell": 34954,
+       "desc": "Your ranged critical hits cause your pet to generate 50 Focus and enter a frenzy for 10 sec.  While frenzied, your pet's melee hits rend the target for 50% of the damage dealt, generating a high amount of threat.",
+       "raw": "Your ranged critical hits cause your pet to generate $34953s1 Focus and enter a frenzy for $200760d.  While frenzied, your pet's melee hits rend the target for $s2% of the damage dealt, generating a high amount of threat."
       }
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "SpellDescription0",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -1031,21 +1183,28 @@
       {
        "r": 1,
        "spell": 53620,
-       "desc": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by 23%, and increases your chance to hit by 1%.",
-       "raw": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by $s1%, and increases your chance to hit by $s2%."
+       "desc": "Your pet's attacks deal 33% additional threat to targets affected by your Hunter's Mark, and your chance to hit is increased by 1%.",
+       "raw": "Your pet's attacks deal $s1% additional threat to targets affected by your Hunter's Mark, and your chance to hit is increased by $s2%."
       },
       {
        "r": 2,
        "spell": 53621,
-       "desc": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by 46%, and increases your chance to hit by 2%.",
-       "raw": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by $s1%, and increases your chance to hit by $s2%."
+       "desc": "Your pet's attacks deal 66% additional threat to targets affected by your Hunter's Mark, and your chance to hit is increased by 2%.",
+       "raw": "Your pet's attacks deal $s1% additional threat to targets affected by your Hunter's Mark, and your chance to hit is increased by $s2%."
       },
       {
        "r": 3,
        "spell": 53622,
-       "desc": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by 70%, and increases your chance to hit by 3%.",
-       "raw": "Reduces the pushback suffered from damaging attacks while casting Steady Shot by $s1%, and increases your chance to hit by $s2%."
+       "desc": "Your pet's attacks deal 100% additional threat to targets affected by your Hunter's Mark, and your chance to hit is increased by 3%.",
+       "raw": "Your pet's attacks deal $s1% additional threat to targets affected by your Hunter's Mark, and your chance to hit is increased by $s2%."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectApplyAuraName1"
      ]
     },
     {
@@ -1156,21 +1315,30 @@
       {
        "r": 1,
        "spell": 19421,
-       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 10%, and reduces the mana cost of your Hunter's Mark ability by 33%.",
-       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%."
+       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 10%, and reduces the mana cost of your Hunter's Mark ability by 33%.  Your damage to targets affected by your Hunter's Mark heals your pet for 10% of the damage done.",
+       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%.  Your damage to targets affected by your Hunter's Mark heals your pet for $s3% of the damage done."
       },
       {
        "r": 2,
        "spell": 19422,
-       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 20%, and reduces the mana cost of your Hunter's Mark ability by 66%.",
-       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%."
+       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 20%, and reduces the mana cost of your Hunter's Mark ability by 66%.  Your damage to targets affected by your Hunter's Mark heals your pet for 20% of the damage done.",
+       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%.  Your damage to targets affected by your Hunter's Mark heals your pet for $s3% of the damage done."
       },
       {
        "r": 3,
        "spell": 19423,
-       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 30%, and reduces the mana cost of your Hunter's Mark ability by 100%.",
-       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%."
+       "desc": "Increases the bonus attack power granted by your Hunter's Mark ability by 30%, and reduces the mana cost of your Hunter's Mark ability by 100%.  Your damage to targets affected by your Hunter's Mark heals your pet for 30% of the damage done.",
+       "raw": "Increases the bonus attack power granted by your Hunter's Mark ability by $s1%, and reduces the mana cost of your Hunter's Mark ability by $s2%.  Your damage to targets affected by your Hunter's Mark heals your pet for $s3% of the damage done."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints3",
+      "EffectDieSides3",
+      "Effect3",
+      "EffectApplyAuraName3"
      ]
     },
     {
@@ -1226,33 +1394,50 @@
     },
     {
      "i": 6,
-     "id": 1818,
-     "fieldName": "goForTheThroat",
+     "id": 1341,
+     "fieldName": "lethalInstincts",
      "location": {
       "rowIdx": 2,
       "colIdx": 0
      },
      "spellIds": [
-      34950,
-      34954
+      19407,
+      19412
      ],
      "maxPoints": 2,
-     "name": "Go for the Throat",
-     "icon": "ability_hunter_goforthethroat",
+     "name": "Lethal Instincts",
+     "icon": null,
      "ranks": [
       {
        "r": 1,
-       "spell": 34950,
-       "desc": "Your ranged critical hits cause your pet to generate 25 Focus.",
-       "raw": "Your ranged critical hits cause your pet to generate $34952s1 Focus."
+       "spell": 19407,
+       "desc": "Your Arcane Shot, Chimera Shot, Aimed Shot and Steady Shot have a 50% chance to refresh the duration of Instinctive Fire.  Increases the duration of Instinctive Fire by 3 sec.",
+       "raw": "Your Arcane Shot, Chimera Shot, Aimed Shot and Steady Shot have a $h% chance to refresh the duration of Instinctive Fire.  Increases the duration of Instinctive Fire by $/1000;s2 sec."
       },
       {
        "r": 2,
-       "spell": 34954,
-       "desc": "Your ranged critical hits cause your pet to generate 50 Focus.",
-       "raw": "Your ranged critical hits cause your pet to generate $34953s1 Focus."
+       "spell": 19412,
+       "desc": "Your Arcane Shot, Chimera Shot, Aimed Shot and Steady Shot have a 100% chance to refresh the duration of Instinctive Fire.  Increases the duration of Instinctive Fire by 6 sec.",
+       "raw": "Your Arcane Shot, Chimera Shot, Aimed Shot and Steady Shot have a $h% chance to refresh the duration of Instinctive Fire.  Increases the duration of Instinctive Fire by $/1000;s2 sec."
       }
-     ]
+     ],
+     "modified": true,
+     "modKind": "structure",
+     "modDetail": [
+      "TierID",
+      "SpellName0",
+      "SpellDescription0",
+      "ProcChance",
+      "SpellIconID",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides1",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName1",
+      "EffectApplyAuraName2"
+     ],
+     "baseName": "Improved Concussive Shot"
     },
     {
      "i": 7,
@@ -1338,15 +1523,23 @@
       {
        "r": 1,
        "spell": 34948,
-       "desc": "Reduces the cooldown of your Rapid Fire ability by 1 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes 10% additional damage.  Lasts 20 sec.",
-       "raw": "Reduces the cooldown of your Rapid Fire ability by $/60000;s2 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes $35098s1% additional damage.  Lasts $35098d."
+       "desc": "Reduces the cooldown of your Rapid Fire ability by 1.5 min.  In addition, your Steady Shot, Arcane Shot, Chimera Shot and Aimed Shot refresh the duration of Pack Hunting.",
+       "raw": "Reduces the cooldown of your Rapid Fire ability by $/60000;s2 min.  In addition, your Steady Shot, Arcane Shot, Chimera Shot and Aimed Shot refresh the duration of Pack Hunting."
       },
       {
        "r": 2,
        "spell": 34949,
-       "desc": "Reduces the cooldown of your Rapid Fire ability by 2 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes 20% additional damage.  Lasts 20 sec.",
-       "raw": "Reduces the cooldown of your Rapid Fire ability by $/60000;s2 min.  In addition, after killing an opponent that yields experience or honor, your next Aimed Shot, Arcane Shot or Chimera Shot causes $35099s1% additional damage.  Lasts $35099d."
+       "desc": "Reduces the cooldown of your Rapid Fire ability by 3 min.  In addition, your Steady Shot, Arcane Shot, Chimera Shot and Aimed Shot refresh the duration of Pack Hunting.",
+       "raw": "Reduces the cooldown of your Rapid Fire ability by $/60000;s2 min.  In addition, your Steady Shot, Arcane Shot, Chimera Shot and Aimed Shot refresh the duration of Pack Hunting."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectApplyAuraName1"
      ]
     },
     {
@@ -1456,15 +1649,20 @@
       {
        "r": 1,
        "spell": 35100,
-       "desc": "Your successful Chimera Shot and Multi-Shot attacks have a 50% chance to Daze the target for 4 sec.",
-       "raw": "Your successful Chimera Shot and Multi-Shot attacks have a $h% chance to Daze the target for $35101d."
+       "desc": "Your Multi-Shot has a 50% chance to reduce the channeled duration of your next Volley by 2.5 sec, reduce its mana cost by 100%, and make it fire every 0.5 sec.",
+       "raw": "Your Multi-Shot has a $h% chance to reduce the channeled duration of your next Volley by 2.5 sec, reduce its mana cost by 100%, and make it fire every 0.5 sec."
       },
       {
        "r": 2,
        "spell": 35102,
-       "desc": "Your successful Chimera Shot and Multi-Shot attacks have a 100% chance to Daze the target for 4 sec.",
-       "raw": "Your successful Chimera Shot and Multi-Shot attacks have a $h% chance to Daze the target for $35101d."
+       "desc": "Your Multi-Shot has a 100% chance to reduce the channeled duration of your next Volley by 2.5 sec, reduce its mana cost by 100%, and make it fire every 0.5 sec.",
+       "raw": "Your Multi-Shot has a $h% chance to reduce the channeled duration of your next Volley by 2.5 sec, reduce its mana cost by 100%, and make it fire every 0.5 sec."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0"
      ]
     },
     {
@@ -1613,21 +1811,32 @@
       {
        "r": 1,
        "spell": 53234,
-       "desc": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for 10% of the damage dealt over 8 sec.",
-       "raw": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for $s1% of the damage dealt over $63468d."
+       "desc": "Your critical Aimed, Steady and Chimera Shots bleed the target for 30% of the damage dealt over 8 sec and have a 33% chance to reset the duration of your Lacerating Shot on the target.  Increases the duration of your Lacerating Shot by 2 sec.",
+       "raw": "Your critical Aimed, Steady and Chimera Shots bleed the target for $s1% of the damage dealt over $63468d and have a $h% chance to reset the duration of your Lacerating Shot on the target.  Increases the duration of your Lacerating Shot by $/1000;s2 sec."
       },
       {
        "r": 2,
        "spell": 53237,
-       "desc": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for 20% of the damage dealt over 8 sec.",
-       "raw": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for $s1% of the damage dealt over $63468d."
+       "desc": "Your critical Aimed, Steady and Chimera Shots bleed the target for 30% of the damage dealt over 8 sec and have a 66% chance to reset the duration of your Lacerating Shot on the target.  Increases the duration of your Lacerating Shot by 4 sec.",
+       "raw": "Your critical Aimed, Steady and Chimera Shots bleed the target for $s1% of the damage dealt over $63468d and have a $h% chance to reset the duration of your Lacerating Shot on the target.  Increases the duration of your Lacerating Shot by $/1000;s2 sec."
       },
       {
        "r": 3,
        "spell": 53238,
-       "desc": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for 30% of the damage dealt over 8 sec.",
-       "raw": "Your critical Aimed, Steady and Chimera Shots cause the target to bleed for $s1% of the damage dealt over $63468d."
+       "desc": "Your critical Aimed, Steady and Chimera Shots bleed the target for 30% of the damage dealt over 8 sec and have a 100% chance to reset the duration of your Lacerating Shot on the target.  Increases the duration of your Lacerating Shot by 6 sec.",
+       "raw": "Your critical Aimed, Steady and Chimera Shots bleed the target for $s1% of the damage dealt over $63468d and have a $h% chance to reset the duration of your Lacerating Shot on the target.  Increases the duration of your Lacerating Shot by $/1000;s2 sec."
       }
+     ],
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "ProcChance",
+      "EffectBasePoints1",
+      "EffectBasePoints2",
+      "EffectDieSides2",
+      "Effect2",
+      "EffectApplyAuraName2"
      ]
     },
     {
@@ -1678,27 +1887,33 @@
       {
        "r": 1,
        "spell": 35104,
-       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 4% and reduces the pushback suffered from damaging attacks while channeling Volley by 33%.",
-       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the pushback suffered from damaging attacks while channeling Volley by $s2%."
+       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 4% and reduces the mana cost of your Volley by 10%.",
+       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the mana cost of your Volley by $s2%."
       },
       {
        "r": 2,
        "spell": 35110,
-       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 8% and reduces the pushback suffered from damaging attacks while channeling Volley by 66%.",
-       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the pushback suffered from damaging attacks while channeling Volley by $s2%."
+       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 8% and reduces the mana cost of your Volley by 20%.",
+       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the mana cost of your Volley by $s2%."
       },
       {
        "r": 3,
        "spell": 35111,
-       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 12% and reduces the pushback suffered from damaging attacks while channeling Volley by 100%.",
-       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the pushback suffered from damaging attacks while channeling Volley by $s2%."
+       "desc": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by 12% and reduces the mana cost of your Volley by 30%.",
+       "raw": "Increases the critical strike chance of your Multi-Shot and Aimed Shot abilities by $s1% and reduces the mana cost of your Volley by $s2%."
       }
      ],
      "prereqLocation": {
       "rowIdx": 4,
       "colIdx": 2
      },
-     "prereqRank": 3
+     "prereqRank": 3,
+     "modified": true,
+     "modKind": "description",
+     "modDetail": [
+      "SpellDescription0",
+      "EffectBasePoints2"
+     ]
     },
     {
      "i": 20,

@@ -56,6 +56,26 @@ namespace GameTime
 
     /// Update all timers
     void UpdateGameTimers();
+
+    // -- Virtual clock (offline combat simulator) ---------------------------
+    //
+    // Every timer in the game reads the cached values above, which are refreshed
+    // only by UpdateGameTimers() once per world tick. Advancing them by a fixed
+    // step instead of sampling the OS clock therefore runs combat as fast as the
+    // CPU allows while every cooldown, GCD, aura duration, swing timer and proc
+    // ICD stays exactly correct.
+    //
+    // A runtime flag rather than a compile-time one on purpose: the simulator's
+    // whole value is that it runs the same binary as the live server, so the
+    // shipped build must contain this path. The cost is one branch per world
+    // tick -- the getters above are untouched.
+    //
+    // Off unless EnableVirtualClock is called, which only worldserver --sim does.
+
+    /// Advance the cached clocks by stepMs per tick instead of reading the OS.
+    AC_GAME_API void EnableVirtualClock(uint32 stepMs);
+
+    AC_GAME_API bool IsVirtualClock();
 }
 
 #endif

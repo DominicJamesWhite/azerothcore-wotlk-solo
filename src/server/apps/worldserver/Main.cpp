@@ -30,6 +30,7 @@
 #include "Config.h"
 #include "DatabaseEnv.h"
 #include "DatabaseLoader.h"
+#include "GameTime.h"
 #include "GitRevision.h"
 #include "IoContext.h"
 #include "MapMgr.h"
@@ -114,6 +115,7 @@ bool LoadRealmInfo(Acore::Asio::IoContext& ioContext);
 AsyncAcceptor* StartRaSocketAcceptor(Acore::Asio::IoContext& ioContext);
 void ShutdownCLIThread(std::thread* cliThread);
 void WorldUpdateLoop();
+void SimUpdateLoop(uint32 tickMs);
 variables_map GetConsoleArguments(int argc, char** argv, fs::path& configFile, [[maybe_unused]] std::string& cfg_service);
 
 /// Launch the Azeroth server
@@ -397,7 +399,13 @@ int main(int argc, char** argv)
         cliThread.reset(new std::thread(CliThread), &ShutdownCLIThread);
     }
 
-    WorldUpdateLoop();
+    // The simulator swaps the realtime loop for a fixed-diff one. The spec path
+    // reaches the world_of_alonecraft module via sConfigMgr->GetArguments(), so
+    // the core needs no knowledge of the simulator beyond supplying its clock.
+    if (vm.count("sim"))
+        SimUpdateLoop(uint32(sConfigMgr->GetOption<int32>("Alonecraft.Sim.TickMs", 25)));
+    else
+        WorldUpdateLoop();
 
     // Shutdown starts here
     threadPool.reset();
@@ -614,6 +622,37 @@ void WorldUpdateLoop()
     WorldDatabase.WarnAboutSyncQueries(false);
 }
 
+/**
+ * @brief The offline combat simulator's update loop.
+ *
+ * Identical to WorldUpdateLoop() except that the diff is a constant and no time
+ * is spent sleeping, so combat runs as fast as the CPU allows. GameTime is
+ * advanced by exactly the same constant, which means diff and the game clock can
+ * never drift apart -- a property the live loop does not have.
+ *
+ * World::Update, not Map::Update, because the playerbot AI tick
+ * (ScriptMgr::OnPlayerbotUpdate), the bots' fake sessions (UpdateSessions) and
+ * bot login completion (ProcessQueryCallbacks) all live in the world tick. The
+ * simulator's whole premise is that it runs the same code as the live server, so
+ * carving out a subset of the tick would defeat it.
+ *
+ * The simulation itself is driven from the world_of_alonecraft module, off
+ * ScriptMgr::OnWorldUpdate. This loop only supplies the clock, and stops when the
+ * module calls World::StopNow.
+ */
+void SimUpdateLoop(uint32 tickMs)
+{
+    GameTime::EnableVirtualClock(tickMs);
+
+    LOG_INFO("server.worldserver", "Simulator: virtual clock enabled, {} ms per tick.", tickMs);
+
+    while (!World::IsStopped())
+    {
+        ++World::m_worldLoopCounter;
+        sWorld->Update(tickMs);
+    }
+}
+
 void SignalHandler(boost::system::error_code const& error, int /*signalNumber*/)
 {
     if (!error)
@@ -723,6 +762,7 @@ variables_map GetConsoleArguments(int argc, char** argv, fs::path& configFile, [
         ("help,h", "print usage message")
         ("version,v", "print version build info")
         ("dry-run,d", "Dry run")
+        ("sim", value<std::string>()->value_name("spec.json"), "Run the offline combat simulator against <arg> and exit")
         ("config,c", value<fs::path>(&configFile)->default_value(fs::path(sConfigMgr->GetConfigPath() + std::string(_ACORE_CORE_CONFIG))), "use <arg> as configuration file")
         ("config-policy", value<std::string>()->value_name("policy"), "override config severity policy (e.g. default=skip,critical_option=fatal)");
 

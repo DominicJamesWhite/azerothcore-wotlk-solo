@@ -18,6 +18,7 @@
 #include "ArenaSpectator.h"
 #include "CellImpl.h"
 #include "Common.h"
+#include "Config.h"
 #include "GameTime.h"
 #include "GridNotifiers.h"
 #include "Log.h"
@@ -2102,7 +2103,9 @@ void Aura::AddProcCooldown(SpellProcEntry const* procEntry, TimePoint now)
 
 void Aura::ResetProcCooldown()
 {
-    m_procCooldown = std::chrono::steady_clock::now();
+    // See Unit::GetProcAurasTriggeredOnEvent: m_procCooldown is compared against
+    // GameTime-derived values, so it must be written from the same clock.
+    m_procCooldown = GameTime::Now();
 }
 
 void Aura::PrepareProcToTrigger(AuraApplication* aurApp, ProcEventInfo& eventInfo, TimePoint now)
@@ -2133,6 +2136,52 @@ uint8 Aura::GetProcEffectMask(AuraApplication* aurApp, ProcEventInfo& eventInfo,
     // only auras with spell proc entry can trigger proc
     if (!procEntry)
         return 0;
+
+    // -- Proc diagnostics (Alonecraft) -------------------------------------
+    //
+    // Off unless Alonecraft.ProcDebug is set, which only ever happens under the
+    // offline simulator. Every gate above this point is silent when it rejects,
+    // so a proc that is configured correctly and simply never fires cannot be
+    // told apart from one that is misconfigured -- which cost most of a session
+    // on a single mage talent. One line, all the predicates.
+    //
+    // The e* fields are the resolved SpellProcEntry, and they are the half that
+    // matters: an explicit spell_proc row overrides the DBC entirely, so the
+    // event side and the DBC side can both look correct while the entry the
+    // engine actually consults says something else. Empowered Touch was exactly
+    // that -- DBC ProcFlags 16384 (magic damage class, positive) against a
+    // spell_proc row carrying 65536 (negative), rejecting every heal that was
+    // supposed to trigger it, for every druid, silently.
+    // Read once. This runs for every applied aura on every proc event, so a
+    // config lookup here would cost a map probe and a string compare per aura
+    // per hit.
+    static bool const procDebug = sConfigMgr->GetOption<bool>("Alonecraft.ProcDebug", false);
+    if (procDebug)
+    {
+        SpellInfo const* eventSpell = eventInfo.GetSpellInfo();
+        LOG_DEBUG("alonecraft.debug",
+            "proc-check aura {} ({}) by spell {} : charges={} onCooldown={} cdEnd={} nowMs={} "
+            "canTrigger={} effectMask={} typeMask={} phaseMask={} hitMask={} "
+            "procFamily={} procMask0={} spellFamily={} spellFlags0={} "
+            "eProcFlags={} eTypeMask={} ePhaseMask={} eHitMask={} eAttrMask={} "
+            "eSchool={} evSpellType={} evSchool={} disableMask={}",
+            GetId(), GetSpellInfo()->SpellName[0] ? GetSpellInfo()->SpellName[0] : "?",
+            eventSpell ? eventSpell->Id : 0,
+            IsUsingCharges() ? GetCharges() : -1,
+            IsProcOnCooldown(now) ? 1 : 0,
+            std::chrono::duration_cast<Milliseconds>(m_procCooldown.time_since_epoch()).count(),
+            std::chrono::duration_cast<Milliseconds>(now.time_since_epoch()).count(),
+            sSpellMgr->CanSpellTriggerProcOnEvent(*procEntry, eventInfo) ? 1 : 0,
+            uint32(aurApp->GetEffectMask()),
+            eventInfo.GetTypeMask(), eventInfo.GetSpellPhaseMask(), eventInfo.GetHitMask(),
+            procEntry->SpellFamilyName, procEntry->SpellFamilyMask[0],
+            eventSpell ? eventSpell->SpellFamilyName : 0,
+            eventSpell ? uint32(eventSpell->SpellFamilyFlags[0]) : 0,
+            procEntry->ProcFlags, procEntry->SpellTypeMask, procEntry->SpellPhaseMask,
+            procEntry->HitMask, procEntry->AttributesMask, procEntry->SchoolMask,
+            eventInfo.GetSpellTypeMask(), eventInfo.GetSchoolMask(),
+            procEntry->DisableEffectsMask);
+    }
 
     // check spell triggering us
     if (Spell const* spell = eventInfo.GetProcSpell())
@@ -2173,6 +2222,7 @@ uint8 Aura::GetProcEffectMask(AuraApplication* aurApp, ProcEventInfo& eventInfo,
     // check proc cooldown
     if (IsProcOnCooldown(now))
         return 0;
+
 
     // do checks against db data
     if (!sSpellMgr->CanSpellTriggerProcOnEvent(*procEntry, eventInfo))

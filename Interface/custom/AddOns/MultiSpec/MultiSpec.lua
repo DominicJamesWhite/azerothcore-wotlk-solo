@@ -25,9 +25,27 @@ local specNameCache = {}
 -- Spec tabs
 -- ============================================================
 local specTabs = {}
+local petTab = nil
+local petSelected = false
 local initialized = false
 
 local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
+local PET_FALLBACK_ICON = "Interface\\Icons\\Ability_Hunter_BeastCall"
+
+-- Blizzard's own pet spec tab ("petspec1"), which we hide and drive by proxy.
+-- Clicking it via PlayerSpecTab_OnClick is what sets the frame's private
+-- selectedSpec, which PlayerTalentFrame_UpdateTabs reads for tab counts and
+-- glyph-tab visibility. Setting PlayerTalentFrame.pet alone is not enough.
+local BLIZZ_PET_TAB = "PlayerSpecTab3"
+local BLIZZ_PLAYER_TAB = "PlayerSpecTab1"
+
+-- Only hunter pets have talents; GetNumTalentGroups reports 0 for everything
+-- else, so this stays generic rather than class-checking.
+local function PetTalentsAvailable()
+    return UnitExists("pet")
+        and GetNumTalentGroups(false, true) > 0
+        and GetNumTalentTabs(false, true) > 0
+end
 
 -- Reset a spec's cached visuals back to the unspecced question mark.
 -- Called when a spec has zero talent points (fresh spec or after a reset).
@@ -112,6 +130,32 @@ end
 -- ============================================================
 -- Tab visual updates
 -- ============================================================
+
+-- The pet tab sits at the bottom of the stack, under whichever spec tab is
+-- currently last. Spec tabs above it are hidden but still anchored, so the
+-- pet tab has to be re-anchored rather than chained to a fixed neighbour.
+local function UpdatePetTab()
+    if not petTab then return end
+
+    if not PetTalentsAvailable() then
+        petTab:Hide()
+        return
+    end
+
+    local anchor = specTabs[math.min(realSpecCount, MAX_SPECS)] or specTabs[1]
+    petTab:ClearAllPoints()
+    -- Wider gap than the 16px between spec tabs — this is a different unit
+    petTab:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -32)
+
+    SetPortraitTexture(petTab:GetNormalTexture(), "pet")
+    if not petTab:GetNormalTexture():GetTexture() then
+        petTab:GetNormalTexture():SetTexture(PET_FALLBACK_ICON)
+    end
+
+    petTab:SetChecked(petSelected)
+    petTab:Show()
+end
+
 local function UpdateAllTabs()
     for i = 1, MAX_SPECS do
         local tab = specTabs[i]
@@ -130,11 +174,13 @@ local function UpdateAllTabs()
             end
 
             -- Check mark for the currently selected/viewed tab
-            tab:SetChecked(i == selectedTab)
+            tab:SetChecked(not petSelected and i == selectedTab)
         else
             tab:Hide()
         end
     end
+
+    UpdatePetTab()
 end
 
 -- ============================================================
@@ -144,6 +190,15 @@ local function UpdateFrameForSpec(specNum)
     if not PlayerTalentFrame then return end
 
     selectedTab = specNum
+
+    -- Coming back from the pet view: hand Blizzard's frame back to the player
+    -- unit through its own tab handler so selectedSpec (and with it the glyph
+    -- tab and talent tab count) stops pointing at petspec1.
+    if petSelected then
+        petSelected = false
+        local blizzTab = _G[BLIZZ_PLAYER_TAB]
+        if blizzTab then PlayerSpecTab_OnClick(blizzTab) end
+    end
 
     -- Determine which client slot has this spec's data
     if specNum == realActiveSpec then
@@ -188,6 +243,37 @@ local function UpdateFrameForSpec(specNum)
 end
 
 -- ============================================================
+-- Pet talent view
+-- ============================================================
+local function SelectPetSpec()
+    if not PlayerTalentFrame then return end
+    if not PetTalentsAvailable() then return end
+
+    local blizzTab = _G[BLIZZ_PET_TAB]
+    if not blizzTab then return end
+
+    petSelected = true
+
+    -- A pet exposes one talent tab, the player three plus glyphs. Blizzard's
+    -- PlayerSpecTab_OnClick only picks a tree tab when none is selected, so a
+    -- carried-over tab 2/3/glyph makes PlayerTalentFrame_UpdateTabs bail out
+    -- early and skip PlayerTalentFrame_UpdateControls on that pass.
+    PanelTemplates_SetTab(PlayerTalentFrame,
+        PlayerTalentTab_GetBestDefaultTab("petspec1"))
+
+    -- Blizzard's handler sets pet/unit/talentGroup, picks a sensible tree tab
+    -- and refreshes. Reusing it keeps the pet path identical to retail.
+    PlayerSpecTab_OnClick(blizzTab)
+
+    local titleText = _G["PlayerTalentFrameTitleText"]
+    if titleText then
+        titleText:SetText(UnitName("pet") or PET)
+    end
+
+    UpdateAllTabs()
+end
+
+-- ============================================================
 -- Create the spec tabs on the talent frame
 -- ============================================================
 local function CreateSpecTabs()
@@ -203,6 +289,38 @@ local function CreateSpecTabs()
     -- Override Blizzard's controls update — it uses its own 2-spec logic
     -- which conflicts with our 8-spec system
     PlayerTalentFrame_UpdateControls = function()
+        -- Blizzard's PlayerTalentFrame_UpdateSpecs hands the frame back to the
+        -- player behind our back: it clears its private selectedSpec whenever
+        -- the pet reports zero talent groups, which is exactly the window
+        -- .spec leaves open (ActivateSpec removes the pet without resummoning).
+        -- The Learn button reads PlayerTalentFrame.pet, not our flag, so treat
+        -- the frame as authoritative — otherwise we show an enabled Learn that
+        -- fires LearnPreviewTalents(false) and applies the player's preview.
+        if petSelected and not PlayerTalentFrame.pet then
+            petSelected = false
+        end
+
+        if petSelected then
+            -- A pet spec is never "activated" — it is always live
+            PlayerTalentFrameActivateButton:Hide()
+            PlayerTalentFrameStatusFrame:Hide()
+            if GetUnspentTalentPoints(false, true, 1) > 0 and GetCVarBool("previewTalents") then
+                PlayerTalentFramePreviewBar:Show()
+                if GetGroupPreviewTalentPointsSpent(true, 1) > 0 then
+                    PlayerTalentFrameLearnButton:Enable()
+                    PlayerTalentFrameResetButton:Enable()
+                else
+                    PlayerTalentFrameLearnButton:Disable()
+                    PlayerTalentFrameResetButton:Disable()
+                end
+                PlayerTalentFramePointsBar:SetPoint("BOTTOM", PlayerTalentFramePreviewBar, "TOP", 0, -4)
+            else
+                PlayerTalentFramePreviewBar:Hide()
+                PlayerTalentFramePointsBar:SetPoint("BOTTOM", PlayerTalentFrame, "BOTTOM", 0, 81)
+            end
+            return
+        end
+
         if not selectedTab then return end
         if selectedTab == realActiveSpec then
             PlayerTalentFrameActivateButton:Hide()
@@ -327,6 +445,56 @@ local function CreateSpecTabs()
     end
 
     -- ============================================================
+    -- Pet tab (hunters only), stacked below the spec tabs
+    -- ============================================================
+    petTab = CreateFrame("CheckButton", "MultiSpecPetTab", PlayerTalentFrame)
+    petTab:SetWidth(32)
+    petTab:SetHeight(32)
+
+    local petBg = petTab:CreateTexture("MultiSpecPetTabBackground", "BACKGROUND")
+    petBg:SetTexture("Interface\\SpellBook\\SpellBook-SkillLineTab")
+    petBg:SetWidth(64)
+    petBg:SetHeight(64)
+    petBg:SetPoint("TOPLEFT", petTab, "TOPLEFT", -3, 11)
+
+    local petNtex = petTab:CreateTexture(nil, "ARTWORK")
+    petNtex:SetAllPoints()
+    petNtex:SetTexture(PET_FALLBACK_ICON)
+    petTab:SetNormalTexture(petNtex)
+
+    local petCtex = petTab:CreateTexture(nil, "ARTWORK")
+    petCtex:SetTexture("Interface\\Buttons\\CheckButtonHilight")
+    petCtex:SetBlendMode("ADD")
+    petCtex:SetAllPoints()
+    petTab:SetCheckedTexture(petCtex)
+
+    local petHtex = petTab:CreateTexture(nil, "HIGHLIGHT")
+    petHtex:SetTexture("Interface\\Buttons\\ButtonHilight-Square")
+    petHtex:SetBlendMode("ADD")
+    petHtex:SetAllPoints()
+    petTab:SetHighlightTexture(petHtex)
+
+    petTab:SetPoint("TOPLEFT", specTabs[1], "BOTTOMLEFT", 0, -32)
+
+    petTab:SetScript("OnClick", function()
+        PlaySound("igCharacterInfoTab")
+        SelectPetSpec()
+    end)
+
+    petTab:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:AddLine(UnitName("pet") or PET)
+        local _, _, pointsSpent = GetTalentTabInfo(1, false, true, 1)
+        if pointsSpent then
+            GameTooltip:AddLine(tostring(pointsSpent), 1, 1, 1)
+        end
+        GameTooltip:Show()
+    end)
+    petTab:SetScript("OnLeave", function() GameTooltip:Hide() end)
+
+    petTab:Hide()
+
+    -- ============================================================
     -- Hook the Activate button
     -- ============================================================
     PlayerTalentFrameActivateButton:SetScript("OnClick", function(self)
@@ -347,15 +515,41 @@ local function CreateSpecTabs()
 
     PlayerTalentFrame:HookScript("OnHide", function()
         selectedTab = nil
+        -- Hand Blizzard's frame back to the player too. Clearing only our own
+        -- flag leaves its private selectedSpec on "petspec1", and on the next
+        -- open that silently drops PREVIEW_TALENT_POINTS_CHANGED for the
+        -- player tree — clicks stop repainting with no visible cause.
+        if petSelected then
+            petSelected = false
+            local blizzTab = _G[BLIZZ_PLAYER_TAB]
+            if blizzTab then PlayerSpecTab_OnClick(blizzTab) end
+        end
     end)
 
     -- Hook talent update to refresh after server sends new data
     local eventFrame = CreateFrame("Frame")
     eventFrame:RegisterEvent("PLAYER_TALENT_UPDATE")
-    eventFrame:SetScript("OnEvent", function()
-        if PlayerTalentFrame and PlayerTalentFrame:IsShown() and selectedTab then
+    eventFrame:RegisterEvent("PET_TALENT_UPDATE")
+    eventFrame:RegisterEvent("UNIT_PET")
+    eventFrame:SetScript("OnEvent", function(self, event, arg1)
+        if event == "UNIT_PET" and arg1 ~= "player" then return end
+
+        if not (PlayerTalentFrame and PlayerTalentFrame:IsShown()) then return end
+
+        if petSelected then
+            -- Pet dismissed while viewing its tree, or Blizzard reset the frame
+            -- to the player under us — either way, fall back cleanly
+            if not PetTalentsAvailable() or not PlayerTalentFrame.pet then
+                UpdateFrameForSpec(selectedTab or realActiveSpec)
+                return
+            end
+            PlayerTalentFrame_Refresh()
+            UpdateAllTabs()
+        elseif selectedTab then
             -- Server sent new talent data, refresh our view
             UpdateFrameForSpec(selectedTab)
+        else
+            UpdateAllTabs()
         end
     end)
 
@@ -408,8 +602,9 @@ loader:SetScript("OnEvent", function(self, event, arg1)
             realSpecCount = tonumber(count)
             realPreviewSpec = tonumber(preview)
             UpdateAllTabs()
-            -- If talent frame is open and we were waiting for preview data, refresh
-            if PlayerTalentFrame and PlayerTalentFrame:IsShown() and selectedTab then
+            -- If talent frame is open and we were waiting for preview data, refresh.
+            -- Don't yank the user out of the pet tree to do it.
+            if PlayerTalentFrame and PlayerTalentFrame:IsShown() and selectedTab and not petSelected then
                 UpdateFrameForSpec(selectedTab)
             end
         end

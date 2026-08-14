@@ -29,6 +29,10 @@ class SFMTRand
 {
 public:
     SFMTRand();
+    /// Deterministic stream. Used by the offline combat simulator so a run can
+    /// be reproduced exactly, and so an A/B comparison can share one stream of
+    /// luck instead of paying for it in extra iterations.
+    explicit SFMTRand(uint32 seed);
     uint32 RandomUInt32(); // Output random bits
     void* operator new(std::size_t size, std::nothrow_t const&);
     void operator delete(void* ptr, std::nothrow_t const&);

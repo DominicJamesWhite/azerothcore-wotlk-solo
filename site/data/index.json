@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "generated": "2026-08-10T18:57:07Z",
+ "generated": "2026-08-13T21:39:18Z",
  "source": "live",
- "fingerprint": "52f8281f9fb1795d",
+ "fingerprint": "32517e924c0508b1",
  "iconBase": "./assets/icons/",
  "maxPoints": 71,
  "classes": [
@@ -40,7 +40,7 @@
     "Survival"
    ],
    "talents": 81,
-   "modified": 3
+   "modified": 22
   },
   {
    "key": "mage",
@@ -130,14 +130,14 @@
  "degraded": [],
  "stats": {
   "talents": 834,
-  "talentsModified": 213,
+  "talentsModified": 232,
   "descriptions": 2245,
   "descriptionsWithUnresolved": 16,
   "modifiedKinds": {
-   "description": 130,
+   "description": 140,
    "new": 11,
-   "renamed": 49,
-   "structure": 14,
+   "renamed": 52,
+   "structure": 20,
    "values": 9
   }
  }

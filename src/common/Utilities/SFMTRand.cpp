@@ -73,6 +73,11 @@ SFMTRand::SFMTRand()
     }
 }
 
+SFMTRand::SFMTRand(uint32 seed)
+{
+    sfmt_init_gen_rand(&_state, seed);
+}
+
 uint32 SFMTRand::RandomUInt32()                            // Output random bits
 {
     return sfmt_genrand_uint32(&_state);

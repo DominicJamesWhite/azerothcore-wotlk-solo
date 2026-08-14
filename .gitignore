@@ -134,3 +134,10 @@ build_and_run.bat
 
 # Python bytecode from tools/
 __pycache__/
+
+# Simulator output. Regenerable from tools/sim_matrix.py, and large -- 128 MB
+# across ~40 runs, mostly per-fight event arrays and their HTML reports. The
+# gear lists under sims/gear/ are INPUT and are tracked.
+/sims/runs/
+/sims/index.html
+/sims/matrix.html

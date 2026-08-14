@@ -46,10 +46,11 @@ ARCHIVES = [
 
 
 def wanted_icons():
-    """Icon names referenced by the exported talent data.
+    """Icon names referenced by the exported talent data and by sim results.
 
-    Driven by site/data/*.json rather than by SpellIcon.dbc as a whole: we
-    want the ~400 icons the calculator actually renders, not all 3226.
+    Driven by what actually gets rendered rather than by SpellIcon.dbc as a
+    whole: we want the icons the calculator and the sim reports draw, not all
+    3226.
     """
     if not os.path.isdir(SITE_DATA):
         sys.exit(f"ERROR: {SITE_DATA} not found. Run tools/export_talents.py first.")
@@ -63,6 +64,60 @@ def wanted_icons():
             for talent in tree.get("talents", []):
                 if talent.get("icon"):
                     names.add(talent["icon"])
+
+    names |= sim_icons()
+    return names
+
+
+def sim_icons():
+    """Icon names for spells that appear in a simulator result.
+
+    A sim report draws whatever the rotation actually cast, which is mostly not
+    a talent: Wrath, Moonfire and Lifebloom are ordinary spells with no talent
+    row, so the calculator's icon set does not cover them. Reads the ids out of
+    every result on disk and maps them through SpellIconID, the same join
+    icon_paths() below performs.
+    """
+    runs = os.path.join(REPO_ROOT, "sims", "runs")
+    if not os.path.isdir(runs):
+        return set()
+
+    spell_ids = set()
+    for root, _dirs, files in os.walk(runs):
+        for fn in files:
+            if not fn.endswith(".json") or fn == "matrix.json":
+                continue
+            try:
+                with open(os.path.join(root, fn), encoding="utf-8") as f:
+                    data = json.load(f)
+            except (OSError, ValueError):
+                continue
+
+            for ability in data.get("abilities", []):
+                if ability.get("spell"):
+                    spell_ids.add(ability["spell"])
+            for it in data.get("iterations", []):
+                for key in ("actor_uptime", "target_uptime", "absorb"):
+                    for row in it.get(key, []):
+                        if row and row[0]:
+                            spell_ids.add(row[0])
+
+    if not spell_ids:
+        return set()
+
+    spells = S.read_dbc(config.BASE_DBC_PATH, S.SPELL_COLUMNS, S.SPELL_FMT,
+                        quiet=True)
+    icons = S.read_dbc(config.BASE_SPELLICON_DBC_PATH, S.SPELLICON_COLUMNS,
+                       S.SPELLICON_FMT, quiet=True)
+
+    names = set()
+    for spell_id in spell_ids:
+        row = spells.get(spell_id)
+        icon = icons.get(row["SpellIconID"]) if row else None
+        texture = icon.get("TextureFilename") if icon else None
+        if texture:
+            names.add(texture.replace("/", "\\").rsplit("\\", 1)[-1].lower())
+
     return names
 
 

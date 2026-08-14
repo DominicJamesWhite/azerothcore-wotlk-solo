@@ -34,6 +34,11 @@ static SFMTRand* GetRng()
     return sfmtRand.get();
 }
 
+void SetRandomSeed(uint32 seed)
+{
+    sfmtRand = std::make_unique<SFMTRand>(seed);
+}
+
 int32 irand(int32 min, int32 max)
 {
     ASSERT(max >= min);

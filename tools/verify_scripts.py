@@ -76,7 +76,11 @@ def extract_cpp_script_names(src_dir):
     loader_pattern = re.compile(r'SpellScriptLoader\("([^"]+)"\)')
     register_pattern = re.compile(r'RegisterSpellScript\((\w+)\)\s*;')
 
-    for cpp_file in glob.glob(os.path.join(src_dir, "*.cpp")):
+    # Recursive: CMake's CollectSourceFiles (src/cmake/macros/AutoCollect.cmake)
+    # descends into subdirectories, so a non-recursive scan here reports a
+    # phantom "will cause linker error" for anything under src/<subdir>/ that
+    # the build compiles perfectly well.
+    for cpp_file in glob.glob(os.path.join(src_dir, "**", "*.cpp"), recursive=True):
         if os.path.basename(cpp_file) == "MP_loader.cpp":
             continue
         with open(cpp_file, "r", encoding="utf-8", errors="replace") as f:
@@ -94,7 +98,11 @@ def extract_cpp_addsc_definitions(src_dir):
     funcs = {}  # func_name -> file_path
     pattern = re.compile(r'^void\s+(AddSC_\w+)\s*\(\s*\)', re.MULTILINE)
 
-    for cpp_file in glob.glob(os.path.join(src_dir, "*.cpp")):
+    # Recursive: CMake's CollectSourceFiles (src/cmake/macros/AutoCollect.cmake)
+    # descends into subdirectories, so a non-recursive scan here reports a
+    # phantom "will cause linker error" for anything under src/<subdir>/ that
+    # the build compiles perfectly well.
+    for cpp_file in glob.glob(os.path.join(src_dir, "**", "*.cpp"), recursive=True):
         if os.path.basename(cpp_file) == "MP_loader.cpp":
             continue
         with open(cpp_file, "r", encoding="utf-8", errors="replace") as f:

@@ -188,6 +188,38 @@ def validate(class_key, link, level=None):
                     f"{tree['name']}: {t['name']} needs {need} point(s) in "
                     f"{parent['name']} but the build spends {have}")
 
+    # Tier gating: a talent on row N needs 5*N points already spent in its own
+    # tree. This is checked last because it needs the whole spend.
+    #
+    # It is not a theoretical rule. Freeing points by dropping a cheap tier-0 or
+    # tier-1 talent is the obvious way to fund a redesigned talent deeper in the
+    # tree, and it is exactly the move that drops a *different*, untouched
+    # talent below its row requirement. The rank caps and the point budget both
+    # still pass, the link still decodes, and PlayerbotFactory simply declines
+    # to learn the now-unreachable talent -- so the bot quietly runs a build
+    # several points short of the one that was authored.
+    for tree, digits in zip(data["trees"], parts):
+        spent = by_tree[tree["name"]]
+        for pos, pts in sorted(spent.items()):
+            if not pts:
+                continue
+            t = tree["talents"][pos]
+            row = (t.get("location") or {}).get("rowIdx")
+            if row is None:
+                continue
+            need = 5 * row
+            # Points on the same row do not help reach it, and neither do
+            # points below: only what is spent strictly above.
+            above = sum(
+                p for q, p in spent.items()
+                if q < len(tree["talents"])
+                and ((tree["talents"][q].get("location") or {}).get("rowIdx", 99) < row))
+            if above < need:
+                problems.append(
+                    f"{tree['name']}: {t['name']} is on row {row} and needs "
+                    f"{need} point(s) spent above it, but the build spends "
+                    f"{above}")
+
     if level is not None:
         budget = points_at_level(level, class_key)
         if total > budget:
@@ -202,8 +234,12 @@ def validate(class_key, link, level=None):
 # Config parsing
 # ---------------------------------------------------------------------------
 
+# Both build keys, because both are spent by real bots. WoaSoloSpecLink is the
+# Alonecraft second build, used instead of PremadeSpecLink while the bot has no
+# group (see AiFactory.cpp), and it went unaudited for its first five entries --
+# it is exactly as positional and exactly as easy to get wrong.
 LINK_RE = re.compile(
-    r"^\s*AiPlayerbot\.PremadeSpecLink\.(\d+)\.(\d+)\.(\d+)\s*=\s*(\S+)",
+    r"^\s*AiPlayerbot\.(Premade|WoaSolo)SpecLink\.(\d+)\.(\d+)\.(\d+)\s*=\s*(\S+)",
     re.MULTILINE)
 NAME_RE = re.compile(
     r"^\s*AiPlayerbot\.PremadeSpecName\.(\d+)\.(\d+)\s*=\s*(.+?)\s*$",
@@ -211,12 +247,18 @@ NAME_RE = re.compile(
 
 
 def read_conf(path):
-    """Return ({(cls, spec, level): link}, {(cls, spec): name})."""
+    """Return ({(kind, cls, spec, level): link}, {(cls, spec): name}).
+
+    'kind' is "premade" or "solo". It is part of the key rather than a separate
+    dict because the two builds for one spec are different builds, and merging
+    them would let a solo link silently mask the premade one it sits beside.
+    """
     if not os.path.isfile(path):
         return {}, {}
     with open(path, "r", encoding="utf-8", errors="replace") as fh:
         text = fh.read()
-    links = {(int(c), int(s), int(l)): v for c, s, l, v in LINK_RE.findall(text)}
+    links = {("solo" if k == "WoaSolo" else "premade", int(c), int(s), int(l)): v
+             for k, c, s, l, v in LINK_RE.findall(text)}
     names = {(int(c), int(s)): n for c, s, n in NAME_RE.findall(text)}
     return links, names
 
@@ -261,14 +303,17 @@ def cmd_audit(args):
     print()
 
     bad = 0
-    for (cls_id, spec, level), link in sorted(links.items()):
+    for key, link in sorted(links.items()):
+        kind, cls_id, spec, level = key
         class_key = CLASS_BY_ID.get(cls_id)
         if not class_key or (only and class_key != only):
             continue
         spend, problems = validate(class_key, link, level)
         label = names.get((cls_id, spec), f"spec {spec}")
+        if kind == "solo":
+            label += " [solo]"
         head = (f"[{class_key} {cls_id}.{spec}.{level}] {label}"
-                f"  ({source[(cls_id, spec, level)]})")
+                f"  ({source[key]})")
         if problems:
             bad += 1
             print(head)
@@ -452,7 +497,8 @@ def cmd_migrate(args):
     out = []
     skipped = 0
 
-    for (cls_id, spec, level), link in sorted(links.items()):
+    for key, link in sorted(links.items()):
+        kind, cls_id, spec, level = key
         class_key = CLASS_BY_ID.get(cls_id)
         if not class_key or (only and class_key != only):
             continue
@@ -562,15 +608,21 @@ def cmd_encode(args):
     cls_id = ID_BY_CLASS[class_key]
     spec_no = build.get("specNo")
     total = sum(p for _, _, p in spend)
+    # "solo" emits the Alonecraft second build, spent instead of the premade one
+    # while the bot is ungrouped. The spec *name* is never emitted for it: there
+    # is only one PremadeSpecName per spec and the solo build shares it.
+    solo = build.get("kind", "premade") == "solo"
+    key = "WoaSoloSpecLink" if solo else "PremadeSpecLink"
     if spec_no is None:
         print(f"# {build['class']} {build.get('spec', '')} "
               f"-- {total} points at level {level}")
         print(link)
     else:
-        print(f"# {build['class']} {build.get('spec', '')} -- {total} points")
-        if build.get("spec"):
+        print(f"# {build['class']} {build.get('spec', '')}"
+              f"{' solo' if solo else ''} -- {total} points")
+        if build.get("spec") and not solo:
             print(f"AiPlayerbot.PremadeSpecName.{cls_id}.{spec_no} = {build['spec']}")
-        print(f"AiPlayerbot.PremadeSpecLink.{cls_id}.{spec_no}.{level} = {link}")
+        print(f"AiPlayerbot.{key}.{cls_id}.{spec_no}.{level} = {link}")
     return 0
 
 

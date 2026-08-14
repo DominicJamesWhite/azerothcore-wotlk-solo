@@ -20,6 +20,9 @@
 #include <iomanip>
 #include <sstream>
 
+// Zero unless the offline combat simulator is driving the clock; see Timer.h.
+std::atomic<uint32> VirtualMSTime{0};
+
 namespace Acore::TimeDiff // in us
 {
     constexpr uint64 MILLISECONDS = 1000;

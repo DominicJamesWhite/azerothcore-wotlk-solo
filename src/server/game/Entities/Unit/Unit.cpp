@@ -12900,7 +12900,11 @@ void Unit::ProcSkillsAndReactives(bool isVictim, Unit* target, uint32 procFlag, 
 
 void Unit::GetProcAurasTriggeredOnEvent(AuraApplicationProcContainer& aurasTriggeringProc, std::list<AuraApplication*>* procAuras, ProcEventInfo eventInfo)
 {
-    TimePoint now = std::chrono::steady_clock::now();
+    // GameTime::Now(), not steady_clock::now(): proc ICDs are compared against
+    // GameTime-derived values everywhere else, so a live read here was already
+    // inconsistent by up to one world diff. It also has to follow the virtual
+    // clock for the offline simulator to reproduce proc rates.
+    TimePoint now = GameTime::Now();
 
     auto processAuraApplication = [&](AuraApplication* aurApp)
     {
